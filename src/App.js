@@ -15,7 +15,7 @@ class App extends Component {
 
     return !untappd_access_token ? (
       <div>
-        <a href={`${process.env.REACT_APP_GRAPGQL_URL}/login`}>login</a>
+        <a href={`${process.env.REACT_APP_LOGIN_URL}`}>login</a>
       </div>
     ) : (
       <Beers />
