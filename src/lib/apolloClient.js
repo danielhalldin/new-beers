@@ -7,7 +7,7 @@ const client = untappd_access_token => {
   return new ApolloClient({
     link: ApolloLink.from([
       new HttpLink({
-        uri: "http://data-source.ddns.net/graphql",
+        uri: `${process.env.REACT_APP_GRAPGQL_URL}/graphql`,
         headers: {
           untappd_access_token
         }
