@@ -4,8 +4,6 @@ import {
   Date,
   ImageContainer,
   Image,
-  Right,
-  Left,
   Front,
   Back,
   Name,
@@ -19,7 +17,9 @@ import {
   Cap,
   UserCap,
   Systembolaget,
-  Untappd
+  Untappd,
+  Price,
+  Ibu
 } from "./styles";
 
 class Beer extends Component {
@@ -59,16 +59,13 @@ class Beer extends Component {
             <Image src={beerLabel || "./images/badge-beer-default.png"} />
           </ImageContainer>
           <Brewery>{brewery}</Brewery>
-          <Right>
-            {!!ibu && <Alcohol>Ibu {ibu}</Alcohol>}
-            {!!abv && <Alcohol>{abv}%</Alcohol>}
-            {!!price && <Bold>{`${Math.round(price)}:-`}</Bold>}
-          </Right>
-          <Left>
-            <Origin />
+          <div>
             {!!country && <OriginCountry>{country}</OriginCountry>}
             {!!type && <Category>{type}</Category>}
-          </Left>
+          </div>
+          {!!ibu && <Ibu>Ibu {ibu}</Ibu>}
+          {!!abv && <Alcohol>{abv}%</Alcohol>}
+          {!!price && <Price>{`${Math.round(price)}:-`}</Price>}
         </Front>
 
         <Back>
@@ -79,7 +76,7 @@ class Beer extends Component {
           {!!salesStartDate && <Date>{salesStartDate}</Date>}
           <Description>
             <Name>{name}</Name>
-            {description}
+            {description ? description : "Beskrivning saknas"}
           </Description>
           {!!systembolagetUrl && (
             <Systembolaget

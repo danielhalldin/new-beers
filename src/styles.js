@@ -72,18 +72,6 @@ const Image = styled.img`
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 `;
 
-const _properties = `
-  position: absolute;
-  bottom: 0;
-  padding: 10px;
-`;
-const Right = styled.div`
-  ${_properties} right: 0;
-`;
-const Left = styled.div`
-  ${_properties} left: 0;
-`;
-
 const _title = `
   font-weight: bold;
   display: block;
@@ -107,9 +95,43 @@ const Bold = styled.div`
   margin-top: 2px;
 `;
 
-const Alcohol = styled.div`
-  font-style: italic;
+const Price = styled.div`
+  font-weight: bold;
+  color: white;
   display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #333;
+  padding: 5px 0 0 10px;
+  border-radius: 10px 0 0 0;
+  text-align: center;
+`;
+
+const Alcohol = styled.div`
+  font-weight: bold;
+  color: white;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #333;
+  padding: 5px 10px 0 0;
+  border-radius: 0 10px 0 0;
+  text-align: center;
+`;
+
+const Ibu = styled.div`
+  font-weight: bold;
+  color: white;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 90px;
+  background-color: #333;
+  padding: 5px 10px 0 5px;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
 `;
 
 const Origin = styled.div`
@@ -186,8 +208,6 @@ export {
   Date,
   ImageContainer,
   Image,
-  Right,
-  Left,
   Front,
   Back,
   Name,
@@ -201,5 +221,7 @@ export {
   Cap,
   UserCap,
   Systembolaget,
-  Untappd
+  Untappd,
+  Price,
+  Ibu
 };
