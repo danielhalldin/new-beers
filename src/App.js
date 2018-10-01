@@ -15,7 +15,7 @@ class App extends Component {
 
     return !untappd_access_token ? (
       <div>
-        <a href="http://localhost:4444/login">login</a>
+        <a href="http://data-source.ddns.net/login">login</a>
       </div>
     ) : (
       <Beers />
