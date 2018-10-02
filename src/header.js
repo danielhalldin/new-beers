@@ -16,9 +16,8 @@ class HeaderContainer extends Component {
       <ApolloProvider client={appoloClient(untappd_access_token)}>
         <Query query={untappdUser}>
           {({ loading, error, data }) => {
-            if (loading) return <p>Loading...</p>;
+            if (loading) return <Header>🍺 Laddar...</Header>;
             if (error) return <p>Error :(</p>;
-            console.log("data", data);
 
             return (
               <Header>

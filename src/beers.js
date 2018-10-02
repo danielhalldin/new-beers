@@ -5,7 +5,7 @@ import cookies from "js-cookie";
 import appoloClient from "./lib/apolloClient";
 import { decoratedLatest } from "./queries";
 import Card from "./card";
-import { BeersContainer } from "./styles";
+import { BeersContainer, Loader } from "./styles";
 
 class Beers extends Component {
   render() {
@@ -14,8 +14,8 @@ class Beers extends Component {
       <ApolloProvider client={appoloClient(untappd_access_token)}>
         <Query query={decoratedLatest}>
           {({ loading, error, data }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error :(</p>;
+            if (loading) return <Loader>🍺 Laddar...</Loader>;
+            if (error) return <Loader>Error :(</Loader>;
             const beers = data.decoratedLatest.map(data => {
               data.rotate =
                 Math.random() < 0.5 ? -3 * Math.random() : 3 * Math.random();

@@ -6,6 +6,15 @@ const colors = {
   textDark: "#444"
 };
 
+const Loader = styled.div`
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  padding-top: 50px;
+  font-size: 22px;
+  font-weight: bold;
+`;
+
 const Header = styled.div`
   font-family: GillSans-UltraBold, Impact, "Arial Black", sans-serif;
   text-decoration: italic;
@@ -283,6 +292,7 @@ const Untappd = styled.a`
 `;
 
 export {
+  Loader,
   Header,
   Footer,
   HeaderCell,
