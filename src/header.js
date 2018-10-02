@@ -11,7 +11,7 @@ class HeaderContainer extends Component {
     super(props);
   }
   render() {
-    const untappd_access_token = cookies.get("t");
+    const untappd_access_token = cookies.get("untappd_access_token");
     return (
       <ApolloProvider client={appoloClient(untappd_access_token)}>
         <Query query={untappdUser}>
