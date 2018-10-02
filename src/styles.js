@@ -7,7 +7,7 @@ const colors = {
 };
 
 const Header = styled.div`
-  font-family: Impact, "Arial Black", sans-serif;
+  font-family: GillSans-UltraBold, Impact, "Arial Black", sans-serif;
   text-decoration: italic;
   font-size: 30px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -19,11 +19,12 @@ const Header = styled.div`
 `;
 
 const HeaderCell = styled.div`
-  width: 30%;
+  width: ${props => props.width};
   margin: auto 0;
   text-align: ${props => props.textAlign};
 `;
 const HeaderUserData = styled.div`
+  font-family: Calibri, Helvetica;
   font-size: 15px;
   line-height: 18px;
   display: inline-block;

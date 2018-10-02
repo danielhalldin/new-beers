@@ -22,7 +22,7 @@ class HeaderContainer extends Component {
 
             return (
               <Header>
-                <HeaderCell textAlign="left">
+                <HeaderCell textAlign="left" width="20%">
                   <Avatar src={data.untappdUser.avatar} />
                   <HeaderUserData>
                     {data.untappdUser.name}
@@ -31,8 +31,10 @@ class HeaderContainer extends Component {
                   </HeaderUserData>
                 </HeaderCell>
 
-                <HeaderCell textAlign="center">NEW BEERS 🍻</HeaderCell>
-                <HeaderCell> </HeaderCell>
+                <HeaderCell textAlign="center" width="60%">
+                  NEWBEERS 🍻
+                </HeaderCell>
+                <HeaderCell width="20%"> </HeaderCell>
               </Header>
             );
           }}
