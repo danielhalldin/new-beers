@@ -7,9 +7,9 @@ const colors = {
 };
 
 const Header = styled.div`
-  font-family: impact;
+  font-family: impact, "Arial Black", Gadget, sans-serif;
   text-decoration: italic;
-  font-size: 32px;
+  font-size: 30px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   color: ${colors.textLight};
   background-color: ${colors.dark};
