@@ -3,6 +3,7 @@ import cookies from "js-cookie";
 import Beers from "./beers";
 import Header from "./header";
 import Footer from "./footer";
+import Login from "./Login";
 
 class App extends Component {
   render() {
@@ -16,8 +17,9 @@ class App extends Component {
     }
 
     return !untappd_access_token ? (
-      <div>
-        <a href={`${process.env.REACT_APP_LOGIN_URL}`}>login</a>
+      <div style={{ textAlign: "center" }}>
+        <Header login />
+        <Login href={`${process.env.REACT_APP_LOGIN_URL}`} />
       </div>
     ) : (
       <div>

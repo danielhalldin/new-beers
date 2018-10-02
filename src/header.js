@@ -12,6 +12,18 @@ class HeaderContainer extends Component {
   }
   render() {
     const untappd_access_token = cookies.get("untappd_access_token");
+    if (this.props.login) {
+      return (
+        <Header>
+          <HeaderCell width="20%"> </HeaderCell>
+          <HeaderCell textAlign="center" width="60%">
+            NEW BEERS 🍻
+          </HeaderCell>
+          <HeaderCell width="20%"> </HeaderCell>
+        </Header>
+      );
+    }
+
     return (
       <ApolloProvider client={appoloClient(untappd_access_token)}>
         <Query query={untappdUser}>
