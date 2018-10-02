@@ -85,9 +85,10 @@ const CardHeader = styled.div`
   text-align: center;
   font-weight: bold;
   border-radius: 2px 2px 0 0;
-  margin: -10px -10px 5px -10px;
+  margin: -12px -11px 0px -11px;
   height: 24px;
   padding-top: 4px;
+  width: 111%;
 `;
 
 const Footer = styled.div`
