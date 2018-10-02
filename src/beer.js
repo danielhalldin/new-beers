@@ -17,6 +17,7 @@ import {
   Description,
   Cap,
   UserCap,
+  CapLabel,
   Systembolaget,
   Untappd,
   Price,
@@ -52,7 +53,10 @@ class Beer extends Component {
         <Front>
           {!!rating && <Cap>{Number.parseFloat(rating).toPrecision(2)}</Cap>}
           {!!userRating && (
-            <UserCap>{Number.parseFloat(userRating).toPrecision(2)}</UserCap>
+            <UserCap>
+              {Number.parseFloat(userRating).toPrecision(2)}
+              <CapLabel>you</CapLabel>
+            </UserCap>
           )}
 
           {!!salesStartDate && <Header>{salesStartDate}</Header>}
@@ -73,18 +77,19 @@ class Beer extends Component {
         </Front>
 
         <Back>
-          {!!rating && (
-            <UserCap>{Number.parseFloat(rating).toPrecision(2)}</UserCap>
-          )}
+          {!!rating && <Cap>{Number.parseFloat(rating).toPrecision(2)}</Cap>}
           {!!userRating && (
-            <Cap>{Number.parseFloat(userRating).toPrecision(2)}</Cap>
+            <UserCap>
+              {Number.parseFloat(userRating).toPrecision(2)}
+              <CapLabel>you</CapLabel>
+            </UserCap>
           )}{" "}
           {!!salesStartDate && <Header>{salesStartDate}</Header>}
           <Description>
-            <Name>{name}</Name>
+            <Name length={name.length}>{name}</Name>
             {description ? description : "Beskrivning saknas"}
           </Description>
-          <Footer>
+          <Footer back>
             {!!systembolagetUrl && (
               <Systembolaget
                 href={systembolagetUrl}

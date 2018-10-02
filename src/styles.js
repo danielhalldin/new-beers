@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 const colors = {
   dark: "#333",
-  textLight: "#ddd"
+  textLight: "#ddd",
+  textDark: "#444"
 };
 
 const FlipContainer = styled.div`
@@ -22,6 +23,7 @@ const Flipper = styled.div`
 `;
 
 const BeersContainer = styled.div`
+  color: ${colors.textDark};
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -54,8 +56,10 @@ const Footer = styled.div`
   text-align: center;
   font-weight: bold;
   height: 24px;
-  width: 100%
+  width: 101%;
   margin: -10px -10px 0 -10px;
+  height: ${props => (props.back ? "36px" : "24px")};
+  margin: 0 0 -1px -11px;
 `;
 
 const Price = styled.div`
@@ -173,7 +177,7 @@ const Category = styled.div`
 const Description = styled.div`
   height: 273px;
   overflow-y: scroll;
-  border-bottom: 1px dotted black;
+  overflow-x: auto;
 `;
 
 const _cap = `
@@ -194,6 +198,15 @@ const Cap = styled.div`
 
 const UserCap = styled.div`
   ${_cap} right: -12px;
+  font-size: 15px;
+  line-height: 46px;
+`;
+
+const CapLabel = styled.div`
+  font-size: 9px;
+  position: absolute;
+  top: -11px;
+  right: 12px;
 `;
 
 const _links = `
@@ -204,7 +217,7 @@ const _links = `
 
 const Systembolaget = styled.a`
   ${_links} background-image: url("./images/systembolaget.png");
-  bottom: 0;
+  bottom: 1px;
   right: 5px;
   width: 50px;
   height: 40px;
@@ -212,7 +225,7 @@ const Systembolaget = styled.a`
 
 const Untappd = styled.a`
   ${_links} background-image: url("./images/untappd.png");
-  bottom: 3px;
+  bottom: 4px;
   left: 5px;
   width: 25px;
   height: 25px;
@@ -240,6 +253,7 @@ export {
   Description,
   Cap,
   UserCap,
+  CapLabel,
   Systembolaget,
   Untappd,
   Price,
