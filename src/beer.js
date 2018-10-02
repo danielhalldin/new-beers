@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import {
   BeerContainer,
-  Date,
+  Header,
+  Footer,
   ImageContainer,
   Image,
   Front,
@@ -19,7 +20,8 @@ import {
   Systembolaget,
   Untappd,
   Price,
-  Ibu
+  Ibu,
+  Style
 } from "./styles";
 
 class Beer extends Component {
@@ -53,45 +55,51 @@ class Beer extends Component {
             <UserCap>{Number.parseFloat(userRating).toPrecision(2)}</UserCap>
           )}
 
-          {!!salesStartDate && <Date>{salesStartDate}</Date>}
-          <Name>{name}</Name>
+          {!!salesStartDate && <Header>{salesStartDate}</Header>}
+          <Name length={name.length}>{name}</Name>
           <ImageContainer>
             <Image src={beerLabel || "./images/badge-beer-default.png"} />
           </ImageContainer>
-          <Brewery>{brewery}</Brewery>
-          <div>
+          <Brewery length={brewery.length}>{brewery}</Brewery>
+          <Style>
             {!!country && <OriginCountry>{country}</OriginCountry>}
-            {!!type && <Category>{type}</Category>}
-          </div>
-          {!!ibu && <Ibu>Ibu {ibu}</Ibu>}
-          {!!abv && <Alcohol>{abv}%</Alcohol>}
-          {!!price && <Price>{`${Math.round(price)}:-`}</Price>}
+            {!!style && <Category>{style}</Category>}
+          </Style>
+          <Footer>
+            {!!ibu && <Ibu>Ibu {ibu}</Ibu>}
+            {!!abv && <Alcohol>{abv}%</Alcohol>}
+            {!!price && <Price>{`${Math.round(price)}:-`}</Price>}
+          </Footer>
         </Front>
 
         <Back>
-          {!!rating && <Cap>{Number.parseFloat(rating).toPrecision(2)}</Cap>}
+          {!!rating && (
+            <UserCap>{Number.parseFloat(rating).toPrecision(2)}</UserCap>
+          )}
           {!!userRating && (
-            <UserCap>{Number.parseFloat(userRating).toPrecision(2)}</UserCap>
+            <Cap>{Number.parseFloat(userRating).toPrecision(2)}</Cap>
           )}{" "}
-          {!!salesStartDate && <Date>{salesStartDate}</Date>}
+          {!!salesStartDate && <Header>{salesStartDate}</Header>}
           <Description>
             <Name>{name}</Name>
             {description ? description : "Beskrivning saknas"}
           </Description>
-          {!!systembolagetUrl && (
-            <Systembolaget
-              href={systembolagetUrl}
-              target="_blank"
-              onClick={e => e.stopPropagation()}
-            />
-          )}
-          {!!untappdUrl && (
-            <Untappd
-              href={untappdUrl}
-              target="_blank"
-              onClick={e => e.stopPropagation()}
-            />
-          )}
+          <Footer>
+            {!!systembolagetUrl && (
+              <Systembolaget
+                href={systembolagetUrl}
+                target="_blank"
+                onClick={e => e.stopPropagation()}
+              />
+            )}
+            {!!untappdUrl && (
+              <Untappd
+                href={untappdUrl}
+                target="_blank"
+                onClick={e => e.stopPropagation()}
+              />
+            )}
+          </Footer>
         </Back>
       </BeerContainer>
     );

@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+const colors = {
+  dark: "#333",
+  textLight: "#ddd"
+};
+
 const FlipContainer = styled.div`
   margin: 30px;
   width: 210px;
@@ -29,15 +34,49 @@ const BeerContainer = styled.div`
   cursor: pointer;
 `;
 
-const Date = styled.div`
-  background-color: #333;
-  color: #ddd;
+const Header = styled.div`
+  background-color: ${colors.dark};
+  color: ${colors.textLight};
   text-align: center;
   font-weight: bold;
   border-radius: 2px 2px 0 0;
   margin: -10px -10px 5px -10px;
-  height: 20px;
+  height: 24px;
   padding-top: 4px;
+`;
+
+const Footer = styled.div`
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  background-color: ${colors.dark};
+  color: ${colors.textLight};
+  text-align: center;
+  font-weight: bold;
+  height: 24px;
+  width: 100%
+  margin: -10px -10px 0 -10px;
+`;
+
+const Price = styled.div`
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+`;
+
+const Alcohol = styled.div`
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+`;
+
+const Ibu = styled.div`
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 90px;
 `;
 
 const _face = `
@@ -50,7 +89,7 @@ const _face = `
   border-radius: 7px;
   box-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
   padding: 10px;
-  border: 5px solid #333;
+  border: 5px solid ${colors.dark};
 `;
 const Front = styled.div`
   ${_face} z-index: 2;
@@ -80,58 +119,38 @@ const _title = `
 `;
 const Name = styled.div`
   margin: 15px -9px 3px -9px;
-  font-size: 22px;
+  font-size: ${props => {
+    if (props.length > 25) {
+      return "17px";
+    } else if (props.length > 15) {
+      return "22px";
+    }
+    return "25px";
+  }};
   ${_title};
 `;
+
 const Brewery = styled.div`
   margin: 0 -9px 3px -9px;
   font-size: 16px;
+  font-size: ${props => {
+    if (props.length > 25) {
+      return "15px";
+    }
+    return "18px";
+  }};
   ${_title};
+`;
+
+const Style = styled.div`
+  position: absolute;
+  bottom: 32px;
 `;
 
 const Bold = styled.div`
   font-weight: bold;
   display: block;
   margin-top: 2px;
-`;
-
-const Price = styled.div`
-  font-weight: bold;
-  color: white;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background-color: #333;
-  padding: 5px 0 0 10px;
-  border-radius: 10px 0 0 0;
-  text-align: center;
-`;
-
-const Alcohol = styled.div`
-  font-weight: bold;
-  color: white;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-color: #333;
-  padding: 5px 10px 0 0;
-  border-radius: 0 10px 0 0;
-  text-align: center;
-`;
-
-const Ibu = styled.div`
-  font-weight: bold;
-  color: white;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 90px;
-  background-color: #333;
-  padding: 5px 10px 0 5px;
-  border-radius: 10px 10px 0 0;
-  text-align: center;
 `;
 
 const Origin = styled.div`
@@ -142,14 +161,12 @@ const Origin = styled.div`
 const OriginCountry = styled.div`
   font-style: italic;
   display: block;
-  max-width: 140px;
   overflow: hidden;
 `;
 
 const Category = styled.div`
   font-style: italic;
   display: block;
-  max-width: 140px;
   overflow: hidden;
 `;
 
@@ -161,26 +178,25 @@ const Description = styled.div`
 
 const _cap = `
   background-image: url("./images/cap.png");
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   line-height: 40px;
   position: absolute;
-  top: -10px;
+  top: -12px;
   background-size: cover;
   font-weight: bold;
   text-align: center;
 `;
 
 const Cap = styled.div`
-  ${_cap} left: -10px;
+  ${_cap} left: -12px;
 `;
 
 const UserCap = styled.div`
-  ${_cap} right: -10px;
+  ${_cap} right: -12px;
 `;
 
 const _links = `
-  bottom: 10px;
   position: absolute;
   display: block;
   background-size: cover;
@@ -188,24 +204,28 @@ const _links = `
 
 const Systembolaget = styled.a`
   ${_links} background-image: url("./images/systembolaget.png");
-  right: 10px;
+  bottom: 0;
+  right: 5px;
   width: 50px;
   height: 40px;
 `;
 
 const Untappd = styled.a`
   ${_links} background-image: url("./images/untappd.png");
-  left: 10px;
+  bottom: 3px;
+  left: 5px;
   width: 25px;
   height: 25px;
 `;
 
 export {
+  Style,
   FlipContainer,
   Flipper,
   BeersContainer,
   BeerContainer,
-  Date,
+  Header,
+  Footer,
   ImageContainer,
   Image,
   Front,
