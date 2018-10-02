@@ -7,6 +7,10 @@ const colors = {
 };
 
 const Header = styled.div`
+  font-family: impact;
+  text-decoration: italic;
+  font-size: 32px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   color: ${colors.textLight};
   background-color: ${colors.dark};
   display: flex;
@@ -20,10 +24,11 @@ const HeaderCell = styled.div`
   text-align: ${props => props.textAlign};
 `;
 const HeaderUserData = styled.div`
+  font-size: 15px;
   display: inline-block;
   text-align: left;
   vertical-align: top;
-  margin-top: 5px;
+  margin-top: 7px;
 `;
 
 const Avatar = styled.img`
@@ -31,7 +36,8 @@ const Avatar = styled.img`
   border-radius: 25px;
   border: 1px solid ${colors.textDark};
   display: inline-block;
-  margin-right: 10px;
+  margin: 4px 10px 0 0;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 `;
 
 const PbUntappd = styled.img`

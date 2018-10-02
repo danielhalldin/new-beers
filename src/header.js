@@ -27,11 +27,11 @@ class HeaderContainer extends Component {
                   <HeaderUserData>
                     {data.untappdUser.name}
                     <br />
-                    {data.untappdUser.checkins}
+                    {data.untappdUser.checkins} checkins
                   </HeaderUserData>
                 </HeaderCell>
 
-                <HeaderCell textAlign="center">NEW BEERS</HeaderCell>
+                <HeaderCell textAlign="center">NEW BEERS 🍻</HeaderCell>
                 <HeaderCell> </HeaderCell>
               </Header>
             );
