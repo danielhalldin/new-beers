@@ -32,7 +32,7 @@ class HeaderContainer extends Component {
                 </HeaderCell>
 
                 <HeaderCell textAlign="center" width="60%">
-                  NEWBEERS 🍻
+                  NEW BEERS 🍻
                 </HeaderCell>
                 <HeaderCell width="20%"> </HeaderCell>
               </Header>
