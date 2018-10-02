@@ -25,4 +25,14 @@ const decoratedLatest = gql`
   }
 `;
 
-export { decoratedLatest };
+const untappdUser = gql`
+  {
+    untappdUser {
+      name
+      checkins
+      avatar
+    }
+  }
+`;
+
+export { decoratedLatest, untappdUser };

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import cookies from "js-cookie";
 import Beers from "./beers";
+import Header from "./header";
 
 class App extends Component {
   render() {
@@ -18,7 +19,10 @@ class App extends Component {
         <a href={`${process.env.REACT_APP_LOGIN_URL}`}>login</a>
       </div>
     ) : (
-      <Beers />
+      <div>
+        <Header />
+        <Beers />
+      </div>
     );
   }
 }

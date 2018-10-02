@@ -6,6 +6,40 @@ const colors = {
   textDark: "#444"
 };
 
+const Header = styled.div`
+  color: ${colors.textLight};
+  background-color: ${colors.dark};
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
+const HeaderCell = styled.div`
+  width: 30%;
+  margin: auto 0;
+  text-align: ${props => props.textAlign};
+`;
+const HeaderUserData = styled.div`
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+  margin-top: 5px;
+`;
+
+const Avatar = styled.img`
+  height: 40px;
+  border-radius: 25px;
+  border: 1px solid ${colors.textDark};
+  display: inline-block;
+  margin-right: 10px;
+`;
+
+const PbUntappd = styled.img`
+  height: 30px;
+  display: inline-block;
+  margin: 0 5px;
+`;
+
 const FlipContainer = styled.div`
   margin: 30px;
   width: 210px;
@@ -36,7 +70,7 @@ const BeerContainer = styled.div`
   cursor: pointer;
 `;
 
-const Header = styled.div`
+const CardHeader = styled.div`
   background-color: ${colors.dark};
   color: ${colors.textLight};
   text-align: center;
@@ -232,12 +266,17 @@ const Untappd = styled.a`
 `;
 
 export {
+  Header,
+  HeaderCell,
+  HeaderUserData,
+  Avatar,
+  PbUntappd,
   Style,
   FlipContainer,
   Flipper,
   BeersContainer,
   BeerContainer,
-  Header,
+  CardHeader,
   Footer,
   ImageContainer,
   Image,

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {
   BeerContainer,
-  Header,
+  CardHeader,
   Footer,
   ImageContainer,
   Image,
@@ -59,7 +59,7 @@ class Beer extends Component {
             </UserCap>
           )}
 
-          {!!salesStartDate && <Header>{salesStartDate}</Header>}
+          {!!salesStartDate && <CardHeader>{salesStartDate}</CardHeader>}
           <Name length={name.length}>{name}</Name>
           <ImageContainer>
             <Image src={beerLabel || "./images/badge-beer-default.png"} />
@@ -84,7 +84,7 @@ class Beer extends Component {
               <CapLabel>you</CapLabel>
             </UserCap>
           )}{" "}
-          {!!salesStartDate && <Header>{salesStartDate}</Header>}
+          {!!salesStartDate && <CardHeader>{salesStartDate}</CardHeader>}
           <Description>
             <Name length={name.length}>{name}</Name>
             {description ? description : "Beskrivning saknas"}
