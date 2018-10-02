@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import cookies from "js-cookie";
 import Beers from "./beers";
 import Header from "./header";
+import Footer from "./footer";
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
       <div>
         <Header />
         <Beers />
+        <Footer />
       </div>
     );
   }

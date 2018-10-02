@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {
   BeerContainer,
   CardHeader,
-  Footer,
+  CardFooter,
   ImageContainer,
   Image,
   Front,
@@ -69,11 +69,11 @@ class Beer extends Component {
             {!!country && <OriginCountry>{country}</OriginCountry>}
             {!!style && <Category>{style}</Category>}
           </Style>
-          <Footer>
+          <CardFooter>
             {!!ibu && <Ibu>Ibu {ibu}</Ibu>}
             {!!abv && <Alcohol>{abv}%</Alcohol>}
             {!!price && <Price>{`${Math.round(price)}:-`}</Price>}
-          </Footer>
+          </CardFooter>
         </Front>
 
         <Back>
@@ -89,7 +89,7 @@ class Beer extends Component {
             <Name length={name.length}>{name}</Name>
             {description ? description : "Beskrivning saknas"}
           </Description>
-          <Footer back>
+          <CardFooter back>
             {!!systembolagetUrl && (
               <Systembolaget
                 href={systembolagetUrl}
@@ -104,7 +104,7 @@ class Beer extends Component {
                 onClick={e => e.stopPropagation()}
               />
             )}
-          </Footer>
+          </CardFooter>
         </Back>
       </BeerContainer>
     );

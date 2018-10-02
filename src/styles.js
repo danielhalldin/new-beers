@@ -18,6 +18,13 @@ const Header = styled.div`
   justify-content: space-around;
 `;
 
+const Footer = styled.div`
+  margin-top: 30px;
+  padding: 10px;
+  background-color: ${colors.dark};
+  text-align: center;
+`;
+
 const HeaderCell = styled.div`
   width: ${props => props.width};
   margin: auto 0;
@@ -91,7 +98,7 @@ const CardHeader = styled.div`
   width: 111%;
 `;
 
-const Footer = styled.div`
+const CardFooter = styled.div`
   font-weight: bold;
   position: absolute;
   bottom: 0;
@@ -277,6 +284,7 @@ const Untappd = styled.a`
 
 export {
   Header,
+  Footer,
   HeaderCell,
   HeaderUserData,
   Avatar,
@@ -287,7 +295,7 @@ export {
   BeersContainer,
   BeerContainer,
   CardHeader,
-  Footer,
+  CardFooter,
   ImageContainer,
   Image,
   Front,
