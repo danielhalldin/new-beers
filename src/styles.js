@@ -7,7 +7,7 @@ const colors = {
 };
 
 const Header = styled.div`
-  font-family: impact, "Arial Black", Gadget, sans-serif;
+  font-family: Impact, "Arial Black", sans-serif;
   text-decoration: italic;
   font-size: 30px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -25,6 +25,7 @@ const HeaderCell = styled.div`
 `;
 const HeaderUserData = styled.div`
   font-size: 15px;
+  line-height: 18px;
   display: inline-block;
   text-align: left;
   vertical-align: top;
@@ -34,7 +35,7 @@ const HeaderUserData = styled.div`
 const Avatar = styled.img`
   height: 40px;
   border-radius: 25px;
-  border: 1px solid ${colors.textDark};
+  border: 0 solid ${colors.textDark};
   display: inline-block;
   margin: 4px 10px 0 0;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
