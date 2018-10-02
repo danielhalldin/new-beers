@@ -9,7 +9,7 @@ import { BeersContainer } from "./styles";
 
 class Beers extends Component {
   render() {
-    const untappd_access_token = cookies.get("untappd_access_token");
+    const untappd_access_token = cookies.get("t");
     return (
       <ApolloProvider client={appoloClient(untappd_access_token)}>
         <Query query={decoratedLatest}>
