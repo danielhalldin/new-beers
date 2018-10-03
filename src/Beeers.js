@@ -5,7 +5,7 @@ import cookies from "js-cookie";
 import appoloClient from "./lib/apolloClient";
 import { decoratedLatest } from "./queries";
 import Card from "./Card";
-import { BeersContainer, Loader } from "./Beers.styles";
+import { Container, Loader } from "./Beers.styles";
 
 class Beers extends Component {
   render() {
