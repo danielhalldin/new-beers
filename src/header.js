@@ -19,7 +19,9 @@ class HeaderContainer extends Component {
           <HeaderCell textAlign="center" width="60%">
             NEW BEERS
           </HeaderCell>
-          <HeaderCell width="20%">🍻</HeaderCell>
+          <HeaderCell textAlign="right" width="20%">
+            🍻
+          </HeaderCell>
         </Header>
       );
     }
@@ -45,7 +47,9 @@ class HeaderContainer extends Component {
                 <HeaderCell textAlign="center" width="60%">
                   NEW BEERS
                 </HeaderCell>
-                <HeaderCell width="20%">🍻</HeaderCell>
+                <HeaderCell textAlign="right" width="20%">
+                  🍻
+                </HeaderCell>
               </Header>
             );
           }}
