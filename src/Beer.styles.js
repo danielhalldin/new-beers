@@ -1,116 +1,5 @@
 import styled from "styled-components";
-
-const colors = {
-  dark: "#333",
-  textLight: "#ddd",
-  textDark: "#444"
-};
-
-const Loader = styled.div`
-  width: 100%;
-  height: 100vh;
-  text-align: center;
-  padding-top: 50px;
-  font-size: 22px;
-  font-weight: bold;
-`;
-
-const Login = styled.div`
-  font-weight: bold;
-  font-size: 24px;
-  margin: 30vh 0 0 0;
-  text-align: center;
-`;
-
-const LoginButton = styled.a`
-  font-size: 30px;
-  padding: 6px 18px;
-  border-radius: 4px;
-  cursor: pointer;
-  color: white;
-  background-color: #ffcc00;
-  text-decoration: none;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
-  :hover {
-    background-color: #ffdd11;
-  }
-  :active {
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
-  }
-`;
-
-const Header = styled.div`
-  font-family: GillSans-UltraBold, Impact, "Arial Black", sans-serif;
-  text-decoration: italic;
-  font-size: 30px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  color: ${colors.textLight};
-  background-color: ${colors.dark};
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-`;
-
-const Footer = styled.div`
-  margin-top: 30px;
-  padding: 10px;
-  background-color: ${colors.dark};
-  text-align: center;
-`;
-
-const HeaderCell = styled.div`
-  width: ${props => props.width};
-  margin: auto 0;
-  text-align: ${props => props.textAlign};
-`;
-const HeaderUserData = styled.div`
-  font-family: Calibri, Helvetica;
-  font-size: 15px;
-  line-height: 18px;
-  display: inline-block;
-  text-align: left;
-  vertical-align: top;
-  margin-top: 7px;
-  font-weight: Bold;
-`;
-
-const Avatar = styled.img`
-  height: 40px;
-  border-radius: 25px;
-  border: 0 solid ${colors.textDark};
-  display: inline-block;
-  margin: 4px 10px 0 4px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-`;
-
-const PbUntappd = styled.img`
-  height: 30px;
-  display: inline-block;
-  margin: 0 5px;
-`;
-
-const FlipContainer = styled.div`
-  margin: 30px;
-  width: 210px;
-  height: 330px;
-  transform: ${props => "rotate(" + props.data.rotate + "deg)"};
-  perspective: 1000px;
-`;
-
-const Flipper = styled.div`
-  transition: 0.6s;
-  transform-style: preserve-3d;
-  position: relative;
-  transform: ${props =>
-    "rotateY(" + (props.flipped ? 180 : 0) + "deg) translateX(-15px)"};
-`;
-
-const BeersContainer = styled.div`
-  color: ${colors.textDark};
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
+import { colors } from "./common.styles";
 
 const BeerContainer = styled.div`
   height: 310px;
@@ -316,19 +205,7 @@ const Untappd = styled.a`
 `;
 
 export {
-  Login,
-  LoginButton,
-  Loader,
-  Header,
-  Footer,
-  HeaderCell,
-  HeaderUserData,
-  Avatar,
-  PbUntappd,
   Style,
-  FlipContainer,
-  Flipper,
-  BeersContainer,
   BeerContainer,
   CardHeader,
   CardFooter,

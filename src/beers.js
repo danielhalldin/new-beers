@@ -4,8 +4,8 @@ import { Query } from "react-apollo";
 import cookies from "js-cookie";
 import appoloClient from "./lib/apolloClient";
 import { decoratedLatest } from "./queries";
-import Card from "./card";
-import { BeersContainer, Loader } from "./styles";
+import Card from "./Card";
+import { BeersContainer, Loader } from "./Beers.styles";
 
 class Beers extends Component {
   render() {

@@ -10,10 +10,8 @@ import {
   Name,
   Brewery,
   Alcohol,
-  Origin,
   OriginCountry,
   Category,
-  Bold,
   Description,
   Cap,
   UserCap,
@@ -23,7 +21,7 @@ import {
   Price,
   Ibu,
   Style
-} from "./styles";
+} from "./Beer.styles";
 
 class Beer extends Component {
   render() {
@@ -31,7 +29,6 @@ class Beer extends Component {
       abv,
       brewery,
       country,
-      id,
       name,
       price,
       rating,
@@ -40,7 +37,6 @@ class Beer extends Component {
       style,
       systembolagetUrl,
       type,
-      untappdId,
       untappdUrl,
       userRating,
       beerLabel,

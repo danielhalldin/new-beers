@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Beer from "./beer";
-import { FlipContainer, Flipper } from "./styles";
+import Beer from "./Beer";
+import { FlipContainer, Flipper } from "./Card.styles";
 
 class Card extends Component {
   state = {

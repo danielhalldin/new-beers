@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { LoginButton, Login } from "./styles";
+import { LoginButton, Login } from "./Login.styles";
 
 class LoginContainer extends Component {
   constructor(props) {

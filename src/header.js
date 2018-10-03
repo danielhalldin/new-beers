@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Avatar, HeaderCell, HeaderUserData } from "./styles";
+import { Header, Avatar, HeaderCell, HeaderUserData } from "./Header.styles";
 import { ApolloProvider } from "react-apollo";
 import { Query } from "react-apollo";
 import appoloClient from "./lib/apolloClient";

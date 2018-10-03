@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import cookies from "js-cookie";
-import Beers from "./beers";
-import Header from "./header";
-import Footer from "./footer";
+import Beers from "./Beers";
+import Header from "./Header";
+import Footer from "./Footer";
 import Login from "./Login";
 
 class App extends Component {
