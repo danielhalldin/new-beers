@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import beerBadgeDefaultImage from "../images/badge-beer-default.png";
 import {
   BeerContainer,
   CardHeader,
@@ -56,7 +57,7 @@ class Beer extends Component {
           {!!salesStartDate && <CardHeader>{salesStartDate}</CardHeader>}
           <Name length={name.length}>{name}</Name>
           <ImageContainer>
-            <Image src={beerLabel || "./images/badge-beer-default.png"} />
+            <Image src={beerLabel || beerBadgeDefaultImage} />
           </ImageContainer>
           <Brewery length={brewery.length}>{brewery}</Brewery>
           <Style>

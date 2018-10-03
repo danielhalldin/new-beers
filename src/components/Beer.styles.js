@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { colors } from "./common.styles";
+import systembolagetImage from "../images/systembolaget.png";
+import untappdImage from "../images/untappd.png";
+import capImage from "../images/cap.png";
 
 const BeerContainer = styled.div`
   height: 310px;
@@ -154,7 +157,7 @@ const Description = styled.div`
 `;
 
 const _cap = `
-  background-image: url("./images/cap.png");
+  background-image: url("${capImage}");
   width: 38px;
   height: 38px;
   line-height: 40px;
@@ -189,7 +192,7 @@ const _links = `
 `;
 
 const Systembolaget = styled.a`
-  ${_links} background-image: url("./images/systembolaget.png");
+  ${_links} background-image: url(${systembolagetImage});
   bottom: 1px;
   right: 5px;
   width: 50px;
@@ -197,7 +200,7 @@ const Systembolaget = styled.a`
 `;
 
 const Untappd = styled.a`
-  ${_links} background-image: url("./images/untappd.png");
+  ${_links} background-image: url(${untappdImage});
   bottom: 4px;
   left: 5px;
   width: 25px;
