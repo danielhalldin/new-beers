@@ -25,7 +25,7 @@ const HeaderUserData = styled.div`
   display: inline-block;
   text-align: left;
   vertical-align: top;
-  margin-top: 7px;
+  margin: 10px 0 0 7px;
   font-weight: Bold;
 `;
 
@@ -34,7 +34,7 @@ const Avatar = styled.img`
   border-radius: 25px;
   border: 0 solid ${colors.textDark};
   display: inline-block;
-  margin: 4px 10px 0 4px;
+  margin: 7px 4px 0 7px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 `;
 

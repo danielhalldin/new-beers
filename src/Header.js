@@ -58,7 +58,11 @@ class HeaderContainer extends Component {
                   NEW BEERS
                 </HeaderCell>
                 <HeaderCell textAlign="right" width="20%">
-                  <span role="img" aria-label="Beer">
+                  <span
+                    role="img"
+                    aria-label="Beer"
+                    style={{ marginRight: "7px" }}
+                  >
                     🍺
                   </span>
                 </HeaderCell>
