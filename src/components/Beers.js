@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { ApolloProvider } from "react-apollo";
 import { Query } from "react-apollo";
 import cookies from "js-cookie";
-import appoloClient from "./lib/apolloClient";
-import { decoratedLatest } from "./queries";
+import appoloClient from "../lib/apolloClient";
+import { decoratedLatest } from "../queries";
 import Card from "./Card";
 import { BeersContainer, Loader } from "./Beers.styles";
 

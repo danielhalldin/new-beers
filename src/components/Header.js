@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Header, Avatar, HeaderCell, HeaderUserData } from "./Header.styles";
 import { ApolloProvider } from "react-apollo";
 import { Query } from "react-apollo";
-import appoloClient from "./lib/apolloClient";
-import { untappdUser } from "./queries";
+import appoloClient from "../lib/apolloClient";
+import { untappdUser } from "../queries";
 import cookies from "js-cookie";
 
 class HeaderContainer extends Component {
