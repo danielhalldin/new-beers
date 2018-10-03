@@ -7,9 +7,6 @@ import { untappdUser } from "./queries";
 import cookies from "js-cookie";
 
 class HeaderContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const untappd_access_token = cookies.get("untappd_access_token");
     if (this.props.login) {
@@ -20,7 +17,9 @@ class HeaderContainer extends Component {
             NEW BEERS
           </HeaderCell>
           <HeaderCell textAlign="right" width="20%">
-            🍻
+            <span role="img" aria-label="Beer">
+              🍺
+            </span>
           </HeaderCell>
         </Header>
       );
@@ -30,7 +29,15 @@ class HeaderContainer extends Component {
       <ApolloProvider client={appoloClient(untappd_access_token)}>
         <Query query={untappdUser}>
           {({ loading, error, data }) => {
-            if (loading) return <Header>🍺 Laddar...</Header>;
+            if (loading)
+              return (
+                <Header>
+                  <span role="img" aria-label="Beer">
+                    🍺
+                  </span>{" "}
+                  Laddar...
+                </Header>
+              );
             if (error) return <p>Error :(</p>;
 
             return (
@@ -40,7 +47,10 @@ class HeaderContainer extends Component {
                   <HeaderUserData>
                     {data.untappdUser.name}
                     <br />
-                    {data.untappdUser.checkins} 🍺
+                    {data.untappdUser.checkins}{" "}
+                    <span role="img" aria-label="Beer">
+                      🍺
+                    </span>
                   </HeaderUserData>
                 </HeaderCell>
 
@@ -48,7 +58,9 @@ class HeaderContainer extends Component {
                   NEW BEERS
                 </HeaderCell>
                 <HeaderCell textAlign="right" width="20%">
-                  🍻
+                  <span role="img" aria-label="Beer">
+                    🍺
+                  </span>
                 </HeaderCell>
               </Header>
             );

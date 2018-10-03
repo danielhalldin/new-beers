@@ -14,7 +14,15 @@ class Beers extends Component {
       <ApolloProvider client={appoloClient(untappd_access_token)}>
         <Query query={decoratedLatest}>
           {({ loading, error, data }) => {
-            if (loading) return <Loader>🍺 Laddar...</Loader>;
+            if (loading)
+              return (
+                <Loader>
+                  <span role="img" aria-label="Beer">
+                    🍺
+                  </span>{" "}
+                  Laddar...
+                </Loader>
+              );
             if (error) return <Loader>Error :(</Loader>;
             const beers = data.decoratedLatest.map(data => {
               data.rotate =
