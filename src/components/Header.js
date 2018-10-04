@@ -4,6 +4,7 @@ import { Header, Avatar, HeaderCell, HeaderUserData } from "./Header.styles";
 class HeaderContainer extends Component {
   render() {
     const user = this.props.user;
+    const isFriend = this.props.isFriend;
 
     if (this.props.login) {
       return (
@@ -39,9 +40,15 @@ class HeaderContainer extends Component {
           NEW BEERS
         </HeaderCell>
         <HeaderCell textAlign="right" width="20%">
-          <span role="img" aria-label="Beer" style={{ marginRight: "7px" }}>
-            🍺
-          </span>
+          {isFriend ? (
+            <span role="img" aria-label="Star" style={{ marginRight: "7px" }}>
+              ⭐️
+            </span>
+          ) : (
+            <span role="img" aria-label="Beer" style={{ marginRight: "7px" }}>
+              🍺
+            </span>
+          )}
         </HeaderCell>
       </Header>
     );

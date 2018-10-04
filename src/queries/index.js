@@ -2,6 +2,7 @@ import gql from "graphql-tag";
 
 const decoratedLatest = gql`
   {
+    untappdIsFriend
     untappdUser {
       name
       checkins

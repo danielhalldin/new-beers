@@ -48,7 +48,10 @@ class App extends Component {
             if (error) return <Loader>Error :(</Loader>;
             return (
               <div>
-                <Header user={data.untappdUser} />
+                <Header
+                  user={data.untappdUser}
+                  isFriend={data.untappdIsFriend}
+                />
                 <Beers beers={data.decoratedLatest} />
                 <Footer />
               </div>
