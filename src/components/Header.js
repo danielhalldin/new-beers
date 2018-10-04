@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Header, Avatar, HeaderCell, HeaderUserData } from "./Header.styles";
-import cookies from "js-cookie";
 
 class HeaderContainer extends Component {
   render() {
