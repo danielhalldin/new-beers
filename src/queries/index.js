@@ -2,6 +2,11 @@ import gql from "graphql-tag";
 
 const decoratedLatest = gql`
   {
+    untappdUser {
+      name
+      checkins
+      avatar
+    }
     decoratedLatest(size: 30) {
       id
       name
