@@ -5757,6 +5757,10 @@ react-error-overlay@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.1.tgz#417addb0814a90f3a7082eacba7cee588d00da89"
 
+react-fastclick-alt@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-fastclick-alt/-/react-fastclick-alt-2.0.1.tgz#36e0ff18876bae2ce34c8709d9982a67be025b4b"
+
 react-is@^16.3.1, react-is@^16.3.2:
   version "16.5.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.5.2.tgz#e2a7b7c3f5d48062eb769fcb123505eb928722e3"
