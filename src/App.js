@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import { ApolloProvider } from "react-apollo";
+import { Query } from "react-apollo";
+import appoloClient from "./lib/apolloClient";
 import cookies from "js-cookie";
+
+import { decoratedLatest } from "./queries";
+
 import Beers from "./components/Beers";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
-
-import { ApolloProvider } from "react-apollo";
-import { Query } from "react-apollo";
-import appoloClient from "./lib/apolloClient";
-import { decoratedLatest } from "./queries";
 import { Loader } from "./components/Beers.styles";
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
       cookies.set("untappd_access_token", token, { expires: 30 });
       window.location.href = "/";
     }
+
     if (!untappd_access_token) {
       return (
         <div style={{ textAlign: "center" }}>
