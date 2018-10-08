@@ -24,14 +24,14 @@ class HeaderContainer extends Component {
 
     return (
       <Header>
-        <HeaderCell textAlign="left" width="25%">
+        <HeaderCell textAlign="left" width="30%">
           <Avatar src={user.avatar} />
           <UserName>{user.name}</UserName>
         </HeaderCell>
-        <HeaderCell logo textAlign="center" width="50%">
+        <HeaderCell logo textAlign="center" width="40%">
           NEW BEERS
         </HeaderCell>
-        <HeaderCell textAlign="right" width="25%">
+        <HeaderCell textAlign="right" width="30%">
           <span role="img" aria-label="Star" style={{ marginRight: "7px" }}>
             {user.checkins} {isFriend ? "⭐" : "🍺️"}
           </span>
