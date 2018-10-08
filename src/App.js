@@ -13,6 +13,26 @@ import Login from "./components/Login";
 import { Loader } from "./components/Beers.styles";
 
 class App extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      stockType: "Små partier"
+    };
+  }
+
+  changeStock = () => {
+    console.log("", this.state.stocktype);
+    if (this.state.stockType === "Små partier") {
+      this.setState({ stockType: "Lokalt och småskaligt" });
+    } else if (this.state.stockType === "Lokalt och småskaligt") {
+      this.setState({ stockType: "Ordinarie sortiment" });
+    } else if (this.state.stockType === "Ordinarie sortiment") {
+      this.setState({ stockType: "Övrigt sortiment" });
+    } else if (this.state.stockType === "Övrigt sortiment") {
+      this.setState({ stockType: "Små partier" });
+    }
+  };
+
   render() {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get("token");
@@ -34,7 +54,10 @@ class App extends Component {
 
     return (
       <ApolloProvider client={appoloClient(untappd_access_token)}>
-        <Query query={decoratedLatest}>
+        <Query
+          query={decoratedLatest}
+          variables={{ stockType: this.state.stockType }}
+        >
           {({ loading, error, data }) => {
             if (loading)
               return (
@@ -51,6 +74,7 @@ class App extends Component {
                 <Header
                   user={data.untappdUser}
                   isFriend={data.untappdIsFriend}
+                  changeStock={this.changeStock}
                 />
                 <Beers decoratedLatest={data.decoratedLatest} />
                 <Footer />

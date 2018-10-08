@@ -17,7 +17,7 @@ class Beers extends Component {
 
     return (
       <React.Fragment>
-        <Header>{name}</Header>
+        <Header changeStock={this.props.changeStock}>{name}</Header>
         <BeersContainer>{beers}</BeersContainer>
       </React.Fragment>
     );
