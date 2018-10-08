@@ -4,7 +4,7 @@ import { colors } from "./common.styles";
 const Header = styled.div`
   font-family: GillSans-UltraBold, Impact, "Arial Black", sans-serif;
   text-decoration: italic;
-  font-size: 20px;
+  font-size: 18px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   color: ${colors.textLight};
   background-color: ${colors.dark};
@@ -14,7 +14,7 @@ const Header = styled.div`
 `;
 
 const HeaderCell = styled.div`
-  font-size: ${props => (props.logo ? "30px" : "20px")};
+  font-size: ${props => (props.logo ? "30px" : "18px")};
   width: ${props => props.width};
   margin: auto 0;
   text-align: ${props => props.textAlign};
