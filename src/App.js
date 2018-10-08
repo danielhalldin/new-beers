@@ -24,10 +24,10 @@ class App extends Component {
     if (this.state.stockType === "Små partier") {
       this.setState({ stockType: "Lokalt och småskaligt" });
     } else if (this.state.stockType === "Lokalt och småskaligt") {
-      this.setState({ stockType: "Ordinarie sortiment" });
-    } else if (this.state.stockType === "Ordinarie sortiment") {
       this.setState({ stockType: "Övrigt sortiment" });
     } else if (this.state.stockType === "Övrigt sortiment") {
+      this.setState({ stockType: "Ordinarie sortiment" });
+    } else if (this.state.stockType === "Ordinarie sortiment") {
       this.setState({ stockType: "Små partier" });
     }
   };
