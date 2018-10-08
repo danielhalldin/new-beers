@@ -21,7 +21,6 @@ class App extends Component {
   }
 
   changeStock = () => {
-    console.log("", this.state.stocktype);
     if (this.state.stockType === "Små partier") {
       this.setState({ stockType: "Lokalt och småskaligt" });
     } else if (this.state.stockType === "Lokalt och småskaligt") {
