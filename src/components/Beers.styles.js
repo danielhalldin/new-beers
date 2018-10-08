@@ -17,4 +17,14 @@ const BeersContainer = styled.div`
   justify-content: center;
 `;
 
-export { Loader, BeersContainer };
+const Header = styled.div`
+  margin-top: 17px;
+  font-family: GillSans-UltraBold, Impact, "Arial Black", sans-serif;
+  text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
+  font-size: 22px;
+  text-align: center;
+  color: ${colors.dark};
+  text-transform: uppercase;
+`;
+
+export { Loader, BeersContainer, Header };

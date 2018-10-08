@@ -4,7 +4,7 @@ import { colors } from "./common.styles";
 const Header = styled.div`
   font-family: GillSans-UltraBold, Impact, "Arial Black", sans-serif;
   text-decoration: italic;
-  font-size: 30px;
+  font-size: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   color: ${colors.textLight};
   background-color: ${colors.dark};
@@ -14,10 +14,12 @@ const Header = styled.div`
 `;
 
 const HeaderCell = styled.div`
+  font-size: ${props => (props.logo ? "30px" : "20px")};
   width: ${props => props.width};
   margin: auto 0;
   text-align: ${props => props.textAlign};
 `;
+
 const HeaderUserData = styled.div`
   font-family: Calibri, Helvetica;
   font-size: 15px;
@@ -38,4 +40,10 @@ const Avatar = styled.img`
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 `;
 
-export { Header, HeaderCell, HeaderUserData, Avatar };
+const UserName = styled.div`
+  transform: translate(0, -50%);
+  display: inline-block;
+  margin-left: 7px;
+`;
+
+export { Header, HeaderCell, HeaderUserData, Avatar, UserName };

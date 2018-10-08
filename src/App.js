@@ -52,7 +52,7 @@ class App extends Component {
                   user={data.untappdUser}
                   isFriend={data.untappdIsFriend}
                 />
-                <Beers beers={data.decoratedLatest} />
+                <Beers decoratedLatest={data.decoratedLatest} />
                 <Footer />
               </div>
             );

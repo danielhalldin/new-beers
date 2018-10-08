@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Avatar, HeaderCell, HeaderUserData } from "./Header.styles";
+import { Header, Avatar, HeaderCell, UserName } from "./Header.styles";
 
 class HeaderContainer extends Component {
   render() {
@@ -24,31 +24,17 @@ class HeaderContainer extends Component {
 
     return (
       <Header>
-        <HeaderCell textAlign="left" width="20%">
+        <HeaderCell textAlign="left" width="25%">
           <Avatar src={user.avatar} />
-          <HeaderUserData>
-            {user.name}
-            <br />
-            {user.checkins}{" "}
-            <span role="img" aria-label="Beer">
-              🍺
-            </span>
-          </HeaderUserData>
+          <UserName>{user.name}</UserName>
         </HeaderCell>
-
-        <HeaderCell textAlign="center" width="60%">
+        <HeaderCell logo textAlign="center" width="50%">
           NEW BEERS
         </HeaderCell>
-        <HeaderCell textAlign="right" width="20%">
-          {isFriend ? (
-            <span role="img" aria-label="Star" style={{ marginRight: "7px" }}>
-              ⭐️
-            </span>
-          ) : (
-            <span role="img" aria-label="Beer" style={{ marginRight: "7px" }}>
-              🍺
-            </span>
-          )}
+        <HeaderCell textAlign="right" width="25%">
+          <span role="img" aria-label="Star" style={{ marginRight: "7px" }}>
+            {user.checkins} {isFriend ? "⭐" : "🍺️"}
+          </span>
         </HeaderCell>
       </Header>
     );

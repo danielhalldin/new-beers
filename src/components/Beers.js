@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Card from "./Card";
-import { BeersContainer } from "./Beers.styles";
+import { BeersContainer, Header } from "./Beers.styles";
 
 class Beers extends Component {
   render() {
-    const beers = this.props.beers.map(beer => {
+    const name = this.props.decoratedLatest.name;
+    const beers = this.props.decoratedLatest.beers.map(beer => {
       beer.rotate =
         Math.random() < 0.5 ? -3 * Math.random() : 3 * Math.random();
       return (
@@ -14,7 +15,12 @@ class Beers extends Component {
       );
     });
 
-    return <BeersContainer>{beers}</BeersContainer>;
+    return (
+      <React.Fragment>
+        <Header>{name}</Header>
+        <BeersContainer>{beers}</BeersContainer>
+      </React.Fragment>
+    );
   }
 }
 
