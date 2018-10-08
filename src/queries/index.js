@@ -8,7 +8,7 @@ const decoratedLatest = gql`
       checkins
       avatar
     }
-    decoratedLatest(size: 30) {
+    decoratedLatest(size: 75, stockType: "Små partier") {
       name
       beers {
         id
