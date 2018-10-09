@@ -27,4 +27,9 @@ const Header = styled.div`
   text-transform: uppercase;
 `;
 
-export { Loader, BeersContainer, Header };
+const Button = styled.a`
+  margin: 0 20px;
+  cursor: pointer;
+`;
+
+export { Loader, BeersContainer, Header, Button };

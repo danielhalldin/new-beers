@@ -4,7 +4,7 @@ const FlipContainer = styled.div`
   margin: 30px;
   width: 210px;
   height: 330px;
-  transform: ${props => "rotate(" + props.data.rotate + "deg)"};
+  transform: ${props => "rotate(" + props.rotate + "deg)"};
   perspective: 1000px;
 `;
 

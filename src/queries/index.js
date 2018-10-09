@@ -20,6 +20,7 @@ const decoratedLatest = gql`
         price
         abv
         salesStartDate
+        systembolagetId
         untappdId
         untappdUrl
         type

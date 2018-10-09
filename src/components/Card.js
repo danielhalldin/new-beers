@@ -13,7 +13,7 @@ class Card extends Component {
 
   render() {
     return (
-      <FlipContainer data={this.props.data}>
+      <FlipContainer rotate={this.props.rotate}>
         <Flipper flipped={this.state.flipped} onClick={this.flip}>
           <Beer data={this.props.data} />
         </Flipper>

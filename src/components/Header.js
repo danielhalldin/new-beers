@@ -32,14 +32,7 @@ class HeaderContainer extends Component {
           NEW BEERS
         </HeaderCell>
         <HeaderCell textAlign="right" width="30%">
-          <button
-            role="img"
-            aria-label="Star"
-            style={{ marginRight: "7px" }}
-            onClick={this.props.changeStock}
-          >
-            {user.checkins} {isFriend ? "⭐" : "🍺️"}
-          </button>
+          {user.checkins} {isFriend ? "⭐" : "🍺️"}
         </HeaderCell>
       </Header>
     );
