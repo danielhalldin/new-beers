@@ -17,7 +17,7 @@ class Beers extends Component {
   changeStock = e => {
     e.preventDefault();
     const stockTypes = this.state.stockTypes;
-    if (e.target.value) {
+    if (e.target.attributes.value.value === "true") {
       stockTypes.push(stockTypes.shift());
     } else {
       stockTypes.unshift(stockTypes.pop());
