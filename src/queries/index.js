@@ -2,12 +2,6 @@ import gql from "graphql-tag";
 
 const decoratedLatest = gql`
   query DecoratedLatest($stockType: String!) {
-    untappdIsFriend
-    untappdUser {
-      name
-      checkins
-      avatar
-    }
     decoratedLatest(size: 50, stockType: $stockType) {
       name
       beers {
@@ -39,7 +33,7 @@ const untappdUser = gql`
   {
     untappdUser {
       name
-      checkins
+      totalBeers
       avatar
     }
   }
