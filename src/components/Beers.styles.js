@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "./common.styles";
+import { Link } from "react-router-dom";
 
 const Loader = styled.div`
   width: 100%;
@@ -27,9 +28,11 @@ const Header = styled.div`
   text-transform: uppercase;
 `;
 
-const Button = styled.a`
+const Button = styled(Link)`
   margin: 0 20px;
   cursor: pointer;
+  text-decoration: none;
+  color: ${colors.dark};
 `;
 
 export { Loader, BeersContainer, Header, Button };
