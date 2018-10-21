@@ -9,33 +9,27 @@ class HeaderContainer extends Component {
     if (this.props.login) {
       return (
         <Header>
-          <HeaderCell width="20%"> </HeaderCell>
-          <HeaderCell textAlign="center" width="60%">
+          <HeaderCell logo textAlign="center" width="100%">
             NEW BEERS
           </HeaderCell>
-          <HeaderCell textAlign="right" width="20%">
-            <span role="img" aria-label="Beer">
-              🍺
-            </span>
+        </Header>
+      );
+    } else {
+      return (
+        <Header>
+          <HeaderCell textAlign="left" width="30%">
+            <Avatar src={user.avatar} />
+            <UserName>{user.name}</UserName>
+          </HeaderCell>
+          <HeaderCell logo textAlign="center" width="40%">
+            NEW BEERS
+          </HeaderCell>
+          <HeaderCell textAlign="right" width="30%">
+            {user.totalBeers} {isFriend ? "⭐" : "🍺️"}
           </HeaderCell>
         </Header>
       );
     }
-
-    return (
-      <Header>
-        <HeaderCell textAlign="left" width="30%">
-          <Avatar src={user.avatar} />
-          <UserName>{user.name}</UserName>
-        </HeaderCell>
-        <HeaderCell logo textAlign="center" width="40%">
-          NEW BEERS
-        </HeaderCell>
-        <HeaderCell textAlign="right" width="30%">
-          {user.totalBeers} {isFriend ? "⭐" : "🍺️"}
-        </HeaderCell>
-      </Header>
-    );
   }
 }
 
