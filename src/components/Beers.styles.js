@@ -21,7 +21,7 @@ const BeersContainer = styled.div`
   justify-content: center;
 `;
 
-const Header = styled.div`
+const Menu = styled.div`
   margin-top: 17px;
   font-family: GillSans-UltraBold, Impact, "Arial Black", sans-serif;
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
@@ -38,4 +38,4 @@ const Button = styled(Link)`
   color: ${colors.dark};
 `;
 
-export { Loader, BeersContainer, Header, Button };
+export { Loader, BeersContainer, Menu, Button };

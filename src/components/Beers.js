@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Card from "./Card";
-import { BeersContainer, Loader, Header, Button } from "./Beers.styles";
+import { BeersContainer, Loader, Menu, Button } from "./Beers.styles";
 import { decoratedLatest } from "../queries";
 import { Query } from "react-apollo";
 
@@ -52,11 +52,11 @@ class Beers extends Component {
 
     return (
       <React.Fragment>
-        <Header>
+        <Menu>
           <Button to={routes[prevStockTypeIndex].path}>{"<<"}</Button>
           {stockType}
           <Button to={routes[nextStockTypeIndex].path}>{">>"}</Button>
-        </Header>
+        </Menu>
         <Stock stockType={stockType} />
       </React.Fragment>
     );
