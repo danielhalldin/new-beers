@@ -1,23 +1,16 @@
 import React, { Component } from "react";
 import { ApolloProvider } from "react-apollo";
-import { Query } from "react-apollo";
 import appoloClient from "./lib/apolloClient";
 import cookies from "js-cookie";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-
-import { untappdUser } from "./queries";
+import routes from "./lib/routes";
 
 import Beers from "./components/Beers";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
-import { Loader } from "./components/Beers.styles";
-import routes from "./lib/routes";
-class App extends Component {
-  constructor(props) {
-    super();
-  }
 
+class App extends Component {
   render() {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get("token");
@@ -40,28 +33,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <ApolloProvider client={appoloClient(untappd_access_token)}>
-          <Query query={untappdUser}>
-            {({ loading, error, data }) => {
-              if (loading)
-                return (
-                  <Loader>
-                    <span role="img" aria-label="Beer">
-                      🍺
-                    </span>{" "}
-                    Laddar...
-                  </Loader>
-                );
-              if (error) return <Loader>Error :(</Loader>;
-              return (
-                <React.Fragment>
-                  <Header
-                    user={data.untappdUser}
-                    isFriend={data.untappdIsFriend}
-                  />
-                </React.Fragment>
-              );
-            }}
-          </Query>
+          <Header />
           <Switch>
             <Route
               path="/"
