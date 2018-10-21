@@ -25,7 +25,7 @@ class HeaderContainer extends Component {
             NEW BEERS
           </HeaderCell>
           <HeaderCell textAlign="right" width="30%">
-            {user.totalBeers} {isFriend ? "⭐" : "🍺️"}
+            {user.totalBeers} 🍺️
           </HeaderCell>
         </Header>
       );
