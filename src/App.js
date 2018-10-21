@@ -12,22 +12,23 @@ import Login from "./components/Login";
 
 class App extends Component {
   render() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get("token");
     const untappd_access_token = cookies.get("untappd_access_token");
-
-    if (token && !untappd_access_token) {
-      cookies.set("untappd_access_token", token);
-      window.location.href = "/";
-    }
-
     if (!untappd_access_token) {
-      return (
-        <div style={{ textAlign: "center" }}>
-          <Header login />
-          <Login href={`${process.env.REACT_APP_LOGIN_URL}`} />
-        </div>
-      );
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get("token");
+
+      if (!token) {
+        return (
+          <div style={{ textAlign: "center" }}>
+            <Header login />
+            <Login href={`${process.env.REACT_APP_LOGIN_URL}`} />
+          </div>
+        );
+      } else {
+        cookies.set("untappd_access_token", token);
+        window.location.href = "/";
+        return;
+      }
     }
 
     return (
