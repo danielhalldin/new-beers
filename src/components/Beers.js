@@ -12,9 +12,9 @@ const Stock = stockType => (
       if (loading)
         return (
           <Loader>
-            <span role="img" aria-label="Beer">
+            <div className="beer" role="img" aria-label="Beer">
               🍺
-            </span>{" "}
+            </div>{" "}
             Laddar...
           </Loader>
         );

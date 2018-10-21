@@ -9,6 +9,9 @@ const Loader = styled.div`
   padding-top: 50px;
   font-size: 22px;
   font-weight: bold;
+  && .beer {
+    font-size: 40px;
+  }
 `;
 
 const BeersContainer = styled.div`
