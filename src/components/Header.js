@@ -6,8 +6,6 @@ import { Query } from "react-apollo";
 
 class HeaderContainer extends Component {
   render() {
-    const user = this.props.user;
-
     if (this.props.login) {
       return (
         <Header>

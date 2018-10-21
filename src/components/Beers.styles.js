@@ -11,6 +11,7 @@ const Loader = styled.div`
   font-weight: bold;
   && .beer {
     font-size: 40px;
+    display: block;
   }
 `;
 

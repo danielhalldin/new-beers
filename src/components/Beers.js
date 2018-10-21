@@ -12,9 +12,9 @@ const Stock = stockType => (
       if (loading)
         return (
           <Loader>
-            <div className="beer" role="img" aria-label="Beer">
+            <span className="beer" role="img" aria-label="Beer">
               🍺
-            </div>{" "}
+            </span>{" "}
             Laddar...
           </Loader>
         );
@@ -30,11 +30,7 @@ const Stock = stockType => (
           />
         );
       });
-      return (
-        <React.Fragment>
-          <BeersContainer>{beers}</BeersContainer>
-        </React.Fragment>
-      );
+      return <BeersContainer>{beers}</BeersContainer>;
     }}
   </Query>
 );
@@ -51,14 +47,14 @@ class Beers extends Component {
       stockTypeIndex === routes.length - 1 ? 0 : stockTypeIndex + 1;
 
     return (
-      <React.Fragment>
+      <>
         <Menu>
           <Button to={routes[prevStockTypeIndex].path}>{"<<"}</Button>
           {stockType}
           <Button to={routes[nextStockTypeIndex].path}>{">>"}</Button>
         </Menu>
         <Stock stockType={stockType} />
-      </React.Fragment>
+      </>
     );
   }
 }
