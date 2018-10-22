@@ -4,7 +4,6 @@ import appoloClient from "./lib/apolloClient";
 import cookies from "js-cookie";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import routes from "./lib/routes";
-
 import Beers from "./components/Beers";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -41,15 +40,13 @@ class App extends Component {
               exact
               render={() => <Beers stockType="Små partier" />}
             />
-            {routes.map(route => {
-              return (
-                <Route
-                  key={route.path}
-                  path={route.path}
-                  render={() => <Beers stockType={route.id} />}
-                />
-              );
-            })}
+            {routes.map(route => (
+              <Route
+                key={route.path}
+                path={route.path}
+                render={() => route.componenet}
+              />
+            ))}
           </Switch>
           <Footer />
         </ApolloProvider>

@@ -34,6 +34,7 @@ class Beer extends Component {
       price,
       rating,
       salesStartDate,
+      checkinDate,
       style,
       systembolagetUrl,
       untappdUrl,
@@ -54,7 +55,7 @@ class Beer extends Component {
             </UserCap>
           )}
 
-          {!!salesStartDate && <CardHeader>{salesStartDate}</CardHeader>}
+          {<CardHeader>{checkinDate || salesStartDate}</CardHeader>}
           <Name length={name.length}>{name}</Name>
           <ImageContainer>
             <Image src={beerLabel || beerBadgeDefaultImage} />
