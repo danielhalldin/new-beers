@@ -7,7 +7,7 @@ import { Query } from "react-apollo";
 import routes from "../lib/routes";
 
 const Stock = stockType => (
-  <Query query={untappdUser}>
+  <Query query={untappdUser} fetchPolicy="network-only">
     {({ loading, error, data }) => {
       if (loading)
         return (

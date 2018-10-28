@@ -44,6 +44,7 @@ class Beer extends Component {
       description
     } = this.props.data;
 
+    console.log("checkinDate", checkinDate);
     return (
       <BeerContainer>
         <Front>
@@ -55,7 +56,7 @@ class Beer extends Component {
             </UserCap>
           )}
 
-          {<CardHeader>{checkinDate || salesStartDate}</CardHeader>}
+          <CardHeader>{checkinDate || salesStartDate}</CardHeader>
           <Name length={name.length}>{name}</Name>
           <ImageContainer>
             <Image src={beerLabel || beerBadgeDefaultImage} />
@@ -80,7 +81,7 @@ class Beer extends Component {
               <CapLabel>you</CapLabel>
             </UserCap>
           )}{" "}
-          {!!salesStartDate && <CardHeader>{salesStartDate}</CardHeader>}
+          <CardHeader>{checkinDate || salesStartDate}</CardHeader>
           <Description>
             <Name length={name.length}>{name}</Name>
             {description ? description : "Beskrivning saknas"}
