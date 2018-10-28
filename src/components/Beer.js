@@ -44,7 +44,6 @@ class Beer extends Component {
       description
     } = this.props.data;
 
-    console.log("checkinDate", checkinDate);
     return (
       <BeerContainer>
         <Front>
