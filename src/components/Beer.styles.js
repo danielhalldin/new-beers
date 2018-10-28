@@ -151,9 +151,11 @@ const Category = styled.div`
 `;
 
 const Description = styled.div`
-  height: 273px;
+  height: 289px;
   overflow-y: scroll;
   overflow-x: auto;
+  margin: 0 -10px;
+  padding: 0px 10px;
 `;
 
 const _cap = `
