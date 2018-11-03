@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Card from "./Card";
 import { BeersContainer, Loader, Menu, Button } from "./Beers.styles";
-import { untappdUser } from "../queries";
+import { untappdUserBeers } from "../queries";
 import { Query } from "react-apollo";
 
 import routes from "../lib/routes";
 
 const Stock = stockType => (
-  <Query query={untappdUser} fetchPolicy="network-only">
+  <Query query={untappdUserBeers} fetchPolicy="network-only">
     {({ loading, error, data }) => {
       if (loading)
         return (
@@ -19,7 +19,7 @@ const Stock = stockType => (
           </Loader>
         );
       if (error) return <Loader>Error :(</Loader>;
-      const beers = data.untappdUser.checkins.map(beer => {
+      const beers = data.untappdUserBeers.map(beer => {
         return (
           <Card
             rotate={Math.round(

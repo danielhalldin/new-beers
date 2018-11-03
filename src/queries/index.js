@@ -39,9 +39,14 @@ const untappdUser = gql`
       name
       totalBeers
       avatar
-      checkins ${beerFragment}
     }
   }
 `;
 
-export { decoratedLatest, untappdUser };
+const untappdUserBeers = gql`
+  {
+    untappdUserBeers ${beerFragment}
+  }
+`;
+
+export { decoratedLatest, untappdUser, untappdUserBeers };
