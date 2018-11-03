@@ -1,8 +1,9 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { colors } from "./common.styles";
 import { Link } from "react-router-dom";
 
 const Loader = styled.div`
+  font-family: GillSans-UltraBold, Impact, "Arial Black", sans-serif;
   width: 100%;
   height: 100vh;
   text-align: center;
@@ -10,12 +11,18 @@ const Loader = styled.div`
   font-size: 22px;
   font-weight: bold;
   && .beer {
-    font-size: 40px;
+    font-size: 60px;
     display: block;
   }
 `;
 
+const FadeInAnimation = keyframes`  
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
 const BeersContainer = styled.div`
+  animation: ${FadeInAnimation} 1s;
   color: ${colors.textDark};
   display: flex;
   flex-wrap: wrap;

@@ -14,7 +14,7 @@ const Stock = stockType => (
           <Loader>
             <span className="beer" role="img" aria-label="Beer">
               🍺
-            </span>{" "}
+            </span>
             Laddar...
           </Loader>
         );
