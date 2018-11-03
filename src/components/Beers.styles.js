@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const Loader = styled.div`
   font-family: GillSans-UltraBold, Impact, "Arial Black", sans-serif;
+  text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100vh;
   text-align: center;
