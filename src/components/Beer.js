@@ -41,7 +41,8 @@ class Beer extends Component {
       userRating,
       beerLabel,
       ibu,
-      description
+      description,
+      untappdId
     } = this.props.data;
 
     return (
@@ -94,11 +95,14 @@ class Beer extends Component {
               />
             )}
             {!!untappdUrl && (
-              <Untappd
-                href={untappdUrl}
-                target="_blank"
-                onClick={e => e.stopPropagation()}
-              />
+              <>
+                <Untappd
+                  href={untappdUrl}
+                  target="_blank"
+                  onClick={e => e.stopPropagation()}
+                />
+                <a href={`untappd://beer/${untappdId}`}>test</a>
+              </>
             )}
           </CardFooter>
         </Back>
