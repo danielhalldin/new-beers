@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import beerBadgeDefaultImage from "../images/badge-beer-default.png";
+import { isMobile, isIOS } from "react-device-detect";
 import {
   BeerContainer,
   CardHeader,
@@ -96,12 +97,18 @@ class Beer extends Component {
             )}
             {!!untappdUrl && (
               <>
-                <Untappd
-                  href={untappdUrl}
-                  target="_blank"
-                  onClick={e => e.stopPropagation()}
-                />
-                <a href={`untappd://beer/${untappdId}`}>test</a>
+                {isMobile && isIOS ? (
+                  <Untappd
+                    href={`untappd://beer/${untappdId}`}
+                    onClick={e => e.stopPropagation()}
+                  />
+                ) : (
+                  <Untappd
+                    href={untappdUrl}
+                    target="_blank"
+                    onClick={e => e.stopPropagation()}
+                  />
+                )}
               </>
             )}
           </CardFooter>
