@@ -13,6 +13,7 @@ const beerFragment = gql`
     salesStartDate
     checkinDate
     systembolagetId
+    systembolagetArticleId
     untappdId
     untappdUrl
     type
@@ -29,6 +30,9 @@ const decoratedLatest = gql`
     decoratedLatest(size: 40, stockType: $stockType) {
       name
       beers ${beerFragment}
+    }
+    untappdUser {
+      admin
     }
   }
 `;
@@ -49,4 +53,13 @@ const untappdUserBeers = gql`
   }
 `;
 
-export { decoratedLatest, untappdUser, untappdUserBeers };
+const updateUntappdId = gql`
+  mutation UpdateUntappdId($systembolagetArticleId: Int!, $untappdId: Int!) {
+    updateUntappdId(
+      systembolagetArticleId: $systembolagetArticleId
+      untappdId: $untappdId
+    )
+  }
+`;
+
+export { decoratedLatest, untappdUser, untappdUserBeers, updateUntappdId };

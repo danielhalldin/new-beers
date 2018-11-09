@@ -15,7 +15,7 @@ class Card extends Component {
     return (
       <FlipContainer rotate={this.props.rotate}>
         <Flipper flipped={this.state.flipped} onClick={this.flip}>
-          <Beer data={this.props.data} />
+          <Beer data={this.props.data} admin={this.props.admin} />
         </Flipper>
       </FlipContainer>
     );

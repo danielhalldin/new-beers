@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import beerBadgeDefaultImage from "../images/badge-beer-default.png";
 import { isMobile, isIOS } from "react-device-detect";
+import BeerAdmin from "./BeerAdmin";
+
 import {
   BeerContainer,
   CardHeader,
@@ -25,7 +27,20 @@ import {
   Style
 } from "./Beer.styles";
 
+const AdminButton = ({ onClick }) => {
+  return <button onClick={e => onClick(e)}>ADMIN</button>;
+};
+
 class Beer extends Component {
+  state = {
+    showAdmin: false
+  };
+
+  toggleAdmin = e => {
+    e.stopPropagation();
+    this.setState({ showAdmin: !this.state.showAdmin });
+  };
+
   render() {
     const {
       abv,
@@ -38,6 +53,7 @@ class Beer extends Component {
       checkinDate,
       style,
       systembolagetUrl,
+      systembolagetArticleId,
       untappdUrl,
       userRating,
       beerLabel,
@@ -83,10 +99,17 @@ class Beer extends Component {
             </UserCap>
           )}{" "}
           <CardHeader>{checkinDate || salesStartDate}</CardHeader>
-          <Description>
-            <Name length={name.length}>{name}</Name>
-            {description ? description : "Beskrivning saknas"}
-          </Description>
+          {this.state.showAdmin ? (
+            <BeerAdmin
+              systembolagetArticleId={systembolagetArticleId}
+              untappdId={untappdId}
+            />
+          ) : (
+            <Description>
+              <Name length={name.length}>{name}</Name>
+              {description ? description : "Beskrivning saknas"}
+            </Description>
+          )}
           <CardFooter back>
             {!!systembolagetUrl && (
               <Systembolaget
@@ -95,6 +118,10 @@ class Beer extends Component {
                 onClick={e => e.stopPropagation()}
               />
             )}
+            {this.props.admin &&
+              systembolagetArticleId && (
+                <AdminButton onClick={this.toggleAdmin} />
+              )}
             {!!untappdUrl && (
               <>
                 {isMobile && isIOS ? (

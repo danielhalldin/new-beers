@@ -19,6 +19,7 @@ const Stock = stockType => (
           </Loader>
         );
       if (error) return <Loader>Error :(</Loader>;
+      const admin = data.untappdUser.admin;
       const beers = data.decoratedLatest.beers.map(beer => {
         return (
           <Card
@@ -27,6 +28,7 @@ const Stock = stockType => (
             )}
             key={`${beer.systembolagetId}-${Math.random()}`}
             data={beer}
+            admin={admin}
           />
         );
       });
