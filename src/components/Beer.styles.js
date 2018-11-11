@@ -9,6 +9,7 @@ const BeerContainer = styled.div`
   position: relative;
   vertical-align: top;
   cursor: pointer;
+  transform-style: preserve-3d;
 `;
 
 const CardHeader = styled.div`
@@ -70,6 +71,7 @@ const _face = `
   box-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
   padding: 10px;
   border: 5px solid ${colors.dark};
+  transform-style: preserve-3d;
 `;
 const Front = styled.div`
   ${_face} z-index: 2;
