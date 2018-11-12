@@ -1,42 +1,83 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
-import { updateUntappdId } from "../queries";
+import { updateUntappdId, deleteBeer } from "../queries";
+import { BeerAdminWrapper, Input, Row, Cell } from "./BeerAdmin.styles";
 
 const BeerAdmin = ({ systembolagetArticleId }) => {
   let untappdId;
 
   return (
-    <Mutation mutation={updateUntappdId}>
-      {(UpdateUntappdId, { data }) => (
-        <div>
-          {data ? (
-            <span>{data.updateUntappdId === true ? "SUCCESS" : "FAILED"}</span>
-          ) : (
-            <form
-              onSubmit={e => {
-                console.log(systembolagetArticleId + " " + untappdId.value);
-                e.preventDefault();
-                UpdateUntappdId({
-                  variables: {
-                    systembolagetArticleId: Number(systembolagetArticleId),
-                    untappdId: Number(untappdId.value)
-                  }
-                });
-                untappdId.value = "";
-              }}
-            >
-              <input
-                ref={node => {
-                  untappdId = node;
+    <BeerAdminWrapper onClick={e => e.stopPropagation()}>
+      <Mutation mutation={updateUntappdId}>
+        {(UpdateUntappdId, { data }) => (
+          <>
+            {data ? (
+              <span>
+                {data.updateUntappdId === true ? "SUCCESS" : "FAILED"}
+              </span>
+            ) : (
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  UpdateUntappdId({
+                    variables: {
+                      systembolagetArticleId: Number(systembolagetArticleId),
+                      untappdId: Number(untappdId.value)
+                    }
+                  });
+                  untappdId.value = "";
                 }}
-              />
-              <button type="submit">Uppdatera id</button>
-            </form>
-          )}
-        </div>
-      )}
-    </Mutation>
+              >
+                <Row>
+                  <Cell>
+                    <Input
+                      placeholder="UntappdId"
+                      id="set-uid"
+                      onFocus={e => (e.target.placeholder = "")}
+                      onBlur={e => (e.target.placeholder = "UntappdId")}
+                      ref={node => {
+                        untappdId = node;
+                      }}
+                    />
+                  </Cell>
+                  <Cell>
+                    <button type="submit">Uppdatera</button>
+                  </Cell>
+                </Row>
+              </form>
+            )}
+          </>
+        )}
+      </Mutation>
+      <Mutation mutation={deleteBeer}>
+        {(DeleteBeer, { data }) => (
+          <>
+            {data ? (
+              <span>{data.deleteBeer === true ? "SUCCESS" : "FAILED"}</span>
+            ) : (
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  DeleteBeer({
+                    variables: {
+                      systembolagetArticleId: Number(systembolagetArticleId)
+                    }
+                  });
+                }}
+              >
+                <Row>
+                  <Cell>Ta bort öl</Cell>
+                  <Cell>
+                    <button type="submit">Ta bort</button>
+                  </Cell>
+                </Row>
+              </form>
+            )}
+          </>
+        )}
+      </Mutation>
+    </BeerAdminWrapper>
   );
 };
 

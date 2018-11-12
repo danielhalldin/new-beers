@@ -62,4 +62,16 @@ const updateUntappdId = gql`
   }
 `;
 
-export { decoratedLatest, untappdUser, untappdUserBeers, updateUntappdId };
+const deleteBeer = gql`
+  mutation DeleteBeer($systembolagetArticleId: Int!) {
+    deleteBeer(systembolagetArticleId: $systembolagetArticleId)
+  }
+`;
+
+export {
+  decoratedLatest,
+  untappdUser,
+  untappdUserBeers,
+  updateUntappdId,
+  deleteBeer
+};
