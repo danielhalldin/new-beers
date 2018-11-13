@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import gql from "graphql-tag";
+import React from "react";
 import { Mutation } from "react-apollo";
 import { updateUntappdId, deleteBeer } from "../queries";
 import { BeerAdminWrapper, Input, Row, Cell } from "./BeerAdmin.styles";
@@ -36,7 +35,7 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
                       id="set-uid"
                       onFocus={e => (e.target.placeholder = "")}
                       onBlur={e => (e.target.placeholder = "UntappdId")}
-                      ref={node => {
+                      innerRef={node => {
                         untappdId = node;
                       }}
                     />
