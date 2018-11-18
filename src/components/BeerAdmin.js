@@ -7,31 +7,37 @@ import { Loader } from "./Beers.styles";
 const BeerAdmin = ({ systembolagetArticleId }) => {
   let untappdId;
 
+  const Loading = () => {
+    return (
+      <Loader>
+        <span className="beer" role="img" aria-label="Beer">
+          🍺
+        </span>
+        Laddar...
+      </Loader>
+    );
+  };
+
+  const Error = () => {
+    return <Loader>Error :(</Loader>;
+  };
+
+  const Status = status => {
+    return <span>{status === true ? "SUCCESS" : "FAILED"}</span>;
+  };
+
   return (
     <BeerAdminWrapper onClick={e => e.stopPropagation()}>
       <Mutation mutation={updateUntappdId}>
         {(UpdateUntappdId, { loading, error, data }) => {
           if (loading) {
-            return (
-              <Loader>
-                <span className="beer" role="img" aria-label="Beer">
-                  🍺
-                </span>
-                Laddar...
-              </Loader>
-            );
+            return Loading();
           }
-
           if (error) {
-            return <Loader>Error :(</Loader>;
+            return Error();
           }
-
           if (data) {
-            return (
-              <span>
-                {data.updateUntappdId === true ? "SUCCESS" : "FAILED"}
-              </span>
-            );
+            return Status(data.updateUntappdId);
           }
 
           return (
@@ -71,27 +77,15 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
       <Mutation mutation={deleteBeer}>
         {(DeleteBeer, { loading, error, data }) => {
           if (loading) {
-            return (
-              <Loader>
-                <span className="beer" role="img" aria-label="Beer">
-                  🍺
-                </span>
-                Laddar...
-              </Loader>
-            );
+            return Loading();
           }
-
           if (error) {
-            return <Loader>Error :(</Loader>;
+            return Error();
+          }
+          if (data) {
+            return Status(data.deleteBeer);
           }
 
-          if (data) {
-            return (
-              <span>
-                {data.updateUntappdId === true ? "SUCCESS" : "FAILED"}
-              </span>
-            );
-          }
           return (
             <form
               onSubmit={e => {
