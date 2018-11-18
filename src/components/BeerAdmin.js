@@ -1,7 +1,13 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 import { updateUntappdId, deleteBeer } from "../queries";
-import { BeerAdminWrapper, Input, Row, Cell } from "./BeerAdmin.styles";
+import {
+  BeerAdminWrapper,
+  Input,
+  Row,
+  Cell,
+  DeleteButton
+} from "./BeerAdmin.styles";
 import { Loader } from "./Beers.styles";
 
 const BeerAdmin = ({ systembolagetArticleId }) => {
@@ -97,12 +103,7 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
                 });
               }}
             >
-              <Row>
-                <Cell>Ta bort öl</Cell>
-                <Cell>
-                  <button type="submit">Ta bort</button>
-                </Cell>
-              </Row>
+              <DeleteButton type="submit">TA BORT</DeleteButton>
             </form>
           );
         }}
