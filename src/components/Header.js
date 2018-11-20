@@ -10,7 +10,7 @@ class HeaderContainer extends Component {
       return (
         <Header>
           <HeaderCell logo textAlign="center" width="100%">
-            NEW BEERS
+            New Beers
           </HeaderCell>
         </Header>
       );
@@ -38,7 +38,7 @@ class HeaderContainer extends Component {
                   <UserName>{name}</UserName>
                 </HeaderCell>
                 <HeaderCell logo textAlign="center" width="40%">
-                  NEW BEERS
+                  New Beers
                 </HeaderCell>
                 <HeaderCell textAlign="right" width="30%">
                   {totalBeers} 🍺️

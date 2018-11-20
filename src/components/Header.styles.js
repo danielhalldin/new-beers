@@ -1,8 +1,21 @@
-import styled from "styled-components";
+import styled, { injectGlobal } from "styled-components";
 import { colors } from "./common.styles";
 
+injectGlobal`
+  @import url("https://fonts.googleapis.com/css?family=Bowlby+One+SC|Hind:300,400,500,600,700");
+
+  body {
+    margin: 0; 
+    padding: 0; 
+    background-color: #888; 
+    font-family: Calibri, Helvetica; 
+    color: #333; 
+    background-image: url('./images/oak.jpg')
+  }
+`;
+
 const Header = styled.div`
-  font-family: GillSans-UltraBold, Impact, "Arial Black", sans-serif;
+  font-family: "Bowlby One SC", cursive;
   text-decoration: italic;
   font-size: 18px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);

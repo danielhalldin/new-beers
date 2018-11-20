@@ -27,17 +27,17 @@ const BeersContainer = styled.div`
   color: ${colors.textDark};
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 `;
 
 const Menu = styled.div`
   margin-top: 17px;
-  font-family: GillSans-UltraBold, Impact, "Arial Black", sans-serif;
+  font-family: "Bowlby One SC", cursive;
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
   font-size: 22px;
   text-align: center;
   color: ${colors.dark};
-  text-transform: uppercase;
+  text-transform: capitalize;
 `;
 
 const Button = styled(Link)`

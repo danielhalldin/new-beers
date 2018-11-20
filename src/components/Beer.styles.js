@@ -94,32 +94,34 @@ const Image = styled.img`
 `;
 
 const _title = `
-  font-weight: bold;
   display: block;
   text-align: center;
   line-height: 1em;
+  font-family: "Hind", cursive;
 `;
 const Name = styled.div`
   margin: 15px -9px 3px -9px;
+  font-weight: 600;
   font-size: ${props => {
     if (props.length > 25) {
-      return "17px";
+      return "19px";
     } else if (props.length > 15) {
-      return "22px";
+      return "24px";
     }
-    return "25px";
+    return "27px";
   }};
   ${_title};
 `;
 
 const Brewery = styled.div`
   margin: 0 -9px 3px -9px;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 18px;
   font-size: ${props => {
     if (props.length > 25) {
-      return "15px";
+      return "17px";
     }
-    return "18px";
+    return "20px";
   }};
   ${_title};
 `;
