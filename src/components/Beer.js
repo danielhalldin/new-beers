@@ -24,11 +24,12 @@ import {
   Untappd,
   Price,
   Ibu,
-  Style
+  Style,
+  AdminButton
 } from "./Beer.styles";
 
-const AdminButton = ({ onClick }) => {
-  return <button onClick={e => onClick(e)}>ADMIN</button>;
+const Admin = ({ onClick }) => {
+  return <AdminButton onClick={e => onClick(e)}>ADMIN</AdminButton>;
 };
 
 class Beer extends Component {
@@ -118,10 +119,9 @@ class Beer extends Component {
                 onClick={e => e.stopPropagation()}
               />
             )}
-            {this.props.admin &&
-              systembolagetArticleId && (
-                <AdminButton onClick={this.toggleAdmin} />
-              )}
+            {this.props.admin && systembolagetArticleId && (
+              <Admin onClick={this.toggleAdmin} />
+            )}
             {!!untappdUrl && (
               <>
                 {isMobile && isIOS ? (

@@ -57,7 +57,7 @@ const Avatar = styled.img`
 `;
 
 const UserName = styled.div`
-  transform: translate(0, -50%);
+  transform: translate(0, -65%);
   display: inline-block;
   margin-left: 7px;
 `;

@@ -3,6 +3,7 @@ import { colors } from "./common.styles";
 import systembolagetImage from "../images/systembolaget.png";
 import untappdImage from "../images/untappd.png";
 import capImage from "../images/cap.png";
+import adminButton from "../images/admin.png";
 
 const BeerContainer = styled.div`
   height: 310px;
@@ -198,7 +199,8 @@ const _links = `
 `;
 
 const Systembolaget = styled.a`
-  ${_links} background-image: url(${systembolagetImage});
+  ${_links} 
+  background-image: url(${systembolagetImage});
   bottom: 2px;
   right: 5px;
   width: 50px;
@@ -206,11 +208,25 @@ const Systembolaget = styled.a`
 `;
 
 const Untappd = styled.a`
-  ${_links} background-image: url(${untappdImage});
+  ${_links} 
+  background-image: url(${untappdImage});
   bottom: 5px;
   left: 5px;
   width: 25px;
   height: 25px;
+`;
+
+const AdminButton = styled.button`
+  font-family: "Hind";
+  margin-top: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  height: 26px;
+  border-radius: 10px;
+  line-height: 1.8;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 `;
 
 export {
@@ -236,5 +252,6 @@ export {
   Systembolaget,
   Untappd,
   Price,
-  Ibu
+  Ibu,
+  AdminButton
 };
