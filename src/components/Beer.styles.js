@@ -16,11 +16,11 @@ const CardHeader = styled.div`
   background-color: ${colors.dark};
   color: ${colors.textLight};
   text-align: center;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 20px;
   border-radius: 2px 2px 0 0;
   margin: -12px -11px 0px -11px;
   height: 24px;
-  padding-top: 4px;
   width: 111%;
 `;
 
@@ -101,7 +101,7 @@ const _title = `
 `;
 const Name = styled.div`
   margin: 15px -9px 3px -9px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: ${props => {
     if (props.length > 25) {
       return "19px";
@@ -129,6 +129,7 @@ const Brewery = styled.div`
 const Style = styled.div`
   position: absolute;
   bottom: 32px;
+  width: 210px;
 `;
 
 const Bold = styled.div`

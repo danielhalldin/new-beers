@@ -34,7 +34,7 @@ const Menu = styled.div`
   margin-top: 17px;
   font-family: "Bowlby One SC", cursive;
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
-  font-size: 22px;
+  font-size: 26px;
   text-align: center;
   color: ${colors.dark};
   text-transform: capitalize;

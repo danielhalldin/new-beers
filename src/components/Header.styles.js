@@ -5,10 +5,11 @@ injectGlobal`
   @import url("https://fonts.googleapis.com/css?family=Bowlby+One+SC|Hind:300,400,500,600,700");
 
   body {
+    font-family: "Hind", cursive;
+    line-height: 1.2;
     margin: 0; 
     padding: 0; 
     background-color: #888; 
-    font-family: Calibri, Helvetica; 
     color: #333; 
     background-image: url('./images/oak.jpg')
   }
