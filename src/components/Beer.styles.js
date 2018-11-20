@@ -25,18 +25,17 @@ const CardHeader = styled.div`
 `;
 
 const CardFooter = styled.div`
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 17px;
   position: absolute;
   bottom: 0;
   background-color: ${colors.dark};
   color: ${colors.textLight};
   text-align: center;
-  font-weight: bold;
   height: 24px;
   width: 101%;
-  margin: -10px -10px 0 -10px;
   height: ${props => (props.back ? "36px" : "24px")};
-  margin: 0 0 -1px -11px;
+  margin: 0 0 -3px -11px;
 `;
 
 const Price = styled.div`
@@ -133,7 +132,7 @@ const Style = styled.div`
 `;
 
 const Bold = styled.div`
-  font-weight: bold;
+  font-weight: 700;
   display: block;
   margin-top: 2px;
 `;
@@ -167,11 +166,11 @@ const _cap = `
   background-image: url("${capImage}");
   width: 38px;
   height: 38px;
-  line-height: 40px;
+  line-height: 42px;
   position: absolute;
   top: -12px;
   background-size: cover;
-  font-weight: bold;
+  font-weight: 700;
   text-align: center;
 `;
 
@@ -200,7 +199,7 @@ const _links = `
 
 const Systembolaget = styled.a`
   ${_links} background-image: url(${systembolagetImage});
-  bottom: 1px;
+  bottom: 2px;
   right: 5px;
   width: 50px;
   height: 40px;
@@ -208,7 +207,7 @@ const Systembolaget = styled.a`
 
 const Untappd = styled.a`
   ${_links} background-image: url(${untappdImage});
-  bottom: 4px;
+  bottom: 5px;
   left: 5px;
   width: 25px;
   height: 25px;

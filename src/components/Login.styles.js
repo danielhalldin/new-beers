@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const Login = styled.div`
-  font-weight: bold;
-  font-size: 24px;
+  font-weight: 700;
+  font-size: 26px;
   margin: 30vh 0 0 0;
   text-align: center;
 `;

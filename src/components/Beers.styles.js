@@ -3,14 +3,14 @@ import { colors } from "./common.styles";
 import { Link } from "react-router-dom";
 
 const Loader = styled.div`
-  font-family: GillSans-UltraBold, Impact, "Arial Black", sans-serif;
+  font-family: "Bowlby One SC", cursive;
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100vh;
   text-align: center;
   padding-top: 50px;
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 300;
   && .beer {
     font-size: 60px;
     display: block;
@@ -31,7 +31,7 @@ const BeersContainer = styled.div`
 `;
 
 const Menu = styled.div`
-  margin-top: 17px;
+  margin-top: 20px;
   font-family: "Bowlby One SC", cursive;
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
   font-size: 26px;

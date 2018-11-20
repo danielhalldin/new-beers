@@ -38,13 +38,13 @@ const HeaderCell = styled.div`
 
 const HeaderUserData = styled.div`
   font-family: Calibri, Helvetica;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 18px;
   display: inline-block;
   text-align: left;
   vertical-align: top;
   margin: 10px 0 0 7px;
-  font-weight: Bold;
+  font-weight: 700;
 `;
 
 const Avatar = styled.img`
