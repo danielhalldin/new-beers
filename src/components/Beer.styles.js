@@ -3,6 +3,7 @@ import { colors } from "./common.styles";
 import systembolagetImage from "../images/systembolaget.png";
 import untappdImage from "../images/untappd.png";
 import capImage from "../images/cap.png";
+import backgroundImage from "../images/5367.jpg";
 
 const BeerContainer = styled.div`
   height: 310px;
@@ -60,6 +61,9 @@ const Ibu = styled.div`
 `;
 
 const _face = `
+  background-image: url("${backgroundImage}");
+  background-size: contain;
+
   backface-visibility: hidden;
   position: absolute;
   top: 0;
