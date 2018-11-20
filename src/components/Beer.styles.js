@@ -93,7 +93,7 @@ const ImageContainer = styled.div`
 const Image = styled.img`
   height: 120px;
   max-width: 150px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
 `;
 
 const _title = `
@@ -101,6 +101,7 @@ const _title = `
   text-align: center;
   line-height: 1em;
   font-family: "Hind", cursive;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 `;
 const Name = styled.div`
   margin: 15px -9px 3px -9px;
@@ -133,6 +134,7 @@ const Style = styled.div`
   position: absolute;
   bottom: 32px;
   width: 210px;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 `;
 
 const Bold = styled.div`
