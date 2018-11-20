@@ -220,16 +220,26 @@ const Untappd = styled.a`
 `;
 
 const AdminButton = styled.button`
+  background-color: #777;
+  background-image: linear-gradient(#444, #777);
+  border: none;
+  color: ${colors.textLight};
   font-family: "Hind";
   margin-top: 6px;
   font-weight: 700;
   font-size: 14px;
-  height: 26px;
-  border-radius: 10px;
+  padding: 0 8px;
+  border-radius: 4px;
   line-height: 1.8;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    background-image: linear-gradient(${colors.dark}, #555);
+    text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  }
 `;
 
 export {

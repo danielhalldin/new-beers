@@ -29,7 +29,7 @@ import {
 } from "./Beer.styles";
 
 const Admin = ({ onClick }) => {
-  return <AdminButton onClick={e => onClick(e)}>ADMIN</AdminButton>;
+  return <AdminButton onClick={e => onClick(e)}>Admin</AdminButton>;
 };
 
 class Beer extends Component {
