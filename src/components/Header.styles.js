@@ -25,7 +25,8 @@ const Header = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 15px rgba(0, 0, 0, 0.5);
+
   min-height: 52px;
 `;
 
