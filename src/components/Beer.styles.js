@@ -93,8 +93,9 @@ const ImageContainer = styled.div`
 const Image = styled.img`
   height: 120px;
   max-width: 150px;
-  box-shadow: 0 0 14px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border: 5px solid white;
+  border-radius: 5px;
 `;
 
 const _title = `
