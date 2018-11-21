@@ -27,6 +27,7 @@ import {
   Style,
   AdminButton
 } from "./Beer.styles";
+import { injectGlobal } from "styled-components";
 
 const Admin = ({ onClick }) => {
   return <AdminButton onClick={e => onClick(e)}>Admin</AdminButton>;
@@ -35,6 +36,15 @@ const Admin = ({ onClick }) => {
 class Beer extends Component {
   state = {
     showAdmin: false
+  };
+
+  truncateText = (text, limit) => {
+    if (text.length < limit) {
+      return text;
+    }
+    text = text.slice(0, limit).split(" ");
+    text.pop();
+    return text.join(" ") + "…";
   };
 
   toggleAdmin = e => {
@@ -63,6 +73,8 @@ class Beer extends Component {
       untappdId
     } = this.props.data;
 
+    const _name = this.truncateText(name, 65);
+
     return (
       <BeerContainer>
         <Front>
@@ -75,7 +87,7 @@ class Beer extends Component {
           )}
 
           <CardHeader>{checkinDate || salesStartDate}</CardHeader>
-          <Name length={name.length}>{name}</Name>
+          <Name length={_name.length}>{_name}</Name>
           <ImageContainer>
             <Image src={beerLabel || beerBadgeDefaultImage} />
           </ImageContainer>
@@ -107,7 +119,7 @@ class Beer extends Component {
             />
           ) : (
             <Description>
-              <Name length={name.length}>{name}</Name>
+              <Name length={_name.length}>{_name}</Name>
               {description ? description : "Beskrivning saknas"}
             </Description>
           )}
