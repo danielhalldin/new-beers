@@ -125,11 +125,20 @@ class Beer extends Component {
           )}
           <CardFooter back>
             {!!systembolagetUrl && (
-              <Systembolaget
-                href={systembolagetUrl}
-                target="_blank"
-                onClick={e => e.stopPropagation()}
-              />
+              <>
+                {isMobile && isIOS ? (
+                  <Systembolaget
+                    href={`systembolaget://artikel/${systembolagetArticleId}`}
+                    onClick={e => e.stopPropagation()}
+                  />
+                ) : (
+                  <Systembolaget
+                    href={systembolagetUrl}
+                    target="_blank"
+                    onClick={e => e.stopPropagation()}
+                  />
+                )}
+              </>
             )}
             {this.props.admin && systembolagetArticleId && (
               <Admin onClick={this.toggleAdmin} />
