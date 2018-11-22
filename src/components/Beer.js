@@ -128,7 +128,7 @@ class Beer extends Component {
               <>
                 {isMobile && isIOS ? (
                   <Systembolaget
-                    href={`systembolaget://artikel/${systembolagetArticleId}`}
+                    href={`systembolaget://${systembolagetArticleId}`}
                     onClick={e => e.stopPropagation()}
                   />
                 ) : (
