@@ -202,6 +202,7 @@ const CapLabel = styled.div`
 const _links = `
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   color: ${colors.textLight};
   border: none;
   border-radius: 4px;
@@ -223,7 +224,8 @@ const Systembolaget = styled.a`
 const Untappd = styled.a`
   ${_links} 
   background-image: url(${untappdImage});
-  background-size: 43px;
+  background-color: #ffcd05;
+  background-size: 34px;
   left: 1px;
 `;
 
