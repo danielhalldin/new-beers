@@ -211,7 +211,7 @@ const _links = `
   display: block;
   bottom: 3px;
   width: 48px;
-  height: 29px;
+  height: 28px;
 `;
 
 const Systembolaget = styled.a`
@@ -235,14 +235,14 @@ const AdminButton = styled.button`
   border: none;
   color: ${colors.textLight};
   font-family: "Hind";
-  margin-top: 4px;
+  margin-top: 5px;
   font-weight: 700;
   font-size: 17px;
   padding: 0 8px;
   border-radius: 4px;
   line-height: 1.8;
   text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
-  height: 29px;
+  height: 28px;
   cursor: pointer;
   &:focus {
     outline: none;
