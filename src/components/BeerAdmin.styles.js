@@ -15,7 +15,9 @@ const Input = styled.input`
   font-weight: 700;
   font-size: 14px;
   text-align: center;
-  width: 205px;
+  width: 206px;
+  border-radius: 4px;
+  border: 1px solid ${colors.textDark};
 `;
 
 const _buttons = `
