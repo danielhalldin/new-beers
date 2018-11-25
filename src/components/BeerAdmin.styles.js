@@ -3,10 +3,7 @@ import { colors } from "./common.styles";
 
 const BeerAdminWrapper = styled.div`
   width: 100%;
-  height: 269px;
-  z-index: 10;
-  margin: 0 -10px;
-  padding: 10px;
+  height: 295px;
   position: relative;
 `;
 
@@ -18,6 +15,7 @@ const Input = styled.input`
   width: 206px;
   border-radius: 4px;
   border: 1px solid ${colors.textDark};
+  margin-top: 10px;
 `;
 
 const _buttons = `
