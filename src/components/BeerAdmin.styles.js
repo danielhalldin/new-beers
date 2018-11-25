@@ -5,6 +5,7 @@ const BeerAdminWrapper = styled.div`
   width: 100%;
   height: 295px;
   position: relative;
+  text-align: center;
 `;
 
 const Input = styled.input`
