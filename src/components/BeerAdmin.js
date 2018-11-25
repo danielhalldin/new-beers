@@ -5,7 +5,8 @@ import {
   BeerAdminWrapper,
   Input,
   DeleteButton,
-  Button
+  Button,
+  H2
 } from "./BeerAdmin.styles";
 import { Loader } from "./Beers.styles";
 
@@ -46,29 +47,32 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
           }
 
           return (
-            <form
-              onSubmit={e => {
-                e.preventDefault();
-                UpdateUntappdId({
-                  variables: {
-                    systembolagetArticleId: Number(systembolagetArticleId),
-                    untappdId: Number(untappdId.value)
-                  }
-                });
-                untappdId.value = "";
-              }}
-            >
-              <Input
-                placeholder="UntappdId"
-                id="set-uid"
-                onFocus={e => (e.target.placeholder = "")}
-                onBlur={e => (e.target.placeholder = "UntappdId")}
-                innerRef={node => {
-                  untappdId = node;
+            <>
+              <H2>Uppdatera Untappd-id</H2>
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  UpdateUntappdId({
+                    variables: {
+                      systembolagetArticleId: Number(systembolagetArticleId),
+                      untappdId: Number(untappdId.value)
+                    }
+                  });
+                  untappdId.value = "";
                 }}
-              />
-              <Button type="submit">Uppdatera</Button>
-            </form>
+              >
+                <Input
+                  placeholder="UntappdId"
+                  id="set-uid"
+                  onFocus={e => (e.target.placeholder = "")}
+                  onBlur={e => (e.target.placeholder = "Untappd-id")}
+                  innerRef={node => {
+                    untappdId = node;
+                  }}
+                />
+                <Button type="submit">Uppdatera</Button>
+              </form>
+            </>
           );
         }}
       </Mutation>

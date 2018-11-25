@@ -3,9 +3,20 @@ import { colors } from "./common.styles";
 
 const BeerAdminWrapper = styled.div`
   width: 100%;
-  height: 295px;
+  height: 280px;
   position: relative;
   text-align: center;
+`;
+
+const H2 = styled.h2`
+  display: block;
+  text-align: center;
+  line-height: 1em;
+  font-family: "Hind", cursive;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  margin: 15px -9px 3px -9px;
+  font-weight: 700;
+  font-size: 20px;
 `;
 
 const Input = styled.input`
@@ -66,4 +77,4 @@ const DeleteButton = styled.button`
 
 const Cell = styled.div``;
 
-export { BeerAdminWrapper, Input, DeleteButton, Button };
+export { BeerAdminWrapper, Input, DeleteButton, Button, H2 };
