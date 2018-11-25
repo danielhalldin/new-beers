@@ -208,23 +208,23 @@ const _links = `
   cursor: pointer;
   position: absolute;
   display: block;
-  bottom: 5px;
-  width: 42px;
-  height: 25px;
+  bottom: 3px;
+  width: 48px;
+  height: 29px;
 `;
 
 const Systembolaget = styled.a`
   ${_links} 
   background-image: url(${systembolagetImage});
   background-color: #0a7b3e;
-  right: 5px;
+  right: 1px;
 `;
 
 const Untappd = styled.a`
   ${_links} 
   background-image: url(${untappdImage});
-  background-size: 34px;
-  left: 5px;
+  background-size: 43px;
+  left: 1px;
 `;
 
 const AdminButton = styled.button`
@@ -233,13 +233,14 @@ const AdminButton = styled.button`
   border: none;
   color: ${colors.textLight};
   font-family: "Hind";
-  margin-top: 6px;
+  margin-top: 4px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 17px;
   padding: 0 8px;
   border-radius: 4px;
   line-height: 1.8;
   text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+  height: 29px;
   cursor: pointer;
   &:focus {
     outline: none;
