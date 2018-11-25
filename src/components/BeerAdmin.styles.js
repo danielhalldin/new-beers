@@ -22,22 +22,24 @@ const Input = styled.input`
 const _buttons = `
   margin-top: 10px;
   width: 210px;
+  height: 28px;
   padding: 0 8px;
-
   font-family: "Hind";
   font-weight: 700;
-  font-size: 14px;
-  text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+  font-size: 17px;
   line-height: 1.8;
-
+  text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
   color: #fff;
-  background-color: #e00;
-  background-image: linear-gradient(#b00, #e00);
-
+  background-color: #777;
+  background-image: linear-gradient(#444, #777);
   border: none;
   border-radius: 4px;
   display: block;
   cursor: pointer;
+  &:active {
+    background-image: linear-gradient(#777, #555);
+    text-shadow: none;
+  }
   &:focus {
     outline: none;
   }
@@ -45,25 +47,18 @@ const _buttons = `
 
 const Button = styled.button`
   ${_buttons}
-  background-color: #777;
-  background-image: linear-gradient(#444, #777);
-
-  &:active {
-    background-image: linear-gradient(#777, #555);
-    text-shadow: none;
-  }
 `;
 
 const DeleteButton = styled.button`
   ${_buttons}
   background-color: #e00;
-  background-image: linear-gradient(#900, #e00);
+  background-image: linear-gradient(#a00, #e00);
 
   position: absolute;
   bottom: 10px;
 
   &:active {
-    background-image: linear-gradient(#a00, #d00);
+    background-image: linear-gradient(#900, #d00);
     text-shadow: none;
   }
 `;

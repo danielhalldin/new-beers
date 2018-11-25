@@ -163,7 +163,7 @@ const Category = styled.div`
 `;
 
 const Description = styled.div`
-  height: 289px;
+  height: 295px;
   overflow-y: scroll;
   overflow-x: auto;
   margin: 0 -10px;
