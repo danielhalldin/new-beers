@@ -12,10 +12,11 @@ const Input = styled.input`
   font-weight: 700;
   font-size: 14px;
   text-align: center;
-  width: 206px;
+  width: 210px;
   border-radius: 4px;
   border: 1px solid ${colors.textDark};
   margin-top: 10px;
+  box-sizing: border-box;
 `;
 
 const _buttons = `
