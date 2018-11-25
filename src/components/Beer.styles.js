@@ -200,27 +200,31 @@ const CapLabel = styled.div`
 `;
 
 const _links = `
+  background-position: center;
+  background-size: cover;
+  color: ${colors.textLight};
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
   position: absolute;
   display: block;
-  background-size: cover;
+  bottom: 5px;
+  width: 42px;
+  height: 25px;
 `;
 
 const Systembolaget = styled.a`
   ${_links} 
   background-image: url(${systembolagetImage});
-  bottom: 2px;
+  background-color: #0a7b3e;
   right: 5px;
-  width: 50px;
-  height: 40px;
 `;
 
 const Untappd = styled.a`
   ${_links} 
   background-image: url(${untappdImage});
-  bottom: 5px;
+  background-size: 34px;
   left: 5px;
-  width: 25px;
-  height: 25px;
 `;
 
 const AdminButton = styled.button`
