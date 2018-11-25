@@ -4,9 +4,8 @@ import { updateUntappdId, deleteBeer } from "../queries";
 import {
   BeerAdminWrapper,
   Input,
-  Row,
-  Cell,
-  DeleteButton
+  DeleteButton,
+  Button
 } from "./BeerAdmin.styles";
 import { Loader } from "./Beers.styles";
 
@@ -59,22 +58,16 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
                 untappdId.value = "";
               }}
             >
-              <Row>
-                <Cell>
-                  <Input
-                    placeholder="UntappdId"
-                    id="set-uid"
-                    onFocus={e => (e.target.placeholder = "")}
-                    onBlur={e => (e.target.placeholder = "UntappdId")}
-                    innerRef={node => {
-                      untappdId = node;
-                    }}
-                  />
-                </Cell>
-                <Cell>
-                  <button type="submit">Uppdatera</button>
-                </Cell>
-              </Row>
+              <Input
+                placeholder="UntappdId"
+                id="set-uid"
+                onFocus={e => (e.target.placeholder = "")}
+                onBlur={e => (e.target.placeholder = "UntappdId")}
+                innerRef={node => {
+                  untappdId = node;
+                }}
+              />
+              <Button type="submit">Uppdatera</Button>
             </form>
           );
         }}
@@ -103,7 +96,7 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
                 });
               }}
             >
-              <DeleteButton type="submit">TA BORT</DeleteButton>
+              <DeleteButton type="submit">Ta bort</DeleteButton>
             </form>
           );
         }}

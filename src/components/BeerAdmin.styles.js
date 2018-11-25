@@ -10,19 +10,17 @@ const BeerAdminWrapper = styled.div`
   position: relative;
 `;
 
-const Input = styled.input``;
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 10px;
+const Input = styled.input`
+  font-family: "Hind";
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  width: 205px;
 `;
-const DeleteButton = styled.button`
-  position: absolute;
-  bottom: 10px;
+
+const _buttons = `
+  margin-top: 10px;
   width: 210px;
-  margin-top: 6px;
   padding: 0 8px;
 
   font-family: "Hind";
@@ -37,11 +35,32 @@ const DeleteButton = styled.button`
 
   border: none;
   border-radius: 4px;
-
+  display: block;
   cursor: pointer;
   &:focus {
     outline: none;
   }
+`;
+
+const Button = styled.button`
+  ${_buttons}
+  background-color: #777;
+  background-image: linear-gradient(#444, #777);
+
+  &:active {
+    background-image: linear-gradient(#777, #555);
+    text-shadow: none;
+  }
+`;
+
+const DeleteButton = styled.button`
+  ${_buttons}
+  background-color: #e00;
+  background-image: linear-gradient(#900, #e00);
+
+  position: absolute;
+  bottom: 10px;
+
   &:active {
     background-image: linear-gradient(#a00, #d00);
     text-shadow: none;
@@ -50,4 +69,4 @@ const DeleteButton = styled.button`
 
 const Cell = styled.div``;
 
-export { BeerAdminWrapper, Input, Row, Cell, DeleteButton };
+export { BeerAdminWrapper, Input, DeleteButton, Button };
