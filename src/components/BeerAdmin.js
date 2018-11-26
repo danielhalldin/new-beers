@@ -29,7 +29,7 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
   };
 
   const Status = status => {
-    return <span>{status === true ? "SUCCESS" : "FAILED"}</span>;
+    return <H2>{status === true ? "SUCCESS" : "FAILED"}</H2>;
   };
 
   return (
