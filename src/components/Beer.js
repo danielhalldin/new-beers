@@ -27,7 +27,6 @@ import {
   Style,
   AdminButton
 } from "./Beer.styles";
-import { injectGlobal } from "styled-components";
 
 const Admin = ({ onClick }) => {
   return <AdminButton onClick={e => onClick(e)}>Admin</AdminButton>;
