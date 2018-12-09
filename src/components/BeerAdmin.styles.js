@@ -75,6 +75,4 @@ const DeleteButton = styled.button`
   }
 `;
 
-const Cell = styled.div``;
-
 export { BeerAdminWrapper, Input, DeleteButton, Button, H2 };
