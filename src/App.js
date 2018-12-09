@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ApolloProvider } from "react-apollo";
-import appoloClient from "./lib/apolloClient";
+import apolloClient from "./lib/apolloClient";
 import cookies from "js-cookie";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import routes from "./lib/routes";
@@ -32,7 +32,7 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-        <ApolloProvider client={appoloClient(untappd_access_token)}>
+        <ApolloProvider client={apolloClient(untappd_access_token)}>
           <Header />
           <Switch>
             <Route
@@ -44,7 +44,7 @@ class App extends Component {
               <Route
                 key={route.path}
                 path={route.path}
-                render={() => route.componenet}
+                render={() => route.component}
               />
             ))}
           </Switch>

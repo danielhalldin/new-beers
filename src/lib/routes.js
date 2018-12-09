@@ -1,12 +1,12 @@
 import React, { Suspense, lazy } from "react";
 const Beers = lazy(() => import("../components/Beers"));
 const Checkins = lazy(() => import("../components/Checkins"));
-const suspenceFallback = <div>Loading...</div>;
+const suspenseFallback = <div>Loading...</div>;
 
 const routes = [
   {
-    componenet: (
-      <Suspense fallback={suspenceFallback}>
+    component: (
+      <Suspense fallback={suspenseFallback}>
         <Beers stockType="Små partier" />
       </Suspense>
     ),
@@ -14,8 +14,8 @@ const routes = [
     id: "Små partier"
   },
   {
-    componenet: (
-      <Suspense fallback={suspenceFallback}>
+    component: (
+      <Suspense fallback={suspenseFallback}>
         <Beers stockType="Lokalt och småskaligt" />
       </Suspense>
     ),
@@ -23,8 +23,8 @@ const routes = [
     id: "Lokalt och småskaligt"
   },
   {
-    componenet: (
-      <Suspense fallback={suspenceFallback}>
+    component: (
+      <Suspense fallback={suspenseFallback}>
         <Beers stockType="Övrigt sortiment" />
       </Suspense>
     ),
@@ -32,8 +32,8 @@ const routes = [
     id: "Övrigt sortiment"
   },
   {
-    componenet: (
-      <Suspense fallback={suspenceFallback}>
+    component: (
+      <Suspense fallback={suspenseFallback}>
         <Beers stockType="Ordinarie sortiment" />
       </Suspense>
     ),
@@ -41,8 +41,8 @@ const routes = [
     id: "Ordinarie sortiment"
   },
   {
-    componenet: (
-      <Suspense fallback={suspenceFallback}>
+    component: (
+      <Suspense fallback={suspenseFallback}>
         <Checkins stockType="Checkins" />
       </Suspense>
     ),
