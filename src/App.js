@@ -13,10 +13,12 @@ class App extends Component {
   render() {
     const untappd_access_token = cookies.get("untappd_access_token");
     if (!untappd_access_token) {
+      // Not logged in
       const urlParams = new URLSearchParams(window.location.search);
       const token = urlParams.get("token");
 
       if (!token) {
+        // Haven't got token parameter
         return (
           <div style={{ textAlign: "center" }}>
             <Header login />
@@ -24,6 +26,7 @@ class App extends Component {
           </div>
         );
       } else {
+        // Has got token parameter
         cookies.set("untappd_access_token", token);
         window.location.href = "/";
         return;

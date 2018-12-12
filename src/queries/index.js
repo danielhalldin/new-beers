@@ -25,17 +25,6 @@ const beerFragment = gql`
     description
   }
 `;
-const decoratedLatest = gql`
-  query DecoratedLatest($stockType: String!) {
-    decoratedLatest(size: 40, stockType: $stockType) {
-      name
-      beers ${beerFragment}
-    }
-    untappdUser {
-      admin
-    }
-  }
-`;
 
 const untappdUser = gql`
   {
@@ -50,6 +39,18 @@ const untappdUser = gql`
 const untappdUserBeers = gql`
   {
     untappdUserBeers ${beerFragment}
+  }
+`;
+
+const decoratedLatest = gql`
+  query DecoratedLatest($stockType: String!) {
+    decoratedLatest(size: 40, stockType: $stockType) {
+      name
+      beers ${beerFragment}
+    }
+    untappdUser {
+      admin
+    }
   }
 `;
 

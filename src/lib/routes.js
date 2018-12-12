@@ -1,53 +1,37 @@
-import React, { Suspense, lazy } from "react";
-const Beers = lazy(() => import("../components/Beers"));
-const Checkins = lazy(() => import("../components/Checkins"));
-const suspenseFallback = <div>Loading...</div>;
+import React, { Suspense } from "react";
+import { decoratedLatest, untappdUserBeers } from "../queries";
+import Beers from "../components/Beers";
 
 const routes = [
   {
-    component: (
-      <Suspense fallback={suspenseFallback}>
-        <Beers stockType="Små partier" />
-      </Suspense>
-    ),
+    component: <Beers stockType="Små partier" />,
     path: "/sma-partier",
-    id: "Små partier"
+    id: "Små partier",
+    query: decoratedLatest
   },
   {
-    component: (
-      <Suspense fallback={suspenseFallback}>
-        <Beers stockType="Lokalt och småskaligt" />
-      </Suspense>
-    ),
+    component: <Beers stockType="Lokalt och småskaligt" />,
     path: "/lokalt-och-smaskaligt",
-    id: "Lokalt och småskaligt"
+    id: "Lokalt och småskaligt",
+    query: decoratedLatest
   },
   {
-    component: (
-      <Suspense fallback={suspenseFallback}>
-        <Beers stockType="Övrigt sortiment" />
-      </Suspense>
-    ),
+    component: <Beers stockType="Övrigt sortiment" />,
     path: "/ovrigt-sortiment",
-    id: "Övrigt sortiment"
+    id: "Övrigt sortiment",
+    query: decoratedLatest
   },
   {
-    component: (
-      <Suspense fallback={suspenseFallback}>
-        <Beers stockType="Ordinarie sortiment" />
-      </Suspense>
-    ),
+    component: <Beers stockType="Ordinarie sortiment" />,
     path: "/ordinarie-sortiment",
-    id: "Ordinarie sortiment"
+    id: "Ordinarie sortiment",
+    query: decoratedLatest
   },
   {
-    component: (
-      <Suspense fallback={suspenseFallback}>
-        <Checkins stockType="Checkins" />
-      </Suspense>
-    ),
+    component: <Beers stockType="Checkins" />,
     path: "/checkins",
-    id: "Checkins"
+    id: "Checkins",
+    query: untappdUserBeers
   }
 ];
 

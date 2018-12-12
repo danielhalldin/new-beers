@@ -14,7 +14,6 @@
     "js-cookie": "^2.2.0",
     "react": "^16.6.3",
     "react-apollo": "^2.1.11",
-    "react-cookie": "^3.0.4",
     "react-device-detect": "^1.6.1",
     "react-dom": "^16.6.3",
     "react-fastclick-alt": "^2.0.1",

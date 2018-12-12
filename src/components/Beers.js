@@ -1,60 +1,67 @@
 import React, { Component } from "react";
 import Card from "./Card";
-import { BeersContainer, Loader, Menu, Button } from "./Beers.styles";
-import { decoratedLatest } from "../queries";
+import Menu, { currentIndex } from "./Menu";
+import { BeersContainer, Loader } from "./Beers.styles";
 import { Query } from "react-apollo";
-
 import routes from "../lib/routes";
+import _get from "lodash/get";
 
-const Stock = stockType => (
-  <Query query={decoratedLatest} variables={stockType}>
-    {({ loading, error, data }) => {
-      if (loading)
-        return (
-          <Loader>
-            <span className="beer" role="img" aria-label="Beer">
-              🍺
-            </span>
-            Laddar...
-          </Loader>
-        );
-      if (error) return <Loader>Error :(</Loader>;
-      const admin = data.untappdUser.admin;
-      const beers = data.decoratedLatest.beers.map(beer => {
-        return (
-          <Card
-            rotate={Math.round(
-              Math.random() < 0.5 ? -3 * Math.random() : 3 * Math.random()
-            )}
-            key={`${beer.systembolagetId}-${Math.random()}`}
-            data={beer}
-            admin={admin}
-          />
-        );
-      });
-      return <BeersContainer>{beers}</BeersContainer>;
-    }}
-  </Query>
-);
+class Stock extends Component {
+  render() {
+    const stockType = this.props.stockType;
+    const query = routes[currentIndex(stockType)].query;
+    const variables = stockType !== "Checkins" ? { stockType: stockType } : {};
+
+    return (
+      <Query query={query} variables={variables}>
+        {({ loading, error, data, client }) => {
+          if (loading)
+            return (
+              <Loader>
+                <span className="beer" role="img" aria-label="Beer">
+                  🍺
+                </span>
+                Laddar...
+              </Loader>
+            );
+          if (error) return <Loader>Error :(</Loader>;
+
+          const admin = _get(data, `untappdUser.admin`) || false;
+          const beerData =
+            _get(data, `decoratedLatest.beers`) ||
+            _get(data, `untappdUserBeers`) ||
+            [];
+          const beers = beerData.map(beer => {
+            return (
+              <Card
+                rotate={Math.round(
+                  Math.random() < 0.5 ? -3 * Math.random() : 3 * Math.random()
+                )}
+                key={`${beer.systembolagetId}-${Math.random()}`}
+                data={beer}
+                admin={admin}
+              />
+            );
+          });
+
+          return (
+            <>
+              <BeersContainer>{beers}</BeersContainer>
+            </>
+          );
+        }}
+      </Query>
+    );
+  }
+}
 
 class Beers extends Component {
   render() {
     const stockType = this.props.stockType;
-    const stockTypeIndex = routes.findIndex(
-      route => route.id === this.props.stockType
-    );
-    const prevStockTypeIndex =
-      stockTypeIndex === 0 ? routes.length - 1 : stockTypeIndex - 1;
-    const nextStockTypeIndex =
-      stockTypeIndex === routes.length - 1 ? 0 : stockTypeIndex + 1;
 
     return (
       <>
-        <Menu>
-          <Button to={routes[prevStockTypeIndex].path}>{"<<"}</Button>
-          {stockType}
-          <Button to={routes[nextStockTypeIndex].path}>{">>"}</Button>
-        </Menu>
+        <Menu stockType={stockType} />
         <Stock stockType={stockType} />
       </>
     );
