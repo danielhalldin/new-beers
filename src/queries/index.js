@@ -16,6 +16,7 @@ const beerFragment = gql`
     systembolagetArticleId
     untappdId
     untappdUrl
+    untappdDeepLink
     type
     style
     country

@@ -65,6 +65,7 @@ class Beer extends Component {
       systembolagetUrl,
       systembolagetArticleId,
       untappdUrl,
+      untappdDeepLink,
       userRating,
       beerLabel,
       ibu,
@@ -137,7 +138,7 @@ class Beer extends Component {
               <>
                 {isMobile && isIOS ? (
                   <Untappd
-                    href={`untappd://beer/${untappdId}`}
+                    href={untappdDeepLink}
                     onClick={e => e.stopPropagation()}
                   />
                 ) : (
