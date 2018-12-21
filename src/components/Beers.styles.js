@@ -23,6 +23,7 @@ const FadeInAnimation = keyframes`
 `;
 
 const BeersContainer = styled.div`
+  grid-area: content;
   animation: ${FadeInAnimation} 1s;
   color: ${colors.textDark};
   display: flex;
@@ -31,7 +32,7 @@ const BeersContainer = styled.div`
 `;
 
 const Menu = styled.div`
-  margin-top: 20px;
+  grid-area: menu;
   font-family: "Bowlby One SC", cursive;
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
   font-size: 26px;

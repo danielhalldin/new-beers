@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Avatar, HeaderCell, UserName } from "./Header.styles";
+import { Header, Avatar, UserName, TotalBeers } from "./Header.styles";
 import { Loader } from "./Beers.styles";
 import { untappdUser } from "../queries";
 import { Query } from "react-apollo";
@@ -7,13 +7,7 @@ import { Query } from "react-apollo";
 class HeaderContainer extends Component {
   render() {
     if (this.props.login) {
-      return (
-        <Header>
-          <HeaderCell logo textAlign="center" width="100%">
-            New Beers
-          </HeaderCell>
-        </Header>
-      );
+      return <Header>New Beers</Header>;
     } else {
       return (
         <Query query={untappdUser}>
@@ -33,16 +27,14 @@ class HeaderContainer extends Component {
             const { avatar, name, totalBeers } = data.untappdUser;
             return (
               <Header>
-                <HeaderCell textAlign="left" width="30%">
+                <div>
                   <Avatar src={avatar} />
                   <UserName>{name}</UserName>
-                </HeaderCell>
-                <HeaderCell logo textAlign="center" width="40%">
-                  New Beers
-                </HeaderCell>
-                <HeaderCell textAlign="right" width="30%">
-                  {totalBeers} 🍺️
-                </HeaderCell>
+                </div>
+                <div>New Beers</div>
+                <div>
+                  <TotalBeers>{totalBeers} 🍺️</TotalBeers>
+                </div>
               </Header>
             );
           }}

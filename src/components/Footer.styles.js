@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { colors } from "./common.styles";
 
 const Footer = styled.div`
-  margin-top: 30px;
+  grid-area: footer;
   padding: 10px;
   background-color: ${colors.dark};
   text-align: center;

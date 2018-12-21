@@ -16,25 +16,20 @@ injectGlobal`
 `;
 
 const Header = styled.div`
+  padding: 0 10px;
+  grid-area: header;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  justify-items: center;
+  align-items: center;
   font-family: "Bowlby One SC", cursive;
   text-decoration: italic;
-  font-size: 18px;
+  font-size: 30px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   color: ${colors.textLight};
   background-color: ${colors.dark};
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   box-shadow: 0 20px 15px rgba(0, 0, 0, 0.5);
-
   min-height: 52px;
-`;
-
-const HeaderCell = styled.div`
-  font-size: ${props => (props.logo ? "30px" : "18px")};
-  width: ${props => props.width};
-  margin: auto 0;
-  text-align: ${props => props.textAlign};
 `;
 
 const HeaderUserData = styled.div`
@@ -44,7 +39,7 @@ const HeaderUserData = styled.div`
   display: inline-block;
   text-align: left;
   vertical-align: top;
-  margin: 10px 0 0 7px;
+  margin-top: 10px;
   font-weight: 700;
 `;
 
@@ -53,7 +48,7 @@ const Avatar = styled.img`
   border-radius: 25px;
   border: 0 solid ${colors.textDark};
   display: inline-block;
-  margin: 7px 4px 0 7px;
+  margin-top: 7px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 `;
 
@@ -61,6 +56,11 @@ const UserName = styled.div`
   transform: translate(0, -65%);
   display: inline-block;
   margin-left: 7px;
+  font-size: 17px;
 `;
 
-export { Header, HeaderCell, HeaderUserData, Avatar, UserName };
+const TotalBeers = styled.div`
+  font-size: 17px;
+`;
+
+export { Header, HeaderUserData, Avatar, UserName, TotalBeers };

@@ -8,6 +8,7 @@ import Beers from "./components/Beers";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
+import { Layout } from "./components/Layout.styles";
 
 class App extends Component {
   render() {
@@ -36,22 +37,24 @@ class App extends Component {
     return (
       <BrowserRouter>
         <ApolloProvider client={apolloClient(untappd_access_token)}>
-          <Header />
-          <Switch>
-            <Route
-              path="/"
-              exact
-              render={() => <Beers stockType="Små partier" />}
-            />
-            {routes.map(route => (
+          <Layout>
+            <Header />
+            <Switch>
               <Route
-                key={route.path}
-                path={route.path}
-                render={() => route.component}
+                path="/"
+                exact
+                render={() => <Beers stockType="Små partier" />}
               />
-            ))}
-          </Switch>
-          <Footer />
+              {routes.map(route => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  render={() => route.component}
+                />
+              ))}
+            </Switch>
+            <Footer />
+          </Layout>
         </ApolloProvider>
       </BrowserRouter>
     );
