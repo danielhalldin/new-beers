@@ -26,9 +26,13 @@ const BeersContainer = styled.div`
   grid-area: content;
   animation: ${FadeInAnimation} 1s;
   color: ${colors.textDark};
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  margin: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  grid-gap: 20px;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
 `;
 
 const Menu = styled.div`
