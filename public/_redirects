@@ -1,1 +1,3 @@
-/* /index.html 200
+/graphql    https://core-data-source.herokuapp.com/graphql  200
+/graphql/*  https://core-data-source.herokuapp.com/:splat   200
+/*          /index.html                                     200
