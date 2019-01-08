@@ -1,3 +1,4 @@
 /graphql    https://core-data-source.herokuapp.com/graphql  200
 /graphql/*  https://core-data-source.herokuapp.com/:splat   200
+/login      https://core-data-source.herokuapp.com/login    200
 /*          /index.html                                     200
