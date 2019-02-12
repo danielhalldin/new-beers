@@ -55,6 +55,18 @@ const decoratedLatest = gql`
   }
 `;
 
+const recommemded = gql`
+  query Recommemded {
+    recommended(size: 40) {
+      name
+      beers ${beerFragment}
+    }
+    untappdUser {
+      admin
+    }
+  }
+`;
+
 const updateUntappdId = gql`
   mutation UpdateUntappdId($systembolagetArticleId: Int!, $untappdId: Int!) {
     updateUntappdId(
@@ -72,6 +84,7 @@ const deleteBeer = gql`
 
 export {
   decoratedLatest,
+  recommemded,
   untappdUser,
   untappdUserBeers,
   updateUntappdId,

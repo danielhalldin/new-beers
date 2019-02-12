@@ -1,4 +1,4 @@
-import styled, { injectGlobal } from "styled-components";
+import styled from "styled-components";
 
 const Layout = styled.div`
   display: grid;

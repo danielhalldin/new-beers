@@ -1,8 +1,14 @@
-import React, { Suspense } from "react";
-import { decoratedLatest, untappdUserBeers } from "../queries";
+import React from "react";
+import { decoratedLatest, untappdUserBeers, recommemded } from "../queries";
 import Beers from "../components/Beers";
 
 const routes = [
+  {
+    component: <Beers stockType="Rekommenderade" />,
+    path: "/rekommenderade",
+    id: "Rekommenderade",
+    query: recommemded
+  },
   {
     component: <Beers stockType="Små partier" />,
     path: "/sma-partier",

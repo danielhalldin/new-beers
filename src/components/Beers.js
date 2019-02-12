@@ -10,7 +10,10 @@ class Stock extends Component {
   render() {
     const stockType = this.props.stockType;
     const query = routes[currentIndex(stockType)].query;
-    const variables = stockType !== "Checkins" ? { stockType: stockType } : {};
+    const variables =
+      stockType !== "Checkins" && stockType !== "Rekommenderade"
+        ? { stockType: stockType }
+        : {};
 
     return (
       <Query query={query} variables={variables}>
@@ -30,6 +33,7 @@ class Stock extends Component {
           const beerData =
             _get(data, `decoratedLatest.beers`) ||
             _get(data, `untappdUserBeers`) ||
+            _get(data, `recommended.beers`) ||
             [];
           const beers = beerData.map(beer => {
             return (

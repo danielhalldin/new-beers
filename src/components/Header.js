@@ -33,7 +33,12 @@ class HeaderContainer extends Component {
                 </div>
                 <div>New Beers</div>
                 <div>
-                  <TotalBeers>{totalBeers} 🍺️</TotalBeers>
+                  <TotalBeers>
+                    {totalBeers}{" "}
+                    <span role="img" aria-label="Beer">
+                      🍺
+                    </span>
+                  </TotalBeers>
                 </div>
               </Header>
             );

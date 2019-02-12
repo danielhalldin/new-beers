@@ -43,7 +43,7 @@ class App extends Component {
               <Route
                 path="/"
                 exact
-                render={() => <Beers stockType="Små partier" />}
+                render={() => <Beers stockType="Rekommenderade" />}
               />
               {routes.map(route => (
                 <Route

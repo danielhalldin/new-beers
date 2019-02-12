@@ -19,9 +19,6 @@ class MenuComponent extends Component {
   };
 
   preloadNeighbours = (client, stockType) => {
-    console.log("prev", routes[this.previousIndex(stockType)].id);
-    console.log("next", routes[this.nextIndex(stockType)].id);
-
     client.query({
       query: routes[this.previousIndex(stockType)].query,
       variables: { stockType: routes[this.previousIndex(stockType)].id }
