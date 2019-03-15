@@ -28,7 +28,7 @@ class App extends Component {
         );
       } else {
         // Has got token parameter
-        cookies.set("untappd_access_token", token);
+        cookies.set("untappd_access_token", token, { expires: 30 });
         window.location.href = "/";
         return;
       }
