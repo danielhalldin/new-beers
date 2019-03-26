@@ -45,7 +45,7 @@ const untappdUserBeers = gql`
 
 const decoratedLatest = gql`
   query DecoratedLatest($stockType: String!) {
-    decoratedLatest(size: 50, stockType: $stockType) {
+    decoratedLatest(size: 60, stockType: $stockType) {
       name
       beers ${beerFragment}
     }
