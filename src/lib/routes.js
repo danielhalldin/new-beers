@@ -16,21 +16,27 @@ const routes = [
     query: decoratedLatest
   },
   {
-    component: <Beers stockType="Lokalt och småskaligt" />,
+    component: <Beers stockType="Lokalt & småskaligt" />,
     path: "/lokalt-och-smaskaligt",
-    id: "Lokalt och småskaligt",
+    id: "Lokalt & småskaligt",
     query: decoratedLatest
   },
   {
-    component: <Beers stockType="Övrigt sortiment" />,
-    path: "/ovrigt-sortiment",
-    id: "Övrigt sortiment",
+    component: <Beers stockType="Säsong" />,
+    path: "/sasong",
+    id: "Säsong",
     query: decoratedLatest
   },
   {
-    component: <Beers stockType="Ordinarie sortiment" />,
-    path: "/ordinarie-sortiment",
-    id: "Ordinarie sortiment",
+    component: <Beers stockType="Fast sortiment" />,
+    path: "/fast-sortiment",
+    id: "Fast sortiment",
+    query: decoratedLatest
+  },
+  {
+    component: <Beers stockType="Ordervaror" />,
+    path: "/ordervaror",
+    id: "Ordervaror",
     query: decoratedLatest
   },
   {
