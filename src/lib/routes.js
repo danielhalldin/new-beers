@@ -10,9 +10,9 @@ const routes = [
     query: recommemded
   },
   {
-    component: <Beers stockType="Små partier" />,
-    path: "/sma-partier",
-    id: "Små partier",
+    component: <Beers stockType="Tillfälligt sortiment" />,
+    path: "/tillfalligt-sortiment",
+    id: "Tillfälligt sortiment",
     query: decoratedLatest
   },
   {
