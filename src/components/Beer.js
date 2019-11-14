@@ -38,7 +38,10 @@ class Beer extends Component {
   };
 
   truncateText = (text, limit) => {
-    if (text && text.length < limit) {
+    if (!text) {
+      return "";
+    }
+    if (text.length < limit) {
       return text;
     }
     text = text.slice(0, limit).split(" ");
