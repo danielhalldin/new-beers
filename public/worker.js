@@ -4,7 +4,8 @@ self.addEventListener("push", ev => {
   self.registration.showNotification(data.title, {
     body: data.body,
     icon: data.icon,
-    requireInteraction: true
+    requireInteraction: true,
+    data: data.data
   });
 });
 self.addEventListener("notificationclick", function(event) {
