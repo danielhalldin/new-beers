@@ -10,7 +10,7 @@ self.addEventListener("push", ev => {
 });
 self.addEventListener("notificationclick", function(event) {
   console.log({ event });
-  const examplePage = "/checkins";
+  const examplePage = event.notification.data.path;
   const promiseChain = clients.openWindow(examplePage);
   event.waitUntil(promiseChain);
 });
