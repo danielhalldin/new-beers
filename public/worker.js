@@ -7,8 +7,8 @@ self.addEventListener("push", ev => {
     requireInteraction: true
   });
   self.addEventListener("notificationclick", ev => {
-    const data = ev.data.json();
-    const examplePage = data.path;
+    console.log(ev);
+    const examplePage = "/checkins";
     const promiseChain = clients.openWindow(examplePage);
     event.waitUntil(promiseChain);
   });
