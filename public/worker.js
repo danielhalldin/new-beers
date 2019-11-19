@@ -6,8 +6,9 @@ self.addEventListener("push", ev => {
     icon: data.icon,
     requireInteraction: true
   });
-  self.addEventListener("notificationclick", function(event) {
-    const examplePage = "/checkins";
+  self.addEventListener("notificationclick", ev => {
+    const data = ev.data.json();
+    const examplePage = data.path;
     const promiseChain = clients.openWindow(examplePage);
     event.waitUntil(promiseChain);
   });
