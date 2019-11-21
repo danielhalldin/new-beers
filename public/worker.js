@@ -5,7 +5,8 @@ self.addEventListener("push", ev => {
     body: data.body,
     icon: data.icon,
     requireInteraction: true,
-    data: data.data
+    data: data.data,
+    tag: data.tag
   });
 });
 self.addEventListener("notificationclick", function(event) {
