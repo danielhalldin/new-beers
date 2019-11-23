@@ -13,7 +13,7 @@
     "lodash": "4.17.15",
     "react": "16.6.3",
     "react-apollo": "2.5.8",
-    "react-device-detect": "1.6.1",
+    "react-device-detect": "1.9.10",
     "react-dom": "16.6.3",
     "react-fastclick-alt": "2.0.1",
     "react-router-dom": "4.3.1",
