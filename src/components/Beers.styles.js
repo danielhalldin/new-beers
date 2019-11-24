@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { colors } from "./common.styles";
 import { Link } from "react-router-dom";
 
@@ -18,13 +18,22 @@ const Loader = styled.div`
 `;
 
 const FadeInAnimation = keyframes`  
-  from { opacity: 0; }
-  to { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+
+  100 {
+    opacity: 1;
+  }
+`;
+
+const FadeInAnimationRule = css`
+  ${FadeInAnimation} 1s;
 `;
 
 const BeersContainer = styled.div`
   grid-area: content;
-  animation: ${FadeInAnimation} 1s;
+  animation: ${FadeInAnimationRule};
   color: ${colors.textDark};
   margin: 0 20px;
   display: grid;

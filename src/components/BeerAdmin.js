@@ -1,6 +1,9 @@
-import React, { Component } from "react";
-import { Mutation } from "react-apollo";
-import { updateUntappdId, deleteBeer } from "../queries";
+import React from "react";
+import { useMutation } from "@apollo/react-hooks";
+import {
+  updateUntappdId as UPDATE_UNTAPPD_ID,
+  deleteBeer as DELETE_BEER
+} from "../queries";
 import {
   BeerAdminWrapper,
   Input,
@@ -10,109 +13,99 @@ import {
 } from "./BeerAdmin.styles";
 import { Loader } from "./Beers.styles";
 
-export default class BeerAdmin extends Component {
-  constructor(props) {
-    super(props);
-    this.untappdIdRef = React.createRef();
+const BeerAdmin = ({ systembolagetArticleId }) => {
+  const untappdIdRef = React.useRef();
+
+  React.useEffect(() => {
+    untappdIdRef.current.focus();
+  }, []);
+
+  const [
+    updateUntappdId,
+    {
+      data: updateUntappdIdData,
+      loading: updateUntappdIdLoading,
+      error: updateUntappdIdError
+    }
+  ] = useMutation(UPDATE_UNTAPPD_ID);
+
+  const [
+    deleteBeer,
+    { data: deleteBeerData, loading: deleteBeerLoading, error: deleteBeerError }
+  ] = useMutation(DELETE_BEER);
+
+  if (updateUntappdIdLoading || deleteBeerLoading) {
+    return <Loading />;
+  }
+  if (updateUntappdIdError || deleteBeerError) {
+    return <Error />;
+  }
+  if (updateUntappdIdData) {
+    return <Status status={updateUntappdIdData.updateUntappdId} />;
+  }
+  if (deleteBeerData) {
+    return <Status status={deleteBeerData.deleteBeer} />;
   }
 
-  componentDidMount() {
-    this.untappdIdRef.current.focus();
-  }
-
-  Loading = () => {
-    return (
-      <Loader>
-        <span className="beer" role="img" aria-label="Beer">
-          🍺
-        </span>
-        Laddar...
-      </Loader>
-    );
-  };
-
-  Error = () => {
-    return <Loader>Error :(</Loader>;
-  };
-
-  Status = status => {
-    return <H2>{status === true ? "SUCCESS" : "FAILED"}</H2>;
-  };
-
-  render() {
-    const { systembolagetArticleId } = this.props;
-    return (
-      <BeerAdminWrapper onClick={e => e.stopPropagation()}>
-        <Mutation mutation={updateUntappdId}>
-          {(UpdateUntappdId, { loading, error, data }) => {
-            if (loading) {
-              return this.Loading();
-            }
-            if (error) {
-              return this.Error();
-            }
-            if (data) {
-              return this.Status(data.updateUntappdId);
-            }
-
-            return (
-              <>
-                <H2>Uppdatera Untappd-id</H2>
-                <form
-                  onSubmit={e => {
-                    e.preventDefault();
-                    UpdateUntappdId({
-                      variables: {
-                        systembolagetArticleId: Number(systembolagetArticleId),
-                        untappdId: Number(this.untappdIdRef.current.value)
-                      }
-                    });
-                    this.untappdIdRef.current.value = "";
-                  }}
-                >
-                  <Input
-                    innerRef={this.untappdIdRef}
-                    placeholder="UntappdId"
-                    id="set-uid"
-                    onFocus={e => (e.target.placeholder = "")}
-                    onBlur={e => (e.target.placeholder = "Untappd-id")}
-                  />
-                  <Button type="submit">Uppdatera</Button>
-                </form>
-              </>
-            );
+  return (
+    <BeerAdminWrapper onClick={e => e.stopPropagation()}>
+      <>
+        <H2>Uppdatera Untappd-id</H2>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            updateUntappdId({
+              variables: {
+                systembolagetArticleId: Number(systembolagetArticleId),
+                untappdId: Number(untappdIdRef.current.value)
+              }
+            });
+            untappdIdRef.current.value = "";
           }}
-        </Mutation>
+        >
+          <Input
+            ref={untappdIdRef}
+            placeholder="UntappdId"
+            id="set-uid"
+            onFocus={e => (e.target.placeholder = "")}
+            onBlur={e => (e.target.placeholder = "Untappd-id")}
+          />
+          <Button type="submit">Uppdatera</Button>
+        </form>
+      </>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          deleteBeer({
+            variables: {
+              systembolagetArticleId: Number(systembolagetArticleId)
+            }
+          });
+        }}
+      >
+        <DeleteButton type="submit">Ta bort</DeleteButton>
+      </form>
+    </BeerAdminWrapper>
+  );
+};
 
-        <Mutation mutation={deleteBeer}>
-          {(DeleteBeer, { loading, error, data }) => {
-            if (loading) {
-              return this.Loading();
-            }
-            if (error) {
-              return this.Error();
-            }
-            if (data) {
-              return this.Status(data.deleteBeer);
-            }
+const Loading = () => {
+  return (
+    <Loader>
+      <span className="beer" role="img" aria-label="Beer">
+        🍺
+      </span>
+      Laddar...
+    </Loader>
+  );
+};
 
-            return (
-              <form
-                onSubmit={e => {
-                  e.preventDefault();
-                  DeleteBeer({
-                    variables: {
-                      systembolagetArticleId: Number(systembolagetArticleId)
-                    }
-                  });
-                }}
-              >
-                <DeleteButton type="submit">Ta bort</DeleteButton>
-              </form>
-            );
-          }}
-        </Mutation>
-      </BeerAdminWrapper>
-    );
-  }
-}
+const Error = () => {
+  return <Loader>Error :(</Loader>;
+};
+
+const Status = status => {
+  return <H2>{status ? "SUCCESS" : "FAILED"}</H2>;
+};
+
+export default BeerAdmin;

@@ -1,7 +1,7 @@
-import styled, { injectGlobal } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { colors } from "./common.styles";
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   @import url("https://fonts.googleapis.com/css?family=Bowlby+One+SC|Hind:300,400,500,600,700");
 
   body {
@@ -63,4 +63,4 @@ const TotalBeers = styled.div`
   font-size: 17px;
 `;
 
-export { Header, HeaderUserData, Avatar, UserName, TotalBeers };
+export { GlobalStyle, Header, HeaderUserData, Avatar, UserName, TotalBeers };

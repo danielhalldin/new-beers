@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import beerBadgeDefaultImage from "../images/badge-beer-default.png";
 import { isMobile, isIOS } from "react-device-detect";
 import BeerAdmin from "./BeerAdmin";
@@ -32,12 +32,31 @@ const Admin = ({ onClick }) => {
   return <AdminButton onClick={e => onClick(e)}>Admin</AdminButton>;
 };
 
-class Beer extends Component {
-  state = {
-    showAdmin: false
-  };
+const Beer = ({ data, admin }) => {
+  const [showAdmin, setShowAdmin] = React.useState(false);
 
-  truncateText = (text, limit) => {
+  const {
+    abv,
+    brewery,
+    country,
+    name,
+    price,
+    rating,
+    salesStartDate,
+    checkinDate,
+    style,
+    systembolagetUrl,
+    systembolagetArticleId,
+    untappdUrl,
+    untappdDeepLink,
+    userRating,
+    beerLabel,
+    ibu,
+    description,
+    untappdId
+  } = data;
+
+  const truncateText = (text, limit) => {
     if (!text) {
       return "";
     }
@@ -49,115 +68,90 @@ class Beer extends Component {
     return text.join(" ") + "…";
   };
 
-  toggleAdmin = e => {
+  const toggleAdmin = e => {
     e.stopPropagation();
-    this.setState({ showAdmin: !this.state.showAdmin });
+    setShowAdmin(!showAdmin);
   };
 
-  render() {
-    const {
-      abv,
-      brewery,
-      country,
-      name,
-      price,
-      rating,
-      salesStartDate,
-      checkinDate,
-      style,
-      systembolagetUrl,
-      systembolagetArticleId,
-      untappdUrl,
-      untappdDeepLink,
-      userRating,
-      beerLabel,
-      ibu,
-      description,
-      untappdId
-    } = this.props.data;
+  const _name = truncateText(name, 65);
 
-    const _name = this.truncateText(name, 65);
+  return (
+    <BeerContainer>
+      <Front>
+        {!!rating && <Cap>{Number.parseFloat(rating).toPrecision(2)}</Cap>}
+        {!!userRating && (
+          <UserCap>
+            {Number.parseFloat(userRating).toPrecision(2)}
+            <CapLabel>you</CapLabel>
+          </UserCap>
+        )}
 
-    return (
-      <BeerContainer>
-        <Front>
-          {!!rating && <Cap>{Number.parseFloat(rating).toPrecision(2)}</Cap>}
-          {!!userRating && (
-            <UserCap>
-              {Number.parseFloat(userRating).toPrecision(2)}
-              <CapLabel>you</CapLabel>
-            </UserCap>
-          )}
+        <CardHeader>{checkinDate || salesStartDate}</CardHeader>
+        <Name length={_name.length}>{_name}</Name>
+        <ImageContainer>
+          <Image src={beerLabel || beerBadgeDefaultImage} />
+        </ImageContainer>
+        <Brewery length={brewery.length}>{brewery}</Brewery>
+        <Style>
+          {!!country && <OriginCountry>{country}</OriginCountry>}
+          {!!style && <Category>{style}</Category>}
+        </Style>
+        <CardFooter>
+          {!!ibu && <Ibu>Ibu {ibu}</Ibu>}
+          {!!abv && <Alcohol>{abv}%</Alcohol>}
+          {!!price && <Price>{`${Math.round(price)}:-`}</Price>}
+        </CardFooter>
+      </Front>
 
-          <CardHeader>{checkinDate || salesStartDate}</CardHeader>
-          <Name length={_name.length}>{_name}</Name>
-          <ImageContainer>
-            <Image src={beerLabel || beerBadgeDefaultImage} />
-          </ImageContainer>
-          <Brewery length={brewery.length}>{brewery}</Brewery>
-          <Style>
-            {!!country && <OriginCountry>{country}</OriginCountry>}
-            {!!style && <Category>{style}</Category>}
-          </Style>
-          <CardFooter>
-            {!!ibu && <Ibu>Ibu {ibu}</Ibu>}
-            {!!abv && <Alcohol>{abv}%</Alcohol>}
-            {!!price && <Price>{`${Math.round(price)}:-`}</Price>}
-          </CardFooter>
-        </Front>
-
-        <Back>
-          {!!rating && <Cap>{Number.parseFloat(rating).toPrecision(2)}</Cap>}
-          {!!userRating && (
-            <UserCap>
-              {Number.parseFloat(userRating).toPrecision(2)}
-              <CapLabel>you</CapLabel>
-            </UserCap>
-          )}{" "}
-          <CardHeader>{checkinDate || salesStartDate}</CardHeader>
-          {this.state.showAdmin ? (
-            <BeerAdmin
-              systembolagetArticleId={systembolagetArticleId}
-              untappdId={untappdId}
+      <Back>
+        {!!rating && <Cap>{Number.parseFloat(rating).toPrecision(2)}</Cap>}
+        {!!userRating && (
+          <UserCap>
+            {Number.parseFloat(userRating).toPrecision(2)}
+            <CapLabel>you</CapLabel>
+          </UserCap>
+        )}{" "}
+        <CardHeader>{checkinDate || salesStartDate}</CardHeader>
+        {showAdmin ? (
+          <BeerAdmin
+            systembolagetArticleId={systembolagetArticleId}
+            untappdId={untappdId}
+          />
+        ) : (
+          <Description>
+            <Name length={_name.length}>{_name}</Name>
+            {description ? description : "Beskrivning saknas"}
+          </Description>
+        )}
+        <CardFooter back>
+          {!!systembolagetUrl && (
+            <Systembolaget
+              href={systembolagetUrl}
+              target="_blank"
+              onClick={e => e.stopPropagation()}
             />
-          ) : (
-            <Description>
-              <Name length={_name.length}>{_name}</Name>
-              {description ? description : "Beskrivning saknas"}
-            </Description>
           )}
-          <CardFooter back>
-            {!!systembolagetUrl && (
-              <Systembolaget
-                href={systembolagetUrl}
-                target="_blank"
-                onClick={e => e.stopPropagation()}
-              />
-            )}
-            {this.props.admin && systembolagetArticleId && (
-              <Admin onClick={this.toggleAdmin} />
-            )}
-            {!!untappdUrl && (
-              <>
-                {isMobile && isIOS ? (
-                  <Untappd
-                    href={untappdDeepLink}
-                    onClick={e => e.stopPropagation()}
-                  />
-                ) : (
-                  <Untappd
-                    href={untappdUrl}
-                    target="_blank"
-                    onClick={e => e.stopPropagation()}
-                  />
-                )}
-              </>
-            )}
-          </CardFooter>
-        </Back>
-      </BeerContainer>
-    );
-  }
-}
+          {admin && systembolagetArticleId && <Admin onClick={toggleAdmin} />}
+          {!!untappdUrl && (
+            <>
+              {isMobile && isIOS ? (
+                <Untappd
+                  href={untappdDeepLink}
+                  onClick={e => e.stopPropagation()}
+                />
+              ) : (
+                <Untappd
+                  href={untappdUrl}
+                  target="_blank"
+                  onClick={e => e.stopPropagation()}
+                />
+              )}
+            </>
+          )}
+        </CardFooter>
+      </Back>
+    </BeerContainer>
+  );
+};
 
 export default Beer;

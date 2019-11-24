@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { ApolloConsumer } from "react-apollo";
 import routes from "../lib/routes";
 import { Menu, Button } from "./Beers.styles";
@@ -7,50 +7,42 @@ export const currentIndex = stockType => {
   return routes.findIndex(route => route.id === stockType);
 };
 
-class MenuComponent extends Component {
-  previousIndex = stockType => {
+const MenuComponent = ({ stockType }) => {
+  const previousIndex = stockType => {
     const _currentIndex = currentIndex(stockType);
     return _currentIndex === 0 ? routes.length - 1 : _currentIndex - 1;
   };
 
-  nextIndex = stockType => {
+  const nextIndex = stockType => {
     const _currentIndex = currentIndex(stockType);
     return _currentIndex === routes.length - 1 ? 0 : _currentIndex + 1;
   };
 
-  preloadNeighbours = (client, stockType) => {
+  const preloadNeighbours = (client, stockType) => {
     client.query({
-      query: routes[this.previousIndex(stockType)].query,
-      variables: { stockType: routes[this.previousIndex(stockType)].id }
+      query: routes[previousIndex(stockType)].query,
+      variables: { stockType: routes[previousIndex(stockType)].id }
     });
     client.query({
-      query: routes[this.nextIndex(stockType)].query,
-      variables: { stockType: routes[this.nextIndex(stockType)].id }
+      query: routes[nextIndex(stockType)].query,
+      variables: { stockType: routes[nextIndex(stockType)].id }
     });
   };
 
-  render() {
-    const { stockType } = this.props;
-
-    return (
-      <ApolloConsumer>
-        {client => {
-          this.preloadNeighbours(client, stockType);
-          return (
-            <Menu>
-              <Button to={routes[this.previousIndex(stockType)].path}>
-                {"<<"}
-              </Button>
-              {stockType}
-              <Button to={routes[this.nextIndex(stockType)].path}>
-                {">>"}
-              </Button>
-            </Menu>
-          );
-        }}
-      </ApolloConsumer>
-    );
-  }
-}
+  return (
+    <ApolloConsumer>
+      {client => {
+        preloadNeighbours(client, stockType);
+        return (
+          <Menu>
+            <Button to={routes[previousIndex(stockType)].path}>{"<<"}</Button>
+            {stockType}
+            <Button to={routes[nextIndex(stockType)].path}>{">>"}</Button>
+          </Menu>
+        );
+      }}
+    </ApolloConsumer>
+  );
+};
 
 export default MenuComponent;
