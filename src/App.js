@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import { Layout } from "./components/Layout.styles";
+import { GlobalStyle } from "./components/Header.styles";
 
 const App = () => {
   const untappd_access_token = cookies.get("untappd_access_token");
@@ -37,6 +38,7 @@ const App = () => {
     <BrowserRouter>
       <ApolloProvider client={apolloClient(untappd_access_token)}>
         <Layout>
+          <GlobalStyle />
           <Header />
           <Switch>
             <Route

@@ -3,13 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 
 import { untappdUser } from "../queries";
 
-import {
-  Header,
-  Avatar,
-  UserName,
-  TotalBeers,
-  GlobalStyle
-} from "./Header.styles";
+import { Header, Avatar, UserName, TotalBeers } from "./Header.styles";
 import { Loader } from "./Beers.styles";
 
 const HeaderContainer = ({ login }) => {
@@ -47,7 +41,6 @@ const WithUser = () => {
           </span>
         </TotalBeers>
       </div>
-      <GlobalStyle />
     </Header>
   );
 };
