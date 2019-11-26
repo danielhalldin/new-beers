@@ -35,9 +35,9 @@ const MenuComponent = ({ stockType }) => {
         preloadNeighbours(client, stockType);
         return (
           <Menu>
-            <Button to={routes[previousIndex(stockType)].path}>{"<<"}</Button>
+            <Button to={routes[previousIndex(stockType)].path}>{"⇦"}</Button>
             {stockType}
-            <Button to={routes[nextIndex(stockType)].path}>{">>"}</Button>
+            <Button to={routes[nextIndex(stockType)].path}>{"⇨"}</Button>
           </Menu>
         );
       }}
