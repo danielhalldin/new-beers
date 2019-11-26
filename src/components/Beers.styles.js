@@ -59,8 +59,6 @@ const Button = styled(Link)`
   cursor: pointer;
   text-decoration: none;
   color: ${colors.dark};
-  vertical-align: middle;
-  font-weight: bold;
   font-size: 40px;
   &:hover {
     color: ${colors.textDark};
