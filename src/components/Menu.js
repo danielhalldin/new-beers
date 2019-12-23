@@ -1,4 +1,5 @@
 import React from "react";
+import { ApolloConsumer } from "react-apollo";
 import routes from "../lib/routes";
 import { Menu, Button } from "./Beers.styles";
 
@@ -29,11 +30,18 @@ const MenuComponent = ({ stockType }) => {
   };
 
   return (
-    <Menu>
-      <Button to={routes[previousIndex(stockType)].path}>{"«"}</Button>
-      {stockType}
-      <Button to={routes[nextIndex(stockType)].path}>{"»"}</Button>
-    </Menu>
+    <ApolloConsumer>
+      {client => {
+        preloadNeighbours(client, stockType);
+        return (
+          <Menu>
+            <Button to={routes[previousIndex(stockType)].path}>{"«"}</Button>
+            {stockType}
+            <Button to={routes[nextIndex(stockType)].path}>{"»"}</Button>
+          </Menu>
+        );
+      }}
+    </ApolloConsumer>
   );
 };
 
