@@ -14,7 +14,8 @@ const Stock = ({ stockType }) => {
       : {};
 
   const { loading, error, data } = useQuery(query, {
-    variables
+    variables,
+    fetchPolicy: "network-only"
   });
   if (loading)
     return (
