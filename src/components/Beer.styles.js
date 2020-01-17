@@ -20,23 +20,14 @@ const CardHeader = styled.div`
   font-weight: 700;
   font-size: 20px;
   border-radius: 2px 2px 0 0;
-  margin: -12px -11px 0px -11px;
-  height: 24px;
-  width: 111%;
 `;
 
 const CardFooter = styled.div`
   font-weight: 700;
   font-size: 17px;
-  position: absolute;
-  bottom: 0;
   background-color: ${colors.dark};
   color: ${colors.textLight};
   text-align: center;
-  height: 24px;
-  width: 101%;
-  height: ${props => (props.back ? "36px" : "24px")};
-  margin: 0 0 -3px -11px;
 `;
 
 const Price = styled.div`
@@ -63,7 +54,6 @@ const Ibu = styled.div`
 const _face = `
   background-image: url("${backgroundImage}");
   background-size: contain;
-
   backface-visibility: hidden;
   position: absolute;
   top: 0;
@@ -72,22 +62,23 @@ const _face = `
   background-color: #ffe;
   border-radius: 7px;
   box-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
-  padding: 10px;
   border: 5px solid ${colors.dark};
   transform-style: preserve-3d;
+  display: grid;
 `;
 const Front = styled.div`
   ${_face} z-index: 2;
+  grid-template-rows: 22px 65px auto 40px 40px 26px;
 `;
 const Back = styled.div`
   ${_face} z-index: -1;
   transform: rotateY(180deg);
+  grid-template-rows: 22px 70px auto 37px;
 `;
 
 const ImageContainer = styled.div`
   text-align: center;
-  padding: 10px;
-  min-height: 120px;
+  margin: auto;
 `;
 
 const Image = styled.img`
@@ -99,14 +90,13 @@ const Image = styled.img`
 `;
 
 const _title = `
-  display: block;
   text-align: center;
   line-height: 1em;
   font-family: "Hind", cursive;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 `;
 const Name = styled.div`
-  margin: 15px -9px 3px -9px;
+  margin: auto;
   font-weight: 700;
   font-size: ${props => {
     if (props.length > 25) {
@@ -120,7 +110,7 @@ const Name = styled.div`
 `;
 
 const Brewery = styled.div`
-  margin: 0 -9px 3px -9px;
+  padding: 0 5px;
   font-weight: 500;
   font-size: 18px;
   font-size: ${props => {
@@ -130,12 +120,11 @@ const Brewery = styled.div`
     return "20px";
   }};
   ${_title};
+  overflow: hidden;
 `;
 
 const Style = styled.div`
-  position: absolute;
-  bottom: 32px;
-  width: 210px;
+  padding: 0 5px;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 `;
 
@@ -163,11 +152,9 @@ const Category = styled.div`
 `;
 
 const Description = styled.div`
-  height: 295px;
   overflow-y: scroll;
   overflow-x: auto;
-  margin: 0 -10px;
-  padding: 0px 10px;
+  padding: 0 5px;
 `;
 
 const _cap = `

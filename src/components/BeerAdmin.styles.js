@@ -2,21 +2,20 @@ import styled from "styled-components";
 import { colors } from "./common.styles";
 
 const BeerAdminWrapper = styled.div`
-  width: 100%;
-  height: 280px;
-  position: relative;
   text-align: center;
+  padding: 0 5px;
+  overflow: hidden;
 `;
 
 const H2 = styled.h2`
-  display: block;
   text-align: center;
   line-height: 1em;
   font-family: "Hind", cursive;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-  margin: 15px -9px 3px -9px;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
 `;
 
 const Input = styled.input`
@@ -24,7 +23,7 @@ const Input = styled.input`
   font-weight: 700;
   font-size: 14px;
   text-align: center;
-  width: 210px;
+  width: 100%;
   border-radius: 4px;
   border: 1px solid ${colors.textDark};
   margin-top: 10px;
@@ -32,10 +31,10 @@ const Input = styled.input`
 `;
 
 const _buttons = `
-  margin-top: 10px;
-  width: 210px;
+  width: 100%;
   height: 28px;
   padding: 0 8px;
+  margin: 10px 0;
   font-family: "Hind";
   font-weight: 700;
   font-size: 17px;
@@ -63,11 +62,9 @@ const Button = styled.button`
 
 const DeleteButton = styled.button`
   ${_buttons}
+  margin: 40px 0;
   background-color: #e00;
   background-image: linear-gradient(#a00, #e00);
-
-  position: absolute;
-  bottom: 10px;
 
   &:active {
     background-image: linear-gradient(#900, #d00);
