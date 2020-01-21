@@ -73,7 +73,7 @@ const Front = styled.div`
 const Back = styled.div`
   ${_face} z-index: -1;
   transform: rotateY(180deg);
-  grid-template-rows: 22px 70px auto 37px;
+  grid-template-rows: 22px 70px auto 36px;
 `;
 
 const ImageContainer = styled.div`
@@ -196,7 +196,7 @@ const _links = `
   cursor: pointer;
   position: absolute;
   display: block;
-  bottom: 3px;
+  bottom: 2px;
   width: 48px;
   height: 28px;
 `;
@@ -222,7 +222,7 @@ const AdminButton = styled.button`
   border: none;
   color: ${colors.textLight};
   font-family: "Hind";
-  margin-top: 5px;
+  margin-top: 6px;
   font-weight: 700;
   font-size: 17px;
   padding: 0 8px;

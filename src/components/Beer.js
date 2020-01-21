@@ -104,13 +104,13 @@ const Beer = ({ data, admin }) => {
       </Front>
 
       <Back>
-        {/* {!!rating && <Cap>{Number.parseFloat(rating).toPrecision(2)}</Cap>}
+        {!!rating && <Cap>{Number.parseFloat(rating).toPrecision(2)}</Cap>}
         {!!userRating && (
           <UserCap>
             {Number.parseFloat(userRating).toPrecision(2)}
             <CapLabel>you</CapLabel>
           </UserCap>
-        )}{" "} */}
+        )}{" "}
         <CardHeader>{checkinDate || salesStartDate}</CardHeader>
         <Name length={_name.length}>{_name}</Name>
         {showAdmin ? (
