@@ -98,9 +98,14 @@ const _title = `
 const Name = styled.div`
   margin: auto;
   font-weight: 700;
+  padding: 0 5px;
   font-size: ${props => {
-    if (props.length > 25) {
-      return "19px";
+    if (props.length > 30) {
+      return "17px";
+    } else if (props.length > 25) {
+      return "18px";
+    } else if (props.length > 20) {
+      return "21px";
     } else if (props.length > 15) {
       return "24px";
     }
