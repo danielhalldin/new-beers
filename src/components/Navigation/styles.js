@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { colors } from "../global.styles";
 import { Link } from "react-router-dom";
 
-const Menu = styled.div`
+const Navigation = styled.div`
   grid-area: menu;
   font-family: "Bowlby One SC", cursive;
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
@@ -23,4 +23,4 @@ const Button = styled(Link)`
   }
 `;
 
-export { Menu, Button };
+export { Navigation, Button };

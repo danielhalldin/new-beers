@@ -1,7 +1,7 @@
 import React from "react";
 import { ApolloConsumer } from "react-apollo";
 import routes from "../../lib/routes";
-import { Menu, Button } from "./styles";
+import { Navigation, Button } from "./styles";
 
 export const currentIndex = stockType => {
   return routes.findIndex(route => route.id === stockType);
@@ -34,11 +34,11 @@ const MenuComponent = ({ stockType }) => {
       {client => {
         preloadNeighbours(client, stockType);
         return (
-          <Menu>
+          <Navigation>
             <Button to={routes[previousIndex(stockType)].path}>{"«"}</Button>
             {stockType}
             <Button to={routes[nextIndex(stockType)].path}>{"»"}</Button>
-          </Menu>
+          </Navigation>
         );
       }}
     </ApolloConsumer>

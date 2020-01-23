@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import Card from "../Card";
-import Menu, { currentIndex } from "../Menu";
+import Navigation, { currentIndex } from "../Navigation";
 import { BeersContainer, Loader } from "./styles";
 import routes from "../../lib/routes";
 import _get from "lodash/get";
@@ -55,7 +55,7 @@ const Stock = ({ stockType }) => {
 const Beers = ({ stockType }) => {
   return (
     <>
-      <Menu stockType={stockType} />
+      <Navigation stockType={stockType} />
       <Stock stockType={stockType} />
     </>
   );
