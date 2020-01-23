@@ -158,7 +158,7 @@ const Category = styled.div`
 
 const Description = styled.div`
   overflow-y: scroll;
-  overflow-x: auto;
+  overflow-x: hidden;
   padding: 0 5px;
 `;
 
