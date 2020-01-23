@@ -3,8 +3,10 @@ import { colors } from "../global.styles";
 
 const BeerAdminWrapper = styled.div`
   text-align: center;
-  padding: 0 5px;
+  padding: 10px 5px 0 5px;
+  background-color: #fff;
   overflow: hidden;
+  border-top: 5px solid ${colors.dark};
 `;
 
 const H2 = styled.h2`
@@ -34,7 +36,7 @@ const _buttons = `
   width: 100%;
   height: 28px;
   padding: 0 8px;
-  margin: 10px 0;
+  margin: 10px 0 20px 0;
   font-family: "Hind";
   font-weight: 700;
   font-size: 17px;
@@ -62,7 +64,6 @@ const Button = styled.button`
 
 const DeleteButton = styled.button`
   ${_buttons}
-  margin: 40px 0;
   background-color: #e00;
   background-image: linear-gradient(#a00, #e00);
 

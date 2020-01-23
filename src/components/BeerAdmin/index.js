@@ -44,7 +44,6 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
   return (
     <BeerAdminWrapper onClick={e => e.stopPropagation()}>
       <>
-        <H2>Uppdatera Untappd-id</H2>
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -57,6 +56,7 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
             untappdIdRef.current.value = "";
           }}
         >
+          <H2>Uppdatera öl</H2>
           <Input
             ref={untappdIdRef}
             placeholder="UntappdId"
@@ -77,6 +77,7 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
           });
         }}
       >
+        <H2>Ta bort öl</H2>
         <DeleteButton type="submit">Ta bort</DeleteButton>
       </form>
     </BeerAdminWrapper>
