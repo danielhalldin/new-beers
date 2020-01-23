@@ -160,7 +160,6 @@ const Description = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 0 5px;
-  position: relative;
 `;
 
 const _cap = `

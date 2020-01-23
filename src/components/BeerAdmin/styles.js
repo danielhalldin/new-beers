@@ -4,7 +4,8 @@ import { colors } from "../global.styles";
 const BeerAdminWrapper = styled.div`
   text-align: center;
   padding: 10px 5px 0 5px;
-  background-color: #fff;
+  background-color: ${colors.dark};
+  color: ${colors.textLight};
   overflow: hidden;
   border-top: 5px solid ${colors.dark};
 `;
