@@ -1,7 +1,7 @@
 import React from "react";
 import beerBadgeDefaultImage from "../../images/badge-beer-default.png";
 import { isMobile, isIOS } from "react-device-detect";
-import BeerAdmin from "../BeerAdmin/index";
+import BeerAdmin from "../BeerAdmin";
 
 import {
   BeerContainer,

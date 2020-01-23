@@ -1,5 +1,5 @@
 import React from "react";
-import Beer from "../Beer/index";
+import Beer from "../Beer";
 import { FlipContainer, Flipper } from "./styles";
 
 const Card = ({ rotate, data, admin }) => {

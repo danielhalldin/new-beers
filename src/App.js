@@ -4,10 +4,10 @@ import apolloClient from "./lib/apolloClient";
 import cookies from "js-cookie";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import routes from "./lib/routes";
-import Beers from "./components/Beers/index";
-import Header from "./components/Header/index";
-import Footer from "./components/Footer/index";
-import Login from "./components/Login/index";
+import Beers from "./components/Beers";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Login from "./components/Login";
 import { Layout } from "./components/Layout.styles";
 import { GlobalStyle } from "./components/Header/styles";
 
