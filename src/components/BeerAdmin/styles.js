@@ -3,11 +3,11 @@ import { colors } from "../global.styles";
 
 const BeerAdminWrapper = styled.div`
   text-align: center;
-  padding: 10px 5px 0 5px;
+  padding: 15px 5px 0 5px;
   background-color: ${colors.dark};
   color: ${colors.textLight};
   overflow: hidden;
-  border-top: 5px solid ${colors.dark};
+  border-radius: 10px 10px 0 0;
 `;
 
 const H2 = styled.h2`
