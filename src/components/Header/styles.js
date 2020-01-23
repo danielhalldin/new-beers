@@ -1,17 +1,6 @@
-import styled, { createGlobalStyle } from "styled-components";
-import { colors } from "../common.styles";
+import { colors } from "../global.styles";
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    font-family: "Hind", cursive;
-    line-height: 1.2;
-    margin: 0; 
-    padding: 0; 
-    background-color: #888; 
-    color: #333; 
-    background-image: url('./images/oak.jpg')
-  }
-`;
+import styled from "styled-components";
 
 const Header = styled.div`
   padding: 0 10px;
@@ -61,4 +50,4 @@ const TotalBeers = styled.div`
   font-size: 17px;
 `;
 
-export { GlobalStyle, Header, HeaderUserData, Avatar, UserName, TotalBeers };
+export { Header, HeaderUserData, Avatar, UserName, TotalBeers };

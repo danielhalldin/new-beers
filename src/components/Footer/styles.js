@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../common.styles";
+import { colors } from "../global.styles";
 
 const Footer = styled.div`
   grid-area: footer;

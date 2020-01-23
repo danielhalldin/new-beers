@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
-import { colors } from "../common.styles";
+import { colors } from "../global.styles";
 import { Link } from "react-router-dom";
 
 const Loader = styled.div`
