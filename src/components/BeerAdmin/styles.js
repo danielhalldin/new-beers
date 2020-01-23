@@ -37,7 +37,7 @@ const _buttons = `
   width: 100%;
   height: 28px;
   padding: 0 8px;
-  margin: 10px 0 20px 0;
+  margin: 10px 0 40px 0;
   font-family: "Hind";
   font-weight: 700;
   font-size: 17px;

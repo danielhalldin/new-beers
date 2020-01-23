@@ -56,7 +56,7 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
             untappdIdRef.current.value = "";
           }}
         >
-          <H2>Uppdatera öl</H2>
+          <H2>Admin</H2>
           <Input
             ref={untappdIdRef}
             placeholder="UntappdId"
@@ -77,7 +77,6 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
           });
         }}
       >
-        <H2>Ta bort öl</H2>
         <DeleteButton type="submit">Ta bort</DeleteButton>
       </form>
     </BeerAdminWrapper>
