@@ -1,5 +1,5 @@
 import React from "react";
-import { LoginButton, Login } from "./Login.styles";
+import { LoginButton, Login } from "./styles";
 
 const LoginContainer = ({ href }) => {
   return (

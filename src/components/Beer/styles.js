@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { colors } from "./common.styles";
-import systembolagetImage from "../images/systembolaget.png";
-import untappdImage from "../images/untappd.png";
-import capImage from "../images/cap.png";
-import backgroundImage from "../images/beer-background.jpg";
+import { colors } from "../common.styles";
+import systembolagetImage from "../../images/systembolaget.png";
+import untappdImage from "../../images/untappd.png";
+import capImage from "../../images/cap.png";
+import backgroundImage from "../../images/beer-background.jpg";
 
 const BeerContainer = styled.div`
   height: 310px;

@@ -1,7 +1,7 @@
 import React from "react";
 import { ApolloConsumer } from "react-apollo";
 import routes from "../lib/routes";
-import { Menu, Button } from "./Beers.styles";
+import { Menu, Button } from "./Beers/styles";
 
 export const currentIndex = stockType => {
   return routes.findIndex(route => route.id === stockType);

@@ -1,10 +1,10 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 
-import { untappdUser } from "../queries";
+import { untappdUser } from "../../queries";
 
-import { Header, Avatar, UserName, TotalBeers } from "./Header.styles";
-import { Loader } from "./Beers.styles";
+import { Header, Avatar, UserName, TotalBeers } from "./styles";
+import { Loader } from "../Beers/styles";
 
 const HeaderContainer = ({ login }) => {
   return login ? <Header>New Beers</Header> : <WithUser />;

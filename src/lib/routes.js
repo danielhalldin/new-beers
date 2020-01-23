@@ -1,6 +1,6 @@
 import React from "react";
 import { decoratedLatest, untappdUserBeers, recommemded } from "../queries";
-import Beers from "../components/Beers";
+import Beers from "../components/Beers/index";
 
 const routes = [
   {

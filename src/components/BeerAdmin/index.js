@@ -3,15 +3,9 @@ import { useMutation } from "@apollo/react-hooks";
 import {
   updateUntappdId as UPDATE_UNTAPPD_ID,
   deleteBeer as DELETE_BEER
-} from "../queries";
-import {
-  BeerAdminWrapper,
-  Input,
-  DeleteButton,
-  Button,
-  H2
-} from "./BeerAdmin.styles";
-import { Loader } from "./Beers.styles";
+} from "../../queries";
+import { BeerAdminWrapper, Input, DeleteButton, Button, H2 } from "./styles";
+import { Loader } from "../Beers/styles";
 
 const BeerAdmin = ({ systembolagetArticleId }) => {
   const untappdIdRef = React.useRef();

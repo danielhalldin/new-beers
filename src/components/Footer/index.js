@@ -1,6 +1,6 @@
 import React from "react";
-import { Footer, PbUntappd } from "./Footer.styles";
-import untappd from "../images/pbu_80_yellow.png";
+import { Footer, PbUntappd } from "./styles";
+import untappd from "../../images/pbu_80_yellow.png";
 
 const FooterContainer = () => {
   return (
