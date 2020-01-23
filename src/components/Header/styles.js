@@ -2,8 +2,6 @@ import styled, { createGlobalStyle } from "styled-components";
 import { colors } from "../common.styles";
 
 const GlobalStyle = createGlobalStyle`
-  @import url("https://fonts.googleapis.com/css?family=Bowlby+One+SC|Hind:300,400,500,600,700");
-
   body {
     font-family: "Hind", cursive;
     line-height: 1.2;
