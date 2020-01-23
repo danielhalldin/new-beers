@@ -126,6 +126,7 @@ const Brewery = styled.div`
   }};
   ${_title};
   overflow: hidden;
+  margin: auto;
 `;
 
 const Style = styled.div`
