@@ -119,6 +119,9 @@ const Brewery = styled.div`
   font-weight: 500;
   font-size: 18px;
   font-size: ${props => {
+    if (props.length > 35) {
+      return "14px";
+    }
     if (props.length > 25) {
       return "17px";
     }
