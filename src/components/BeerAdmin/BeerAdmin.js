@@ -58,6 +58,7 @@ const BeerAdmin = ({ systembolagetArticleId, showAdmin }) => {
             id={`set-uid-${Math.random()}`}
             onFocus={e => (e.target.placeholder = "")}
             onBlur={e => (e.target.placeholder = "Untappd-id")}
+            pattern="[0-9]*"
           />
           <Button type="submit">Uppdatera</Button>
           <StatusWrapper>
