@@ -7,7 +7,7 @@ import {
 import { BeerAdminWrapper, Input, DeleteButton, Button, H2 } from "./styles";
 import { Loader } from "../Beers/styles";
 
-const BeerAdmin = ({ systembolagetArticleId }) => {
+const BeerAdmin = ({ systembolagetArticleId, showAdmin }) => {
   const untappdIdRef = React.useRef();
 
   React.useEffect(() => {
@@ -42,7 +42,7 @@ const BeerAdmin = ({ systembolagetArticleId }) => {
   }
 
   return (
-    <BeerAdminWrapper onClick={e => e.stopPropagation()}>
+    <BeerAdminWrapper onClick={e => e.stopPropagation()} showAdmin={showAdmin}>
       <>
         <form
           onSubmit={e => {

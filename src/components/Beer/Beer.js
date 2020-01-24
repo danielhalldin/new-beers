@@ -113,16 +113,16 @@ const Beer = ({ data, admin }) => {
         )}{" "}
         <CardHeader>{checkinDate || salesStartDate}</CardHeader>
         <Name length={_name.length}>{_name}</Name>
-        {showAdmin ? (
+        <div style={{ position: "relative" }}>
           <BeerAdmin
             systembolagetArticleId={systembolagetArticleId}
             untappdId={untappdId}
+            showAdmin={showAdmin}
           />
-        ) : (
           <Description>
             {description ? description : "Beskrivning saknas"}
           </Description>
-        )}
+        </div>
         <CardFooter back>
           {!!systembolagetUrl && (
             <Systembolaget

@@ -161,8 +161,10 @@ const Category = styled.div`
 `;
 
 const Description = styled.div`
+  position: absolute;
   overflow: auto;
   padding: 0 5px;
+  height: 100%;
 `;
 
 const _cap = `

@@ -1,13 +1,63 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { colors } from "../global.styles";
 
+const slideUpAnimation = keyframes`
+0% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+    -webkit-transform-origin: 0% 100%;
+            transform-origin: 0% 100%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+    -webkit-transform-origin: 0% 100%;
+            transform-origin: 0% 100%;
+    opacity: 1;
+  }
+`;
+
+const slideDownAnimation = keyframes`
+  0% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+    -webkit-transform-origin: 0% 100%;
+            transform-origin: 0% 100%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+    -webkit-transform-origin: 0% 100%;
+            transform-origin: 0% 100%;
+    opacity: 1;
+  }
+`;
+
+const slideUpAnimationRule = css`
+  ${slideUpAnimation} 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+`;
+
+const slideDownAnimationRule = css`
+  ${slideDownAnimation} 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+`;
+
 const BeerAdminWrapper = styled.div`
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  width: 202px;
   text-align: center;
   padding: 15px 5px 0 5px;
+  margin: 0 0 -1px -1px;
   background-color: ${colors.dark};
   color: ${colors.textLight};
   overflow: hidden;
   border-radius: 10px 10px 0 0;
+  animation: ${props => {
+    return props.showAdmin ? slideUpAnimationRule : slideDownAnimationRule;
+  }};
 `;
 
 const H2 = styled.h2`
