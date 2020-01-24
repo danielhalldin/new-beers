@@ -4,15 +4,23 @@ import {
   updateUntappdId as UPDATE_UNTAPPD_ID,
   deleteBeer as DELETE_BEER
 } from "../../queries";
-import { BeerAdminWrapper, Input, DeleteButton, Button, H2 } from "./styles";
-import { Loader } from "../Beers/styles";
+import {
+  BeerAdminWrapper,
+  Input,
+  DeleteButton,
+  Button,
+  H2,
+  StatusWrapper
+} from "./styles";
 
 const BeerAdmin = ({ systembolagetArticleId, showAdmin }) => {
   const untappdIdRef = React.useRef();
 
   React.useEffect(() => {
-    untappdIdRef.current.focus();
-  }, []);
+    if (showAdmin) {
+      untappdIdRef.current.focus();
+    }
+  }, [showAdmin]);
 
   const [
     updateUntappdId,
@@ -27,19 +35,6 @@ const BeerAdmin = ({ systembolagetArticleId, showAdmin }) => {
     deleteBeer,
     { data: deleteBeerData, loading: deleteBeerLoading, error: deleteBeerError }
   ] = useMutation(DELETE_BEER);
-
-  if (updateUntappdIdLoading || deleteBeerLoading) {
-    return <Loading />;
-  }
-  if (updateUntappdIdError || deleteBeerError) {
-    return <Error />;
-  }
-  if (updateUntappdIdData) {
-    return <Status status={updateUntappdIdData.updateUntappdId} />;
-  }
-  if (deleteBeerData) {
-    return <Status status={deleteBeerData.deleteBeer} />;
-  }
 
   return (
     <BeerAdminWrapper onClick={e => e.stopPropagation()} showAdmin={showAdmin}>
@@ -60,11 +55,18 @@ const BeerAdmin = ({ systembolagetArticleId, showAdmin }) => {
           <Input
             ref={untappdIdRef}
             placeholder="UntappdId"
-            id="set-uid"
+            id={`set-uid-${Math.random()}`}
             onFocus={e => (e.target.placeholder = "")}
             onBlur={e => (e.target.placeholder = "Untappd-id")}
           />
           <Button type="submit">Uppdatera</Button>
+          <StatusWrapper>
+            {updateUntappdIdLoading && <Loading />}
+            {updateUntappdIdError && <Error />}
+            {updateUntappdIdData && (
+              <Status status={updateUntappdIdData.updateUntappdId} />
+            )}
+          </StatusWrapper>
         </form>
       </>
       <form
@@ -78,28 +80,26 @@ const BeerAdmin = ({ systembolagetArticleId, showAdmin }) => {
         }}
       >
         <DeleteButton type="submit">Ta bort</DeleteButton>
+        <StatusWrapper>
+          {deleteBeerData && <Status status={deleteBeerData.deleteBeer} />}
+          {deleteBeerLoading && <Loading />}
+          {deleteBeerError && <Error />}
+        </StatusWrapper>
       </form>
     </BeerAdminWrapper>
   );
 };
 
 const Loading = () => {
-  return (
-    <Loader>
-      <span className="beer" role="img" aria-label="Beer">
-        🍺
-      </span>
-      Laddar...
-    </Loader>
-  );
+  return "Laddar... 🍺";
 };
 
 const Error = () => {
-  return <Loader>Error :(</Loader>;
+  return "Misslyckades 👎🏻";
 };
 
 const Status = status => {
-  return <H2>{status ? "SUCCESS" : "FAILED"}</H2>;
+  return status ? "Lyckades 👍🏻" : "Misslyckades 👎🏻";
 };
 
 export default BeerAdmin;

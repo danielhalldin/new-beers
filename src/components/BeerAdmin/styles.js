@@ -95,7 +95,7 @@ const _buttons = `
   width: 100%;
   height: 28px;
   padding: 0 8px;
-  margin: 10px 0 40px 0;
+  margin: 10px 0;
   font-family: "Hind";
   font-weight: 700;
   font-size: 17px;
@@ -132,4 +132,11 @@ const DeleteButton = styled.button`
   }
 `;
 
-export { BeerAdminWrapper, Input, DeleteButton, Button, H2 };
+const StatusWrapper = styled.div`
+  height: 30px;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  font-size: 18px;
+`;
+
+export { BeerAdminWrapper, Input, DeleteButton, Button, H2, StatusWrapper };
