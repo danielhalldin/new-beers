@@ -78,9 +78,17 @@ const Input = styled.input`
   text-align: center;
   width: 100%;
   border-radius: 4px;
-  border: 1px solid ${colors.textDark};
+  border: 1px solid transparent;
   margin-top: 10px;
+  box-shadow: inset 0px 1px 8px rgba(0, 0, 0, 0.2);
+  transition: 0.18s ease-out;
+  outline: none;
   box-sizing: border-box;
+  &:hover,
+  &:focus {
+    box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01),
+      0px 0px 10px rgba(255, 255, 255, 0.5);
+  }
 `;
 
 const _buttons = `
