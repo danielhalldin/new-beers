@@ -9,6 +9,7 @@ const StyledHeader = styled.div`
   font-weight: 700;
   font-size: 20px;
   border-radius: 2px 2px 0 0;
+  margin: -1px;
 `;
 
 const Header = ({ checkinDate, salesStartDate }) => {
