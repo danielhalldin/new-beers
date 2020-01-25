@@ -34,7 +34,7 @@ const StyledFooter = styled.div`
   font-weight: 700;
   font-size: 20px;
   border-radius: 2px 2px 0 0;
-  z-index: 1;
+  z-index: 2;
   margin: -1px;
 `;
 
