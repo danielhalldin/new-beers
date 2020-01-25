@@ -35,6 +35,7 @@ const StyledFooter = styled.div`
   font-size: 20px;
   border-radius: 2px 2px 0 0;
   z-index: 1;
+  margin: -1px;
 `;
 
 const _links = `
@@ -139,8 +140,8 @@ const Footer = ({
   } else {
     return (
       <StyledFooter>
-        {!!ibu && <Ibu>Ibu {ibu}</Ibu>}
-        {!!abv && <Alcohol>{abv}%</Alcohol>}
+        {!!ibu && <Ibu>{`Ibu ${ibu}`}</Ibu>}
+        {!!abv && <Alcohol>{`${abv}%`}</Alcohol>}
         {!!price && <Price>{`${Math.round(price)}:-`}</Price>}
       </StyledFooter>
     );

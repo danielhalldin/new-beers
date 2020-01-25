@@ -6,11 +6,6 @@ const StyledStyle = styled.div`
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 `;
 
-const Origin = styled.div`
-  font-style: italic;
-  display: block;
-`;
-
 const OriginCountry = styled.div`
   font-style: italic;
   display: block;

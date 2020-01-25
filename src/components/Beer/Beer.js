@@ -1,6 +1,6 @@
 import React from "react";
 
-import BeerAdmin from "../BeerAdmin";
+import Admin from "./Admin";
 import Header from "./Header";
 import Name from "./Name";
 import Image from "./Image";
@@ -65,7 +65,7 @@ const Beer = ({ data, admin }) => {
       <Back>
         <CommonElements />
         <ContentWrapper>
-          <BeerAdmin
+          <Admin
             systembolagetArticleId={systembolagetArticleId}
             untappdId={untappdId}
             showAdmin={showAdmin}

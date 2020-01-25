@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
-import { colors } from "../global.styles";
+import { colors } from "../../global.styles";
 
 const slideUpAnimation = keyframes`
 0% {
@@ -43,7 +43,7 @@ const slideDownAnimationRule = css`
   ${slideDownAnimation} 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 `;
 
-const BeerAdminWrapper = styled.div`
+const AdminWrapper = styled.div`
   position: absolute;
   bottom: 0;
   z-index: 1;
@@ -139,4 +139,4 @@ const StatusWrapper = styled.div`
   font-size: 18px;
 `;
 
-export { BeerAdminWrapper, Input, DeleteButton, Button, H2, StatusWrapper };
+export { AdminWrapper, Input, DeleteButton, Button, H2, StatusWrapper };

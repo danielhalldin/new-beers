@@ -3,9 +3,9 @@ import { useMutation } from "@apollo/react-hooks";
 import {
   updateUntappdId as UPDATE_UNTAPPD_ID,
   deleteBeer as DELETE_BEER
-} from "../../queries";
+} from "../../../queries";
 import {
-  BeerAdminWrapper,
+  AdminWrapper,
   Input,
   DeleteButton,
   Button,
@@ -37,7 +37,7 @@ const BeerAdmin = ({ systembolagetArticleId, showAdmin }) => {
   ] = useMutation(DELETE_BEER);
 
   return (
-    <BeerAdminWrapper onClick={e => e.stopPropagation()} showAdmin={showAdmin}>
+    <AdminWrapper onClick={e => e.stopPropagation()} showAdmin={showAdmin}>
       <>
         <form
           onSubmit={e => {
@@ -87,7 +87,7 @@ const BeerAdmin = ({ systembolagetArticleId, showAdmin }) => {
           {deleteBeerError && <Error />}
         </StatusWrapper>
       </form>
-    </BeerAdminWrapper>
+    </AdminWrapper>
   );
 };
 
