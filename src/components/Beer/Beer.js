@@ -2,16 +2,16 @@ import React from "react";
 import beerBadgeDefaultImage from "../../images/badge-beer-default.png";
 import { isMobile, isIOS } from "react-device-detect";
 import BeerAdmin from "../BeerAdmin";
+import Header from "./Header";
+import Name from "./Name";
 
 import {
   BeerContainer,
-  CardHeader,
   CardFooter,
   ImageContainer,
   Image,
   Front,
   Back,
-  Name,
   Brewery,
   Alcohol,
   OriginCountry,
@@ -73,7 +73,7 @@ const Beer = ({ data, admin }) => {
     setShowAdmin(!showAdmin);
   };
 
-  const _name = truncateText(name, 65);
+  const _brewery = truncateText(brewery, 65);
 
   return (
     <BeerContainer>
@@ -85,13 +85,12 @@ const Beer = ({ data, admin }) => {
             <CapLabel>you</CapLabel>
           </UserCap>
         )}
-
-        <CardHeader>{checkinDate || salesStartDate}</CardHeader>
-        <Name length={_name.length}>{_name}</Name>
+        <Header checkinDate={checkinDate} salesStartDate={salesStartDate} />
+        <Name name={name} />
         <ImageContainer>
           <Image src={beerLabel || beerBadgeDefaultImage} />
         </ImageContainer>
-        <Brewery length={brewery.length}>{brewery}</Brewery>
+        <Brewery length={_brewery.length}>{brewery}</Brewery>
         <Style>
           {!!country && <OriginCountry>{country}</OriginCountry>}
           {!!style && <Category>{style}</Category>}
@@ -110,9 +109,9 @@ const Beer = ({ data, admin }) => {
             {Number.parseFloat(userRating).toPrecision(2)}
             <CapLabel>you</CapLabel>
           </UserCap>
-        )}{" "}
-        <CardHeader>{checkinDate || salesStartDate}</CardHeader>
-        <Name length={_name.length}>{_name}</Name>
+        )}
+        <Header checkinDate={checkinDate} salesStartDate={salesStartDate} />
+        <Name name={name} />
         <div style={{ position: "relative" }}>
           <BeerAdmin
             systembolagetArticleId={systembolagetArticleId}

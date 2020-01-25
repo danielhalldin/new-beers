@@ -13,15 +13,6 @@ const BeerContainer = styled.div`
   transform-style: preserve-3d;
 `;
 
-const CardHeader = styled.div`
-  background-color: ${colors.dark};
-  color: ${colors.textLight};
-  text-align: center;
-  font-weight: 700;
-  font-size: 20px;
-  border-radius: 2px 2px 0 0;
-`;
-
 const CardFooter = styled.div`
   font-weight: 700;
   font-size: 17px;
@@ -94,24 +85,6 @@ const _title = `
   line-height: 1em;
   font-family: "Hind", cursive;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-`;
-const Name = styled.div`
-  margin: auto;
-  font-weight: 700;
-  padding: 0 5px;
-  font-size: ${props => {
-    if (props.length > 30) {
-      return "17px";
-    } else if (props.length > 25) {
-      return "18px";
-    } else if (props.length > 20) {
-      return "21px";
-    } else if (props.length > 15) {
-      return "24px";
-    }
-    return "27px";
-  }};
-  ${_title};
 `;
 
 const Brewery = styled.div`
@@ -253,13 +226,11 @@ const AdminButton = styled.button`
 export {
   Style,
   BeerContainer,
-  CardHeader,
   CardFooter,
   ImageContainer,
   Image,
   Front,
   Back,
-  Name,
   Brewery,
   Alcohol,
   Origin,
