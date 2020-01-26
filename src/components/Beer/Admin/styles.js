@@ -45,7 +45,7 @@ const slideDownAnimationRule = css`
 
 const AdminWrapper = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 37px;
   z-index: 1;
   width: 202px;
   text-align: center;
