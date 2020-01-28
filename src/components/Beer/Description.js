@@ -4,6 +4,7 @@ import styled from "styled-components";
 const StyledDescription = styled.div`
   position: absolute;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   padding: 0 5px;
   height: 202px;
 `;
