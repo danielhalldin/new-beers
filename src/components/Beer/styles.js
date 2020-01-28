@@ -34,11 +34,13 @@ const _face = `
   display: grid;
 `;
 const Front = styled.div`
-  ${_face} z-index: 2;
+  ${_face}
+  z-index: 2;
   grid-template-rows: 22px 65px auto 40px 40px 26px;
 `;
 const Back = styled.div`
-  ${_face} z-index: -1;
+  ${_face}
+  z-index: 1;
   transform: rotateY(180deg);
   grid-template-rows: 22px 70px auto 36px;
 `;
