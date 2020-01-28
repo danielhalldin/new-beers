@@ -6,7 +6,7 @@ const StyledDescription = styled.div`
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   padding: 0 5px;
-  height: 202px;
+  max-height: 202px;
 `;
 
 const Description = ({ description }) => {
