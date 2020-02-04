@@ -1,6 +1,6 @@
 import { colors } from "../global.styles";
 
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const Header = styled.div`
   padding: 0 10px;

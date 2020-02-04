@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { isMobile, isIOS } from "react-device-detect";
 import { colors } from "../global.styles";
 

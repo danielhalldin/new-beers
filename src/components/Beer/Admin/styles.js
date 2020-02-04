@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components/macro";
 import { colors } from "../../global.styles";
 
 const slideUpAnimation = keyframes`
