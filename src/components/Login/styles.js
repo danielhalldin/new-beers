@@ -1,13 +1,17 @@
 import styled from "styled-components/macro";
 
-const Login = styled.div`
+const Wrapper = styled.div`
   font-weight: 700;
   font-size: 26px;
-  margin: 30vh 0 0 0;
   text-align: center;
+  height: calc(100vh - 344px);
+  margin: auto;
+  padding: 10vh 0;
 `;
 
-const LoginButton = styled.a`
+const Button = styled.a`
+  margin: 10vh 0;
+  display: block;
   font-size: 30px;
   padding: 6px 18px;
   border-radius: 4px;
@@ -24,4 +28,4 @@ const LoginButton = styled.a`
   }
 `;
 
-export { Login, LoginButton };
+export { Wrapper, Button };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import apolloClient from "./lib/apolloClient";
 import cookies from "js-cookie";
@@ -9,36 +9,31 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import { Layout } from "./components/Layout.styles";
-import { GlobalStyle } from "./components/global.styles";
 
 const App = () => {
-  const untappd_access_token = cookies.get("untappd_access_token");
-  if (!untappd_access_token) {
+  const [untappdAccessToken, setUntappdAccessToken] = useState(
+    cookies.get("untappd_access_token")
+  );
+  if (!untappdAccessToken) {
     // Not logged in
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get("token");
 
     if (!token) {
       // Haven't got token parameter
-      return (
-        <div style={{ textAlign: "center" }}>
-          <Header login />
-          <Login href={`${process.env.REACT_APP_LOGIN_URL}`} />
-        </div>
-      );
+      return <Login />;
     } else {
       // Has got token parameter
       cookies.set("untappd_access_token", token, { expires: 30 });
       window.location.href = "/";
-      return;
+      setUntappdAccessToken(token);
     }
   }
 
   return (
     <BrowserRouter>
-      <ApolloProvider client={apolloClient(untappd_access_token)}>
+      <ApolloProvider client={apolloClient(untappdAccessToken)}>
         <Layout>
-          <GlobalStyle />
           <Header />
           <Switch>
             <Route

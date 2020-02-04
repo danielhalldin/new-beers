@@ -1,15 +1,22 @@
 import React from "react";
-import { LoginButton, Login } from "./styles";
+import Header from "../Header";
+import Footer from "../Footer";
+import { Layout } from "../Layout.styles";
+import { Button, Wrapper } from "./styles";
 
-const LoginContainer = ({ href }) => {
+const LoginContainer = () => {
   return (
-    <Login>
-      För att kunna använda tjänsten, <br />
-      behöver du logga in på Untappd.
-      <br />
-      <br />
-      <LoginButton href={href}>Logga in här</LoginButton>
-    </Login>
+    <Layout>
+      <Header login />
+      <Wrapper>
+        För att kunna använda tjänsten, <br />
+        behöver du logga in på Untappd.
+        <Button href={`${process.env.REACT_APP_LOGIN_URL}`}>
+          Logga in här
+        </Button>
+      </Wrapper>
+      <Footer />
+    </Layout>
   );
 };
 
