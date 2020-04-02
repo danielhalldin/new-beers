@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 
 import beerBadgeDefaultImage from "../../images/badge-beer-default.png";
@@ -16,7 +16,7 @@ const StyledImage = styled.img`
   border-radius: 5px;
 `;
 
-const Image = ({ src }) => {
+const Image: FunctionComponent<{ src: string }> = ({ src }) => {
   return (
     <ImageContainer>
       <StyledImage src={src || beerBadgeDefaultImage} />

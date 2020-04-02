@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 
 import Admin from "./Admin";
 import Header from "./Header";
@@ -12,7 +12,30 @@ import Footer from "./Footer";
 
 import { BeerContainer, Front, Back, ContentWrapper } from "./styles";
 
-const Beer = ({ data, admin }) => {
+interface BeerProps {
+  data: {
+    abv: string;
+    brewery: string;
+    country: string;
+    name: string;
+    price: number;
+    rating: string;
+    salesStartDate: string;
+    checkinDate: string;
+    style: string;
+    systembolagetArticleId: number;
+    systembolagetUrl: string;
+    untappdUrl: string;
+    untappdDeepLink: string;
+    userRating: string;
+    beerLabel: string;
+    ibu: string;
+    description: string;
+  };
+  admin: boolean;
+}
+
+const Beer: FunctionComponent<BeerProps> = ({ data, admin }) => {
   const [showAdmin, setShowAdmin] = React.useState(false);
 
   const {
@@ -32,11 +55,10 @@ const Beer = ({ data, admin }) => {
     userRating,
     beerLabel,
     ibu,
-    description,
-    untappdId
+    description
   } = data;
 
-  const toggleAdmin = e => {
+  const toggleAdmin = (e: any) => {
     e.stopPropagation();
     setShowAdmin(!showAdmin);
   };
@@ -67,7 +89,6 @@ const Beer = ({ data, admin }) => {
         <ContentWrapper>
           <Admin
             systembolagetArticleId={systembolagetArticleId}
-            untappdId={untappdId}
             showAdmin={showAdmin}
           />
           <Description description={description} />

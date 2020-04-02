@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 import { isMobile, isIOS } from "react-device-detect";
 import { colors } from "../global.styles";
@@ -92,11 +92,26 @@ const AdminButton = styled.button`
   }
 `;
 
-const Admin = ({ onClick }) => {
+interface AdminProps {
+  onClick: any;
+}
+const Admin: FunctionComponent<AdminProps> = ({ onClick }) => {
   return <AdminButton onClick={e => onClick(e)}>Admin</AdminButton>;
 };
 
-const Footer = ({
+interface FooterProps {
+  back?: boolean;
+  ibu?: string;
+  abv?: string;
+  price?: number;
+  systembolagetUrl?: string;
+  admin?: boolean;
+  systembolagetArticleId?: number;
+  untappdUrl?: string;
+  untappdDeepLink?: string;
+  toggleAdmin?: any;
+}
+const Footer: FunctionComponent<FooterProps> = ({
   back,
   ibu,
   abv,

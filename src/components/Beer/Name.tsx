@@ -1,7 +1,9 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 
-const StyledName = styled.div`
+import { truncateText } from "../../lib/text";
+
+const StyledName = styled.div<{ length: number }>`
   text-align: center;
   line-height: 1em;
   font-family: "Hind", cursive;
@@ -23,19 +25,7 @@ const StyledName = styled.div`
   }};
 `;
 
-const truncateText = (text, limit) => {
-  if (!text) {
-    return "";
-  }
-  if (text.length < limit) {
-    return text;
-  }
-  text = text.slice(0, limit).split(" ");
-  text.pop();
-  return text.join(" ") + "…";
-};
-
-const Name = ({ name }) => {
+const Name: FunctionComponent<{ name: string }> = ({ name }) => {
   const _name = truncateText(name, 65);
   return <StyledName length={_name.length}>{_name}</StyledName>;
 };

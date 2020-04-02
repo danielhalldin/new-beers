@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 
 import capImage from "../../images/cap.png";
@@ -32,23 +32,23 @@ const CapLabel = styled.div`
   right: 12px;
 `;
 
-const Cap = ({ rating }) => {
-  return (
-    !!rating && (
-      <StyledCap>{Number.parseFloat(rating).toPrecision(2)}</StyledCap>
-    )
-  );
+export const Cap: FunctionComponent<{ rating: string }> = ({ rating }) => {
+  if (rating) {
+    return <StyledCap>{Number.parseFloat(rating).toPrecision(2)}</StyledCap>;
+  } else {
+    return null;
+  }
 };
 
-const UserCap = ({ rating }) => {
-  return (
-    !!rating && (
+export const UserCap: FunctionComponent<{ rating: string }> = ({ rating }) => {
+  if (rating) {
+    return (
       <StyledUserCap>
         {Number.parseFloat(rating).toPrecision(2)}
         <CapLabel>you</CapLabel>
       </StyledUserCap>
-    )
-  );
+    );
+  } else {
+    return null;
+  }
 };
-
-export { Cap, UserCap };

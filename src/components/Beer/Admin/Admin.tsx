@@ -1,5 +1,7 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { useMutation } from "@apollo/react-hooks";
+import _get from "lodash/get";
+import _set from "lodash/set";
 import {
   updateUntappdId as UPDATE_UNTAPPD_ID,
   deleteBeer as DELETE_BEER
@@ -13,11 +15,19 @@ import {
   StatusWrapper
 } from "./styles";
 
-const BeerAdmin = ({ systembolagetArticleId, showAdmin }) => {
-  const untappdIdRef = React.useRef();
+interface BeerAdminProps {
+  systembolagetArticleId: number;
+  showAdmin: boolean;
+}
+
+const BeerAdmin: FunctionComponent<BeerAdminProps> = ({
+  systembolagetArticleId,
+  showAdmin
+}) => {
+  const untappdIdRef = React.useRef<HTMLDivElement>();
 
   React.useEffect(() => {
-    if (showAdmin) {
+    if (showAdmin && untappdIdRef && untappdIdRef.current) {
       untappdIdRef.current.focus();
     }
   }, [showAdmin]);
@@ -42,13 +52,14 @@ const BeerAdmin = ({ systembolagetArticleId, showAdmin }) => {
         <form
           onSubmit={e => {
             e.preventDefault();
+            const refValue = _get(untappdIdRef, "current.value");
             updateUntappdId({
               variables: {
                 systembolagetArticleId: Number(systembolagetArticleId),
-                untappdId: Number(untappdIdRef.current.value)
+                untappdId: Number(refValue)
               }
             });
-            untappdIdRef.current.value = "";
+            _set(untappdIdRef, "current.value", "");
           }}
         >
           <H2>Admin</H2>
@@ -92,15 +103,15 @@ const BeerAdmin = ({ systembolagetArticleId, showAdmin }) => {
 };
 
 const Loading = () => {
-  return "Laddar... 🍺";
+  return <>Laddar... 🍺</>;
 };
 
 const Error = () => {
-  return "Misslyckades 👎🏻";
+  return <>Misslyckades 👎🏻</>;
 };
 
-const Status = status => {
-  return status ? "Lyckades 👍🏻" : "Misslyckades 👎🏻";
+const Status: FunctionComponent<{ status: boolean }> = status => {
+  return <>{status ? "Lyckades 👍🏻" : "Misslyckades 👎🏻"}</>;
 };
 
 export default BeerAdmin;

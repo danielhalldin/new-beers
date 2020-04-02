@@ -1,7 +1,9 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 
-const StyledBrewery = styled.div`
+import { truncateText } from "../../lib/text";
+
+const StyledBrewery = styled.div<{ length: number }>`
   padding: 0 5px;
   font-weight: 500;
   font-size: 18px;
@@ -22,19 +24,7 @@ const StyledBrewery = styled.div`
   margin: auto;
 `;
 
-const truncateText = (text, limit) => {
-  if (!text) {
-    return "";
-  }
-  if (text.length < limit) {
-    return text;
-  }
-  text = text.slice(0, limit).split(" ");
-  text.pop();
-  return text.join(" ") + "…";
-};
-
-const Brewery = ({ name }) => {
+const Brewery: FunctionComponent<{ name: string }> = ({ name }) => {
   const _name = truncateText(name, 65);
   return <StyledBrewery length={_name.length}>{_name}</StyledBrewery>;
 };

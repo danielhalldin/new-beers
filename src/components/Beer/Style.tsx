@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 
 const StyledStyle = styled.div`
@@ -18,7 +18,10 @@ const Category = styled.div`
   overflow: hidden;
 `;
 
-const Style = ({ style, country }) => {
+const Style: FunctionComponent<{ style: string; country: string }> = ({
+  style,
+  country
+}) => {
   return (
     <StyledStyle>
       {!!country && <OriginCountry>{country}</OriginCountry>}

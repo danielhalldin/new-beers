@@ -13,8 +13,8 @@ const StyledHeader = styled.div`
 `;
 
 interface HeaderProps {
-  checkinDate: any;
-  salesStartDate: any;
+  checkinDate: String;
+  salesStartDate: String;
 }
 
 const Header: FunctionComponent<HeaderProps> = ({
