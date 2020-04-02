@@ -4,7 +4,7 @@ import Footer from "../Footer";
 import { Layout } from "../Layout.styles";
 import { Button, Wrapper } from "./styles";
 
-const LoginContainer = () => {
+const Login = () => {
   return (
     <Layout>
       <Header login />
@@ -20,4 +20,4 @@ const LoginContainer = () => {
   );
 };
 
-export default LoginContainer;
+export default Login;
