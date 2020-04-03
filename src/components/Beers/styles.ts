@@ -26,13 +26,9 @@ const FadeInAnimation = keyframes`
   }
 `;
 
-const FadeInAnimationRule = css`
-  ${FadeInAnimation} 1s;
-`;
-
 const BeersContainer = styled.div`
   grid-area: content;
-  animation: ${FadeInAnimationRule};
+  animation: ${FadeInAnimation} 1s;
   color: ${colors.textDark};
   margin: 0 20px;
   display: grid;

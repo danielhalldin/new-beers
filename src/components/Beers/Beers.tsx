@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import Card from "../Card";
 import Navigation, { currentIndex } from "../Navigation";
@@ -6,7 +6,9 @@ import { BeersContainer, Loader } from "./styles";
 import routes from "../../lib/routes";
 import _get from "lodash/get";
 
-const Stock = ({ stockType }) => {
+import { Beer as BeerType } from "../../types/Beer";
+
+const Stock = ({ stockType }: { stockType: string }) => {
   const query = routes[currentIndex(stockType)].query;
   const variables =
     stockType !== "Checkins" && stockType !== "Rekommenderade"
@@ -32,7 +34,7 @@ const Stock = ({ stockType }) => {
     _get(data, `untappdUserBeers`) ||
     _get(data, `recommended.beers`) ||
     [];
-  const beers = beerData.map(beer => {
+  const beers = beerData.map((beer: BeerType) => {
     return (
       <Card
         rotate={Math.round(
@@ -52,7 +54,7 @@ const Stock = ({ stockType }) => {
   );
 };
 
-const Beers = ({ stockType }) => {
+const Beers: FunctionComponent<{ stockType: string }> = ({ stockType }) => {
   return (
     <>
       <Navigation stockType={stockType} />

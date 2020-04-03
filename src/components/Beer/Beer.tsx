@@ -10,28 +10,12 @@ import Style from "./Style";
 import Description from "./Description";
 import Footer from "./Footer";
 
+import { Beer as BeerType } from "../../types/Beer";
+
 import { BeerContainer, Front, Back, ContentWrapper } from "./styles";
 
 interface BeerProps {
-  data: {
-    abv: string;
-    brewery: string;
-    country: string;
-    name: string;
-    price: number;
-    rating: string;
-    salesStartDate: string;
-    checkinDate: string;
-    style: string;
-    systembolagetArticleId: number;
-    systembolagetUrl: string;
-    untappdUrl: string;
-    untappdDeepLink: string;
-    userRating: string;
-    beerLabel: string;
-    ibu: string;
-    description: string;
-  };
+  data: BeerType;
   admin: boolean;
 }
 

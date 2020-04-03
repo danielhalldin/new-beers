@@ -1,0 +1,20 @@
+export type Beer = {
+  abv: string;
+  brewery: string;
+  country: string;
+  name: string;
+  price: number;
+  rating: string;
+  salesStartDate: string;
+  checkinDate: string;
+  style: string;
+  systembolagetArticleId: number;
+  systembolagetId: number;
+  systembolagetUrl: string;
+  untappdUrl: string;
+  untappdDeepLink: string;
+  userRating: string;
+  beerLabel: string;
+  ibu: string;
+  description: string;
+};
