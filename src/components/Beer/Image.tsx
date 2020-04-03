@@ -31,9 +31,13 @@ const Loader = styled.div`
 `;
 
 const Image: FunctionComponent<{ src: string }> = ({ src }) => {
+  let imageSrc = src;
+  if (!src || src.includes("badge-beer-default.png")) {
+    imageSrc = beerBadgeDefaultImage;
+  }
   return (
     <ImageContainer>
-      <StyledImage src={src || beerBadgeDefaultImage} loader={<Loader />} />
+      <StyledImage src={imageSrc} loader={<Loader />} />
     </ImageContainer>
   );
 };
