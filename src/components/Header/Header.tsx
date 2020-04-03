@@ -6,7 +6,7 @@ import { untappdUser } from "../../queries";
 import { Header, Avatar, UserName, TotalBeers } from "./styles";
 import { Loader } from "../Beers/styles";
 
-const HeaderContainer: FunctionComponent<{ login: boolean }> = ({ login }) => {
+const HeaderContainer: FunctionComponent<{ login?: boolean }> = ({ login }) => {
   return login ? <Header>New Beers</Header> : <WithUser />;
 };
 

@@ -12,7 +12,7 @@ import { Layout } from "./components/Layout.styles";
 
 const App = () => {
   const [untappdAccessToken, setUntappdAccessToken] = useState(
-    cookies.get("untappd_access_token")
+    cookies.get("untappd_access_token") || ""
   );
   if (!untappdAccessToken) {
     // Not logged in

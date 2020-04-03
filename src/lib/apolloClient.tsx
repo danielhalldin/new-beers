@@ -3,7 +3,7 @@ import { HttpLink } from "apollo-link-http";
 import { ApolloLink } from "apollo-link";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
-const client = untappd_access_token => {
+const client = (untappd_access_token: string) => {
   return new ApolloClient({
     link: ApolloLink.from([
       new HttpLink({
