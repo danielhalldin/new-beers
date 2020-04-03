@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 import Img from "react-image";
 
-import beerBadgeDefaultImage from "../../images/beer-default.png";
+import beerBadgeDefaultImage from "../../images/beer-animated.gif";
 import spinner from "../../images/spinner.svg";
 
 const ImageContainer = styled.div`
@@ -16,6 +16,7 @@ const StyledImage = styled(Img)`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border: 5px solid white;
   border-radius: 5px;
+  background-color: white;
 `;
 
 const Loader = styled.div`
