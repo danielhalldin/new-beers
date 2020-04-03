@@ -3,22 +3,22 @@ import { ApolloConsumer } from "react-apollo";
 import routes from "../../lib/routes";
 import { Navigation, Button } from "./styles";
 
-export const currentIndex = stockType => {
+export const currentIndex = (stockType: string) => {
   return routes.findIndex(route => route.id === stockType);
 };
 
-const MenuComponent = ({ stockType }) => {
-  const previousIndex = stockType => {
+const MenuComponent = ({ stockType }: { stockType: string }) => {
+  const previousIndex = (stockType: string) => {
     const _currentIndex = currentIndex(stockType);
     return _currentIndex === 0 ? routes.length - 1 : _currentIndex - 1;
   };
 
-  const nextIndex = stockType => {
+  const nextIndex = (stockType: string) => {
     const _currentIndex = currentIndex(stockType);
     return _currentIndex === routes.length - 1 ? 0 : _currentIndex + 1;
   };
 
-  const preloadNeighbours = (client, stockType) => {
+  const preloadNeighbours = (client: any, stockType: string) => {
     client.query({
       query: routes[previousIndex(stockType)].query,
       variables: { stockType: routes[previousIndex(stockType)].id }
