@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 
-const FlipContainer = styled.div`
+const FlipContainer = styled.div<{ rotate: number }>`
   margin: 30px;
   width: 210px;
   height: 330px;
@@ -8,7 +8,7 @@ const FlipContainer = styled.div`
   perspective: 1000px;
 `;
 
-const Flipper = styled.div`
+const Flipper = styled.div<{ flipped: boolean }>`
   transition: 0.6s;
   transform-style: preserve-3d;
   position: relative;

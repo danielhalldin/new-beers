@@ -1,8 +1,15 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import Beer from "../Beer";
+
+import { Beer as BeerType } from "../../types/Beer";
+
 import { FlipContainer, Flipper } from "./styles";
 
-const Card = ({ rotate, data, admin }) => {
+const Card: FunctionComponent<{
+  rotate: number;
+  data: BeerType;
+  admin: boolean;
+}> = ({ rotate, data, admin }) => {
   const [flipped, setFlipped] = React.useState(false);
 
   return (
