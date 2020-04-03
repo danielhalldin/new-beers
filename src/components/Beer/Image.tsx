@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 import Img from "react-image";
 
-import beerBadgeDefaultImage from "../../images/badge-beer-default.png";
+import beerBadgeDefaultImage from "../../images/beer-default.png";
 import spinner from "../../images/spinner.svg";
 
 const ImageContainer = styled.div`
