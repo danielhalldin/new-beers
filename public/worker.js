@@ -34,7 +34,13 @@ self.addEventListener("activate", evt => {
 self.addEventListener("fetch", evt => {
   evt.respondWith(
     caches.match(evt.request).then(cacheRes => {
-      return cacheRes || fetch(evt.request);
+      if (cacheRes) {
+        return cacheRes;
+      } else {
+        const fetchedData = fetch(evt.request);
+        this.cache.put(evt.request, fetchedData);
+        return fetchedData;
+      }
     })
   );
 });
