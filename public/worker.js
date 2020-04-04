@@ -33,14 +33,16 @@ self.addEventListener("activate", evt => {
 // fetch event
 self.addEventListener("fetch", evt => {
   evt.respondWith(
-    caches.match(evt.request).then(cacheRes => {
-      if (cacheRes) {
-        return cacheRes;
-      } else {
-        const fetchedData = fetch(evt.request);
-        caches.put(evt.request, fetchedData);
-        return fetchedData;
-      }
+    caches.open("site-dynamic-v1").then(function (cache) {
+      return cache.match(event.request).then(function (response) {
+        return (
+          response ||
+          fetch(event.request).then(function (response) {
+            cache.put(event.request, response.clone());
+            return response;
+          })
+        );
+      });
     })
   );
 });
