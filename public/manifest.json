@@ -21,6 +21,11 @@
       "src": "./favicons/favicon-196x196.png",
       "type": "image/png",
       "sizes": "196x196"
+    },
+    {
+      "src": "./images/oak-splash.jpg",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ]
 }
