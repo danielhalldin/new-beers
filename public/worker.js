@@ -38,7 +38,7 @@ self.addEventListener("fetch", evt => {
         return cacheRes;
       } else {
         const fetchedData = fetch(evt.request);
-        this.cache.put(evt.request, fetchedData);
+        caches.put(evt.request, fetchedData);
         return fetchedData;
       }
     })
