@@ -4,6 +4,7 @@ const assets = [
   "/",
   "/index.html",
   "/images/oak.jpg",
+  "/images/oak-splash.jpg",
   "https://fonts.googleapis.com/css?family=Bowlby+One+SC|Hind:300,400,500,600,700"
 ];
 
