@@ -34,11 +34,11 @@ self.addEventListener("activate", evt => {
 self.addEventListener("fetch", evt => {
   evt.respondWith(
     caches.open("site-dynamic-v1").then(function (cache) {
-      return cache.match(event.request).then(function (response) {
+      return cache.match(evt.request).then(function (response) {
         return (
           response ||
-          fetch(event.request).then(function (response) {
-            cache.put(event.request, response.clone());
+          fetch(evt.request).then(function (response) {
+            cache.put(evt.request, response.clone());
             return response;
           })
         );
