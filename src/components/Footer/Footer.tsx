@@ -5,7 +5,7 @@ import untappd from "../../images/pbu_80_yellow.png";
 const FooterContainer = () => {
   return (
     <Footer>
-      <PbUntappd src={untappd} />
+      <PbUntappd alt="Untappd" src={untappd} />
     </Footer>
   );
 };
