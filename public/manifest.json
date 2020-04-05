@@ -1,10 +1,10 @@
 {
-  "name": "New beers at Systembolaget",
+  "name": "New beers at Systembolaget 🍺",
   "short_name": "NEW BEERS 🍺",
   "start_url": "/",
   "display": "fullscreen",
-  "background_color": "#333",
-  "theme_color": "#333",
+  "background_color": "#333333",
+  "theme_color": "#333333",
   "orientation": "portrait-primary",
   "icons": [
     {
