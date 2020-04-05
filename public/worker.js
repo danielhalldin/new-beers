@@ -83,6 +83,10 @@ self.onnotificationclick = function (event) {
       .then(function (clientList) {
         for (var i = 0; i < clientList.length; i++) {
           var client = clientList[i];
+          console.log({
+            clientUrl: client.url,
+            comp: "https://new-beers.netlify.app" + path,
+          });
           if (
             client.url == "https://new-beers.netlify.app" + path &&
             "focus" in client
