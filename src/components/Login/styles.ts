@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { colors } from "../global.styles";
 
 const Wrapper = styled.main`
   font-weight: 700;
@@ -17,7 +18,7 @@ const Button = styled.a`
   border-radius: 4px;
   cursor: pointer;
   color: white;
-  background-color: #ffcc00;
+  background-color: ${colors.dark};
   text-decoration: none;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
   :hover {
