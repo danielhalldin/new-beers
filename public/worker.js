@@ -32,7 +32,7 @@ self.addEventListener("activate", (evt) => {
 });
 // fetch event
 self.addEventListener("fetch", (evt) => {
-  if (evt.request.method === "POST") {
+  if (evt.request.method === "POST" || evt.request.url.indexOf("http") !== 0) {
     evt.respondWith(fetch(evt.request));
   } else {
     evt.respondWith(
