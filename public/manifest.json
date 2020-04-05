@@ -23,6 +23,11 @@
       "sizes": "196x196"
     },
     {
+      "src": "./splashscreens/iphone6_splash.png",
+      "type": "image/png",
+      "sizes": "750x1334"
+    },
+    {
       "src": "./splashscreens/ipadpro3_splash.png",
       "type": "image/png",
       "sizes": "1668x2388"
