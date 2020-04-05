@@ -7,7 +7,14 @@ import { Header, Avatar, UserName, TotalBeers, MainLink } from "./styles";
 import { Loader } from "../Beers/styles";
 
 const HeaderContainer: FunctionComponent<{ login?: boolean }> = ({ login }) => {
-  return login ? <Header>New Beers</Header> : <WithUser />;
+  return login ? (
+    <Header>
+      <MainLink href="#main">Skip to main</MainLink>
+      <h1>New Beers</h1>
+    </Header>
+  ) : (
+    <WithUser />
+  );
 };
 
 const WithUser = () => {

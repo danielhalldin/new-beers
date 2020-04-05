@@ -8,7 +8,7 @@ const Login = () => {
   return (
     <Layout>
       <Header login />
-      <Wrapper>
+      <Wrapper id={"main"}>
         För att kunna använda tjänsten, <br />
         behöver du logga in på Untappd.
         <Button href={`${process.env.REACT_APP_LOGIN_URL}`}>
