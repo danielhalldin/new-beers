@@ -33,7 +33,7 @@ self.addEventListener("activate", (evt) => {
 // fetch event
 self.addEventListener("fetch", (evt) => {
   if (evt.request.method === "POST" || evt.request.url.indexOf("http") !== 0) {
-    evt.respondWith(fetch(evt.request));
+    return;
   } else {
     evt.respondWith(
       caches.open("site-dynamic-v1").then(function (cache) {
