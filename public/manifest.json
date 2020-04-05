@@ -2,7 +2,7 @@
   "name": "New beers at Systembolaget",
   "short_name": "NEW BEERS",
   "start_url": "/",
-  "display": "standalone",
+  "display": "fullscreen",
   "background_color": "#333",
   "theme_color": "#333",
   "orientation": "portrait-primary",
@@ -23,7 +23,7 @@
       "sizes": "196x196"
     },
     {
-      "src": "./images/oak-splash.jpg",
+      "src": "./splashscreens/ipadpro3_splash.png",
       "type": "image/png",
       "sizes": "512x512"
     }
