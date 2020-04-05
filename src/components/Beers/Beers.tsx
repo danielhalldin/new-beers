@@ -16,7 +16,7 @@ const Stock = ({ stockType }: { stockType: string }) => {
       : {};
 
   const { loading, error, data } = useQuery(query, {
-    variables
+    variables,
   });
   if (loading)
     return (
@@ -49,7 +49,7 @@ const Stock = ({ stockType }: { stockType: string }) => {
 
   return (
     <>
-      <BeersContainer>{beers}</BeersContainer>
+      <BeersContainer id={"main"}>{beers}</BeersContainer>
     </>
   );
 };

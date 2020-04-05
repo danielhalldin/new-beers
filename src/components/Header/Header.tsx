@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 
 import { untappdUser } from "../../queries";
 
-import { Header, Avatar, UserName, TotalBeers } from "./styles";
+import { Header, Avatar, UserName, TotalBeers, MainLink } from "./styles";
 import { Loader } from "../Beers/styles";
 
 const HeaderContainer: FunctionComponent<{ login?: boolean }> = ({ login }) => {
@@ -28,6 +28,7 @@ const WithUser = () => {
   const { avatar, name, totalBeers } = data.untappdUser;
   return (
     <Header>
+      <MainLink href="#main">Skip to main</MainLink>
       <div>
         <Avatar alt={name} src={avatar} />
         <UserName>{name}</UserName>

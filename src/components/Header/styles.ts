@@ -55,4 +55,17 @@ const TotalBeers = styled.div`
   font-size: 17px;
 `;
 
-export { Header, HeaderUserData, Avatar, UserName, TotalBeers };
+const MainLink = styled.a`
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000000;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  :focus {
+    top: 0;
+  }
+`;
+
+export { Header, HeaderUserData, Avatar, UserName, TotalBeers, MainLink };
