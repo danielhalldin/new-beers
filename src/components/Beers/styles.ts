@@ -26,7 +26,7 @@ const FadeInAnimation = keyframes`
   }
 `;
 
-const BeersContainer = styled.div`
+const BeersContainer = styled.main`
   grid-area: content;
   animation: ${FadeInAnimation} 1s;
   color: ${colors.textDark};

@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 import { colors } from "../global.styles";
 
-const Footer = styled.div`
+const Footer = styled.footer`
   grid-area: footer;
   padding: 10px;
   background-color: ${colors.dark};

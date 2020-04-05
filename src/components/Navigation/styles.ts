@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 import { colors } from "../global.styles";
 import { Link } from "react-router-dom";
 
-const Navigation = styled.div`
+const Navigation = styled.nav`
   grid-area: menu;
   font-family: "Bowlby One SC", cursive;
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);

@@ -2,7 +2,7 @@ import { colors } from "../global.styles";
 
 import styled from "styled-components/macro";
 
-const Header = styled.div`
+const Header = styled.header`
   padding: 0 10px;
   grid-area: header;
   display: grid;
