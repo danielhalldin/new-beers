@@ -5,13 +5,13 @@ const assets = [
   "/index.html",
   "/images/oak.jpg",
   "/images/oak-splash.jpg",
-  "https://fonts.googleapis.com/css?family=Bowlby+One+SC|Hind:300,400,500,600,700"
+  "https://fonts.googleapis.com/css?family=Bowlby+One+SC|Hind:300,400,500,600,700",
 ];
 
 // install event
-self.addEventListener("install", evt => {
+self.addEventListener("install", (evt) => {
   evt.waitUntil(
-    caches.open(staticCacheName).then(cache => {
+    caches.open(staticCacheName).then((cache) => {
       console.log("caching shell assets");
       cache.addAll(assets);
     })
@@ -19,42 +19,46 @@ self.addEventListener("install", evt => {
 });
 
 // activate event
-self.addEventListener("activate", evt => {
+self.addEventListener("activate", (evt) => {
   evt.waitUntil(
-    caches.keys().then(keys => {
+    caches.keys().then((keys) => {
       return Promise.all(
         keys
-          .filter(key => key !== staticCacheName)
-          .map(key => caches.delete(key))
+          .filter((key) => key !== staticCacheName)
+          .map((key) => caches.delete(key))
       );
     })
   );
 });
 // fetch event
-self.addEventListener("fetch", evt => {
-  evt.respondWith(
-    caches.open("site-dynamic-v1").then(function (cache) {
-      return cache.match(evt.request).then(function (response) {
-        return (
-          response ||
-          fetch(evt.request).then(function (response) {
-            cache.put(evt.request, response.clone());
-            return response;
-          })
-        );
-      });
-    })
-  );
+self.addEventListener("fetch", (evt) => {
+  if (evt.request.method === "POST") {
+    evt.respondWith(fetch(evt.request));
+  } else {
+    evt.respondWith(
+      caches.open("site-dynamic-v1").then(function (cache) {
+        return cache.match(evt.request).then(function (response) {
+          return (
+            response ||
+            fetch(evt.request).then(function (response) {
+              cache.put(evt.request, response.clone());
+              return response;
+            })
+          );
+        });
+      })
+    );
+  }
 });
 
-self.addEventListener("push", ev => {
+self.addEventListener("push", (ev) => {
   const data = ev.data.json();
   self.registration.showNotification(data.title, {
     body: data.body,
     icon: data.icon,
     requireInteraction: true,
     data: data.data,
-    tag: data.tag
+    tag: data.tag,
   });
 });
 self.addEventListener("notificationclick", function (event) {
