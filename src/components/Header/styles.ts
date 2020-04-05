@@ -11,12 +11,17 @@ const Header = styled.div`
   align-items: center;
   font-family: "Bowlby One SC", cursive;
   text-decoration: italic;
-  font-size: 30px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   color: ${colors.textLight};
   background-color: ${colors.dark};
   box-shadow: 0 20px 15px rgba(0, 0, 0, 0.5);
   min-height: 52px;
+  h1 {
+    font-size: 30px;
+    display: inline;
+    padding: 0;
+    margin: 0;
+  }
 `;
 
 const HeaderUserData = styled.div`

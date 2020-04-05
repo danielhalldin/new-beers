@@ -32,7 +32,7 @@ const WithUser = () => {
         <Avatar alt={name} src={avatar} />
         <UserName>{name}</UserName>
       </div>
-      <div>New Beers</div>
+      <h1>New Beers</h1>
       <div>
         <TotalBeers>
           {totalBeers}{" "}

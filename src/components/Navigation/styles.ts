@@ -6,10 +6,15 @@ const Navigation = styled.div`
   grid-area: menu;
   font-family: "Bowlby One SC", cursive;
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
-  font-size: 26px;
   text-align: center;
   color: ${colors.dark};
   text-transform: capitalize;
+  h2 {
+    font-size: 26px;
+    display: inline;
+    padding: 0;
+    margin: 0;
+  }
 `;
 
 const Button = styled(Link)`

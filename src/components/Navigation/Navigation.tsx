@@ -4,7 +4,7 @@ import routes from "../../lib/routes";
 import { Navigation, Button } from "./styles";
 
 export const currentIndex = (stockType: string) => {
-  return routes.findIndex(route => route.id === stockType);
+  return routes.findIndex((route) => route.id === stockType);
 };
 
 const MenuComponent = ({ stockType }: { stockType: string }) => {
@@ -21,22 +21,22 @@ const MenuComponent = ({ stockType }: { stockType: string }) => {
   const preloadNeighbours = (client: any, stockType: string) => {
     client.query({
       query: routes[previousIndex(stockType)].query,
-      variables: { stockType: routes[previousIndex(stockType)].id }
+      variables: { stockType: routes[previousIndex(stockType)].id },
     });
     client.query({
       query: routes[nextIndex(stockType)].query,
-      variables: { stockType: routes[nextIndex(stockType)].id }
+      variables: { stockType: routes[nextIndex(stockType)].id },
     });
   };
 
   return (
     <ApolloConsumer>
-      {client => {
+      {(client) => {
         preloadNeighbours(client, stockType);
         return (
           <Navigation>
             <Button to={routes[previousIndex(stockType)].path}>{"«"}</Button>
-            {stockType}
+            <h2>{stockType}</h2>
             <Button to={routes[nextIndex(stockType)].path}>{"»"}</Button>
           </Navigation>
         );
