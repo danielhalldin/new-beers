@@ -65,8 +65,10 @@ self.addEventListener("push", (ev) => {
 
 self.addEventListener("notificationclick", function (event) {
   console.log({ event });
-  const examplePage = event.notification.data.path;
-  const promiseChain = clients.openWindow(examplePage);
+  const path = event.notification.data.path;
+  const promiseChain = clients.openWindow(
+    "https://new-beers.netlify.app" + path
+  );
   event.waitUntil(promiseChain);
 });
 
