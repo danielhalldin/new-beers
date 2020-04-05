@@ -63,39 +63,34 @@ self.addEventListener("push", (ev) => {
   });
 });
 
-self.addEventListener("notificationclick", function (event) {
-  console.log({ event });
-  const path = event.notification.data.path;
-  const promiseChain = clients.openWindow(
-    "https://new-beers.netlify.app" + path
-  );
-  event.waitUntil(promiseChain);
-});
-
-// self.onnotificationclick = function (event) {
-//   console.log(
-//     "On notification click: ",
-//     event.notification.tag,
-//     event.notification.data.path
-//   );
+// self.addEventListener("notificationclick", function (event) {
+//   console.log({ event });
 //   const path = event.notification.data.path;
-//   event.notification.close();
-
-//   // This looks to see if the current is already open and
-//   // focuses if it is
-//   event.waitUntil(
-//     clients
-//       .matchAll({
-//         type: "window",
-//       })
-//       .then(function (clientList) {
-//         for (var i = 0; i < clientList.length; i++) {
-//           var client = clientList[i];
-//           console.log({ url: client.url });
-//           if (client.url == path && "focus" in client) return client.focus();
-//         }
-//         if (clients.openWindow)
-//           return clients.openWindow("https://new-beers.netlify.app" + path);
-//       })
+//   const promiseChain = clients.openWindow(
+//     "https://new-beers.netlify.app" + path
 //   );
-// };
+//   event.waitUntil(promiseChain);
+// });
+
+self.onnotificationclick = function (event) {
+  const path = event.notification.data.path;
+  event.notification.close();
+  event.waitUntil(
+    clients
+      .matchAll({
+        type: "window",
+      })
+      .then(function (clientList) {
+        for (var i = 0; i < clientList.length; i++) {
+          var client = clientList[i];
+          if (
+            client.url == "https://new-beers.netlify.app" + path &&
+            "focus" in client
+          )
+            return client.focus();
+        }
+        if (clients.openWindow)
+          return clients.openWindow("https://new-beers.netlify.app" + path);
+      })
+  );
+};
