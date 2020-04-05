@@ -53,6 +53,7 @@ self.addEventListener("fetch", (evt) => {
 
 self.addEventListener("push", (ev) => {
   const data = ev.data.json();
+  console.log({ data });
   self.registration.showNotification(data.title, {
     body: data.body,
     icon: data.icon,
@@ -61,6 +62,7 @@ self.addEventListener("push", (ev) => {
     tag: data.tag,
   });
 });
+
 self.addEventListener("notificationclick", function (event) {
   console.log({ event });
   const examplePage = event.notification.data.path;
