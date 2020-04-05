@@ -89,9 +89,11 @@ self.onnotificationclick = function (event) {
       .then(function (clientList) {
         for (var i = 0; i < clientList.length; i++) {
           var client = clientList[i];
+          console.log({ url: client.url });
           if (client.url == path && "focus" in client) return client.focus();
         }
-        if (clients.openWindow) return clients.openWindow(path);
+        if (clients.openWindow)
+          return clients.openWindow("https://new-beers.netlify.app" + path);
       })
   );
 };
