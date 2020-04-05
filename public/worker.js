@@ -71,7 +71,12 @@ self.addEventListener("push", (ev) => {
 // });
 
 self.onnotificationclick = function (event) {
-  console.log("On notification click: ", event.notification.tag);
+  console.log(
+    "On notification click: ",
+    event.notification.tag,
+    event.notification.data.path
+  );
+  const path = event.notification.data.path;
   event.notification.close();
 
   // This looks to see if the current is already open and
@@ -84,9 +89,9 @@ self.onnotificationclick = function (event) {
       .then(function (clientList) {
         for (var i = 0; i < clientList.length; i++) {
           var client = clientList[i];
-          if (client.url == "/" && "focus" in client) return client.focus();
+          if (client.url == path && "focus" in client) return client.focus();
         }
-        if (clients.openWindow) return clients.openWindow("/");
+        if (clients.openWindow) return clients.openWindow(path);
       })
   );
 };
