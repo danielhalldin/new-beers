@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components/macro";
+import oak from "../images/oak.jpg";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -8,14 +9,14 @@ const GlobalStyle = createGlobalStyle`
     padding: 0; 
     background-color: #888; 
     color: #333; 
-    background-image: url('./images/oak.jpg')
+    background-image: url("${oak}");
   }
 `;
 
 const colors = {
   dark: "#333",
   textLight: "#ddd",
-  textDark: "#444"
+  textDark: "#444",
 };
 
 export { GlobalStyle, colors };
