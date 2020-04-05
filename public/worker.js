@@ -1,14 +1,10 @@
-console.log("Loaded service worker!");
 const staticCacheName = "site-static-v1";
 const assets = [
   "/",
   "/index.html",
-  "/images/oak.jpg",
-  "/images/oak-splash.jpg",
   "https://fonts.googleapis.com/css?family=Bowlby+One+SC|Hind:300,400,500,600,700",
 ];
 
-// install event
 self.addEventListener("install", (evt) => {
   evt.waitUntil(
     caches.open(staticCacheName).then((cache) => {
@@ -18,7 +14,6 @@ self.addEventListener("install", (evt) => {
   );
 });
 
-// activate event
 self.addEventListener("activate", (evt) => {
   evt.waitUntil(
     caches.keys().then((keys) => {
@@ -30,9 +25,9 @@ self.addEventListener("activate", (evt) => {
     })
   );
 });
-// fetch event
+
 self.addEventListener("fetch", (evt) => {
-  if (evt.request.method === "POST" || evt.request.url.indexOf("http") !== 0) {
+  if (evt.request.method !== "GET" || evt.request.url.indexOf("http") !== 0) {
     return;
   } else {
     evt.respondWith(
@@ -53,7 +48,7 @@ self.addEventListener("fetch", (evt) => {
 
 self.addEventListener("push", (ev) => {
   const data = ev.data.json();
-  console.log({ data });
+
   self.registration.showNotification(data.title, {
     body: data.body,
     icon: data.icon,
@@ -63,18 +58,10 @@ self.addEventListener("push", (ev) => {
   });
 });
 
-// self.addEventListener("notificationclick", function (event) {
-//   console.log({ event });
-//   const path = event.notification.data.path;
-//   const promiseChain = clients.openWindow(
-//     "https://new-beers.netlify.app" + path
-//   );
-//   event.waitUntil(promiseChain);
-// });
-
 self.onnotificationclick = function (event) {
-  const path = event.notification.data.path;
   event.notification.close();
+  const path = event.notification.data.path;
+
   event.waitUntil(
     clients
       .matchAll({
@@ -83,10 +70,6 @@ self.onnotificationclick = function (event) {
       .then(function (clientList) {
         for (var i = 0; i < clientList.length; i++) {
           var client = clientList[i];
-          console.log({
-            clientUrl: client.url,
-            comp: "https://new-beers.netlify.app" + path,
-          });
           if (
             client.url == "https://new-beers.netlify.app" + path &&
             "focus" in client
