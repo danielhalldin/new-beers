@@ -29,7 +29,7 @@ const WithUser = () => {
   return (
     <Header>
       <div>
-        <Avatar src={avatar} />
+        <Avatar alt={name} src={avatar} />
         <UserName>{name}</UserName>
       </div>
       <div>New Beers</div>

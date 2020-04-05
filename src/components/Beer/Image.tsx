@@ -38,7 +38,7 @@ const Image: FunctionComponent<{ src: string }> = ({ src }) => {
   }
   return (
     <ImageContainer>
-      <StyledImage src={imageSrc} loader={<Loader />} />
+      <StyledImage alt="Beer" src={imageSrc} loader={<Loader />} />
     </ImageContainer>
   );
 };
