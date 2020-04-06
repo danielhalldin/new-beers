@@ -58,6 +58,7 @@ self.addEventListener("push", (ev) => {
   });
 });
 
+/*eslint-disable no-undef*/
 self.onnotificationclick = function (event) {
   event.notification.close();
   const path = event.notification.data.path;
