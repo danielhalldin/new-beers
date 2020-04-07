@@ -9,6 +9,7 @@ if ("function" === typeof importScripts) {
     const { precacheAndRoute } = workbox.precaching;
     const { registerRoute } = workbox.routing;
     const { StaleWhileRevalidate } = workbox.strategies;
+    const { ExpirationPlugin } = workbox.expiration;
 
     /* Precacheing */
     precacheAndRoute(self.__WB_MANIFEST);
@@ -19,8 +20,8 @@ if ("function" === typeof importScripts) {
       new StaleWhileRevalidate({
         cacheName: "dynamic-images",
         plugins: [
-          workbox.expiration.Plugin({
-            maxEntries: 60,
+          new ExpirationPlugin({
+            maxEntries: 500,
             maxAgeSeconds: 7 * 24 * 60 * 60, // 7 Days
           }),
         ],
