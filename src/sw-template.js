@@ -1,3 +1,4 @@
+/*eslint-disable no-undef*/
 if ("function" === typeof importScripts) {
   importScripts(
     "https://storage.googleapis.com/workbox-cdn/releases/3.5.0/workbox-sw.js"
@@ -14,19 +15,44 @@ if ("function" === typeof importScripts) {
 
     /* custom cache rules*/
     workbox.routing.registerNavigationRoute("/index.html", {
-      blacklist: [/^\/_/, /\/[^\/]+\.[^\/]+$/],
+      blacklist: [/^\/_/, /\/[^/]+\.[^/]+$/],
     });
 
     workbox.routing.registerRoute(
       /\.(?:png|gif|jpg|jpeg)$/,
       workbox.strategies.cacheFirst({
-        cacheName: "images",
+        cacheName: "static-images",
         plugins: [
           new workbox.expiration.Plugin({
-            maxEntries: 60,
+            maxEntries: 30,
             maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
           }),
         ],
+      })
+    );
+
+    workbox.router.registerRoute(
+      "https://fonts.googleapis.com/(.*)",
+      workbox.strategies.cacheFirst({
+        cacheName: "static-font",
+        cacheExpiration: {
+          maxEntries: 10,
+        },
+        cacheableResponse: { statuses: [0, 200] },
+      })
+    );
+
+    workbox.router.registerRoute(
+      /\.(?:png|gif|jpg|jpeg)$/,
+      workbox.strategies.staleWhileRevalidate({
+        cacheName: "dynamic",
+        plugins: [
+          new workbox.expiration.Plugin({
+            maxEntries: 300,
+            maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+          }),
+        ],
+        cacheableResponse: { statuses: [0, 200] },
       })
     );
   } else {
@@ -34,6 +60,7 @@ if ("function" === typeof importScripts) {
   }
 }
 
+// Show notification
 self.addEventListener("push", (ev) => {
   const data = ev.data.json();
 
@@ -46,7 +73,7 @@ self.addEventListener("push", (ev) => {
   });
 });
 
-/*eslint-disable no-undef*/
+// Handle notification click
 self.onnotificationclick = function (event) {
   event.notification.close();
   const path = event.notification.data.path;
