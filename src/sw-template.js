@@ -35,7 +35,7 @@ if ("function" === typeof importScripts) {
     const { strategies } = workbox;
 
     self.addEventListener("fetch", (event) => {
-      if (event.request.url.endsWith(".png")) {
+      if (evt.request.method !== "POST") {
         // Using the previously-initialized strategies will work as expected.
         const cacheFirst = new strategies.CacheFirst();
         event.respondWith(cacheFirst.handle({ request: event.request }));
