@@ -14,9 +14,16 @@ if ("function" === typeof importScripts) {
     workbox.precaching.precacheAndRoute([]);
 
     /* custom cache rules*/
-    workbox.routing.registerNavigationRoute("/index.html", {
-      blacklist: [/^\/_/, /\/[^/]+\.[^/]+$/],
-    });
+    // workbox.routing.registerNavigationRoute("/index.html", {
+    //   blacklist: [/^\/_/, /\/[^/]+\.[^/]+$/],
+    // });
+
+    workbox.routing.registerRoute(
+      /.*/,
+      workbox.strategies.staleWhileRevalidate({
+        cacheName: "TEST",
+      })
+    );
 
     workbox.routing.registerRoute(
       /\.(?:png|gif|jpg|jpeg)$/,
