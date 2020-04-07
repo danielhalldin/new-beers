@@ -6,17 +6,15 @@ if ("function" === typeof importScripts) {
 
   /* global workbox */
   if (workbox) {
-    console.log("Workbox is loaded");
-
     /* Dynamic cache */
     workbox.routing.registerRoute(
-      /\.(?:png|gif|jpg|jpeg)$/,
+      /.*[.](png|gif|jpg|jpeg)$/,
       workbox.strategies.cacheFirst({
-        cacheName: "dunamic-cache",
+        cacheName: "dynamic-cache",
         plugins: [
           new workbox.expiration.Plugin({
             maxEntries: 500,
-            maxAgeSeconds: 7 * 24 * 60 * 60, // i week
+            maxAgeSeconds: 7 * 24 * 60 * 60, // 1 week
           }),
         ],
       })
