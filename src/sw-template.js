@@ -37,7 +37,7 @@ if ("function" === typeof importScripts) {
       })
     );
     registerRoute(
-      new RegExp("https://new-beers.netlify.app/graphql"),
+      new RegExp(".*graphql.*"),
       new StaleWhileRevalidate({
         cacheName: "graphql",
         plugins: [
@@ -46,8 +46,7 @@ if ("function" === typeof importScripts) {
             maxAgeSeconds: 10 * 60, // 10 minutes
           }),
         ],
-      }),
-      "POST"
+      })
     );
   }
 }

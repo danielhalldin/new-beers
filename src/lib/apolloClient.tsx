@@ -9,11 +9,12 @@ const client = (untappd_access_token: string) => {
       new HttpLink({
         uri: `${process.env.REACT_APP_GRAPHQL_URL}`,
         headers: {
-          "x-untappd-access-token": untappd_access_token
-        }
-      })
+          "x-untappd-access-token": untappd_access_token,
+        },
+        useGETForQueries: true,
+      }),
     ]),
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
   });
 };
 
