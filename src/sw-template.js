@@ -7,30 +7,23 @@ if ("function" === typeof importScripts) {
   /* global workbox */
   if (workbox) {
     console.log("Workbox is loaded");
-    workbox.routing.registerRoute(
-      /.*/,
-      workbox.strategies.staleWhileRevalidate({
-        cacheName: "dynamic",
-      })
-    );
 
-    /* custom cache rules*/
-    workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
-    workbox.routing.registerNavigationRoute("/index.html", {
-      blacklist: [/^\/_/, /\/[^/]+\.[^/]+$/],
-    });
+    /* Dynamic cache */
     workbox.routing.registerRoute(
       /\.(?:png|gif|jpg|jpeg)$/,
       workbox.strategies.cacheFirst({
-        cacheName: "static-images",
+        cacheName: "dunamic-cache",
         plugins: [
           new workbox.expiration.Plugin({
-            maxEntries: 30,
-            maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+            maxEntries: 500,
+            maxAgeSeconds: 7 * 24 * 60 * 60, // i week
           }),
         ],
       })
     );
+
+    /* Precacheing */
+    workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
   }
 }
 
