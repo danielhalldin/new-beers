@@ -1,21 +1,29 @@
 /*eslint-disable no-undef*/
 if ("function" === typeof importScripts) {
   importScripts(
-    "https://storage.googleapis.com/workbox-cdn/releases/3.5.0/workbox-sw.js"
+    "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
   );
 
   /* global workbox */
   if (workbox) {
-    /* Dynamic cache */
-    workbox.routing.registerRoute(
-      new RegExp("https://untappd\\.akamaized\\.net/site/beer_logos.*"),
-      workbox.strategies.staleWhileRevalidate({
-        cacheName: "BEER_LOGOS",
-      })
-    );
+    const { registerRoute } = workbox.routing;
 
     /* Precacheing */
     workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
+
+    /* Dynamic cache */
+    registerRoute(
+      new RegExp("https://untappd\\.akamaized\\.net/site/beer_logos.*"),
+      workbox.strategies.staleWhileRevalidate({
+        cacheName: "dynamic-images",
+      })
+    );
+    registerRoute(
+      new RegExp(".*"),
+      workbox.strategies.staleWhileRevalidate({
+        cacheName: "dynamic-other",
+      })
+    );
   }
 }
 
