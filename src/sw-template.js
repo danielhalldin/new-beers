@@ -31,7 +31,7 @@ if ("function" === typeof importScripts) {
       })
     );
 
-    workbox.router.registerRoute(
+    workbox.routing.registerRoute(
       "https://fonts.googleapis.com/(.*)",
       workbox.strategies.cacheFirst({
         cacheName: "static-font",
@@ -42,7 +42,7 @@ if ("function" === typeof importScripts) {
       })
     );
 
-    workbox.router.registerRoute(
+    workbox.routing.registerRoute(
       /\.(?:png|gif|jpg|jpeg)$/,
       workbox.strategies.staleWhileRevalidate({
         cacheName: "dynamic",
