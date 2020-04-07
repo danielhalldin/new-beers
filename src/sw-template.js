@@ -30,19 +30,23 @@ if ("function" === typeof importScripts) {
         ],
       })
     );
-
-    // Dynamic cacheing
-    const { strategies } = workbox;
-
-    self.addEventListener("fetch", (event) => {
-      if (event.request.method !== "POST") {
-        // Using the previously-initialized strategies will work as expected.
-        const cacheFirst = new strategies.CacheFirst();
-        event.respondWith(cacheFirst.handle({ request: event.request }));
-      }
-    });
   }
 }
+
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
+);
+
+// Dynamic cacheing
+const { strategies } = workbox;
+
+self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "POST") {
+    // Using the previously-initialized strategies will work as expected.
+    const cacheFirst = new strategies.CacheFirst();
+    event.respondWith(cacheFirst.handle({ request: event.request }));
+  }
+});
 
 // Show notification
 self.addEventListener("push", (event) => {
