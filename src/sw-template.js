@@ -4,27 +4,21 @@ if ("function" === typeof importScripts) {
     "https://storage.googleapis.com/workbox-cdn/releases/3.5.0/workbox-sw.js"
   );
 
-  self.__WB_MANIFEST;
-
   /* global workbox */
   if (workbox) {
     console.log("Workbox is loaded");
-
-    /* injection point for manifest files.  */
-    workbox.precaching.precacheAndRoute([]);
-
-    /* custom cache rules*/
-    // workbox.routing.registerNavigationRoute("/index.html", {
-    //   blacklist: [/^\/_/, /\/[^/]+\.[^/]+$/],
-    // });
-
     workbox.routing.registerRoute(
       /.*/,
       workbox.strategies.staleWhileRevalidate({
-        cacheName: "TEST",
+        cacheName: "dynamic",
       })
     );
 
+    /* custom cache rules*/
+    workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
+    workbox.routing.registerNavigationRoute("/index.html", {
+      blacklist: [/^\/_/, /\/[^/]+\.[^/]+$/],
+    });
     workbox.routing.registerRoute(
       /\.(?:png|gif|jpg|jpeg)$/,
       workbox.strategies.cacheFirst({
@@ -39,21 +33,6 @@ if ("function" === typeof importScripts) {
     );
   }
 }
-
-importScripts(
-  "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
-);
-
-// Dynamic cacheing
-const { strategies } = workbox;
-
-self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "POST") {
-    // Using the previously-initialized strategies will work as expected.
-    const cacheFirst = new strategies.CacheFirst();
-    event.respondWith(cacheFirst.handle({ request: event.request }));
-  }
-});
 
 // Show notification
 self.addEventListener("push", (event) => {
