@@ -15,7 +15,7 @@ if ("function" === typeof importScripts) {
 
     /* Dynamic cache */
     registerRoute(
-      new RegExp("https://untappd\\.akamaized\\.net/.*?/beer_logos.*"),
+      new RegExp("https://untappd\\.akamaized\\.net/.*"),
       new StaleWhileRevalidate({
         cacheName: "dynamic-images",
       })
