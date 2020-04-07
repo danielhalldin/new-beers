@@ -8,15 +8,9 @@ if ("function" === typeof importScripts) {
   if (workbox) {
     /* Dynamic cache */
     workbox.routing.registerRoute(
-      /.*/,
-      workbox.strategies.cacheFirst({
-        cacheName: "beer_logos",
-        plugins: [
-          new workbox.expiration.Plugin({
-            maxEntries: 500,
-            maxAgeSeconds: 7 * 24 * 60 * 60, // 1 week
-          }),
-        ],
+      new RegExp("https://untappd\\.akamaized\\.net/site/beer_logos.*"),
+      workbox.strategies.staleWhileRevalidate({
+        cacheName: "BEER_LOGOS",
       })
     );
 
