@@ -8,7 +8,7 @@ if ("function" === typeof importScripts) {
   if (workbox) {
     /* Dynamic cache */
     workbox.routing.registerRoute(
-      new RegExp("https://untappd\\.akamaized\\.net/site/beer_logos.*"),
+      /.*/,
       workbox.strategies.cacheFirst({
         cacheName: "beer_logos",
         plugins: [
