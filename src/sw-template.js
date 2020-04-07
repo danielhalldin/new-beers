@@ -37,7 +37,7 @@ if ("function" === typeof importScripts) {
       })
     );
     registerRoute(
-      new RegExp(".*graphql.*"),
+      new RegExp("https://new-beers.netlify.app/graphql.*"),
       new StaleWhileRevalidate({
         cacheName: "graphql",
         plugins: [
