@@ -31,17 +31,17 @@ if ("function" === typeof importScripts) {
       })
     );
 
-
     // Dynamic cacheing
-    const {strategies} = workbox;
+    const { strategies } = workbox;
 
-    self.addEventListener('fetch', (event) => {
-      if (event.request.url.endsWith('.png')) {
+    self.addEventListener("fetch", (event) => {
+      if (event.request.url.endsWith(".png")) {
         // Using the previously-initialized strategies will work as expected.
         const cacheFirst = new strategies.CacheFirst();
-        event.respondWith(cacheFirst.handle({request: event.request}));
+        event.respondWith(cacheFirst.handle({ request: event.request }));
       }
     });
+  }
 }
 
 // Show notification
