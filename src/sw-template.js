@@ -31,21 +31,21 @@ if ("function" === typeof importScripts) {
       })
     );
     registerRoute(
-      new RegExp(".*"),
+      new RegExp(".*/graphql.*"),
       new StaleWhileRevalidate({
-        cacheName: "dynamic-other",
-      })
-    );
-    registerRoute(
-      new RegExp("https://new-beers.netlify.app/graphql.*"),
-      new StaleWhileRevalidate({
-        cacheName: "graphql",
+        cacheName: "dynamic-graphql",
         plugins: [
           new ExpirationPlugin({
             maxEntries: 500,
             maxAgeSeconds: 10 * 60, // 10 minutes
           }),
         ],
+      })
+    );
+    registerRoute(
+      new RegExp(".*"),
+      new StaleWhileRevalidate({
+        cacheName: "dynamic-other",
       })
     );
   }
