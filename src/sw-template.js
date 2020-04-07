@@ -19,7 +19,7 @@ if ("function" === typeof importScripts) {
       new StaleWhileRevalidate({
         cacheName: "dynamic-images",
         plugins: [
-          new workbox.expiration.Plugin({
+          workbox.expiration.Plugin({
             maxEntries: 60,
             maxAgeSeconds: 7 * 24 * 60 * 60, // 7 Days
           }),
