@@ -31,38 +31,31 @@ if ("function" === typeof importScripts) {
       })
     );
 
-    workbox.routing.registerRoute(
-      "https://fonts.googleapis.com/(.*)",
-      workbox.strategies.cacheFirst({
-        cacheName: "static-font",
-        cacheExpiration: {
-          maxEntries: 10,
-        },
-        cacheableResponse: { statuses: [0, 200] },
-      })
-    );
+    const { strategies } = workbox;
 
-    workbox.routing.registerRoute(
-      /\.(?:png|gif|jpg|jpeg)$/,
-      workbox.strategies.staleWhileRevalidate({
-        cacheName: "dynamic",
-        plugins: [
-          new workbox.expiration.Plugin({
-            maxEntries: 300,
-            maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-          }),
-        ],
-        cacheableResponse: { statuses: [0, 200] },
-      })
-    );
+    // Dynamic cacheing
+    self.addEventListener("fetch", (event) => {
+      if (event.request.method !== "POST") {
+        const cacheFirst = new strategies.CacheFirst({
+          cacheName: "Dynamic",
+          plugins: [
+            new workbox.expiration.Plugin({
+              maxEntries: 30,
+              maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+            }),
+          ],
+        });
+        event.respondWith(cacheFirst.handle({ request: event.request }));
+      }
+    });
   } else {
     console.log("Workbox could not be loaded. No Offline support");
   }
 }
 
 // Show notification
-self.addEventListener("push", (ev) => {
-  const data = ev.data.json();
+self.addEventListener("push", (event) => {
+  const data = event.data.json();
 
   self.registration.showNotification(data.title, {
     body: data.body,
