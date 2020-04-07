@@ -14,13 +14,13 @@ if ("function" === typeof importScripts) {
     /* Dynamic cache */
     registerRoute(
       new RegExp("https://untappd\\.akamaized\\.net/site/beer_logos.*"),
-      workbox.strategies.staleWhileRevalidate({
+      workbox.strategies.StaleWhileRevalidate({
         cacheName: "dynamic-images",
       })
     );
     registerRoute(
       new RegExp(".*"),
-      workbox.strategies.staleWhileRevalidate({
+      workbox.strategies.StaleWhileRevalidate({
         cacheName: "dynamic-other",
       })
     );
