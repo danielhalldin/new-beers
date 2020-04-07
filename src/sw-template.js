@@ -6,21 +6,23 @@ if ("function" === typeof importScripts) {
 
   /* global workbox */
   if (workbox) {
+    const { precacheAndRoute } = workbox.precaching;
     const { registerRoute } = workbox.routing;
+    const { StaleWhileRevalidate } = workbox.strategies;
 
     /* Precacheing */
-    workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
+    precacheAndRoute(self.__WB_MANIFEST);
 
     /* Dynamic cache */
     registerRoute(
       new RegExp("https://untappd\\.akamaized\\.net/site/beer_logos.*"),
-      workbox.strategies.StaleWhileRevalidate({
+      new StaleWhileRevalidate({
         cacheName: "dynamic-images",
       })
     );
     registerRoute(
       new RegExp(".*"),
-      workbox.strategies.StaleWhileRevalidate({
+      new StaleWhileRevalidate({
         cacheName: "dynamic-other",
       })
     );
