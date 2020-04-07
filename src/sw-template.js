@@ -31,26 +31,17 @@ if ("function" === typeof importScripts) {
       })
     );
 
-    const { strategies } = workbox;
 
     // Dynamic cacheing
-    self.addEventListener("fetch", (event) => {
-      if (event.request.method !== "POST") {
-        const cacheFirst = new strategies.CacheFirst({
-          cacheName: "Dynamic",
-          plugins: [
-            new workbox.expiration.Plugin({
-              maxEntries: 30,
-              maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-            }),
-          ],
-        });
-        event.respondWith(cacheFirst.handle({ request: event.request }));
+    const {strategies} = workbox;
+
+    self.addEventListener('fetch', (event) => {
+      if (event.request.url.endsWith('.png')) {
+        // Using the previously-initialized strategies will work as expected.
+        const cacheFirst = new strategies.CacheFirst();
+        event.respondWith(cacheFirst.handle({request: event.request}));
       }
     });
-  } else {
-    console.log("Workbox could not be loaded. No Offline support");
-  }
 }
 
 // Show notification
