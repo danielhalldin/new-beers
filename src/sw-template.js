@@ -1,4 +1,7 @@
 /*eslint-disable no-undef*/
+/**
+ * https://developers.google.com/web/tools/workbox/reference-docs/latest/workbox
+ */
 if ("function" === typeof importScripts) {
   importScripts(
     "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
@@ -32,6 +35,19 @@ if ("function" === typeof importScripts) {
       new StaleWhileRevalidate({
         cacheName: "dynamic-other",
       })
+    );
+    registerRoute(
+      new RegExp(".*graphql.*"),
+      new StaleWhileRevalidate({
+        cacheName: "graphql",
+        plugins: [
+          new ExpirationPlugin({
+            maxEntries: 500,
+            maxAgeSeconds: 10 * 60, // 10 minutes
+          }),
+        ],
+      }),
+      "POST"
     );
   }
 }
