@@ -8,9 +8,9 @@ if ("function" === typeof importScripts) {
   if (workbox) {
     /* Dynamic cache */
     workbox.routing.registerRoute(
-      /.*[.](png|gif|jpg|jpeg)$/,
+      /https:\/\/untappd\.akamaized\.net\/site\/beer_logos/,
       workbox.strategies.cacheFirst({
-        cacheName: "dynamic-cache",
+        cacheName: "beer_logos",
         plugins: [
           new workbox.expiration.Plugin({
             maxEntries: 500,
