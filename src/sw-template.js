@@ -1,8 +1,8 @@
 /*eslint-disable no-undef*/
-/**
- * https://developers.google.com/web/tools/workbox/reference-docs/latest/workbox
- */
 if ("function" === typeof importScripts) {
+  /**
+   * https://developers.google.com/web/tools/workbox/reference-docs/latest/workbox
+   */
   importScripts(
     "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
   );
@@ -14,38 +14,55 @@ if ("function" === typeof importScripts) {
     const { StaleWhileRevalidate } = workbox.strategies;
     const { ExpirationPlugin } = workbox.expiration;
 
+    const cacheNames = {
+      graphql: "dynamic-graphql",
+      images: "dynamic-images",
+      other: "dynamic-other",
+    };
+
+    const maxAgeSeconds = {
+      week: 7 * 24 * 60 * 60,
+      tenMinutes: 10 * 60,
+    };
+
+    const matches = {
+      images: new RegExp("https://untappd\\.akamaized\\.net/.*"),
+      graph: new RegExp(".*/graphql.*"),
+      other: new RegExp(".*"),
+    };
+
     /* Precacheing */
     precacheAndRoute(self.__WB_MANIFEST);
 
     /* Dynamic cache */
     registerRoute(
-      new RegExp("https://untappd\\.akamaized\\.net/.*"),
+      matches.images,
       new StaleWhileRevalidate({
-        cacheName: "dynamic-images",
+        cacheName: cacheNames.images,
         plugins: [
           new ExpirationPlugin({
             maxEntries: 500,
-            maxAgeSeconds: 7 * 24 * 60 * 60, // 7 Days
+            maxAgeSeconds: maxAgeSeconds.week,
           }),
         ],
       })
     );
     registerRoute(
-      new RegExp(".*/graphql.*"),
+      matches.graph,
       new StaleWhileRevalidate({
-        cacheName: "dynamic-graphql",
+        cacheName: cacheNames.graphql,
         plugins: [
           new ExpirationPlugin({
-            maxEntries: 500,
-            maxAgeSeconds: 10 * 60, // 10 minutes
+            maxEntries: 10,
+            maxAgeSeconds: maxAgeSeconds.tenMinutes,
           }),
         ],
       })
     );
     registerRoute(
-      new RegExp(".*"),
+      matches.other,
       new StaleWhileRevalidate({
-        cacheName: "dynamic-other",
+        cacheName: cacheNames.other,
       })
     );
   }
