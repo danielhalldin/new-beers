@@ -63,6 +63,12 @@ if ("function" === typeof importScripts) {
       matches.other,
       new StaleWhileRevalidate({
         cacheName: cacheNames.other,
+        plugins: [
+          new ExpirationPlugin({
+            maxEntries: 100,
+            maxAgeSeconds: maxAgeSeconds.tenMinutes,
+          }),
+        ],
       })
     );
   }

@@ -17,4 +17,6 @@ export type Beer = {
   beerLabel: string;
   ibu: string;
   description: string;
+  rotation?: number;
+  admin?: boolean;
 };
