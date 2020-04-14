@@ -51,7 +51,7 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@apollo/react-hooks": "3.1.4",
+    "@apollo/react-hooks": "3.1.5",
     "@types/jest": "25.2.1",
     "@types/js-cookie": "2.2.6",
     "@types/lodash": "4.14.149",
@@ -70,7 +70,7 @@
     "lodash": "4.17.15",
     "prettier": "2.0.3",
     "react": "16.13.1",
-    "react-apollo": "3.1.4",
+    "react-apollo": "3.1.5",
     "react-device-detect": "1.11.14",
     "react-dom": "16.13.1",
     "react-fastclick-alt": "2.0.1",
