@@ -22,6 +22,7 @@ export const colors = {
   dark: "#333",
   textLight: "#ddd",
   textDark: "#444",
+  highlight: "#ffcc00",
 };
 
 export interface Breakpoints {

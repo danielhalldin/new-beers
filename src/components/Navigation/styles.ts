@@ -24,13 +24,13 @@ const Navigation = styled.nav`
 `;
 
 const Button = styled(Link)`
-  margin: 0 20px;
+  padding: 30px;
   cursor: pointer;
   text-decoration: none;
   color: ${colors.textLight};
   font-size: 40px;
   &:hover {
-    color: ${colors.textDark};
+    color: ${colors.highlight};
   }
 `;
 
