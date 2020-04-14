@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Navigation = styled.nav`
   font-family: "Bowlby One SC", cursive;
-  text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   text-align: center;
   text-transform: capitalize;
   h2 {

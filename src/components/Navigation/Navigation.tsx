@@ -29,15 +29,32 @@ const MenuComponent = ({ path }: { path: string }) => {
     });
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <ApolloConsumer>
       {(client) => {
         preloadNeighbours(client, path);
         return (
           <Navigation>
-            <Button to={routes[previousIndex(path)].path}>{"«"}</Button>
+            <Button
+              onClick={() => scrollToTop()}
+              to={routes[previousIndex(path)].path}
+            >
+              {"«"}
+            </Button>
             <h2>{routes[currentIndex(path)].id}</h2>
-            <Button to={routes[nextIndex(path)].path}>{"»"}</Button>
+            <Button
+              onClick={() => scrollToTop()}
+              to={routes[nextIndex(path)].path}
+            >
+              {"»"}
+            </Button>
           </Navigation>
         );
       }}
