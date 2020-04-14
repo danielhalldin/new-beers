@@ -4,11 +4,12 @@ import apolloClient from "./lib/apolloClient";
 import cookies from "js-cookie";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import routes from "./lib/routes";
-import Beers from "./components/Beers";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Beers from "./components/Beers";
 import Login from "./components/Login";
+import Navigation from "./components/Navigation";
 import { Layout } from "./components/Layout.styles";
+import Footer from "components/Footer";
 
 const App = () => {
   const [untappdAccessToken, setUntappdAccessToken] = useState(
@@ -33,24 +34,44 @@ const App = () => {
   return (
     <BrowserRouter>
       <ApolloProvider client={apolloClient(untappdAccessToken)}>
-        <Layout>
-          <Header />
-          <Switch>
+        <Header />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={() => (
+              <>
+                <Layout>
+                  <Beers path="/rekommenderade" />
+                  <Footer />
+                </Layout>
+                <Navigation path="/rekommenderade" />
+              </>
+            )}
+          />
+          {routes.map((route) => (
             <Route
-              path="/"
-              exact
-              render={() => <Beers stockType="Rekommenderade" />}
+              key={route.path}
+              path={route.path}
+              render={() => (
+                <>
+                  <Layout>
+                    <Route
+                      key={route.path + "-route"}
+                      path={route.path}
+                      render={() => route.component}
+                    />
+                    <Footer key={route.path + "-footer"} />
+                  </Layout>
+                  <Navigation
+                    key={route.path + "-navigation"}
+                    path={route.path}
+                  />
+                </>
+              )}
             />
-            {routes.map(route => (
-              <Route
-                key={route.path}
-                path={route.path}
-                render={() => route.component}
-              />
-            ))}
-          </Switch>
-          <Footer />
-        </Layout>
+          ))}
+        </Switch>
       </ApolloProvider>
     </BrowserRouter>
   );

@@ -1,7 +1,12 @@
-import { createGlobalStyle } from "styled-components/macro";
+import {
+  createGlobalStyle,
+  css,
+  ThemedCssFunction,
+  DefaultTheme,
+} from "styled-components/macro";
 import oak from "../images/oak.jpg";
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   body {
     font-family: "Hind", cursive;
     line-height: 1.2;
@@ -13,10 +18,81 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const colors = {
+export const colors = {
   dark: "#333",
   textLight: "#ddd",
   textDark: "#444",
 };
 
-export { GlobalStyle, colors };
+export interface Breakpoints {
+  xl: number;
+  lg: number;
+  ml: number;
+  md: number;
+  sm: number;
+  xs: number;
+}
+
+export const breakpoints: Breakpoints = {
+  xl: 1920,
+  lg: 1280,
+  ml: 1024,
+  md: 992,
+  sm: 768,
+  xs: 0,
+};
+
+export type BreakpointKeys = keyof Breakpoints;
+
+type BreakpointArray = string[] & { [key in BreakpointKeys]: string };
+
+interface Theme {
+  breakpoints: BreakpointArray;
+}
+
+const theme: Theme = {
+  breakpoints:
+    [
+      `${breakpoints.sm}px`,
+      `${breakpoints.md}px`,
+      `${breakpoints.lg}px`,
+      `${breakpoints.lg}px`,
+    ] as BreakpointArray,
+};
+
+theme.breakpoints.sm = theme.breakpoints[0];
+theme.breakpoints.md = theme.breakpoints[1];
+theme.breakpoints.lg = theme.breakpoints[2];
+theme.breakpoints.xl = theme.breakpoints[3];
+
+export { theme };
+
+export type MediaQuery = {
+  [key in BreakpointKeys]: ThemedCssFunction<DefaultTheme>;
+};
+
+export const mqMax: MediaQuery = Object.keys(breakpoints).reduce<MediaQuery>(
+  (accumulator: MediaQuery, label: string) => {
+    const pxSizeMin = breakpoints[label as BreakpointKeys];
+    accumulator[label as BreakpointKeys] = (...args: any[]) => css`
+      @media (max-width: ${pxSizeMin - 1}px) {
+        ${css(args[0], ...args.slice(1))};
+      }
+    `;
+    return accumulator;
+  },
+  {} as MediaQuery
+);
+
+export const mqMin: MediaQuery = Object.keys(breakpoints).reduce<MediaQuery>(
+  (accumulator: MediaQuery, label: string) => {
+    const pxSizeMin = breakpoints[label as BreakpointKeys];
+    accumulator[label as BreakpointKeys] = (...args: any[]) => css`
+      @media (min-width: ${pxSizeMin}px) {
+        ${css(args[0], ...args.slice(1))};
+      }
+    `;
+    return accumulator;
+  },
+  {} as MediaQuery
+);

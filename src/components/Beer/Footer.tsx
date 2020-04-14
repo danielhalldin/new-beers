@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import { isMobile, isIOS } from "react-device-detect";
 import { colors } from "../global.styles";
 
-import systembolagetImage from "../../images/systembolaget.png";
+import systembolagetImage from "../../images/systembolaget.svg";
 import untappdImage from "../../images/untappd.png";
 
 const Price = styled.div`
@@ -96,7 +96,7 @@ interface AdminProps {
   onClick: any;
 }
 const Admin: FunctionComponent<AdminProps> = ({ onClick }) => {
-  return <AdminButton onClick={e => onClick(e)}>Admin</AdminButton>;
+  return <AdminButton onClick={(e) => onClick(e)}>Admin</AdminButton>;
 };
 
 interface FooterProps {
@@ -121,7 +121,7 @@ const Footer: FunctionComponent<FooterProps> = ({
   systembolagetArticleId,
   untappdUrl,
   untappdDeepLink,
-  toggleAdmin
+  toggleAdmin,
 }) => {
   if (back) {
     return (
@@ -130,7 +130,7 @@ const Footer: FunctionComponent<FooterProps> = ({
           <Systembolaget
             href={systembolagetUrl}
             target="_blank"
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           />
         )}
         {admin && systembolagetArticleId && <Admin onClick={toggleAdmin} />}
@@ -139,13 +139,13 @@ const Footer: FunctionComponent<FooterProps> = ({
             {isMobile && isIOS ? (
               <Untappd
                 href={untappdDeepLink}
-                onClick={e => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
               />
             ) : (
               <Untappd
                 href={untappdUrl}
                 target="_blank"
-                onClick={e => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
               />
             )}
           </>

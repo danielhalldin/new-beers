@@ -1,15 +1,16 @@
 import React, { FunctionComponent } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import Card from "../Card";
-import Navigation, { currentIndex } from "../Navigation";
+import { currentIndex } from "../Navigation";
 import { BeersContainer, Loader } from "./styles";
 import routes from "../../lib/routes";
 import _get from "lodash/get";
 
 import { Beer as BeerType } from "../../types/Beer";
 
-const Stock = ({ stockType }: { stockType: string }) => {
-  const query = routes[currentIndex(stockType)].query;
+const Stock = ({ path }: { path: string }) => {
+  const query = routes[currentIndex(path)].query;
+  const stockType = routes[currentIndex(path)].id;
   const variables =
     stockType !== "Checkins" && stockType !== "Rekommenderade"
       ? { stockType: stockType }
@@ -54,11 +55,10 @@ const Stock = ({ stockType }: { stockType: string }) => {
   );
 };
 
-const Beers: FunctionComponent<{ stockType: string }> = ({ stockType }) => {
+const Beers: FunctionComponent<{ path: string }> = ({ path }) => {
   return (
     <>
-      <Navigation stockType={stockType} />
-      <Stock stockType={stockType} />
+      <Stock path={path} />
     </>
   );
 };

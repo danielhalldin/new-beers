@@ -4,47 +4,47 @@ import Beers from "../components/Beers";
 
 const routes = [
   {
-    component: <Beers stockType="Rekommenderade" />,
+    component: <Beers path="/rekommenderade" />,
     path: "/rekommenderade",
     id: "Rekommenderade",
-    query: recommemded
+    query: recommemded,
   },
   {
-    component: <Beers stockType="Tillfälligt sortiment" />,
+    component: <Beers path="/tillfalligt-sortiment" />,
     path: "/tillfalligt-sortiment",
     id: "Tillfälligt sortiment",
-    query: decoratedLatest
+    query: decoratedLatest,
   },
   {
-    component: <Beers stockType="Lokalt & småskaligt" />,
+    component: <Beers path="/lokalt-och-smaskaligt" />,
     path: "/lokalt-och-smaskaligt",
     id: "Lokalt & småskaligt",
-    query: decoratedLatest
+    query: decoratedLatest,
   },
   {
-    component: <Beers stockType="Säsong" />,
+    component: <Beers path="/sasong" />,
     path: "/sasong",
     id: "Säsong",
-    query: decoratedLatest
+    query: decoratedLatest,
   },
   {
-    component: <Beers stockType="Fast sortiment" />,
+    component: <Beers path="/fast-sortiment" />,
     path: "/fast-sortiment",
     id: "Fast sortiment",
-    query: decoratedLatest
+    query: decoratedLatest,
   },
   {
-    component: <Beers stockType="Ordervaror" />,
+    component: <Beers path="/ordervaror" />,
     path: "/ordervaror",
     id: "Ordervaror",
-    query: decoratedLatest
+    query: decoratedLatest,
   },
   {
-    component: <Beers stockType="Checkins" />,
+    component: <Beers path="/checkins" />,
     path: "/checkins",
     id: "Checkins",
-    query: untappdUserBeers
-  }
+    query: untappdUserBeers,
+  },
 ];
 
 export default routes;

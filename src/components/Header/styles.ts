@@ -3,14 +3,12 @@ import { colors } from "../global.styles";
 import styled from "styled-components/macro";
 
 const Header = styled.header`
-  padding: 0 10px;
-  grid-area: header;
   display: grid;
   grid-template-columns: auto 1fr auto;
+  grid-column-gap: 10px;
   justify-items: center;
   align-items: center;
   font-family: "Bowlby One SC", cursive;
-  text-decoration: italic;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   color: ${colors.textLight};
   background-color: ${colors.dark};
@@ -22,6 +20,11 @@ const Header = styled.header`
     padding: 0;
     margin: 0;
   }
+  z-index: 10;
+  width: 96%;
+  padding: 0 2%;
+  position: fixed;
+  top: 0;
 `;
 
 const HeaderUserData = styled.div`

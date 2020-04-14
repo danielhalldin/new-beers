@@ -6,6 +6,8 @@ const Footer = styled.footer`
   padding: 10px;
   background-color: ${colors.dark};
   text-align: center;
+  margin-bottom: 55px;
+  height: 35px;
 `;
 
 const PbUntappd = styled.img`
