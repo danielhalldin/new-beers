@@ -130,6 +130,7 @@ const Footer: FunctionComponent<FooterProps> = ({
           <Systembolaget
             href={systembolagetUrl}
             target="_blank"
+            rel="noreferrer"
             onClick={(e) => e.stopPropagation()}
           />
         )}
@@ -145,6 +146,7 @@ const Footer: FunctionComponent<FooterProps> = ({
               <Untappd
                 href={untappdUrl}
                 target="_blank"
+                rel="noreferrer"
                 onClick={(e) => e.stopPropagation()}
               />
             )}

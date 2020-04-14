@@ -11,7 +11,7 @@ const ImageContainer = styled.div`
 `;
 
 const StyledImage = styled(Img)`
-  height: 120px;
+  max-height: 120px;
   max-width: 150px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border: 5px solid white;
