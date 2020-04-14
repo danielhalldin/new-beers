@@ -11,7 +11,7 @@ if ("function" === typeof importScripts) {
   if (workbox) {
     const { precacheAndRoute } = workbox.precaching;
     const { registerRoute } = workbox.routing;
-    const { StaleWhileRevalidate } = workbox.strategies;
+    const { StaleWhileRevalidate, CacheFirst } = workbox.strategies;
     const { ExpirationPlugin } = workbox.expiration;
 
     const cacheNames = {
@@ -37,7 +37,7 @@ if ("function" === typeof importScripts) {
     /* Dynamic cache */
     registerRoute(
       matches.images,
-      new StaleWhileRevalidate({
+      new CacheFirst({
         cacheName: cacheNames.images,
         plugins: [
           new ExpirationPlugin({
@@ -49,7 +49,7 @@ if ("function" === typeof importScripts) {
     );
     registerRoute(
       matches.graph,
-      new StaleWhileRevalidate({
+      new CacheFirst({
         cacheName: cacheNames.graphql,
         plugins: [
           new ExpirationPlugin({
