@@ -7,38 +7,26 @@ import { Header, Avatar, UserName, TotalBeers, MainLink } from "./styles";
 import spinner from "../../images/spinner.svg";
 
 const HeaderContainer: FunctionComponent<{ login?: boolean }> = ({ login }) => {
-  let _loading, _error, _data;
-  if (!login) {
-    const { loading, error, data } = useQuery(untappdUser);
-    _loading = loading;
-    _error = error;
-    _data = data;
-  }
-
   return (
     <Header>
       <MainLink href="#main">Skip to main</MainLink>
-      <Left login={login} loading={_loading} data={_data} error={_error} />
+      <Left login={login} />
       <h1>New Beers</h1>
-      <Right login={login} loading={_loading} data={_data} error={_error} />
+      <Right login={login} />
     </Header>
   );
 };
 
 interface UserProps {
-  loading: any;
-  error: any;
-  data: any;
-  login: any;
+  login?: boolean;
 }
 
-const Left: FunctionComponent<UserProps> = ({
-  loading,
-  error,
-  data,
-  login,
-}) => {
-  if (login || error) {
+const Left: FunctionComponent<UserProps> = ({ login }) => {
+  if (login) {
+    return <div />;
+  }
+  const { loading, error, data } = useQuery(untappdUser);
+  if (error) {
     return <div />;
   }
   if (loading) {
@@ -53,19 +41,19 @@ const Left: FunctionComponent<UserProps> = ({
   );
 };
 
-const Right: FunctionComponent<UserProps> = ({
-  loading,
-  error,
-  data,
-  login,
-}) => {
-  if (login || error) {
+const Right: FunctionComponent<UserProps> = ({ login }) => {
+  if (login) {
+    return <div />;
+  }
+  const { loading, error, data } = useQuery(untappdUser);
+  if (error) {
     return <div />;
   }
   if (loading) {
     return <img src={spinner} />;
   }
   const { totalBeers } = data.untappdUser;
+
   return (
     <div>
       <TotalBeers>
