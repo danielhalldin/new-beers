@@ -3,25 +3,29 @@ import { useQuery } from "@apollo/react-hooks";
 
 import { untappdUser } from "../../queries";
 
-import { Header, Avatar, UserName, TotalBeers, MainLink } from "./styles";
+import {
+  Header,
+  Avatar,
+  UserName,
+  TotalBeers,
+  MainLink,
+  Left,
+  Right,
+} from "./styles";
 import spinner from "../../images/spinner.svg";
 
 const HeaderContainer: FunctionComponent<{ login?: boolean }> = ({ login }) => {
   return (
     <Header>
       <MainLink href="#main">Skip to main</MainLink>
-      {login ? <div /> : <Left login={login} />}
+      {login ? <Left /> : <User />}
       <h1>New Beers</h1>
-      {login ? <div /> : <Right login={login} />}
+      {login ? <Right /> : <UserBeers />}
     </Header>
   );
 };
 
-interface UserProps {
-  login?: boolean;
-}
-
-const Left: FunctionComponent<UserProps> = () => {
+const User = () => {
   const { loading, error, data } = useQuery(untappdUser);
   if (error) {
     return <div />;
@@ -31,14 +35,14 @@ const Left: FunctionComponent<UserProps> = () => {
   }
   const { avatar, name } = data.untappdUser;
   return (
-    <div>
+    <Left>
       <Avatar alt={name} src={avatar} />
       <UserName>{name}</UserName>
-    </div>
+    </Left>
   );
 };
 
-const Right: FunctionComponent<UserProps> = () => {
+const UserBeers = () => {
   const { loading, error, data } = useQuery(untappdUser);
   if (error) {
     return <div />;
@@ -49,14 +53,14 @@ const Right: FunctionComponent<UserProps> = () => {
   const { totalBeers } = data.untappdUser;
 
   return (
-    <div>
+    <Right>
       <TotalBeers>
         {totalBeers}{" "}
         <span role="img" aria-label="Beer">
           🍺
         </span>
       </TotalBeers>
-    </div>
+    </Right>
   );
 };
 

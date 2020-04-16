@@ -71,4 +71,21 @@ const MainLink = styled.a`
   }
 `;
 
-export { Header, HeaderUserData, Avatar, UserName, TotalBeers, MainLink };
+const Left = styled.div`
+  justify-self: left;
+`;
+
+const Right = styled.div`
+  justify-self: left;
+`;
+
+export {
+  Header,
+  HeaderUserData,
+  Avatar,
+  UserName,
+  TotalBeers,
+  MainLink,
+  Left,
+  Right,
+};
