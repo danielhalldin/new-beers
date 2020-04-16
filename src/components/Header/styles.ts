@@ -4,7 +4,7 @@ import styled from "styled-components/macro";
 
 const Header = styled.header`
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto 1fr;
   grid-column-gap: 10px;
   justify-items: center;
   align-items: center;
@@ -76,7 +76,7 @@ const Left = styled.div`
 `;
 
 const Right = styled.div`
-  justify-self: left;
+  justify-self: right;
 `;
 
 export {
