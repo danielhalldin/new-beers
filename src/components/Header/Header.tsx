@@ -10,9 +10,9 @@ const HeaderContainer: FunctionComponent<{ login?: boolean }> = ({ login }) => {
   return (
     <Header>
       <MainLink href="#main">Skip to main</MainLink>
-      <Left login={login} />
+      {login ? <div /> : <Left login={login} />}
       <h1>New Beers</h1>
-      <Right login={login} />
+      {login ? <div /> : <Right login={login} />}
     </Header>
   );
 };
@@ -21,10 +21,7 @@ interface UserProps {
   login?: boolean;
 }
 
-const Left: FunctionComponent<UserProps> = ({ login }) => {
-  if (login) {
-    return <div />;
-  }
+const Left: FunctionComponent<UserProps> = () => {
   const { loading, error, data } = useQuery(untappdUser);
   if (error) {
     return <div />;
@@ -41,10 +38,7 @@ const Left: FunctionComponent<UserProps> = ({ login }) => {
   );
 };
 
-const Right: FunctionComponent<UserProps> = ({ login }) => {
-  if (login) {
-    return <div />;
-  }
+const Right: FunctionComponent<UserProps> = () => {
   const { loading, error, data } = useQuery(untappdUser);
   if (error) {
     return <div />;
