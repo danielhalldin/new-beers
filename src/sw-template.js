@@ -15,6 +15,8 @@ if ("function" === typeof importScripts) {
     const { ExpirationPlugin } = workbox.expiration;
     const { cacheNames } = workbox.core;
 
+    console.log({ cacheNames });
+
     const version = 2;
     const customCacheNames = {
       graphql: "dynamic-graphql-" + version,
@@ -83,6 +85,7 @@ if ("function" === typeof importScripts) {
         return Promise.all(
           keyList.map(function (key) {
             if (cachesToKeep.indexOf(key) === -1 && !key.includes("workbox")) {
+              console.log("delete: " + key);
               return caches.delete(key);
             }
           })
