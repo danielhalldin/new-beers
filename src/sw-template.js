@@ -7,7 +7,7 @@ if ("function" === typeof importScripts) {
     "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
   );
 
-  const version = "v1";
+  const version = "v5";
   const customCacheNames = {
     graphql: "new-beers-dynamic-graphql-" + version,
     images: "new-beers-dynamic-images-" + version,
@@ -16,14 +16,11 @@ if ("function" === typeof importScripts) {
 
   // Cleanup dynamic caches
   self.addEventListener("activate", function (event) {
-    var cachesToKeep = Object.values(customCacheNames);
-
     event.waitUntil(
       caches.keys().then(function (keyList) {
         return Promise.all(
           keyList.map(function (key) {
-            if (cachesToKeep.indexOf(key) === -1) {
-              console.log("delete: " + key);
+            if (!key.includes(version)) {
               return caches.delete(key);
             }
           })
