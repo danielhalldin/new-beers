@@ -7,22 +7,37 @@ if ("function" === typeof importScripts) {
     "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
   );
 
+  const version = 2;
+  const customCacheNames = {
+    graphql: "dynamic-graphql-" + version,
+    images: "dynamic-images-" + version,
+    other: "dynamic-other-" + version,
+  };
+  // Cleanup caches
+  self.addEventListener("activate", function (event) {
+    var cachesToKeep = Object.values(customCacheNames);
+
+    event.waitUntil(
+      caches.keys().then(function (keyList) {
+        return Promise.all(
+          keyList.map(function (key) {
+            if (cachesToKeep.indexOf(key) === -1 && !key.includes("workbox")) {
+              console.log("delete: " + key);
+              return caches.delete(key);
+            }
+          })
+        );
+      })
+    );
+  });
+
   /* global workbox */
   if (workbox) {
     const { precacheAndRoute } = workbox.precaching;
     const { registerRoute } = workbox.routing;
     const { StaleWhileRevalidate } = workbox.strategies;
     const { ExpirationPlugin } = workbox.expiration;
-    const { cacheNames } = workbox.core;
 
-    console.log(cacheNames);
-
-    const version = 2;
-    const customCacheNames = {
-      graphql: "dynamic-graphql-" + version,
-      images: "dynamic-images-" + version,
-      other: "dynamic-other-" + version,
-    };
     const maxAgeSeconds = {
       week: 7 * 24 * 60 * 60,
       tenMinutes: 10 * 60,
@@ -75,38 +90,7 @@ if ("function" === typeof importScripts) {
       })
     );
   }
-
-  // Cleanup caches
-  self.addEventListener("activate", function (event) {
-    var cachesToKeep = Object.values(customCacheNames);
-
-    event.waitUntil(
-      caches.keys().then(function (keyList) {
-        return Promise.all(
-          keyList.map(function (key) {
-            if (cachesToKeep.indexOf(key) === -1 && !key.includes("workbox")) {
-              console.log("delete: " + key);
-              return caches.delete(key);
-            }
-          })
-        );
-      })
-    );
-  });
 }
-
-// Show notification
-self.addEventListener("push", (event) => {
-  const data = event.data.json();
-
-  self.registration.showNotification(data.title, {
-    body: data.body,
-    icon: data.icon,
-    requireInteraction: true,
-    data: data.data,
-    tag: data.tag,
-  });
-});
 
 // Handle notification click
 self.onnotificationclick = function (event) {
