@@ -7,13 +7,14 @@ if ("function" === typeof importScripts) {
     "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
   );
 
-  const version = 3;
+  const version = "v1";
   const customCacheNames = {
     graphql: "dynamic-graphql-" + version,
     images: "dynamic-images-" + version,
     other: "dynamic-other-" + version,
   };
-  // Cleanup caches
+
+  // Cleanup dynamic caches
   self.addEventListener("activate", function (event) {
     var cachesToKeep = Object.values(customCacheNames);
 
@@ -37,6 +38,15 @@ if ("function" === typeof importScripts) {
     const { registerRoute } = workbox.routing;
     const { StaleWhileRevalidate } = workbox.strategies;
     const { ExpirationPlugin } = workbox.expiration;
+    const { setCacheNameDetails } = workbox.core;
+
+    setCacheNameDetails({
+      prefix: "new-beers",
+      suffix: version,
+      precache: "precache",
+      runtime: "runtime",
+      googleAnalytics: "googleAnalytics",
+    });
 
     const maxAgeSeconds = {
       week: 7 * 24 * 60 * 60,
