@@ -15,7 +15,7 @@ if ("function" === typeof importScripts) {
     const { ExpirationPlugin } = workbox.expiration;
     const { cacheNames } = workbox.core;
 
-    console.log({ cacheNames });
+    console.log(cacheNames);
 
     const version = 2;
     const customCacheNames = {
