@@ -28,10 +28,14 @@ const HeaderContainer: FunctionComponent<{ login?: boolean }> = ({ login }) => {
 const User = () => {
   const { loading, error, data } = useQuery(untappdUser);
   if (error) {
-    return <div />;
+    return <Left />;
   }
   if (loading) {
-    return <img src={spinner} />;
+    return (
+      <Left>
+        <img src={spinner} />
+      </Left>
+    );
   }
   const { avatar, name } = data.untappdUser;
   return (
@@ -45,10 +49,14 @@ const User = () => {
 const UserBeers = () => {
   const { loading, error, data } = useQuery(untappdUser);
   if (error) {
-    return <div />;
+    return <Right />;
   }
   if (loading) {
-    return <img src={spinner} />;
+    return (
+      <Right>
+        <img src={spinner} />
+      </Right>
+    );
   }
   const { totalBeers } = data.untappdUser;
 
