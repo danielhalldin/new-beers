@@ -13,14 +13,14 @@ if ("function" === typeof importScripts) {
     const { registerRoute } = workbox.routing;
     const { StaleWhileRevalidate } = workbox.strategies;
     const { ExpirationPlugin } = workbox.expiration;
+    const { cacheNames } = workbox.core;
 
     const version = 2;
-    const cacheNames = {
+    const customCacheNames = {
       graphql: "dynamic-graphql-" + version,
       images: "dynamic-images-" + version,
       other: "dynamic-other-" + version,
     };
-
     const maxAgeSeconds = {
       week: 7 * 24 * 60 * 60,
       tenMinutes: 10 * 60,
@@ -39,7 +39,7 @@ if ("function" === typeof importScripts) {
     registerRoute(
       matches.images,
       new StaleWhileRevalidate({
-        cacheName: cacheNames.images,
+        cacheName: customCacheNames.images,
         plugins: [
           new ExpirationPlugin({
             maxEntries: 500,
@@ -51,7 +51,7 @@ if ("function" === typeof importScripts) {
     registerRoute(
       matches.graph,
       new StaleWhileRevalidate({
-        cacheName: cacheNames.graphql,
+        cacheName: customCacheNames.graphql,
         plugins: [
           new ExpirationPlugin({
             maxEntries: 10,
@@ -63,7 +63,7 @@ if ("function" === typeof importScripts) {
     registerRoute(
       matches.other,
       new StaleWhileRevalidate({
-        cacheName: cacheNames.other,
+        cacheName: customCacheNames.other,
         plugins: [
           new ExpirationPlugin({
             maxEntries: 100,
@@ -73,6 +73,23 @@ if ("function" === typeof importScripts) {
       })
     );
   }
+
+  // Cleanup caches
+  self.addEventListener("activate", function (event) {
+    var cachesToKeep = Object.values(customCacheNames);
+
+    event.waitUntil(
+      caches.keys().then(function (keyList) {
+        return Promise.all(
+          keyList.map(function (key) {
+            if (cachesToKeep.indexOf(key) === -1 && !key.includes("workbox")) {
+              return caches.delete(key);
+            }
+          })
+        );
+      })
+    );
+  });
 }
 
 // Show notification
