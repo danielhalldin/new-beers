@@ -24,6 +24,7 @@ const urlBase64ToUint8Array = (base64String: string) => {
 
   return outputArray;
 };
+
 const isLocalhost = Boolean(
   window.location.hostname === "localhost" ||
     // [::1] is the IPv6 localhost address.

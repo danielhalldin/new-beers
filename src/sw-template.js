@@ -14,10 +14,11 @@ if ("function" === typeof importScripts) {
     const { StaleWhileRevalidate } = workbox.strategies;
     const { ExpirationPlugin } = workbox.expiration;
 
+    const version = 1;
     const cacheNames = {
-      graphql: "dynamic-graphql",
-      images: "dynamic-images",
-      other: "dynamic-other",
+      graphql: "dynamic-graphql-" + version,
+      images: "dynamic-images-" + version,
+      other: "dynamic-other-" + version,
     };
 
     const maxAgeSeconds = {
