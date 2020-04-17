@@ -14,7 +14,7 @@ if ("function" === typeof importScripts) {
     const { StaleWhileRevalidate } = workbox.strategies;
     const { ExpirationPlugin } = workbox.expiration;
 
-    const version = 1;
+    const version = 2;
     const cacheNames = {
       graphql: "dynamic-graphql-" + version,
       images: "dynamic-images-" + version,
