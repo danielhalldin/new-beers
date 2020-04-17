@@ -33,7 +33,7 @@ const User = () => {
   if (loading) {
     return (
       <Left>
-        <img src={spinner} />
+        <img alt="loader" src={spinner} />
       </Left>
     );
   }
@@ -54,7 +54,7 @@ const UserBeers = () => {
   if (loading) {
     return (
       <Right>
-        <img src={spinner} />
+        <img alt="loader" src={spinner} />
       </Right>
     );
   }
