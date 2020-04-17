@@ -9,9 +9,9 @@ if ("function" === typeof importScripts) {
 
   const version = "v1";
   const customCacheNames = {
-    graphql: "dynamic-graphql-" + version,
-    images: "dynamic-images-" + version,
-    other: "dynamic-other-" + version,
+    graphql: "new-beers-dynamic-graphql-" + version,
+    images: "new-beers-dynamic-images-" + version,
+    other: "new-beers-dynamic-other-" + version,
   };
 
   // Cleanup dynamic caches
@@ -22,7 +22,7 @@ if ("function" === typeof importScripts) {
       caches.keys().then(function (keyList) {
         return Promise.all(
           keyList.map(function (key) {
-            if (cachesToKeep.indexOf(key) === -1 && !key.includes("workbox")) {
+            if (cachesToKeep.indexOf(key) === -1) {
               console.log("delete: " + key);
               return caches.delete(key);
             }
