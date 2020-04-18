@@ -7,7 +7,7 @@ if ("function" === typeof importScripts) {
     "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
   );
 
-  const version = "v5";
+  const version = "__VERSION";
   const customCacheNames = {
     graphql: "new-beers-dynamic-graphql-" + version,
     images: "new-beers-dynamic-images-" + version,
