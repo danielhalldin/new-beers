@@ -29,6 +29,44 @@ if ("function" === typeof importScripts) {
     );
   });
 
+  // Show notification
+  self.addEventListener("push", (event) => {
+    const data = event.data.json();
+
+    self.registration.showNotification(data.title, {
+      body: data.body,
+      icon: data.icon,
+      requireInteraction: true,
+      data: data.data,
+      tag: data.tag,
+    });
+  });
+
+  // Handle notification click
+  self.onnotificationclick = function (event) {
+    event.notification.close();
+    const path = event.notification.data.path;
+
+    event.waitUntil(
+      clients
+        .matchAll({
+          type: "window",
+        })
+        .then(function (clientList) {
+          for (var i = 0; i < clientList.length; i++) {
+            var client = clientList[i];
+            if (
+              client.url == "https://new-beers.netlify.app" + path &&
+              "focus" in client
+            )
+              return client.focus();
+          }
+          if (clients.openWindow)
+            return clients.openWindow("https://new-beers.netlify.app" + path);
+        })
+    );
+  };
+
   /* global workbox */
   if (workbox) {
     const { precacheAndRoute } = workbox.precaching;
@@ -98,28 +136,3 @@ if ("function" === typeof importScripts) {
     );
   }
 }
-
-// Handle notification click
-self.onnotificationclick = function (event) {
-  event.notification.close();
-  const path = event.notification.data.path;
-
-  event.waitUntil(
-    clients
-      .matchAll({
-        type: "window",
-      })
-      .then(function (clientList) {
-        for (var i = 0; i < clientList.length; i++) {
-          var client = clientList[i];
-          if (
-            client.url == "https://new-beers.netlify.app" + path &&
-            "focus" in client
-          )
-            return client.focus();
-        }
-        if (clients.openWindow)
-          return clients.openWindow("https://new-beers.netlify.app" + path);
-      })
-  );
-};
