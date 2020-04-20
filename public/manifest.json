@@ -1,6 +1,6 @@
 {
-  "name": "New beers at Systembolaget 🍺",
-  "short_name": "NEW BEERS 🍺",
+  "name": "New beers 🍺",
+  "short_name": "New beers 🍺",
   "start_url": "/",
   "display": "fullscreen",
   "background_color": "#333333",
