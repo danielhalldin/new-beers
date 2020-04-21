@@ -43,6 +43,7 @@ const MenuComponent = ({ path }: { path: string }) => {
         return (
           <Navigation>
             <Button
+              className="left"
               onClick={() => scrollToTop()}
               to={routes[previousIndex(path)].path}
             >
@@ -50,6 +51,7 @@ const MenuComponent = ({ path }: { path: string }) => {
             </Button>
             <h2>{routes[currentIndex(path)].id}</h2>
             <Button
+              className="right"
               onClick={() => scrollToTop()}
               to={routes[nextIndex(path)].path}
             >
