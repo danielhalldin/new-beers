@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import apolloClient from "./lib/apolloClient";
 import cookies from "js-cookie";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import routes from "./lib/routes";
 import Header from "./components/Header";
-import Beers from "./components/Beers";
 import Login from "./components/Login";
 import Navigation from "./components/Navigation";
 import { Layout } from "./components/Layout.styles";
@@ -39,15 +38,7 @@ const App = () => {
           <Route
             path="/"
             exact
-            render={() => (
-              <>
-                <Layout>
-                  <Beers path="/rekommenderade" />
-                  <Footer />
-                </Layout>
-                <Navigation path="/rekommenderade" />
-              </>
-            )}
+            render={() => <Redirect to="/rekommenderade" />}
           />
           {routes.map((route) => (
             <Route
