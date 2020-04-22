@@ -33,6 +33,21 @@ if ("function" === typeof importScripts) {
   self.addEventListener("push", (event) => {
     const data = event.data.json();
 
+    const flushString = encodeURIComponent(
+      data.body.replace("[", "").replace("]", "")
+    );
+    event.waitUntil(
+      caches.open(customCacheNames.graphql).then(function (cache) {
+        cache.keys().then(function (keys) {
+          keys.map(function (key) {
+            if (key.url.includes(flushString)) {
+              return cache.delete(key);
+            }
+          });
+        });
+      })
+    );
+
     self.registration.showNotification(data.title, {
       body: data.body,
       icon: data.icon,
