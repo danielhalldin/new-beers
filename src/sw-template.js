@@ -14,6 +14,10 @@ if ("function" === typeof importScripts) {
     other: "new-beers-dynamic-other-" + version,
   };
 
+  self.addEventListener("install", function () {
+    self.skipWaiting();
+  });
+
   // Cleanup old caches
   self.addEventListener("activate", function (event) {
     event.waitUntil(
