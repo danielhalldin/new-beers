@@ -14,7 +14,7 @@ if ("function" === typeof importScripts) {
     other: "new-beers-dynamic-other-" + version,
   };
 
-  // Cleanup dynamic caches
+  // Cleanup old caches
   self.addEventListener("activate", function (event) {
     event.waitUntil(
       caches.keys().then(function (keyList) {
