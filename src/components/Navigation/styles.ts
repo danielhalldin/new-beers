@@ -16,7 +16,7 @@ export const Navigation = styled.nav`
   bottom: 0;
   color: ${colors.textLight};
   background-color: ${colors.dark};
-  padding: 10px 0;
+  padding: 15px 0;
   box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.5);
 `;
 
@@ -44,11 +44,11 @@ export const Button = styled(Link)`
 `;
 
 export const Icon = styled.img`
-  font-size: 11px;
   width: 30px;
+  margin-bottom: 5px;
 `;
 
 export const IconText = styled.div`
   display: block;
-  font-size: 11px;
+  font-size: 13px;
 `;
