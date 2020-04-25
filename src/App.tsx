@@ -54,10 +54,7 @@ const App = () => {
                     />
                     <Footer key={route.path + "-footer"} />
                   </Layout>
-                  <Navigation
-                    key={route.path + "-navigation"}
-                    path={route.path}
-                  />
+                  <Navigation key={route.path + "-navigation"} />
                 </>
               )}
             />

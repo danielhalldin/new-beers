@@ -1,34 +1,8 @@
 import React from "react";
-import { ApolloConsumer } from "react-apollo";
 import routes from "../../lib/routes";
-import { Navigation, Button } from "./styles";
+import { Navigation, Button, Icon, IconText } from "./styles";
 
-export const currentIndex = (path: string) => {
-  return routes.findIndex((route) => route.path === path);
-};
-
-const MenuComponent = ({ path }: { path: string }) => {
-  const previousIndex = (path: string) => {
-    const _currentIndex = currentIndex(path);
-    return _currentIndex === 0 ? routes.length - 1 : _currentIndex - 1;
-  };
-
-  const nextIndex = (path: string) => {
-    const _currentIndex = currentIndex(path);
-    return _currentIndex === routes.length - 1 ? 0 : _currentIndex + 1;
-  };
-
-  const preloadNeighbours = (client: any, path: string) => {
-    client.query({
-      query: routes[previousIndex(path)].query,
-      variables: { stockType: routes[previousIndex(path)].id },
-    });
-    client.query({
-      query: routes[nextIndex(path)].query,
-      variables: { stockType: routes[nextIndex(path)].id },
-    });
-  };
-
+const MenuComponent = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -36,32 +10,31 @@ const MenuComponent = ({ path }: { path: string }) => {
     });
   };
 
-  return (
-    <ApolloConsumer>
-      {(client) => {
-        preloadNeighbours(client, path);
-        return (
-          <Navigation>
-            <Button
-              className="left"
-              onClick={() => scrollToTop()}
-              to={routes[previousIndex(path)].path}
-            >
-              {"«"}
-            </Button>
-            <h2>{routes[currentIndex(path)].id}</h2>
-            <Button
-              className="right"
-              onClick={() => scrollToTop()}
-              to={routes[nextIndex(path)].path}
-            >
-              {"»"}
-            </Button>
-          </Navigation>
-        );
-      }}
-    </ApolloConsumer>
-  );
+  const navigationItems = routes
+    .filter((route) => route.menuIndex > -1)
+    .sort((a, b) => (a.menuIndex <= b.menuIndex ? 1 : 0))
+    .map((route) => {
+      let className = "";
+      if (window.location.pathname.includes(route.path)) {
+        className = "selected";
+      }
+      if (route.disabled) {
+        className = "disabled";
+      }
+      return (
+        <Button
+          onClick={() => scrollToTop()}
+          to={route.disabled ? window.location.pathname : route.path}
+          className={className}
+          key={route.id}
+        >
+          <Icon src={route.icon} alt={route.id} />
+          <IconText>{route.id}</IconText>
+        </Button>
+      );
+    });
+
+  return <Navigation>{navigationItems}</Navigation>;
 };
 
 export default MenuComponent;

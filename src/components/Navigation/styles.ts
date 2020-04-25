@@ -2,9 +2,10 @@ import styled from "styled-components/macro";
 import { colors } from "../global.styles";
 import { Link } from "react-router-dom";
 
-const Navigation = styled.nav`
+export const Navigation = styled.nav`
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  justify-content: space-around;
   font-family: "Bowlby One SC", cursive;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   text-align: center;
@@ -15,32 +16,39 @@ const Navigation = styled.nav`
   bottom: 0;
   color: ${colors.textLight};
   background-color: ${colors.dark};
-  padding-bottom: 7px;
+  padding: 10px 0;
   box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.5);
-  > h2 {
-    font-size: 26px;
-    align-self: center;
-    margin: 0;
-    padding-top: 6px;
-  }
 `;
 
-const Button = styled(Link)`
+export const Button = styled(Link)`
   cursor: pointer;
   text-decoration: none;
   color: ${colors.textLight};
-  font-size: 40px;
-  &:hover {
+  &.disabled {
+    color: #aaa;
+    img {
+      filter: invert(17%) sepia(28%) saturate(100%) hue-rotate(359deg)
+        brightness(102%) contrast(32%);
+    }
+  }
+  &.selected {
     color: ${colors.highlight};
+    img {
+      filter: invert(17%) sepia(28%) saturate(3461%) hue-rotate(359deg)
+        brightness(102%) contrast(103%);
+    }
   }
-  &.left {
-    text-align: right;
-    padding-right: 20px;
-  }
-  &.right {
-    text-align: left;
-    padding-left: 20px;
+  &:active {
+    transform: translateY(4px);
   }
 `;
 
-export { Navigation, Button };
+export const Icon = styled.img`
+  font-size: 11px;
+  width: 30px;
+`;
+
+export const IconText = styled.div`
+  display: block;
+  font-size: 11px;
+`;

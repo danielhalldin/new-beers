@@ -1,4 +1,3 @@
-import Navigation, { currentIndex } from "./Navigation";
+import Navigation from "./Navigation";
 
-export { currentIndex };
 export default Navigation;

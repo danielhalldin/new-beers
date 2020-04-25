@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { useQuery } from "@apollo/react-hooks";
+import { recommemded } from "../../queries";
 import Card from "../Card";
-import { currentIndex } from "../Navigation";
 import { BeersContainer, Loader } from "./styles";
 import routes from "../../lib/routes";
 import _get from "lodash/get";
@@ -9,12 +9,11 @@ import _get from "lodash/get";
 import { Beer as BeerType } from "../../types/Beer";
 
 const Beers: FunctionComponent<{ path: string }> = ({ path }) => {
-  const query = routes[currentIndex(path)].query;
-  const stockType = routes[currentIndex(path)].id;
+  const currentRoute = routes.find((route) => route.path === path);
+  const id = currentRoute?.id;
+  const query = currentRoute?.query || recommemded;
   const variables =
-    stockType !== "Checkins" && stockType !== "Rekommenderade"
-      ? { stockType: stockType }
-      : {};
+    id !== "Checkins" && id !== "Rekommenderade" ? { stockType: id } : {};
   const { loading, error, data } = useQuery(query, {
     variables,
   });
