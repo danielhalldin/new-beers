@@ -32,10 +32,13 @@ export const CategoriesContainer = styled.main`
 export const Category = styled(Link)`
   cursor: pointer;
   text-decoration: none;
-  color: ${colors.textDark};
+  color: black;
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
+  &:hover {
+    transform: scale(1.1);
+  }
   &:active {
-    transform: translateY(4px);
+    transform: scale(0.95) translateY(4px);
     text-shadow: 10px 10px 7px rgba(0, 0, 0, 0.5);
   }
 `;
