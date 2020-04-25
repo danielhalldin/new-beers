@@ -9,6 +9,17 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint && npm version patch"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write"
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "eslint:recommended",
@@ -84,6 +95,8 @@
   "devDependencies": {
     "babel-plugin-styled-components": "1.10.7",
     "eslint": "6.8.0",
-    "eslint-plugin-react": "7.19.0"
+    "eslint-plugin-react": "7.19.0",
+    "husky": "^4.2.5",
+    "lint-staged": "~10.0.8"
   }
 }
