@@ -54,12 +54,12 @@ const App = () => {
                     />
                     <Footer key={route.path + "-footer"} />
                   </Layout>
-                  <Navigation key={route.path + "-navigation"} />
                 </>
               )}
             />
           ))}
         </Switch>
+        <Navigation />
       </ApolloProvider>
     </BrowserRouter>
   );
