@@ -7,6 +7,7 @@
     "build": "react-scripts build && npm run build-service-worker",
     "build-service-worker": "node scripts/build_workbox && node scripts/inject_version_to_sw && node scripts/delete_default_sw",
     "test": "react-scripts test --env=jsdom",
+    "lint": "eslint src --max-warnings 0",
     "eject": "react-scripts eject"
   },
   "husky": {
