@@ -15,6 +15,7 @@ const routes = [
     icon: Checkin,
     component: <Beers path="/checkins" />,
     query: untappdUserBeers,
+    queryVariables: {},
   },
   {
     path: "/rekommenderade",
@@ -23,6 +24,7 @@ const routes = [
     icon: Rekommended,
     component: <Beers path="/rekommenderade" />,
     query: recommemded,
+    queryVariables: {},
   },
   {
     path: "/katagorier/tillfalligt-sortiment",
@@ -30,6 +32,7 @@ const routes = [
     menuIndex: -1,
     component: <Beers path="/katagorier/tillfalligt-sortiment" />,
     query: decoratedLatest,
+    queryVariables: { stockType: "Tillfälligt sortiment" },
   },
   {
     path: "/katagorier/lokalt-och-smaskaligt",
@@ -37,6 +40,7 @@ const routes = [
     menuIndex: -1,
     component: <Beers path="/katagorier/lokalt-och-smaskaligt" />,
     query: decoratedLatest,
+    queryVariables: { stockType: "Lokalt & småskaligt" },
   },
   {
     path: "/katagorier/sasong",
@@ -44,6 +48,7 @@ const routes = [
     menuIndex: -1,
     component: <Beers path="/katagorier/sasong" />,
     query: decoratedLatest,
+    queryVariables: { stockType: "Säsong" },
   },
   {
     path: "/katagorier/fast-sortiment",
@@ -51,6 +56,7 @@ const routes = [
     menuIndex: -1,
     component: <Beers path="/katagorier/fast-sortiment" />,
     query: decoratedLatest,
+    queryVariables: { stockType: "Fast sortiment" },
   },
   {
     path: "/katagorier/ordervaror",
@@ -58,6 +64,7 @@ const routes = [
     menuIndex: -1,
     component: <Beers path="/katagorier/ordervaror" />,
     query: decoratedLatest,
+    queryVariables: { stockType: "Ordervaror" },
   },
   {
     path: "/katagorier",
@@ -65,7 +72,6 @@ const routes = [
     menuIndex: 3,
     icon: Stock,
     component: <Categories />,
-    query: untappdUserBeers,
   },
   {
     path: "/sok",

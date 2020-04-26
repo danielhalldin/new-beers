@@ -10,10 +10,8 @@ import { Beer as BeerType } from "../../types/Beer";
 
 const Beers: FunctionComponent<{ path: string }> = ({ path }) => {
   const currentRoute = routes.find((route) => route.path === path);
-  const id = currentRoute?.id;
   const query = currentRoute?.query || recommemded;
-  const variables =
-    id !== "Checkins" && id !== "Rekommenderade" ? { stockType: id } : {};
+  const variables = currentRoute?.queryVariables;
   const { loading, error, data } = useQuery(query, {
     variables,
   });

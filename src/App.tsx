@@ -4,6 +4,7 @@ import apolloClient from "./lib/apolloClient";
 import cookies from "js-cookie";
 import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import routes from "./lib/routes";
+import { recommemded } from "./queries";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Navigation from "./components/Navigation";
@@ -30,9 +31,22 @@ const App = () => {
     }
   }
 
+  // Prefetch all queries
+  const client = apolloClient(untappdAccessToken);
+  routes
+    .filter((route) => !!route.query)
+    .map((route) => {
+      const query = route.query || recommemded;
+      const variables = route?.queryVariables || {};
+      return client.query({
+        query,
+        variables,
+      });
+    });
+
   return (
     <BrowserRouter>
-      <ApolloProvider client={apolloClient(untappdAccessToken)}>
+      <ApolloProvider client={client}>
         <Header />
         <Switch>
           <Route
