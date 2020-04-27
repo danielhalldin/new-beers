@@ -52,4 +52,5 @@ export const Header = styled.h2`
   margin: 90px 0 10px 0;
   display: block;
   text-align: center;
+  text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
 `;

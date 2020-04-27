@@ -13,11 +13,8 @@ const FadeInAnimation = keyframes`
 `;
 
 export const CategoriesContainer = styled.main`
-  font-family: "Bowlby One SC", cursive;
-  font-size: 40px;
   grid-area: content;
   animation: ${FadeInAnimation} 1s;
-  color: ${colors.textDark};
   display: grid;
   grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
   grid-gap: 20px;
@@ -30,9 +27,11 @@ export const CategoriesContainer = styled.main`
 `;
 
 export const Category = styled(Link)`
+  font-family: "Bowlby One SC", cursive;
+  font-size: 40px;
   cursor: pointer;
   text-decoration: none;
-  color: black;
+  color: ${colors.textDark};
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
   &:hover {
     transform: scale(1.1);
