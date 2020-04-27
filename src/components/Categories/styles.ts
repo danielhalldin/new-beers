@@ -29,9 +29,10 @@ export const CategoriesContainer = styled.main`
 export const Category = styled(Link)`
   font-family: "Bowlby One SC", cursive;
   font-size: 40px;
+  text-transform: capitalize;
   cursor: pointer;
   text-decoration: none;
-  color: ${colors.textDark};
+  color: ${colors.dark};
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
   &:hover {
     transform: scale(1.1);
