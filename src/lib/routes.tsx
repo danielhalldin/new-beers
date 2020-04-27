@@ -11,7 +11,7 @@ const routes = [
   {
     path: "/checkins",
     id: "Checkins",
-    menuIndex: 0,
+    menuIndex: -1,
     icon: Checkin,
     component: <Beers path="/checkins" />,
     query: untappdUserBeers,

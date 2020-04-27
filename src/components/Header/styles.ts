@@ -1,5 +1,5 @@
 import { colors } from "../global.styles";
-
+import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 
 const Header = styled.header`
@@ -54,8 +54,18 @@ const UserName = styled.div`
   font-size: 17px;
 `;
 
-const TotalBeers = styled.div`
+const TotalBeers = styled(Link)`
+  display: block;
+  cursor: pointer;
   font-size: 17px;
+  color: ${colors.textLight};
+  text-decoration: none;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(0.9);
+  }
 `;
 
 const MainLink = styled.a`

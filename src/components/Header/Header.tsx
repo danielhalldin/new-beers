@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from "react";
 import { useQuery } from "@apollo/react-hooks";
-
+import { ApolloConsumer } from "react-apollo";
 import { untappdUser } from "../../queries";
+import routes from "../../lib/routes";
 
 import {
   Header,
@@ -60,15 +61,36 @@ const UserBeers = () => {
   }
   const { totalBeers } = data.untappdUser;
 
+  const preload = (route: any, client: any) => {
+    if (route.query) {
+      client.query({
+        query: route.query,
+        variables: route.queryVariables,
+      });
+    }
+  };
+
   return (
-    <Right>
-      <TotalBeers>
-        {totalBeers}{" "}
-        <span role="img" aria-label="Beer">
-          🍺
-        </span>
-      </TotalBeers>
-    </Right>
+    <ApolloConsumer>
+      {(client) => (
+        <Right>
+          <TotalBeers
+            to="/checkins"
+            onMouseOver={() =>
+              preload(
+                routes.find((route) => route.id === "Checkins"),
+                client
+              )
+            }
+          >
+            {totalBeers}{" "}
+            <span role="img" aria-label="Beer">
+              🍺
+            </span>
+          </TotalBeers>
+        </Right>
+      )}
+    </ApolloConsumer>
   );
 };
 

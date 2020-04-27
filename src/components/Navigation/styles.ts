@@ -38,8 +38,11 @@ export const Button = styled(Link)`
         brightness(102%) contrast(103%);
     }
   }
+  &:hover {
+    transform: scale(1.1);
+  }
   &:active {
-    transform: translateY(4px);
+    transform: scale(0.9);
   }
 `;
 

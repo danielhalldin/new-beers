@@ -38,7 +38,7 @@ export const Category = styled(Link)`
     transform: scale(1.1);
   }
   &:active {
-    transform: scale(0.95) translateY(4px);
+    transform: scale(0.9);
     text-shadow: 10px 10px 7px rgba(0, 0, 0, 0.5);
   }
 `;
