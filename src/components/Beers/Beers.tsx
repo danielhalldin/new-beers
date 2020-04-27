@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { recommemded } from "../../queries";
 import Card from "../Card";
-import { BeersContainer, Loader } from "./styles";
+import { Header, BeersWrapper, BeersContainer, Loader } from "./styles";
 import routes from "../../lib/routes";
 import _get from "lodash/get";
 
@@ -54,7 +54,12 @@ const Beers: FunctionComponent<{ path: string }> = ({ path }) => {
     return <Card rotate={rotation} key={key} data={beer} admin={admin} />;
   });
 
-  return <BeersContainer id={"main"}>{beers}</BeersContainer>;
+  return (
+    <BeersWrapper>
+      <Header>{currentRoute?.id}</Header>
+      <BeersContainer id={"main"}>{beers}</BeersContainer>
+    </BeersWrapper>
+  );
 };
 
 export default Beers;

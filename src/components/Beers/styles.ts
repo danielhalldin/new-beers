@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components/macro";
 import { colors } from "../global.styles";
 
-const Loader = styled.div`
+export const Loader = styled.div`
   display: grid;
   align-content: center;
   justify-content: center;
@@ -18,7 +18,7 @@ const Loader = styled.div`
   }
 `;
 
-const FadeInAnimation = keyframes`  
+export const FadeInAnimation = keyframes`  
   0% {
     opacity: 0;
   }
@@ -28,7 +28,7 @@ const FadeInAnimation = keyframes`
   }
 `;
 
-const BeersContainer = styled.main`
+export const BeersContainer = styled.main`
   grid-area: content;
   animation: ${FadeInAnimation} 1s;
   color: ${colors.textDark};
@@ -38,7 +38,18 @@ const BeersContainer = styled.main`
   justify-content: space-around;
   justify-items: center;
   align-items: center;
-  margin: 70px 20px 0 20px;
+  margin: 0 20px;
 `;
 
-export { Loader, BeersContainer };
+export const BeersWrapper = styled.main`
+  grid-area: content;
+`;
+
+export const Header = styled.h2`
+  color: ${colors.textDark};
+  font-family: "Bowlby One SC", cursive;
+  font-size: 40px;
+  margin: 90px 0 10px 0;
+  display: block;
+  text-align: center;
+`;
