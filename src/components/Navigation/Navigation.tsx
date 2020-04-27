@@ -12,7 +12,16 @@ const MenuComponent = ({ location: { pathname } }: RouteComponentProps) => {
     });
   };
 
-  const NavigationComponent = (client: any) => {
+  const preload = (route: any, client: any) => {
+    if (route.query) {
+      client.query({
+        query: route.query,
+        variables: route.queryVariables,
+      });
+    }
+  };
+
+  const NavigationComponent = () => {
     const items = routes
       .filter((route) => route.menuIndex > -1)
       .sort((a, b) => (a.menuIndex <= b.menuIndex ? 1 : 0))
@@ -29,14 +38,7 @@ const MenuComponent = ({ location: { pathname } }: RouteComponentProps) => {
             {(client) => (
               <Button
                 onClick={() => scrollToTop()}
-                onMouseOver={() => {
-                  if (route.query) {
-                    client.query({
-                      query: route.query,
-                      variables: route.queryVariables,
-                    });
-                  }
-                }}
+                onMouseOver={() => preload(route, client)}
                 to={route.disabled ? pathname : route.path}
                 className={className}
               >
