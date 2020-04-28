@@ -5,11 +5,12 @@ import Card from "../Card";
 import { Header, BeersWrapper, BeersContainer, Loader } from "./styles";
 import routes from "../../lib/routes";
 import _get from "lodash/get";
+import { Route as RouteType } from "../../types/Route";
 
 import { Beer as BeerType } from "../../types/Beer";
 
 const Beers: FunctionComponent<{ path: string }> = ({ path }) => {
-  const currentRoute = routes.find((route) => route.path === path);
+  const currentRoute = routes.find((route: RouteType) => route.path === path);
   const query = currentRoute?.query || recommemded;
   const variables = currentRoute?.queryVariables;
   const { loading, error, data } = useQuery(query, {

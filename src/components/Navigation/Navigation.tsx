@@ -2,6 +2,7 @@ import React, { useState, FunctionComponent } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { ApolloConsumer } from "react-apollo";
 import routes from "../../lib/routes";
+import { Route as RouteType } from "../../types/Route";
 import {
   Navigation,
   SubNavigation,
@@ -17,7 +18,7 @@ const scrollToTop = () => {
   });
 };
 
-const preload = (route: any, client: any) => {
+const preload = (route: RouteType, client: any) => {
   if (route.query) {
     client.query({
       query: route.query,
@@ -29,9 +30,9 @@ const preload = (route: any, client: any) => {
 const MenuComponent: FunctionComponent<RouteComponentProps> = ({
   location: { pathname },
 }) => {
-  const NavigationItem = (route: any) => {
+  const NavigationItem = (route: RouteType) => {
     let className = "";
-    if (pathname.includes(route.path)) {
+    if (route.path && pathname.includes(route.path)) {
       className = "selected";
     }
     if (route.disabled) {
@@ -43,7 +44,7 @@ const MenuComponent: FunctionComponent<RouteComponentProps> = ({
           <LinkButton
             onClick={() => scrollToTop()}
             onMouseOver={() => preload(route, client)}
-            to={route.disabled ? pathname : route.path}
+            to={route.disabled ? pathname : route.path || "/"}
             className={className}
           >
             {route.icon}
@@ -54,10 +55,10 @@ const MenuComponent: FunctionComponent<RouteComponentProps> = ({
     );
   };
 
-  const PopupMenuItem = (route: any) => {
+  const PopupMenuItem = (route: RouteType) => {
     const [submenuVisible, setSubmenuVisible] = useState("initial");
     let className = "";
-    if (pathname.includes(route.path)) {
+    if (route.path && pathname.includes(route.path)) {
       className = "selected";
     }
     if (route.disabled) {

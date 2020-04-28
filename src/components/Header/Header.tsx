@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { ApolloConsumer } from "react-apollo";
 import { untappdUser } from "../../queries";
 import routes from "../../lib/routes";
+import { Route as RouteType } from "../../types/Route";
 
 import {
   Header,
@@ -16,7 +17,7 @@ import {
 } from "./styles";
 import spinner from "../../images/spinner.svg";
 
-const preload = (route: any, client: any) => {
+const preload = (route: RouteType, client: any) => {
   if (route.query) {
     client.query({
       query: route.query,
@@ -54,12 +55,10 @@ const User = () => {
         {(client) => (
           <Button
             to="/checkins"
-            onMouseOver={() =>
-              preload(
-                routes.find((route) => route.id === "Checkins"),
-                client
-              )
-            }
+            onMouseOver={() => {
+              const route = routes.find((route) => route.id === "Checkins");
+              if (route) preload(route, client);
+            }}
           >
             <Avatar alt={name} src={avatar} />
             <UserName>{name}</UserName>
@@ -90,12 +89,10 @@ const UserBeers = () => {
         {(client) => (
           <Button
             to="/checkins"
-            onMouseOver={() =>
-              preload(
-                routes.find((route) => route.id === "Checkins"),
-                client
-              )
-            }
+            onMouseOver={() => {
+              const route = routes.find((route) => route.id === "Checkins");
+              if (route) preload(route, client);
+            }}
           >
             <TotalBeers>
               {totalBeers}{" "}

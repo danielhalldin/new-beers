@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import Navigation from "./components/Navigation";
 import { Layout } from "./components/Layout.styles";
 import Footer from "components/Footer";
+import { Route as RouteType } from "./types/Route";
 
 const App = () => {
   const [untappdAccessToken, setUntappdAccessToken] = useState(
@@ -40,24 +41,26 @@ const App = () => {
             exact
             render={() => <Redirect to="/rekommenderade" />}
           />
-          {routes.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              render={() => (
-                <>
-                  <Layout>
-                    <Route
-                      key={route.path + "-route"}
-                      path={route.path}
-                      render={() => route.component}
-                    />
-                    <Footer key={route.path + "-footer"} />
-                  </Layout>
-                </>
-              )}
-            />
-          ))}
+          {routes
+            .filter((route: RouteType) => route.path !== undefined)
+            .map((route: RouteType) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                render={() => (
+                  <>
+                    <Layout>
+                      <Route
+                        key={route.path + "-route"}
+                        path={route.path}
+                        render={() => route.component}
+                      />
+                      <Footer key={route.path + "-footer"} />
+                    </Layout>
+                  </>
+                )}
+              />
+            ))}
         </Switch>
         <Navigation />
       </ApolloProvider>
