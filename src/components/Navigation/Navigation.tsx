@@ -1,24 +1,86 @@
-import React from "react";
+import React, { useState, FunctionComponent } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { ApolloConsumer } from "react-apollo";
 import routes from "../../lib/routes";
-import { Navigation, Button, IconText } from "./styles";
+import {
+  Navigation,
+  SubNavigation,
+  LinkButton,
+  Button,
+  IconText,
+} from "./styles";
 
-const MenuComponent = ({ location: { pathname } }: RouteComponentProps) => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
+const preload = (route: any, client: any) => {
+  if (route.query) {
+    client.query({
+      query: route.query,
+      variables: route.queryVariables,
     });
+  }
+};
+
+const MenuComponent: FunctionComponent<RouteComponentProps> = ({
+  location: { pathname },
+}) => {
+  const NavigationItem = (route: any) => {
+    let className = "";
+    if (pathname.includes(route.path)) {
+      className = "selected";
+    }
+    if (route.disabled) {
+      className = "disabled";
+    }
+    return (
+      <ApolloConsumer key={route.id}>
+        {(client) => (
+          <LinkButton
+            onClick={() => scrollToTop()}
+            onMouseOver={() => preload(route, client)}
+            to={route.disabled ? pathname : route.path}
+            className={className}
+          >
+            {route.icon}
+            <IconText>{route.id}</IconText>
+          </LinkButton>
+        )}
+      </ApolloConsumer>
+    );
   };
 
-  const preload = (route: any, client: any) => {
-    if (route.query) {
-      client.query({
-        query: route.query,
-        variables: route.queryVariables,
-      });
+  const PopupMenuItem = (route: any) => {
+    const [submenuVisible, setSubmenuVisible] = useState("initial");
+    let className = "";
+    if (pathname.includes(route.path)) {
+      className = "selected";
     }
+    if (route.disabled) {
+      className = "disabled";
+    }
+    return (
+      <>
+        {submenuVisible !== "initial" && (
+          <SubNavigation visible={submenuVisible}>
+            {route.component}
+          </SubNavigation>
+        )}
+        <Button
+          onClick={() => {
+            setSubmenuVisible(submenuVisible === "true" ? "false" : "true");
+          }}
+          className={className}
+        >
+          {route.icon}
+          <IconText>{route.id}</IconText>
+        </Button>
+      </>
+    );
   };
 
   const NavigationComponent = () => {
@@ -26,28 +88,11 @@ const MenuComponent = ({ location: { pathname } }: RouteComponentProps) => {
       .filter((route) => route.menuIndex > -1)
       .sort((a, b) => (a.menuIndex <= b.menuIndex ? 1 : 0))
       .map((route) => {
-        let className = "";
-        if (pathname.includes(route.path)) {
-          className = "selected";
+        if (!route.submenu) {
+          return <NavigationItem key={route.id} {...route} />;
+        } else {
+          return <PopupMenuItem key={route.id} {...route} />;
         }
-        if (route.disabled) {
-          className = "disabled";
-        }
-        return (
-          <ApolloConsumer key={route.id}>
-            {(client) => (
-              <Button
-                onClick={() => scrollToTop()}
-                onMouseOver={() => preload(route, client)}
-                to={route.disabled ? pathname : route.path}
-                className={className}
-              >
-                {route.icon}
-                <IconText>{route.id}</IconText>
-              </Button>
-            )}
-          </ApolloConsumer>
-        );
       });
 
     return <Navigation>{items}</Navigation>;

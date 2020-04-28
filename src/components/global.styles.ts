@@ -3,6 +3,7 @@ import {
   css,
   ThemedCssFunction,
   DefaultTheme,
+  keyframes,
 } from "styled-components/macro";
 import oak from "../images/oak.jpg";
 
@@ -24,6 +25,46 @@ export const colors = {
   textDark: "#444",
   highlight: "#ffcc00",
 };
+
+const slideUpAnimationKeyframes = keyframes`
+  {
+    0% {
+      transform: scaleY(0);
+      transform-origin: 0% 100%;
+      opacity: 1;
+    }
+    100% {
+      transform: scaleY(1);
+      transform-origin: 0% 100%;
+      opacity: 1;
+    }
+  }
+`;
+
+const slideDownAnimationKeyframes = keyframes`
+   {
+    0% {
+      transform: scaleY(1);
+      transform-origin: 0% 100%;
+      opacity: 1;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: 0% 100%;
+      opacity: 1;
+    }
+  }
+`;
+
+export const slideUpAnimation = css`
+  animation: ${slideUpAnimationKeyframes} 0.2s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+`;
+
+export const slideDownAnimation = css`
+  animation: ${slideDownAnimationKeyframes} 0.2s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+`;
 
 export interface Breakpoints {
   xl: number;
@@ -52,13 +93,12 @@ interface Theme {
 }
 
 const theme: Theme = {
-  breakpoints:
-    [
-      `${breakpoints.sm}px`,
-      `${breakpoints.md}px`,
-      `${breakpoints.lg}px`,
-      `${breakpoints.lg}px`,
-    ] as BreakpointArray,
+  breakpoints: [
+    `${breakpoints.sm}px`,
+    `${breakpoints.md}px`,
+    `${breakpoints.lg}px`,
+    `${breakpoints.lg}px`,
+  ] as BreakpointArray,
 };
 
 theme.breakpoints.sm = theme.breakpoints[0];

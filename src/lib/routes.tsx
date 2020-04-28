@@ -41,12 +41,12 @@ const routes = [
     queryVariables: { stockType: "Lokalt & småskaligt" },
   },
   {
-    path: "/katagorier/sasong",
-    id: "Säsong",
+    path: "/katagorier/ordervaror",
+    id: "Ordervaror",
     menuIndex: -1,
-    component: <Beers path="/katagorier/sasong" />,
+    component: <Beers path="/katagorier/ordervaror" />,
     query: decoratedLatest,
-    queryVariables: { stockType: "Säsong" },
+    queryVariables: { stockType: "Ordervaror" },
   },
   {
     path: "/katagorier/fast-sortiment",
@@ -57,12 +57,12 @@ const routes = [
     queryVariables: { stockType: "Fast sortiment" },
   },
   {
-    path: "/katagorier/ordervaror",
-    id: "Ordervaror",
+    path: "/katagorier/sasong",
+    id: "Säsong",
     menuIndex: -1,
-    component: <Beers path="/katagorier/ordervaror" />,
+    component: <Beers path="/katagorier/sasong" />,
     query: decoratedLatest,
-    queryVariables: { stockType: "Ordervaror" },
+    queryVariables: { stockType: "Säsong" },
   },
   {
     path: "/katagorier",
@@ -70,6 +70,7 @@ const routes = [
     menuIndex: 3,
     icon: <Stock />,
     component: <Categories />,
+    submenu: true,
   },
   {
     path: "/sok",

@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import { ApolloConsumer } from "react-apollo";
-import { CategoriesContainer, Category } from "./styles";
+import { Category } from "./styles";
 import routes from "../../lib/routes";
 
 const preload = (route: any, client: any) => {
@@ -12,24 +13,34 @@ const preload = (route: any, client: any) => {
   }
 };
 
-const Categories: FunctionComponent = () => {
+const CategoriesComponent: FunctionComponent<RouteComponentProps> = ({
+  location: { pathname },
+}) => {
   const categories = routes
-    .filter((route) => route.path.startsWith("/katagorier/"))
+    .filter((route) => route.path && route.path.startsWith("/katagorier/"))
     .map((route) => {
+      let className = "";
+      if (pathname.includes(route.path)) {
+        className = "selected";
+      }
       return (
-        <ApolloConsumer key={route.id}>
-          {(client) => (
-            <Category
-              to={route.path}
-              onMouseOver={() => preload(route, client)}
-            >
-              {route.id}
-            </Category>
-          )}
-        </ApolloConsumer>
+        <div key={route.id}>
+          <ApolloConsumer>
+            {(client) => (
+              <Category
+                to={route.path}
+                onMouseOver={() => preload(route, client)}
+                className={className}
+              >
+                {route.id}
+              </Category>
+            )}
+          </ApolloConsumer>
+        </div>
       );
     });
-  return <CategoriesContainer id={"main"}>{categories}</CategoriesContainer>;
+
+  return <>{categories}</>;
 };
 
-export default Categories;
+export default withRouter(CategoriesComponent);

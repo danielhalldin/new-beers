@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { colors } from "../global.styles";
+import { colors, slideDownAnimation, slideUpAnimation } from "../global.styles";
 import { Link } from "react-router-dom";
 
 export const Navigation = styled.nav`
@@ -20,7 +20,21 @@ export const Navigation = styled.nav`
   box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.5);
 `;
 
-export const Button = styled(Link)`
+export const SubNavigation = styled.div<{ visible: string }>`
+  padding: 10px 0;
+  position: fixed;
+  bottom: 84px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scaleY(0);
+  transform-origin: 0% 100%;
+  box-shadow: 0 -10px 30px 0px rgba(0, 0, 0, 0.5);
+  ${(props) => {
+    return props.visible === "true" ? slideUpAnimation : slideDownAnimation;
+  }};
+`;
+
+const _button = `
   cursor: pointer;
   text-decoration: none;
   color: ${colors.textLight};
@@ -43,6 +57,14 @@ export const Button = styled(Link)`
   &:active {
     transform: scale(0.9);
   }
+`;
+
+export const LinkButton = styled(Link)`
+  ${_button}
+`;
+
+export const Button = styled.a`
+  ${_button}
 `;
 
 export const IconText = styled.div`

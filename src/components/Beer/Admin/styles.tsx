@@ -1,52 +1,9 @@
-import styled, { css, keyframes } from "styled-components/macro";
-import { colors } from "../../global.styles";
-
-const slideUpAnimation = keyframes`
-  {
-    0% {
-      -webkit-transform: scaleY(0);
-              transform: scaleY(0);
-      -webkit-transform-origin: 0% 100%;
-              transform-origin: 0% 100%;
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: scaleY(1);
-              transform: scaleY(1);
-      -webkit-transform-origin: 0% 100%;
-              transform-origin: 0% 100%;
-      opacity: 1;
-    }
-  }
-`;
-
-const slideDownAnimation = keyframes`
-   {
-    0% {
-      -webkit-transform: scaleY(1);
-              transform: scaleY(1);
-      -webkit-transform-origin: 0% 100%;
-              transform-origin: 0% 100%;
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: scaleY(0);
-              transform: scaleY(0);
-      -webkit-transform-origin: 0% 100%;
-              transform-origin: 0% 100%;
-      opacity: 1;
-    }
-  }
-`;
-
-const slideUpAnimationRule = css`
-  animation: ${slideUpAnimation} 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-`;
-
-const slideDownAnimationRule = css`
-  animation: ${slideDownAnimation} 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    both;
-`;
+import styled from "styled-components/macro";
+import {
+  colors,
+  slideUpAnimation,
+  slideDownAnimation,
+} from "../../global.styles";
 
 const AdminWrapper = styled.div<{ showAdmin: boolean }>`
   position: absolute;
@@ -60,8 +17,8 @@ const AdminWrapper = styled.div<{ showAdmin: boolean }>`
   color: ${colors.textLight};
   overflow: hidden;
   border-radius: 10px 10px 0 0;
-  ${props => {
-    return props.showAdmin ? slideUpAnimationRule : slideDownAnimationRule;
+  ${(props) => {
+    return props.showAdmin ? slideUpAnimation : slideDownAnimation;
   }};
 `;
 
