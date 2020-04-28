@@ -1,6 +1,6 @@
 {
   "name": "new-beers",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
