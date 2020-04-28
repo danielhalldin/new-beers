@@ -42,7 +42,7 @@ const MenuComponent = ({ location: { pathname } }: RouteComponentProps) => {
                 to={route.disabled ? pathname : route.path}
                 className={className}
               >
-                <Icon src={route.icon} alt={route.id} />
+                {route.icon}
                 <IconText>{route.id}</IconText>
               </Button>
             )}

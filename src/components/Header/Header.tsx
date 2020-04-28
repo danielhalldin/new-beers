@@ -12,9 +12,18 @@ import {
   MainLink,
   Left,
   Right,
+  Button,
 } from "./styles";
 import spinner from "../../images/spinner.svg";
 
+const preload = (route: any, client: any) => {
+  if (route.query) {
+    client.query({
+      query: route.query,
+      variables: route.queryVariables,
+    });
+  }
+};
 const HeaderContainer: FunctionComponent<{ login?: boolean }> = ({ login }) => {
   return (
     <Header>
@@ -41,8 +50,22 @@ const User = () => {
   const { avatar, name } = data.untappdUser;
   return (
     <Left>
-      <Avatar alt={name} src={avatar} />
-      <UserName>{name}</UserName>
+      <ApolloConsumer>
+        {(client) => (
+          <Button
+            to="/checkins"
+            onMouseOver={() =>
+              preload(
+                routes.find((route) => route.id === "Checkins"),
+                client
+              )
+            }
+          >
+            <Avatar alt={name} src={avatar} />
+            <UserName>{name}</UserName>
+          </Button>
+        )}
+      </ApolloConsumer>
     </Left>
   );
 };
@@ -61,20 +84,11 @@ const UserBeers = () => {
   }
   const { totalBeers } = data.untappdUser;
 
-  const preload = (route: any, client: any) => {
-    if (route.query) {
-      client.query({
-        query: route.query,
-        variables: route.queryVariables,
-      });
-    }
-  };
-
   return (
-    <ApolloConsumer>
-      {(client) => (
-        <Right>
-          <TotalBeers
+    <Right>
+      <ApolloConsumer>
+        {(client) => (
+          <Button
             to="/checkins"
             onMouseOver={() =>
               preload(
@@ -83,14 +97,16 @@ const UserBeers = () => {
               )
             }
           >
-            {totalBeers}{" "}
-            <span role="img" aria-label="Beer">
-              🍺
-            </span>
-          </TotalBeers>
-        </Right>
-      )}
-    </ApolloConsumer>
+            <TotalBeers>
+              {totalBeers}{" "}
+              <span role="img" aria-label="Beer">
+                🍺
+              </span>
+            </TotalBeers>
+          </Button>
+        )}
+      </ApolloConsumer>
+    </Right>
   );
 };
 

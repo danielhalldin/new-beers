@@ -2,7 +2,7 @@ import { colors } from "../global.styles";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 
-const Header = styled.header`
+export const Header = styled.header`
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   grid-column-gap: 10px;
@@ -27,7 +27,7 @@ const Header = styled.header`
   top: 0;
 `;
 
-const HeaderUserData = styled.div`
+export const HeaderUserData = styled.div`
   font-family: Calibri, Helvetica;
   font-size: 17px;
   line-height: 18px;
@@ -38,7 +38,7 @@ const HeaderUserData = styled.div`
   font-weight: 700;
 `;
 
-const Avatar = styled.img`
+export const Avatar = styled.img`
   height: 40px;
   border-radius: 25px;
   border: 0 solid ${colors.textDark};
@@ -47,28 +47,18 @@ const Avatar = styled.img`
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 `;
 
-const UserName = styled.div`
+export const UserName = styled.div`
   transform: translate(0, -65%);
   display: inline-block;
   margin-left: 7px;
   font-size: 17px;
 `;
 
-const TotalBeers = styled(Link)`
-  display: block;
-  cursor: pointer;
+export const TotalBeers = styled.div`
   font-size: 17px;
-  color: ${colors.textLight};
-  text-decoration: none;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:active {
-    transform: scale(0.9);
-  }
 `;
 
-const MainLink = styled.a`
+export const MainLink = styled.a`
   position: absolute;
   top: -40px;
   left: 0;
@@ -81,21 +71,23 @@ const MainLink = styled.a`
   }
 `;
 
-const Left = styled.div`
+export const Left = styled.div`
   justify-self: left;
 `;
 
-const Right = styled.div`
+export const Right = styled.div`
   justify-self: right;
 `;
 
-export {
-  Header,
-  HeaderUserData,
-  Avatar,
-  UserName,
-  TotalBeers,
-  MainLink,
-  Left,
-  Right,
-};
+export const Button = styled(Link)`
+  display: block;
+  cursor: pointer;
+  color: ${colors.textLight};
+  text-decoration: none;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(0.9);
+  }
+`;

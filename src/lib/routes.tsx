@@ -2,17 +2,15 @@ import React from "react";
 import { decoratedLatest, untappdUserBeers, recommemded } from "../queries";
 import Beers from "../components/Beers";
 import Categories from "../components/Categories";
-import Search from "../images/search.svg";
-import Checkin from "../images/checkin.svg";
-import Rekommended from "../images/rekommended.svg";
-import Stock from "../images/stock.svg";
+import { ReactComponent as Rekommended } from "../images/star-fill.svg";
+import { ReactComponent as Search } from "../images/search.svg";
+import { ReactComponent as Stock } from "../images/grid-fill.svg";
 
 const routes = [
   {
     path: "/checkins",
     id: "Checkins",
     menuIndex: -1,
-    icon: Checkin,
     component: <Beers path="/checkins" />,
     query: untappdUserBeers,
     queryVariables: {},
@@ -21,7 +19,7 @@ const routes = [
     path: "/rekommenderade",
     id: "Rekommenderade",
     menuIndex: 1,
-    icon: Rekommended,
+    icon: <Rekommended />,
     component: <Beers path="/rekommenderade" />,
     query: recommemded,
     queryVariables: {},
@@ -70,14 +68,14 @@ const routes = [
     path: "/katagorier",
     id: "Kategorier",
     menuIndex: 3,
-    icon: Stock,
+    icon: <Stock />,
     component: <Categories />,
   },
   {
     path: "/sok",
     id: "Sök",
     menuIndex: 3,
-    icon: Search,
+    icon: <Search />,
     disabled: true,
   },
 ];

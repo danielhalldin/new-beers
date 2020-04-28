@@ -24,19 +24,18 @@ export const Button = styled(Link)`
   cursor: pointer;
   text-decoration: none;
   color: ${colors.textLight};
+  fill: currentColor;
+  svg {
+    fill: currentColor;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+  }
   &.disabled {
     color: #aaa;
-    img {
-      filter: invert(17%) sepia(28%) saturate(100%) hue-rotate(359deg)
-        brightness(102%) contrast(32%);
-    }
   }
   &.selected {
     color: ${colors.highlight};
-    img {
-      filter: invert(17%) sepia(28%) saturate(3461%) hue-rotate(359deg)
-        brightness(102%) contrast(103%);
-    }
   }
   &:hover {
     transform: scale(1.1);
@@ -44,11 +43,6 @@ export const Button = styled(Link)`
   &:active {
     transform: scale(0.9);
   }
-`;
-
-export const Icon = styled.img`
-  width: 30px;
-  margin-bottom: 5px;
 `;
 
 export const IconText = styled.div`
