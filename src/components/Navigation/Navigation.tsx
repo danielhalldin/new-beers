@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { ApolloConsumer } from "react-apollo";
 import routes from "../../lib/routes";
-import { Navigation, Button, Icon, IconText } from "./styles";
+import { Navigation, Button, IconText } from "./styles";
 
 const MenuComponent = ({ location: { pathname } }: RouteComponentProps) => {
   const scrollToTop = () => {
