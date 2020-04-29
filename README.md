@@ -11,7 +11,6 @@ The missing link between Untappd and Systembolaget.
 ### Technologies
 
 - Frontend
-
   - React
   - TypeScript
   - Styled components
@@ -20,7 +19,6 @@ The missing link between Untappd and Systembolaget.
     - Service worker
     - Offline
     - Web Notifications
-
 - Backend
   - Node
   - GraphQL
@@ -63,5 +61,3 @@ The missing link between Untappd and Systembolaget.
 ### Run app
 
 `> dotenv npm start`
-
----
