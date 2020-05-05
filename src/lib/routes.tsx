@@ -65,6 +65,7 @@ const routes = [
     queryVariables: { stockType: "Säsong" },
   },
   {
+    path: "/katagorier",
     id: "Kategorier",
     menuIndex: 3,
     icon: <Stock />,

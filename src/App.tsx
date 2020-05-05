@@ -42,7 +42,9 @@ const App = () => {
             render={() => <Redirect to="/rekommenderade" />}
           />
           {routes
-            .filter((route: RouteType) => route.path !== undefined)
+            .filter(
+              (route: RouteType) => route.path !== undefined && !route.submenu
+            )
             .map((route: RouteType) => (
               <Route
                 key={route.path}
