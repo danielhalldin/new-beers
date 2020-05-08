@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { ApolloConsumer } from "react-apollo";
 import { untappdUser } from "../../queries";
 import routes from "../../lib/routes";
-import { withRouter } from "react-router-dom";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Route as RouteType } from "../../types/Route";
 
 import {
@@ -27,16 +27,14 @@ const preload = (route: RouteType, client: any) => {
   }
 };
 
-const HeaderContainer: FunctionComponent<{
-  location: any;
-  login?: boolean;
-}> = ({ location, login }) => {
+const HeaderContainer = ({ login }: { login?: boolean }) => {
+  const UserBeers = withRouter(_UserBeers);
   return (
     <Header>
       <MainLink href="#main">Skip to main</MainLink>
       {login ? <Left /> : <User />}
       <h1>New Beers</h1>
-      {login ? <Right /> : <UserBeers pathName={location.pathname} />}
+      {login ? <Right /> : <UserBeers />}
     </Header>
   );
 };
@@ -74,7 +72,7 @@ const User = () => {
   );
 };
 
-const UserBeers = ({ pathName }: { pathName: string }) => {
+const _UserBeers = ({ location: { pathname } }: RouteComponentProps) => {
   const { loading, error, data } = useQuery(untappdUser);
   if (error) {
     return <Right />;
@@ -97,7 +95,7 @@ const UserBeers = ({ pathName }: { pathName: string }) => {
             return null;
           }
           let className = "";
-          if (route.path && pathName.includes(route.path)) {
+          if (route.path && pathname.includes(route.path)) {
             className = "selected";
           }
           return (
@@ -120,4 +118,4 @@ const UserBeers = ({ pathName }: { pathName: string }) => {
   );
 };
 
-export default withRouter(HeaderContainer);
+export default HeaderContainer;
