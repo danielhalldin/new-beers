@@ -26,7 +26,7 @@ export const colors = {
   highlight: "#ffcc00",
 };
 
-const slideUpAnimationKeyframes = keyframes`
+const unfoldUpKeyframes = keyframes`
   {
     0% {
       transform: scaleY(0);
@@ -41,7 +41,7 @@ const slideUpAnimationKeyframes = keyframes`
   }
 `;
 
-const slideDownAnimationKeyframes = keyframes`
+const foldDownAnimationKeyframes = keyframes`
    {
     0% {
       transform: scaleY(1);
@@ -56,14 +56,52 @@ const slideDownAnimationKeyframes = keyframes`
   }
 `;
 
-export const slideUpAnimation = css`
-  animation: ${slideUpAnimationKeyframes} 0.2s
+export const unfoldUpAnimation = css`
+  animation: ${unfoldUpKeyframes} 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+`;
+
+export const foldDownAnimation = css`
+  animation: ${foldDownAnimationKeyframes} 0.2s
     cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 `;
 
-export const slideDownAnimation = css`
-  animation: ${slideDownAnimationKeyframes} 0.2s
-    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+const foldUpKeyframes = keyframes`
+  {
+    0% {
+      transform: scaleY(0);
+      transform-origin: 100% 0%;
+      opacity: 1;
+    }
+    100% {
+      transform: scaleY(1);
+      transform-origin: 100% 0%;
+      opacity: 1;
+    }
+  }
+`;
+
+const unfoldDownKeyframes = keyframes`
+   {
+    0% {
+      transform: scaleY(1);
+      transform-origin: 100% 0%;
+      opacity: 1;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: 100% 0%;
+      opacity: 1;
+    }
+  }
+`;
+
+export const unfoldDownAnimation = css`
+  animation: ${foldUpKeyframes} 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+`;
+
+export const foldUpAnimation = css`
+  animation: ${unfoldDownKeyframes} 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
 `;
 
 export interface Breakpoints {

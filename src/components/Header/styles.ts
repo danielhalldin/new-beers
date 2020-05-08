@@ -1,4 +1,4 @@
-import { colors } from "../global.styles";
+import { colors, unfoldDownAnimation, foldUpAnimation } from "../global.styles";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 
@@ -79,7 +79,22 @@ export const Right = styled.div`
   justify-self: right;
 `;
 
-export const Button = styled(Link)`
+export const SubNavigation = styled.div<{ visible: string }>`
+  padding: 10px;
+  position: fixed;
+  top: 52px;
+  left: 0;
+  width: 1000%;
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scaleY(0);
+  transform-origin: 0% 100%;
+  box-shadow: 0 -10px 30px 0px rgba(0, 0, 0, 0.5);
+  ${(props) => {
+    return props.visible === "true" ? unfoldDownAnimation : foldUpAnimation;
+  }};
+`;
+
+const _button = `
   display: block;
   cursor: pointer;
   color: ${colors.textLight};
@@ -87,6 +102,26 @@ export const Button = styled(Link)`
   &.selected {
     color: ${colors.highlight};
   }
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(0.9);
+  }
+`;
+
+export const Button = styled.a`
+  ${_button}
+`;
+
+export const LinkButton = styled(Link)`
+  ${_button}
+`;
+
+export const SubMenuButton = styled.a`
+  display: inline-block;
+  cursor: pointer;
+  color: ${colors.textLight};
   &:hover {
     transform: scale(1.1);
   }

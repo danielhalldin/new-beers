@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { colors, slideDownAnimation, slideUpAnimation } from "../global.styles";
+import { colors, unfoldUpAnimation, foldDownAnimation } from "../global.styles";
 import { Link } from "react-router-dom";
 
 export const Navigation = styled.nav`
@@ -30,7 +30,7 @@ export const SubNavigation = styled.div<{ visible: string }>`
   transform-origin: 0% 100%;
   box-shadow: 0 -10px 30px 0px rgba(0, 0, 0, 0.5);
   ${(props) => {
-    return props.visible === "true" ? slideUpAnimation : slideDownAnimation;
+    return props.visible === "true" ? unfoldUpAnimation : foldDownAnimation;
   }};
 `;
 

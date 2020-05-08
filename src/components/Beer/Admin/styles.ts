@@ -1,8 +1,8 @@
 import styled from "styled-components/macro";
 import {
   colors,
-  slideUpAnimation,
-  slideDownAnimation,
+  unfoldUpAnimation,
+  foldDownAnimation,
 } from "../../global.styles";
 
 const AdminWrapper = styled.div<{ showAdmin: boolean }>`
@@ -18,7 +18,7 @@ const AdminWrapper = styled.div<{ showAdmin: boolean }>`
   overflow: hidden;
   border-radius: 10px 10px 0 0;
   ${(props) => {
-    return props.showAdmin ? slideUpAnimation : slideDownAnimation;
+    return props.showAdmin ? unfoldUpAnimation : foldDownAnimation;
   }};
 `;
 

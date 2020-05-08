@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { ApolloConsumer } from "react-apollo";
 import { untappdUser } from "../../queries";
 import routes from "../../lib/routes";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Route as RouteType } from "../../types/Route";
+import cookies from "js-cookie";
+import { colors } from "../global.styles";
 
 import {
   Header,
@@ -15,6 +17,9 @@ import {
   Left,
   Right,
   Button,
+  LinkButton,
+  SubNavigation,
+  SubMenuButton,
 } from "./styles";
 import spinner from "../../images/spinner.svg";
 
@@ -41,6 +46,7 @@ const HeaderContainer = ({ login }: { login?: boolean }) => {
 
 const User = () => {
   const { loading, error, data } = useQuery(untappdUser);
+  const [submenuVisible, setSubmenuVisible] = useState("initial");
   if (error) {
     return <Left />;
   }
@@ -52,22 +58,34 @@ const User = () => {
     );
   }
   const { avatar, name } = data.untappdUser;
+  let className = "";
+  if (submenuVisible === "true") {
+    className = "selected";
+  }
   return (
     <Left>
-      <ApolloConsumer>
-        {(client) => (
-          <Button
-            to="/checkins"
-            onMouseOver={() => {
-              const route = routes.find((route) => route.id === "Checkins");
-              if (route) preload(route, client);
+      {submenuVisible !== "initial" && (
+        <SubNavigation visible={submenuVisible}>
+          <SubMenuButton
+            style={{ color: colors.textLight }}
+            onClick={() => {
+              cookies.remove("untappd_access_token");
+              window.location.href = "/";
             }}
           >
-            <Avatar alt={name} src={avatar} />
-            <UserName>{name}</UserName>
-          </Button>
-        )}
-      </ApolloConsumer>
+            Logga ut
+          </SubMenuButton>
+        </SubNavigation>
+      )}
+      <Button
+        onClick={() => {
+          setSubmenuVisible(submenuVisible === "true" ? "false" : "true");
+        }}
+        className={className}
+      >
+        <Avatar alt={name} src={avatar} />
+        <UserName>{name}</UserName>
+      </Button>
     </Left>
   );
 };
@@ -99,7 +117,7 @@ const _UserBeers = ({ location: { pathname } }: RouteComponentProps) => {
             className = "selected";
           }
           return (
-            <Button
+            <LinkButton
               to="/checkins"
               onMouseOver={() => preload(route, client)}
               className={className}
@@ -110,7 +128,7 @@ const _UserBeers = ({ location: { pathname } }: RouteComponentProps) => {
                   🍺
                 </span>
               </TotalBeers>
-            </Button>
+            </LinkButton>
           );
         }}
       </ApolloConsumer>
