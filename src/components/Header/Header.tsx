@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { ApolloConsumer } from "react-apollo";
 import { untappdUser } from "../../queries";
 import routes from "../../lib/routes";
+import { withRouter } from "react-router-dom";
 import { Route as RouteType } from "../../types/Route";
 
 import {
@@ -25,13 +26,17 @@ const preload = (route: RouteType, client: any) => {
     });
   }
 };
-const HeaderContainer: FunctionComponent<{ login?: boolean }> = ({ login }) => {
+
+const HeaderContainer: FunctionComponent<{
+  location: any;
+  login?: boolean;
+}> = ({ location, login }) => {
   return (
     <Header>
       <MainLink href="#main">Skip to main</MainLink>
       {login ? <Left /> : <User />}
       <h1>New Beers</h1>
-      {login ? <Right /> : <UserBeers />}
+      {login ? <Right /> : <UserBeers pathName={location.pathname} />}
     </Header>
   );
 };
@@ -69,7 +74,7 @@ const User = () => {
   );
 };
 
-const UserBeers = () => {
+const UserBeers = ({ pathName }: { pathName: string }) => {
   const { loading, error, data } = useQuery(untappdUser);
   if (error) {
     return <Right />;
@@ -86,25 +91,33 @@ const UserBeers = () => {
   return (
     <Right>
       <ApolloConsumer>
-        {(client) => (
-          <Button
-            to="/checkins"
-            onMouseOver={() => {
-              const route = routes.find((route) => route.id === "Checkins");
-              if (route) preload(route, client);
-            }}
-          >
-            <TotalBeers>
-              {totalBeers}{" "}
-              <span role="img" aria-label="Beer">
-                🍺
-              </span>
-            </TotalBeers>
-          </Button>
-        )}
+        {(client) => {
+          const route = routes.find((route) => route.id === "Checkins");
+          if (!route?.query || !route?.queryVariables) {
+            return null;
+          }
+          let className = "";
+          if (route.path && pathName.includes(route.path)) {
+            className = "selected";
+          }
+          return (
+            <Button
+              to="/checkins"
+              onMouseOver={() => preload(route, client)}
+              className={className}
+            >
+              <TotalBeers>
+                {totalBeers}{" "}
+                <span role="img" aria-label="Beer">
+                  🍺
+                </span>
+              </TotalBeers>
+            </Button>
+          );
+        }}
       </ApolloConsumer>
     </Right>
   );
 };
 
-export default HeaderContainer;
+export default withRouter(HeaderContainer);

@@ -84,6 +84,9 @@ export const Button = styled(Link)`
   cursor: pointer;
   color: ${colors.textLight};
   text-decoration: none;
+  &.selected {
+    color: ${colors.highlight};
+  }
   &:hover {
     transform: scale(1.1);
   }
