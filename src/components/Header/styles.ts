@@ -84,7 +84,8 @@ export const SubNavigation = styled.div<{ visible: string }>`
   position: fixed;
   top: 52px;
   left: 0;
-  width: 1000%;
+  width: 100%;
+  text-align: center;
   background-color: rgba(0, 0, 0, 0.7);
   transform: scaleY(0);
   transform-origin: 0% 100%;
@@ -116,16 +117,4 @@ export const Button = styled.a`
 
 export const LinkButton = styled(Link)`
   ${_button}
-`;
-
-export const SubMenuButton = styled.a`
-  display: inline-block;
-  cursor: pointer;
-  color: ${colors.textLight};
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:active {
-    transform: scale(0.9);
-  }
 `;

@@ -19,7 +19,6 @@ import {
   Button,
   LinkButton,
   SubNavigation,
-  SubMenuButton,
 } from "./styles";
 import spinner from "../../images/spinner.svg";
 
@@ -66,15 +65,15 @@ const User = () => {
     <Left>
       {submenuVisible !== "initial" && (
         <SubNavigation visible={submenuVisible}>
-          <SubMenuButton
-            style={{ color: colors.textLight }}
+          <Button
+            style={{ fontSize: "30px" }}
             onClick={() => {
               cookies.remove("untappd_access_token");
               window.location.href = "/";
             }}
           >
             Logga ut
-          </SubMenuButton>
+          </Button>
         </SubNavigation>
       )}
       <Button
