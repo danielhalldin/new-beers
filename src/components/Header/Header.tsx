@@ -6,7 +6,6 @@ import routes from "../../lib/routes";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Route as RouteType } from "../../types/Route";
 import cookies from "js-cookie";
-import { colors } from "../global.styles";
 
 import {
   Header,
