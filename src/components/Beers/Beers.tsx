@@ -55,6 +55,11 @@ const Beers: FunctionComponent<{ path: string }> = ({ path }) => {
     return <Card rotate={rotation} key={key} data={beer} admin={admin} />;
   });
 
+  window.addEventListener("deviceorientation", function (event) {
+    console.log("deviceorientation");
+    console.log(event.alpha + " : " + event.beta + " : " + event.gamma);
+  });
+
   return (
     <BeersWrapper>
       <Header>{currentRoute?.id}</Header>
