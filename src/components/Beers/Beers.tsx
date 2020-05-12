@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { recommemded } from "../../queries";
 import Card from "../Card";
@@ -6,6 +6,7 @@ import { Header, BeersWrapper, BeersContainer, Loader } from "./styles";
 import routes from "../../lib/routes";
 import _get from "lodash/get";
 import { Route as RouteType } from "../../types/Route";
+import { useTitle } from "react-use";
 
 import { Beer as BeerType } from "../../types/Beer";
 
@@ -17,6 +18,8 @@ const Beers: FunctionComponent<{ path: string }> = ({ path }) => {
   const { loading, error, data } = useQuery(query, {
     variables,
   });
+
+  useTitle(`New beers 🍺${currentRoute?.id ? ` - ${currentRoute?.id}` : ""}`);
 
   if (loading) {
     return (
