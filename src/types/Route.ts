@@ -3,7 +3,7 @@ import { DocumentNode } from "graphql";
 export type Route = {
   path?: string;
   id: string;
-  menuIndex: number;
+  menuIndex?: number;
   component?: JSX.Element;
   query?: DocumentNode;
   queryVariables?: {

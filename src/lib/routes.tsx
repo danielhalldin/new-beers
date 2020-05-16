@@ -9,7 +9,6 @@ const routes = [
   {
     path: "/checkins",
     id: "Checkins",
-    menuIndex: -1,
     component: <Page id="Checkins" />,
   },
   {
@@ -22,37 +21,32 @@ const routes = [
   {
     path: "/katagorier/tillfalligt-sortiment",
     id: "Tillfälligt sortiment",
-    menuIndex: -1,
     component: <Page id="Tillfälligt sortiment" />,
   },
   {
     path: "/katagorier/lokalt-och-smaskaligt",
     id: "Lokalt & småskaligt",
-    menuIndex: -1,
     component: <Page id="Lokalt & småskaligt" />,
   },
   {
     path: "/katagorier/ordervaror",
     id: "Ordervaror",
-    menuIndex: -1,
     component: <Page id="Ordervaror" />,
   },
   {
     path: "/katagorier/fast-sortiment",
     id: "Fast sortiment",
-    menuIndex: -1,
     component: <Page id="Fast sortiment" />,
   },
   {
     path: "/katagorier/sasong",
     id: "Säsong",
-    menuIndex: -1,
     component: <Page id="Säsong" />,
   },
   {
     path: "/katagorier",
     id: "Kategorier",
-    menuIndex: 3,
+    menuIndex: 2,
     icon: <Stock />,
     component: <Categories />,
     submenu: true,

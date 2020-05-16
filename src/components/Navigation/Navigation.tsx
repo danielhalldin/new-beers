@@ -80,8 +80,10 @@ const MenuComponent: FunctionComponent<RouteComponentProps> = ({
 
   const NavigationComponent = () => {
     const items = routes
-      .filter((route) => route.menuIndex > -1)
-      .sort((a, b) => (a.menuIndex <= b.menuIndex ? 1 : 0))
+      .filter((route) => !!route.menuIndex)
+      .sort((a, b) => {
+        return (a.menuIndex || 0) - (b.menuIndex || 0);
+      })
       .map((route) => {
         if (!route.submenu) {
           return <NavigationItem key={route.id} {...route} />;
@@ -89,6 +91,7 @@ const MenuComponent: FunctionComponent<RouteComponentProps> = ({
           return <PopupMenuItem key={route.id} {...route} />;
         }
       });
+    console.log({ length: items.length });
 
     return <Navigation>{items}</Navigation>;
   };
