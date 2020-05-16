@@ -91,7 +91,6 @@ const MenuComponent: FunctionComponent<RouteComponentProps> = ({
           return <PopupMenuItem key={route.id} {...route} />;
         }
       });
-    console.log({ length: items.length });
 
     return <Navigation>{items}</Navigation>;
   };
