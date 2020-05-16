@@ -1,13 +1,15 @@
 import styled from "styled-components/macro";
-
+import { colors } from "components/global.styles";
 export const PageContainer = styled.main`
   grid-area: content;
 `;
 
 export const Header = styled.h2`
+  background-color: ${colors.dark};
+  color: ${colors.textLight};
   font-family: "Bowlby One SC", cursive;
-  font-size: 40px;
-  margin: 90px 0 10px 0;
+  font-size: 30px;
+  padding: 40px 0 10px 0;
   display: block;
   text-align: center;
   text-transform: capitalize;
