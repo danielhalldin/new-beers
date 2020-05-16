@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { ListContainer } from "./styles";
 import Card from "./Card";
 import { Beer as BeerType } from "types/Beer";
 
@@ -15,7 +16,7 @@ const List: FunctionComponent<{ data: [BeerType]; admin: boolean }> = ({
     return <Card rotate={rotation} key={key} data={beer} admin={admin} />;
   });
 
-  return <>{list}</>;
+  return <ListContainer id={"main"}>{list}</ListContainer>;
 };
 
 export default List;

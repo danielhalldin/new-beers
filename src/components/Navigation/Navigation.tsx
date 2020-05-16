@@ -2,6 +2,8 @@ import React, { useState, FunctionComponent } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { ApolloConsumer } from "react-apollo";
 import routes from "lib/routes";
+import queryForPage from "lib/queryForPage";
+import preloadQuery from "lib/preloadQuery";
 import { Route as RouteType } from "types/Route";
 import {
   Navigation,
@@ -18,15 +20,6 @@ const scrollToTop = () => {
   });
 };
 
-const preload = (route: RouteType, client: any) => {
-  if (route.query) {
-    client.query({
-      query: route.query,
-      variables: route.queryVariables,
-    });
-  }
-};
-
 const MenuComponent: FunctionComponent<RouteComponentProps> = ({
   location: { pathname },
 }) => {
@@ -38,12 +31,13 @@ const MenuComponent: FunctionComponent<RouteComponentProps> = ({
     if (route.disabled) {
       className = "disabled";
     }
+    const { query, variables } = queryForPage(route.id);
     return (
       <ApolloConsumer key={route.id}>
         {(client) => (
           <LinkButton
             onClick={() => scrollToTop()}
-            onMouseOver={() => preload(route, client)}
+            onMouseOver={() => preloadQuery({ query, variables, client })}
             to={route.disabled ? pathname : route.path || "/"}
             className={className}
           >

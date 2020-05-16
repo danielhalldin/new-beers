@@ -3,22 +3,14 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import { ApolloConsumer } from "react-apollo";
 import { Category } from "./styles";
 import routes from "lib/routes";
-import { Route as RouteType } from "types/Route";
+import queryForPage from "lib/queryForPage";
+import preloadQuery from "lib/preloadQuery";
 
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
     behavior: "smooth",
   });
-};
-
-const preload = (route: RouteType, client: any) => {
-  if (route.query) {
-    client.query({
-      query: route.query,
-      variables: route.queryVariables,
-    });
-  }
 };
 
 const CategoriesComponent: FunctionComponent<RouteComponentProps> = ({
@@ -31,6 +23,7 @@ const CategoriesComponent: FunctionComponent<RouteComponentProps> = ({
       if (route.path && pathname.includes(route.path)) {
         className = "selected";
       }
+      const { query, variables } = queryForPage(route.id);
       return (
         <div key={route.id}>
           <ApolloConsumer>
@@ -38,7 +31,7 @@ const CategoriesComponent: FunctionComponent<RouteComponentProps> = ({
               <Category
                 to={route.path || "/"}
                 onClick={() => scrollToTop()}
-                onMouseOver={() => preload(route, client)}
+                onMouseOver={() => preloadQuery({ query, variables, client })}
                 className={className}
               >
                 {route.id}

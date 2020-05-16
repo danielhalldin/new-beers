@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  decoratedLatest,
-  untappdUserBeers,
-  recommemded,
-  search,
-} from "queries";
 import Page from "components/Page";
-import Categories from "components/Categories";
+import Categories from "components/Navigation/Categories";
 import { ReactComponent as Rekommended } from "images/star-fill.svg";
 import { ReactComponent as SearchIcon } from "images/search.svg";
 import { ReactComponent as Stock } from "images/grid-fill.svg";
@@ -16,58 +10,44 @@ const routes = [
     path: "/checkins",
     id: "Checkins",
     menuIndex: -1,
-    component: <Page path="/checkins" />,
-    query: untappdUserBeers,
-    queryVariables: {},
+    component: <Page id="Checkins" />,
   },
   {
     path: "/rekommenderade",
     id: "Rekommenderade",
     menuIndex: 1,
     icon: <Rekommended />,
-    component: <Page path="/rekommenderade" />,
-    query: recommemded,
-    queryVariables: {},
+    component: <Page id="Rekommenderade" />,
   },
   {
     path: "/katagorier/tillfalligt-sortiment",
     id: "Tillfälligt sortiment",
     menuIndex: -1,
-    component: <Page path="/katagorier/tillfalligt-sortiment" />,
-    query: decoratedLatest,
-    queryVariables: { stockType: "Tillfälligt sortiment" },
+    component: <Page id="Tillfälligt sortiment" />,
   },
   {
     path: "/katagorier/lokalt-och-smaskaligt",
     id: "Lokalt & småskaligt",
     menuIndex: -1,
-    component: <Page path="/katagorier/lokalt-och-smaskaligt" />,
-    query: decoratedLatest,
-    queryVariables: { stockType: "Lokalt & småskaligt" },
+    component: <Page id="Lokalt & småskaligt" />,
   },
   {
     path: "/katagorier/ordervaror",
     id: "Ordervaror",
     menuIndex: -1,
-    component: <Page path="/katagorier/ordervaror" />,
-    query: decoratedLatest,
-    queryVariables: { stockType: "Ordervaror" },
+    component: <Page id="Ordervaror" />,
   },
   {
     path: "/katagorier/fast-sortiment",
     id: "Fast sortiment",
     menuIndex: -1,
-    component: <Page path="/katagorier/fast-sortiment" />,
-    query: decoratedLatest,
-    queryVariables: { stockType: "Fast sortiment" },
+    component: <Page id="Fast sortiment" />,
   },
   {
     path: "/katagorier/sasong",
     id: "Säsong",
     menuIndex: -1,
-    component: <Page path="/katagorier/sasong" />,
-    query: decoratedLatest,
-    queryVariables: { stockType: "Säsong" },
+    component: <Page id="Säsong" />,
   },
   {
     path: "/katagorier",
@@ -81,9 +61,7 @@ const routes = [
     path: "/sok",
     id: "Sök",
     menuIndex: 3,
-    component: <Page path="/sok" />,
-    query: search,
-    queryVariables: {},
+    component: <Page id="Sök" />,
     icon: <SearchIcon />,
   },
 ];

@@ -1,22 +1,19 @@
 import React, { FunctionComponent } from "react";
-import { useQuery } from "@apollo/react-hooks";
-import { recommemded } from "queries";
-import { Header, PageContainer, ListContainer, Loader } from "./styles";
-import routes from "lib/routes";
-import _get from "lodash/get";
-import { Route as RouteType } from "types/Route";
 import { useTitle } from "react-use";
-import List from "./List";
+import { useQuery } from "@apollo/react-hooks";
+import _get from "lodash/get";
 
-const Page: FunctionComponent<{ path: string }> = ({ path }) => {
-  const currentRoute = routes.find((route: RouteType) => route.path === path);
-  const query = currentRoute?.query || recommemded;
-  const variables = currentRoute?.queryVariables;
+import queryForPage from "lib/queryForPage";
+import List from "./List";
+import { Header, PageContainer, Loader } from "./styles";
+
+const Page: FunctionComponent<{ id: string }> = ({ id }) => {
+  const { query, variables } = queryForPage(id);
   const { loading, error, data } = useQuery(query, {
     variables,
   });
 
-  useTitle(`New beers 🍺${currentRoute?.id ? ` - ${currentRoute?.id}` : ""}`);
+  useTitle(`New beers 🍺${id ? ` - ${id}` : ""}`);
   if (loading) {
     return (
       <Loader>
@@ -49,10 +46,8 @@ const Page: FunctionComponent<{ path: string }> = ({ path }) => {
 
   return (
     <PageContainer>
-      <Header>{currentRoute?.id}</Header>
-      <ListContainer id={"main"}>
-        <List data={beerData} admin={admin} />
-      </ListContainer>
+      <Header>{id}</Header>
+      <List data={beerData} admin={admin} />
     </PageContainer>
   );
 };

@@ -4,8 +4,9 @@ import { ApolloConsumer } from "react-apollo";
 import { untappdUser } from "queries";
 import routes from "lib/routes";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { Route as RouteType } from "types/Route";
 import cookies from "js-cookie";
+import queryForPage from "lib/queryForPage";
+import preloadQuery from "lib/preloadQuery";
 
 import {
   Header,
@@ -20,15 +21,6 @@ import {
   SubNavigation,
 } from "./styles";
 import spinner from "images/spinner.svg";
-
-const preload = (route: RouteType, client: any) => {
-  if (route.query) {
-    client.query({
-      query: route.query,
-      variables: route.queryVariables,
-    });
-  }
-};
 
 const HeaderContainer = ({ login }: { login?: boolean }) => {
   const UserBeers = withRouter(_UserBeers);
@@ -106,18 +98,17 @@ const _UserBeers = ({ location: { pathname } }: RouteComponentProps) => {
     <Right>
       <ApolloConsumer>
         {(client) => {
-          const route = routes.find((route) => route.id === "Checkins");
-          if (!route?.query || !route?.queryVariables) {
-            return null;
-          }
+          const id = "Checkins";
+          const route = routes.find((route) => route.id === id);
+          const { query, variables } = queryForPage(id);
           let className = "";
-          if (route.path && pathname.includes(route.path)) {
+          if (route?.path && pathname.includes(route.path)) {
             className = "selected";
           }
           return (
             <LinkButton
               to="/checkins"
-              onMouseOver={() => preload(route, client)}
+              onMouseOver={() => preloadQuery({ query, variables, client })}
               className={className}
             >
               <TotalBeers>
