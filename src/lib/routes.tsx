@@ -1,17 +1,22 @@
 import React from "react";
-import { decoratedLatest, untappdUserBeers, recommemded } from "../queries";
-import Beers from "../components/Beers";
-import Categories from "../components/Categories";
-import { ReactComponent as Rekommended } from "../images/star-fill.svg";
-import { ReactComponent as Search } from "../images/search.svg";
-import { ReactComponent as Stock } from "../images/grid-fill.svg";
+import {
+  decoratedLatest,
+  untappdUserBeers,
+  recommemded,
+  search,
+} from "queries";
+import Page from "components/Page";
+import Categories from "components/Categories";
+import { ReactComponent as Rekommended } from "images/star-fill.svg";
+import { ReactComponent as SearchIcon } from "images/search.svg";
+import { ReactComponent as Stock } from "images/grid-fill.svg";
 
 const routes = [
   {
     path: "/checkins",
     id: "Checkins",
     menuIndex: -1,
-    component: <Beers path="/checkins" />,
+    component: <Page path="/checkins" />,
     query: untappdUserBeers,
     queryVariables: {},
   },
@@ -20,7 +25,7 @@ const routes = [
     id: "Rekommenderade",
     menuIndex: 1,
     icon: <Rekommended />,
-    component: <Beers path="/rekommenderade" />,
+    component: <Page path="/rekommenderade" />,
     query: recommemded,
     queryVariables: {},
   },
@@ -28,7 +33,7 @@ const routes = [
     path: "/katagorier/tillfalligt-sortiment",
     id: "Tillfälligt sortiment",
     menuIndex: -1,
-    component: <Beers path="/katagorier/tillfalligt-sortiment" />,
+    component: <Page path="/katagorier/tillfalligt-sortiment" />,
     query: decoratedLatest,
     queryVariables: { stockType: "Tillfälligt sortiment" },
   },
@@ -36,7 +41,7 @@ const routes = [
     path: "/katagorier/lokalt-och-smaskaligt",
     id: "Lokalt & småskaligt",
     menuIndex: -1,
-    component: <Beers path="/katagorier/lokalt-och-smaskaligt" />,
+    component: <Page path="/katagorier/lokalt-och-smaskaligt" />,
     query: decoratedLatest,
     queryVariables: { stockType: "Lokalt & småskaligt" },
   },
@@ -44,7 +49,7 @@ const routes = [
     path: "/katagorier/ordervaror",
     id: "Ordervaror",
     menuIndex: -1,
-    component: <Beers path="/katagorier/ordervaror" />,
+    component: <Page path="/katagorier/ordervaror" />,
     query: decoratedLatest,
     queryVariables: { stockType: "Ordervaror" },
   },
@@ -52,7 +57,7 @@ const routes = [
     path: "/katagorier/fast-sortiment",
     id: "Fast sortiment",
     menuIndex: -1,
-    component: <Beers path="/katagorier/fast-sortiment" />,
+    component: <Page path="/katagorier/fast-sortiment" />,
     query: decoratedLatest,
     queryVariables: { stockType: "Fast sortiment" },
   },
@@ -60,7 +65,7 @@ const routes = [
     path: "/katagorier/sasong",
     id: "Säsong",
     menuIndex: -1,
-    component: <Beers path="/katagorier/sasong" />,
+    component: <Page path="/katagorier/sasong" />,
     query: decoratedLatest,
     queryVariables: { stockType: "Säsong" },
   },
@@ -76,8 +81,10 @@ const routes = [
     path: "/sok",
     id: "Sök",
     menuIndex: 3,
-    icon: <Search />,
-    disabled: true,
+    component: <Page path="/sok" />,
+    query: search,
+    queryVariables: {},
+    icon: <SearchIcon />,
   },
 ];
 

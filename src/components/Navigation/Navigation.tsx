@@ -1,8 +1,8 @@
 import React, { useState, FunctionComponent } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { ApolloConsumer } from "react-apollo";
-import routes from "../../lib/routes";
-import { Route as RouteType } from "../../types/Route";
+import routes from "lib/routes";
+import { Route as RouteType } from "types/Route";
 import {
   Navigation,
   SubNavigation,

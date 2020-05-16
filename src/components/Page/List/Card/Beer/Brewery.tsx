@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 
-import { truncateText } from "../../lib/text";
+import { truncateText } from "lib/text";
 
 const StyledBrewery = styled.div<{ length: number }>`
   padding: 0 5px;
   font-weight: 500;
   font-size: 18px;
-  font-size: ${props => {
+  font-size: ${(props) => {
     if (props.length > 35) {
       return "14px";
     }

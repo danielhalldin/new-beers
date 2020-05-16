@@ -10,7 +10,7 @@ import Style from "./Style";
 import Description from "./Description";
 import Footer from "./Footer";
 
-import { Beer as BeerType } from "../../types/Beer";
+import { Beer as BeerType } from "types/Beer";
 
 import { BeerContainer, Front, Back, ContentWrapper } from "./styles";
 
@@ -39,7 +39,7 @@ const Beer: FunctionComponent<BeerProps> = ({ data, admin }) => {
     userRating,
     beerLabel,
     ibu,
-    description
+    description,
   } = data;
 
   const toggleAdmin = (e: any) => {

@@ -67,6 +67,17 @@ const recommemded = gql`
   }
 `;
 
+const search = gql`
+  query Search {
+    systembolagetSearch(searchString: "Lagunitas", size: 100) 
+      ${beerFragment}
+  
+    untappdUser {
+      admin
+    }
+  }
+`;
+
 const updateUntappdId = gql`
   mutation UpdateUntappdId($systembolagetArticleId: Int!, $untappdId: Int!) {
     updateUntappdId(
@@ -85,8 +96,9 @@ const deleteBeer = gql`
 export {
   decoratedLatest,
   recommemded,
+  search,
   untappdUser,
   untappdUserBeers,
   updateUntappdId,
-  deleteBeer
+  deleteBeer,
 };

@@ -2,8 +2,8 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 import Img from "react-image";
 
-import beerBadgeDefaultImage from "../../images/beer-animated.gif";
-import spinner from "../../images/spinner.svg";
+import beerBadgeDefaultImage from "images/beer-animated.gif";
+import spinner from "images/spinner.svg";
 
 const ImageContainer = styled.div`
   text-align: center;

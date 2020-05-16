@@ -1,5 +1,9 @@
 import styled from "styled-components/macro";
-import { colors, unfoldUpAnimation, foldDownAnimation } from "../global.styles";
+import {
+  colors,
+  unfoldUpAnimation,
+  foldDownAnimation,
+} from "components/global.styles";
 import { Link } from "react-router-dom";
 
 export const Navigation = styled.nav`

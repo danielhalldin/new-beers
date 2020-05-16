@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 
-import capImage from "../../images/cap.png";
+import capImage from "images/cap.png";
 
 const _cap = `
   background-image: url("${capImage}");

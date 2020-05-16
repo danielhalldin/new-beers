@@ -2,8 +2,8 @@ import React, { FunctionComponent } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { ApolloConsumer } from "react-apollo";
 import { Category } from "./styles";
-import routes from "../../lib/routes";
-import { Route as RouteType } from "../../types/Route";
+import routes from "lib/routes";
+import { Route as RouteType } from "types/Route";
 
 const scrollToTop = () => {
   window.scrollTo({

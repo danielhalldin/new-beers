@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
-import { colors } from "../global.styles";
-import backgroundImage from "../../images/beer-background.jpg";
+import { colors } from "components/global.styles";
+import backgroundImage from "images/beer-background.jpg";
 
 const BeerContainer = styled.div`
   height: 310px;
@@ -69,5 +69,5 @@ export {
   Back,
   Bold,
   ContentWrapper,
-  Description
+  Description,
 };

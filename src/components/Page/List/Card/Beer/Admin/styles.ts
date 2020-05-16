@@ -3,7 +3,7 @@ import {
   colors,
   unfoldUpAnimation,
   foldDownAnimation,
-} from "../../global.styles";
+} from "components/global.styles";
 
 const AdminWrapper = styled.div<{ showAdmin: boolean }>`
   position: absolute;

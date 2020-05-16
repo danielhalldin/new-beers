@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 
-import { truncateText } from "../../lib/text";
+import { truncateText } from "lib/text";
 
 const StyledName = styled.div<{ length: number }>`
   text-align: center;
@@ -11,7 +11,7 @@ const StyledName = styled.div<{ length: number }>`
   margin: auto;
   font-weight: 700;
   padding: 0 5px;
-  font-size: ${props => {
+  font-size: ${(props) => {
     if (props.length > 30) {
       return "17px";
     } else if (props.length > 25) {

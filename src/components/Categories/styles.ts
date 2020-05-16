@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
-import { colors } from "../global.styles";
+import { colors } from "components/global.styles";
 
 export const Category = styled(Link)`
   display: block;

@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
 import { isMobile, isIOS } from "react-device-detect";
-import { colors } from "../global.styles";
+import { colors } from "components/global.styles";
 
-import systembolagetImage from "../../images/systembolaget.svg";
-import untappdImage from "../../images/untappd.png";
+import systembolagetImage from "images/systembolaget.svg";
+import untappdImage from "images/untappd.png";
 
 const Price = styled.div`
   display: block;

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components/macro";
-import { colors } from "../global.styles";
+import { colors } from "components/global.styles";
 
 const StyledHeader = styled.div`
   background-color: ${colors.dark};
@@ -19,7 +19,7 @@ interface HeaderProps {
 
 const Header: FunctionComponent<HeaderProps> = ({
   checkinDate,
-  salesStartDate
+  salesStartDate,
 }) => {
   return <StyledHeader>{checkinDate || salesStartDate}</StyledHeader>;
 };

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { ApolloConsumer } from "react-apollo";
-import { untappdUser } from "../../queries";
-import routes from "../../lib/routes";
+import { untappdUser } from "queries";
+import routes from "lib/routes";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { Route as RouteType } from "../../types/Route";
+import { Route as RouteType } from "types/Route";
 import cookies from "js-cookie";
 
 import {
@@ -19,7 +19,7 @@ import {
   LinkButton,
   SubNavigation,
 } from "./styles";
-import spinner from "../../images/spinner.svg";
+import spinner from "images/spinner.svg";
 
 const preload = (route: RouteType, client: any) => {
   if (route.query) {

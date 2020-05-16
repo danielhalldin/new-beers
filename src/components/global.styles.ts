@@ -5,7 +5,7 @@ import {
   DefaultTheme,
   keyframes,
 } from "styled-components/macro";
-import oak from "../images/oak.jpg";
+import oak from "images/oak.jpg";
 
 export const GlobalStyle = createGlobalStyle`
   body {

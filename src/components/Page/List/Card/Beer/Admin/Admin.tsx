@@ -4,15 +4,15 @@ import _get from "lodash/get";
 import _set from "lodash/set";
 import {
   updateUntappdId as UPDATE_UNTAPPD_ID,
-  deleteBeer as DELETE_BEER
-} from "../../../queries";
+  deleteBeer as DELETE_BEER,
+} from "queries";
 import {
   AdminWrapper,
   Input,
   DeleteButton,
   Button,
   H2,
-  StatusWrapper
+  StatusWrapper,
 } from "./styles";
 
 interface BeerAdminProps {
@@ -22,7 +22,7 @@ interface BeerAdminProps {
 
 const BeerAdmin: FunctionComponent<BeerAdminProps> = ({
   systembolagetArticleId,
-  showAdmin
+  showAdmin,
 }) => {
   const untappdIdRef = React.useRef<HTMLDivElement>();
 
@@ -37,27 +37,31 @@ const BeerAdmin: FunctionComponent<BeerAdminProps> = ({
     {
       data: updateUntappdIdData,
       loading: updateUntappdIdLoading,
-      error: updateUntappdIdError
-    }
+      error: updateUntappdIdError,
+    },
   ] = useMutation(UPDATE_UNTAPPD_ID);
 
   const [
     deleteBeer,
-    { data: deleteBeerData, loading: deleteBeerLoading, error: deleteBeerError }
+    {
+      data: deleteBeerData,
+      loading: deleteBeerLoading,
+      error: deleteBeerError,
+    },
   ] = useMutation(DELETE_BEER);
 
   return (
-    <AdminWrapper onClick={e => e.stopPropagation()} showAdmin={showAdmin}>
+    <AdminWrapper onClick={(e) => e.stopPropagation()} showAdmin={showAdmin}>
       <>
         <form
-          onSubmit={e => {
+          onSubmit={(e) => {
             e.preventDefault();
             const refValue = _get(untappdIdRef, "current.value");
             updateUntappdId({
               variables: {
                 systembolagetArticleId: Number(systembolagetArticleId),
-                untappdId: Number(refValue)
-              }
+                untappdId: Number(refValue),
+              },
             });
             _set(untappdIdRef, "current.value", "");
           }}
@@ -67,8 +71,8 @@ const BeerAdmin: FunctionComponent<BeerAdminProps> = ({
             ref={untappdIdRef}
             placeholder="UntappdId"
             id={`set-uid-${Math.random()}`}
-            onFocus={e => (e.target.placeholder = "")}
-            onBlur={e => (e.target.placeholder = "Untappd-id")}
+            onFocus={(e) => (e.target.placeholder = "")}
+            onBlur={(e) => (e.target.placeholder = "Untappd-id")}
             pattern="[0-9]*"
           />
           <Button type="submit">Uppdatera</Button>
@@ -82,12 +86,12 @@ const BeerAdmin: FunctionComponent<BeerAdminProps> = ({
         </form>
       </>
       <form
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault();
           deleteBeer({
             variables: {
-              systembolagetArticleId: Number(systembolagetArticleId)
-            }
+              systembolagetArticleId: Number(systembolagetArticleId),
+            },
           });
         }}
       >
@@ -110,7 +114,7 @@ const Error = () => {
   return <>Misslyckades 👎🏻</>;
 };
 
-const Status: FunctionComponent<{ status: boolean }> = status => {
+const Status: FunctionComponent<{ status: boolean }> = (status) => {
   return <>{status ? "Lyckades 👍🏻" : "Misslyckades 👎🏻"}</>;
 };
 

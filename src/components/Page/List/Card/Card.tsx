@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
-import Beer from "../Beer";
+import Beer from "./Beer";
 
-import { Beer as BeerType } from "../../types/Beer";
+import { Beer as BeerType } from "types/Beer";
 
 import { FlipContainer, Flipper } from "./styles";
 

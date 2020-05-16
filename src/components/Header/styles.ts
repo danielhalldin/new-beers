@@ -1,4 +1,8 @@
-import { colors, unfoldDownAnimation, foldUpAnimation } from "../global.styles";
+import {
+  colors,
+  unfoldDownAnimation,
+  foldUpAnimation,
+} from "components/global.styles";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 

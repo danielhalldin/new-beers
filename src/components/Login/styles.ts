@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { colors } from "../global.styles";
+import { colors } from "components/global.styles";
 
 const Wrapper = styled.main`
   font-weight: 700;

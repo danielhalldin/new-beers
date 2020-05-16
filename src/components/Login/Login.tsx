@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../Header";
-import Footer from "../Footer";
-import { Layout } from "../Layout.styles";
+import Header from "components/Header";
+import Footer from "components/Footer";
+import { Layout } from "components/Layout.styles";
 import { Button, Wrapper } from "./styles";
 
 const Login = () => {
