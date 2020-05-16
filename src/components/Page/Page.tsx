@@ -1,19 +1,21 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import { useTitle } from "react-use";
 import { useQuery } from "@apollo/react-hooks";
 import _get from "lodash/get";
-
+import { useLocation } from "react-router-dom";
 import queryForPage from "lib/queryForPage";
 import List from "./List";
 import { Header, PageContainer, Loader } from "./styles";
 
-const Page: FunctionComponent<{ id: string }> = ({ id }) => {
-  const { query, variables } = queryForPage(id);
+const Page: FunctionComponent<{ name: string }> = ({ name }) => {
+  const { query, variables } = queryForPage(name);
   const { loading, error, data } = useQuery(query, {
     variables,
   });
+  const location = useLocation();
+  useEffect(() => {}, [location]);
 
-  useTitle(`New beers 🍺${id ? ` - ${id}` : ""}`);
+  useTitle(`New beers 🍺${name ? ` - ${name}` : ""}`);
   if (loading) {
     return (
       <Loader>
@@ -46,7 +48,7 @@ const Page: FunctionComponent<{ id: string }> = ({ id }) => {
 
   return (
     <PageContainer>
-      <Header>{id}</Header>
+      <Header>{name}</Header>
       <List data={beerData} admin={admin} />
     </PageContainer>
   );

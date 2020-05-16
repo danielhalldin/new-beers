@@ -68,8 +68,8 @@ const recommemded = gql`
 `;
 
 const search = gql`
-  query Search {
-    systembolagetSearch(searchString: "Lagunitas", size: 100) 
+  query Search($searchString: String!) {
+    systembolagetSearch(searchString: $searchString, size: 100) 
       ${beerFragment}
   
     untappdUser {

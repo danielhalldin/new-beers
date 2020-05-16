@@ -46,7 +46,12 @@ const getQueryForPage = (id: string) => {
       };
       break;
     case "Sök":
+      let params = new URL(document.location.toString()).searchParams;
+      let searchString = params.get("searchString");
       query = search;
+      variables = {
+        searchString,
+      };
       break;
   }
 
