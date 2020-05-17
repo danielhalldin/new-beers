@@ -56,7 +56,7 @@ const ContentWrapper = styled.div`
 `;
 
 const Description = styled.div`
-  position: absolute;
+  position: fixed;
   overflow: auto;
   padding: 0 5px;
   height: 100%;
