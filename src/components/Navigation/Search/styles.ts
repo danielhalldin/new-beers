@@ -6,12 +6,14 @@ export const SearchForm = styled.form`
   display: grid;
   justify-content: center;
   align-items: center;
+  text-align: center;
   height: 150px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 `;
 
 export const SearchInputString = styled.input`
-  min-width: 33vw;
+  box-sizing: border-box;
+  width: 100%;
   font-family: "Bowlby One SC", cursive;
   font-size: 20px;
   text-align: center;
@@ -30,8 +32,11 @@ export const SearchInputString = styled.input`
 `;
 
 export const SearchSubmit = styled.input`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   color: ${colors.textDark};
-  min-width: 33vw;
+  width: 100%;
   font-family: "Bowlby One SC", cursive;
   font-size: 20px;
   border-radius: 5px;
