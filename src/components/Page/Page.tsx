@@ -5,6 +5,7 @@ import _get from "lodash/get";
 import { useLocation } from "react-router-dom";
 import queryForPage from "lib/queryForPage";
 import List from "./List";
+import Footer from "./Footer";
 import { Header, PageContainer, Loader } from "./styles";
 
 const Page: FunctionComponent<{ name: string }> = ({ name }) => {
@@ -55,6 +56,7 @@ const Page: FunctionComponent<{ name: string }> = ({ name }) => {
     <PageContainer id={"main"}>
       <Header>{name}</Header>
       <List data={beerData} admin={admin} />
+      <Footer />
     </PageContainer>
   );
 };

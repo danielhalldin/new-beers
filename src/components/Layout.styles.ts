@@ -4,6 +4,7 @@ const Layout = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-areas:
+    "header"
     "content"
     "footer";
   grid-gap: 20px;

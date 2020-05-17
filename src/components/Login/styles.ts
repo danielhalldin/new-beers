@@ -3,18 +3,19 @@ import { colors } from "components/global.styles";
 
 const Wrapper = styled.main`
   font-weight: 700;
-  font-size: 26px;
+  font-size: 30px;
   text-align: center;
-  height: calc(100vh - 344px);
   margin: auto;
-  padding: 10vh 0;
+  padding: 30vh 0;
+  display: grid;
+  align-items: center;
 `;
 
 const Button = styled.a`
-  margin: 10vh 0;
-  display: block;
+  max-width: 30vw;
+  margin: auto;
+  padding: 10px 20px;
   font-size: 30px;
-  padding: 6px 18px;
   border-radius: 4px;
   cursor: pointer;
   color: white;

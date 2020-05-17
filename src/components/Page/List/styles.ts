@@ -22,15 +22,14 @@ export const Header = styled.h2`
 `;
 
 export const ListContainer = styled.div`
-  min-height: 100vh;
+  grid-area: "content";
+  display: flex;
+  flex-wrap: wrap;
   align-items: start;
-  grid-area: content;
+  align-content: baseline;
+  justify-content: space-evenly;
+  padding-left: 15px;
+  min-height: 100vh;
   animation: ${FadeInAnimation} 1s;
   color: ${colors.dark};
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
-  grid-gap: 20px;
-  justify-content: space-around;
-  justify-items: center;
-  margin: 0 20px;
 `;

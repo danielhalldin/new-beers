@@ -1,15 +1,24 @@
 import styled from "styled-components/macro";
 import { colors } from "components/global.styles";
 export const PageContainer = styled.main`
-  grid-area: content;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header"
+    "content"
+    "rest"
+    "footer";
+  grid-gap: 20px;
 `;
 
 export const Header = styled.h2`
+  grid-area: "header";
   background-color: ${colors.dark};
   color: ${colors.textLight};
   font-family: "Bowlby One SC", cursive;
   font-size: 30px;
-  padding: 40px 0 10px 0;
+  padding: 67px 0 10px 0;
+  margin: 0;
   display: block;
   text-align: center;
   text-transform: capitalize;

@@ -12,7 +12,7 @@ const Flipper = styled.div<{ flipped: boolean }>`
   transform-style: preserve-3d;
   position: relative;
   transform: ${(props) =>
-    "rotateY(" + (props.flipped ? 180 : 0) + "deg) translateX(-15px)"};
+    "rotateY(" + (props.flipped ? 180 : 0) + "deg) translateX(-5px)"};
 `;
 
 export { FlipContainer, Flipper };
