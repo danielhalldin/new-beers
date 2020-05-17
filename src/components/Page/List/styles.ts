@@ -28,7 +28,7 @@ export const ListContainer = styled.div`
   align-items: start;
   align-content: baseline;
   justify-content: space-evenly;
-  padding-left: 15px;
+  padding-left: 5px;
   min-height: 100vh;
   animation: ${FadeInAnimation} 1s;
   color: ${colors.dark};
