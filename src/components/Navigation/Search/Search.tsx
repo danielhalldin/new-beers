@@ -7,6 +7,8 @@ import React, {
 } from "react";
 import { useHistory } from "react-router-dom";
 
+import { SearchForm, SearchInputString, SearchSubmit } from "./styles";
+
 const Search: FunctionComponent = () => {
   const [searchString, setSearchString] = useState("");
   const history = useHistory();
@@ -24,20 +26,16 @@ const Search: FunctionComponent = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={(event) => handleSubmit(event)}>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={searchString}
-            onChange={(e) => setSearchString(e.target.value)}
-            ref={valueRef}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    </div>
+    <SearchForm onSubmit={(event) => handleSubmit(event)}>
+      <SearchInputString
+        type="text"
+        value={searchString}
+        onChange={(e) => setSearchString(e.target.value)}
+        ref={valueRef}
+        placeholder="Omnipollo Lorelai"
+      />
+      <SearchSubmit type="submit" value="Sök" />
+    </SearchForm>
   );
 };
 

@@ -13,13 +13,6 @@ import {
   IconText,
 } from "./styles";
 
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
-
 const MenuComponent: FunctionComponent<RouteComponentProps> = ({
   location: { pathname },
 }) => {
@@ -36,7 +29,6 @@ const MenuComponent: FunctionComponent<RouteComponentProps> = ({
       <ApolloConsumer key={route.id}>
         {(client) => (
           <LinkButton
-            onClick={() => scrollToTop()}
             onMouseOver={() => preloadQuery({ query, variables, client })}
             to={route.disabled ? pathname : route.path || "/"}
             className={className}

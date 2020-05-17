@@ -13,7 +13,12 @@ const Page: FunctionComponent<{ name: string }> = ({ name }) => {
     variables,
   });
   const location = useLocation();
-  useEffect(() => {}, [location]);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [location]);
 
   useTitle(`New beers 🍺${name ? ` - ${name}` : ""}`);
   if (loading) {
@@ -47,7 +52,7 @@ const Page: FunctionComponent<{ name: string }> = ({ name }) => {
     [];
 
   return (
-    <PageContainer>
+    <PageContainer id={"main"}>
       <Header>{name}</Header>
       <List data={beerData} admin={admin} />
     </PageContainer>

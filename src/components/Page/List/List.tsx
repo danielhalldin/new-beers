@@ -16,7 +16,7 @@ const List: FunctionComponent<{ data: [BeerType]; admin: boolean }> = ({
     return <Card rotate={rotation} key={key} data={beer} admin={admin} />;
   });
 
-  return <ListContainer id={"main"}>{list}</ListContainer>;
+  return <ListContainer>{list}</ListContainer>;
 };
 
 export default List;

@@ -6,13 +6,6 @@ import routes from "lib/routes";
 import queryForPage from "lib/queryForPage";
 import preloadQuery from "lib/preloadQuery";
 
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
-
 const CategoriesComponent: FunctionComponent<RouteComponentProps> = ({
   location: { pathname },
 }) => {
@@ -30,7 +23,6 @@ const CategoriesComponent: FunctionComponent<RouteComponentProps> = ({
             {(client) => (
               <Category
                 to={route.path || "/"}
-                onClick={() => scrollToTop()}
                 onMouseOver={() => preloadQuery({ query, variables, client })}
                 className={className}
               >

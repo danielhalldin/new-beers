@@ -13,7 +13,7 @@ export const Header = styled.h2`
   display: block;
   text-align: center;
   text-transform: capitalize;
-  text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 `;
 
 export const Loader = styled.div`

@@ -11,10 +11,6 @@ const FadeInAnimation = keyframes`
   }
 `;
 
-export const PageContainer = styled.main`
-  grid-area: content;
-`;
-
 export const Header = styled.h2`
   font-family: "Bowlby One SC", cursive;
   font-size: 40px;
@@ -25,7 +21,9 @@ export const Header = styled.h2`
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
 `;
 
-export const ListContainer = styled.main`
+export const ListContainer = styled.div`
+  min-height: 100vh;
+  align-items: start;
   grid-area: content;
   animation: ${FadeInAnimation} 1s;
   color: ${colors.dark};
@@ -34,6 +32,5 @@ export const ListContainer = styled.main`
   grid-gap: 20px;
   justify-content: space-around;
   justify-items: center;
-  align-items: center;
   margin: 0 20px;
 `;
