@@ -12,7 +12,7 @@ export const PageContainer = styled.main`
 `;
 
 export const Header = styled.h2`
-  grid-area: "header";
+  grid-area: header;
   background-color: ${colors.dark};
   color: ${colors.textLight};
   font-family: "Bowlby One SC", cursive;
@@ -26,13 +26,15 @@ export const Header = styled.h2`
 `;
 
 export const Loader = styled.div`
+  grid-area: content;
   display: grid;
   align-content: center;
   justify-content: center;
-  height: calc(100vh - 35px);
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
   font-family: "Bowlby One SC", cursive;
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
-  width: 100vw;
+  width: 100%;
   text-align: center;
   font-size: 24px;
   font-weight: 300;

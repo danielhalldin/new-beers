@@ -22,7 +22,7 @@ export const Header = styled.h2`
 `;
 
 export const ListContainer = styled.div`
-  grid-area: "content";
+  grid-area: content;
   display: flex;
   flex-wrap: wrap;
   align-items: start;
@@ -30,6 +30,7 @@ export const ListContainer = styled.div`
   justify-content: space-evenly;
   padding-left: 5px;
   min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
   animation: ${FadeInAnimation} 1s;
   color: ${colors.dark};
 `;
