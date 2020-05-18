@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { ApolloConsumer } from "react-apollo";
 import { untappdUser } from "queries";
 import routes from "lib/routes";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import cookies from "js-cookie";
 import queryForPage from "lib/queryForPage";
 import preloadQuery from "lib/preloadQuery";
@@ -23,7 +23,6 @@ import {
 import spinner from "images/spinner.svg";
 
 const HeaderContainer = ({ login }: { login?: boolean }) => {
-  const UserBeers = withRouter(_UserBeers);
   return (
     <Header>
       <MainLink href="#main">Skip to main</MainLink>
@@ -80,8 +79,9 @@ const User = () => {
   );
 };
 
-const _UserBeers = ({ location: { pathname } }: RouteComponentProps) => {
+const UserBeers = () => {
   const { loading, error, data } = useQuery(untappdUser);
+  const { pathname } = useLocation();
   if (error) {
     return <Right />;
   }

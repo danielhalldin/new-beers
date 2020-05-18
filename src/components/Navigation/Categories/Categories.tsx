@@ -1,14 +1,13 @@
-import React, { FunctionComponent } from "react";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import React from "react";
+import { useLocation } from "react-router-dom";
 import { ApolloConsumer } from "react-apollo";
 import { Category } from "./styles";
 import routes from "lib/routes";
 import queryForPage from "lib/queryForPage";
 import preloadQuery from "lib/preloadQuery";
 
-const CategoriesComponent: FunctionComponent<RouteComponentProps> = ({
-  location: { pathname },
-}) => {
+const CategoriesComponent = () => {
+  const { pathname } = useLocation();
   const categories = routes
     .filter((route) => route.path && route.path.startsWith("/katagorier/"))
     .map((route) => {
@@ -37,4 +36,4 @@ const CategoriesComponent: FunctionComponent<RouteComponentProps> = ({
   return <>{categories}</>;
 };
 
-export default withRouter(CategoriesComponent);
+export default CategoriesComponent;

@@ -1,5 +1,5 @@
-import React, { useState, FunctionComponent } from "react";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { ApolloConsumer } from "react-apollo";
 import routes from "lib/routes";
 import queryForPage from "lib/queryForPage";
@@ -13,9 +13,8 @@ import {
   IconText,
 } from "./styles";
 
-const MenuComponent: FunctionComponent<RouteComponentProps> = ({
-  location: { pathname },
-}) => {
+const MenuComponent = () => {
+  const { pathname } = useLocation();
   const NavigationItem = (route: RouteType) => {
     let className = "";
     if (route.path && pathname.includes(route.path)) {
@@ -90,4 +89,4 @@ const MenuComponent: FunctionComponent<RouteComponentProps> = ({
   return <NavigationComponent />;
 };
 
-export default withRouter(MenuComponent);
+export default MenuComponent;
