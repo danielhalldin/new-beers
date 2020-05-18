@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import cookies from "js-cookie";
 import queryForPage from "lib/queryForPage";
 import preloadQuery from "lib/preloadQuery";
+import { version } from "../../../package.json";
 
 import {
   Header,
@@ -64,6 +65,8 @@ const User = () => {
           >
             Logga ut
           </Button>
+          <br />
+          Version: {version}
         </SubNavigation>
       )}
       <Button

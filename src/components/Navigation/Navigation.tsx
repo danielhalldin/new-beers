@@ -20,16 +20,13 @@ const MenuComponent = () => {
     if (route.path && pathname.includes(route.path)) {
       className = "selected";
     }
-    if (route.disabled) {
-      className = "disabled";
-    }
     const { query, variables } = queryForPage(route.id);
     return (
       <ApolloConsumer key={route.id}>
         {(client) => (
           <LinkButton
             onMouseOver={() => preloadQuery({ query, variables, client })}
-            to={route.disabled ? pathname : route.path || "/"}
+            to={route.path || "/"}
             className={className}
           >
             {route.icon}
@@ -45,9 +42,6 @@ const MenuComponent = () => {
     let className = "";
     if (route.path && pathname.includes(route.path)) {
       className = "selected";
-    }
-    if (route.disabled) {
-      className = "disabled";
     }
     return (
       <>
