@@ -66,7 +66,7 @@ export const SearchDropDown = styled.select`
 `;
 
 export const SearchSubmit = styled.input`
-  grid-row: 3 / span 2;
+  grid-row: 3 / span 1;
   grid-column: 1 / span 2;
   font-family: "Bowlby One SC", cursive;
   font-size: 30px;
