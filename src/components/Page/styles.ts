@@ -31,7 +31,7 @@ export const Loader = styled.div`
   align-content: center;
   justify-content: center;
   min-height: 100vh;
-  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
   font-family: "Bowlby One SC", cursive;
   text-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
   width: 100%;

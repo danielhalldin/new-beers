@@ -16,26 +16,15 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <style>
       @import url("https://fonts.googleapis.com/css?family=Bowlby+One+SC|Hind:300,400,500,600,700&display=swap");
+      html {
+        height: -webkit-fill-available;
+      }
       body {
         font-size: 16px;
-        height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-        height: calc(var(--vh, 1vh) * 100);
-      }
-      input,
-      select {
-        font-size: 16px;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
       }
     </style>
-    <script>
-      let vh = window.innerHeight * 0.01;
-      // Then we set the value in the --vh custom property to the root of the document
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-      window.addEventListener("resize", () => {
-        // We execute the same script as before
-        let vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty("--vh", `${vh}px`);
-      });
-    </script>
     <link
       rel="apple-touch-icon"
       href="%PUBLIC_URL%/favicons/favicon-96x96.png"
