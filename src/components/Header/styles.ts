@@ -83,7 +83,7 @@ export const Right = styled.div`
   justify-self: right;
 `;
 
-export const SubNavigation = styled.div<{ visible: string }>`
+export const SubNavigation = styled.div<{ visible: string; ref: any }>`
   padding: 10px;
   position: fixed;
   top: 83px;

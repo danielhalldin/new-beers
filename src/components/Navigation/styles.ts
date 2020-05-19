@@ -24,7 +24,7 @@ export const Navigation = styled.nav`
   box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.5);
 `;
 
-export const SubNavigation = styled.div<{ visible: string }>`
+export const SubNavigation = styled.div<{ visible: string; ref: any }>`
   padding: 10px 0;
   position: fixed;
   bottom: 84px;

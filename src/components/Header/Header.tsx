@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { ApolloConsumer } from "react-apollo";
 import { untappdUser } from "queries";
@@ -8,6 +8,7 @@ import cookies from "js-cookie";
 import queryForPage from "lib/queryForPage";
 import preloadQuery from "lib/preloadQuery";
 import { version } from "../../../package.json";
+import useOutsideClick from "hooks/useOutsideClick";
 
 import {
   Header,
@@ -37,6 +38,12 @@ const HeaderContainer = ({ login }: { login?: boolean }) => {
 const User = () => {
   const { loading, error, data } = useQuery(untappdUser);
   const [submenuVisible, setSubmenuVisible] = useState("initial");
+  const ref = useRef();
+
+  useOutsideClick(ref, () => {
+    submenuVisible === "true" && setSubmenuVisible("false");
+  });
+
   if (error) {
     return <Left />;
   }
@@ -55,7 +62,7 @@ const User = () => {
   return (
     <Left>
       {submenuVisible !== "initial" && (
-        <SubNavigation visible={submenuVisible}>
+        <SubNavigation visible={submenuVisible} ref={ref}>
           <Button
             style={{ fontSize: "30px" }}
             onClick={() => {

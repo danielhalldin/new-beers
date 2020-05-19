@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { ApolloConsumer } from "react-apollo";
 import routes from "lib/routes";
@@ -12,6 +12,7 @@ import {
   Button,
   IconText,
 } from "./styles";
+import useOutsideClick from "hooks/useOutsideClick";
 
 const MenuComponent = () => {
   const { pathname } = useLocation();
@@ -39,6 +40,12 @@ const MenuComponent = () => {
 
   const PopupMenuItem = (route: RouteType) => {
     const [submenuVisible, setSubmenuVisible] = useState("initial");
+    const ref = useRef();
+
+    useOutsideClick(ref, () => {
+      submenuVisible === "true" && setSubmenuVisible("false");
+    });
+
     let className = "";
     if (route.path && pathname.includes(route.path)) {
       className = "selected";
@@ -46,7 +53,7 @@ const MenuComponent = () => {
     return (
       <>
         {submenuVisible !== "initial" && (
-          <SubNavigation visible={submenuVisible}>
+          <SubNavigation visible={submenuVisible} ref={ref}>
             {route.component}
           </SubNavigation>
         )}
