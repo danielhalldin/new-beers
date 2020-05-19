@@ -47,10 +47,14 @@ const getQueryForPage = (id: string) => {
       break;
     case "Sök":
       let params = new URL(document.location.toString()).searchParams;
-      let searchString = params.get("searchString");
+      const searchString = params.get("searchString");
+      const searchType = params.get("searchType");
+      const sortType = params.get("sortType");
       query = search;
       variables = {
         searchString,
+        searchType,
+        sortType,
       };
       break;
   }

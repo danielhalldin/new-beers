@@ -38,7 +38,7 @@ const HeaderContainer = ({ login }: { login?: boolean }) => {
 const User = () => {
   const { loading, error, data } = useQuery(untappdUser);
   const [submenuVisible, setSubmenuVisible] = useState("initial");
-  const ref = useRef();
+  const ref = useRef<HTMLInputElement>(null);
 
   useOutsideClick(ref, () => {
     submenuVisible === "true" && setSubmenuVisible("false");

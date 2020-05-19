@@ -40,7 +40,7 @@ const MenuComponent = () => {
 
   const PopupMenuItem = (route: RouteType) => {
     const [submenuVisible, setSubmenuVisible] = useState("initial");
-    const ref = useRef();
+    const ref = useRef<HTMLInputElement>(null);
 
     useOutsideClick(ref, () => {
       submenuVisible === "true" && setSubmenuVisible("false");

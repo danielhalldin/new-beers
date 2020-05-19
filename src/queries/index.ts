@@ -68,8 +68,8 @@ const recommemded = gql`
 `;
 
 const search = gql`
-  query Search($searchString: String!) {
-    systembolagetSearch(searchString: $searchString, size: 100) 
+  query Search($searchString: String!, $searchType: String, $sortType: String) {
+    systembolagetSearch(searchString: $searchString, sortType: $sortType, searchType: $searchType, size: 100) 
       ${beerFragment}
   
     untappdUser {
