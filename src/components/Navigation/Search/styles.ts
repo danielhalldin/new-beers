@@ -10,11 +10,12 @@ export const SearchForm = styled.form`
   text-align: center;
   height: 150px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 30px;
 `;
 
 export const SearchInputString = styled.input`
   font-family: "Bowlby One SC", cursive;
-  font-size: 20px;
+  font-size: 30px;
   box-sizing: border-box;
   width: 100%;
   text-align: center;
@@ -38,7 +39,7 @@ export const SearchInputString = styled.input`
 
 export const SearchSubmit = styled.input`
   font-family: "Bowlby One SC", cursive;
-  font-size: 20px;
+  font-size: 30px;
   appearance: none;
   width: 100%;
   margin: 0 auto;
