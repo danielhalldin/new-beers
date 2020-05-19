@@ -86,7 +86,7 @@ export const Right = styled.div`
 export const SubNavigation = styled.div<{ visible: string }>`
   padding: 10px;
   position: fixed;
-  top: 52px;
+  top: 83px;
   left: 0;
   width: 100%;
   text-align: center;
