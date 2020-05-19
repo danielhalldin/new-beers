@@ -90,7 +90,7 @@
     "react-image": "2.4.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
-    "react-use": "14.3.0",
+    "react-use": "15.1.0",
     "styled-components": "5.1.0",
     "typescript": "3.9.2",
     "workbox-build": "5.1.3"
