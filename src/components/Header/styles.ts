@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 
 export const Header = styled.header`
+  padding: 10px 2%;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   grid-column-gap: 10px;
@@ -26,7 +27,6 @@ export const Header = styled.header`
   }
   z-index: 10;
   width: 96%;
-  padding: 0 2%;
   position: fixed;
   top: 0;
 `;
@@ -43,7 +43,7 @@ export const HeaderUserData = styled.div`
 `;
 
 export const Avatar = styled.img`
-  height: 40px;
+  height: 50px;
   border-radius: 25px;
   border: 0 solid ${colors.textDark};
   display: inline-block;
@@ -55,11 +55,11 @@ export const UserName = styled.div`
   transform: translate(0, -65%);
   display: inline-block;
   margin-left: 7px;
-  font-size: 17px;
+  font-size: 20px;
 `;
 
 export const TotalBeers = styled.div`
-  font-size: 17px;
+  font-size: 20px;
 `;
 
 export const MainLink = styled.a`

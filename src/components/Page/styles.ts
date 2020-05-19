@@ -9,6 +9,7 @@ export const PageContainer = styled.main`
     "rest"
     "footer";
   grid-gap: 20px;
+  padding: 83px 0 10px 0;
 `;
 
 export const Header = styled.h2`
@@ -17,7 +18,7 @@ export const Header = styled.h2`
   color: ${colors.textLight};
   font-family: "Bowlby One SC", cursive;
   font-size: 30px;
-  padding: 67px 0 10px 0;
+  padding: 10px 0 10px 0;
   margin: 0;
   display: block;
   text-align: center;

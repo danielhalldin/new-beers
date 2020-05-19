@@ -32,7 +32,7 @@ const Search: FunctionComponent = () => {
         value={searchString}
         onChange={(e) => setSearchString(e.target.value)}
         ref={valueRef}
-        placeholder="Omnipollo Lorelai"
+        placeholder="Omnipollo Lorelei"
       />
       <SearchSubmit type="submit" value="Sök" />
     </SearchForm>
