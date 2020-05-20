@@ -3,6 +3,7 @@ import Header from "components/Header";
 import { Button, Wrapper } from "./styles";
 
 const Login = () => {
+  const loginUrl = `${process.env.REACT_APP_LOGIN_URL}?returnUrl=${process.env.REACT_APP_PUBLIC_URL}`;
   return (
     <>
       <Header login />
@@ -11,9 +12,7 @@ const Login = () => {
           För att kunna använda tjänsten, <br />
           behöver du logga in på Untappd.
         </p>
-        <Button href={`${process.env.REACT_APP_LOGIN_URL}`}>
-          Logga in här
-        </Button>
+        <Button href={loginUrl}>Logga in här</Button>
       </Wrapper>
     </>
   );
