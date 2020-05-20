@@ -12,6 +12,7 @@ const commonProperties = `
   background-color: rgba(255, 255, 255, 0.3);
   display: block;
   outline: none;
+  box-sizing: border-box;
 `;
 
 export const SearchForm = styled.form`
