@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import queryForPage from "lib/queryForPage";
 import List from "./List";
 import Footer from "./Footer";
-import { Header, PageContainer, Loader } from "./styles";
+import { Header, PageContainer, Message } from "./styles";
 
 const Page: FunctionComponent<{ name: string }> = ({ name }) => {
   const { query, variables } = queryForPage(name);
@@ -14,6 +14,7 @@ const Page: FunctionComponent<{ name: string }> = ({ name }) => {
     variables,
   });
   const location = useLocation();
+  useTitle(`New beers 🍺${name ? ` - ${name}` : ""}`);
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -21,26 +22,25 @@ const Page: FunctionComponent<{ name: string }> = ({ name }) => {
     });
   }, [location]);
 
-  useTitle(`New beers 🍺${name ? ` - ${name}` : ""}`);
   if (loading) {
     return (
-      <Loader>
-        <span className="beer" role="img" aria-label="Beer">
+      <Message>
+        <span role="img" aria-label="Beer">
           🍺
         </span>
         Laddar...
-      </Loader>
+      </Message>
     );
   }
 
   if (error) {
     return (
-      <Loader>
-        <span className="error" role="img" aria-label="Error">
+      <Message>
+        <span role="img" aria-label="Error">
           👎🏻
         </span>
         Något gick fel
-      </Loader>
+      </Message>
     );
   }
 
@@ -51,6 +51,17 @@ const Page: FunctionComponent<{ name: string }> = ({ name }) => {
     _get(data, `recommended.beers`) ||
     _get(data, `systembolagetSearch`) ||
     [];
+
+  if (!(beerData.length > 0)) {
+    return (
+      <Message>
+        <span role="img" aria-label="NoMatch">
+          😬
+        </span>
+        Hittade tyvärr inga 🍺
+      </Message>
+    );
+  }
 
   return (
     <PageContainer id={"main"}>

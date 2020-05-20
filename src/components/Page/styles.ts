@@ -9,7 +9,7 @@ export const PageContainer = styled.main`
     "rest"
     "footer";
   grid-gap: 20px;
-  padding: 83px 0 10px 0;
+  padding: 0 0 10px 0;
 `;
 
 export const Header = styled.h2`
@@ -18,7 +18,7 @@ export const Header = styled.h2`
   color: ${colors.textLight};
   font-family: "Bowlby One SC", cursive;
   font-size: 30px;
-  padding: 10px 0 10px 0;
+  padding: 95px 0 12px 0;
   margin: 0;
   display: block;
   text-align: center;
@@ -26,7 +26,7 @@ export const Header = styled.h2`
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 `;
 
-export const Loader = styled.div`
+export const Message = styled.div`
   grid-area: content;
   display: grid;
   align-content: center;
@@ -39,7 +39,7 @@ export const Loader = styled.div`
   text-align: center;
   font-size: 24px;
   font-weight: 300;
-  && .beer {
+  > span {
     font-size: 60px;
     display: block;
   }
