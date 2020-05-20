@@ -16,7 +16,7 @@ import {
 
 const Search: FunctionComponent = () => {
   const [searchString, setSearchString] = useState("");
-  const [searchType, setSearchType] = useState("beer");
+  const [searchType, setSearchType] = useState("");
   const [sortType, setSortType] = useState("rating");
 
   const history = useHistory();
@@ -47,23 +47,23 @@ const Search: FunctionComponent = () => {
         value={searchString}
         onChange={(e) => setSearchString(e.target.value)}
         ref={valueRef}
-        placeholder="Omnipollo"
+        placeholder="Sök efter…"
       />
       <SearchDropDown
         name="searchType"
         onChange={(e) => setSearchType(e.target.value)}
       >
-        <option value="beer">Sök efter</option>
+        <option value="">Sök i…</option>
+        <option value="">Allt [standard]</option>
         <option value="brewery">Bryggeri</option>
-        <option value="beer">Öl [standrad]</option>
-        <option value="">Allt</option>
+        <option value="beer">Öl</option>
       </SearchDropDown>
       <SearchDropDown
         name="sortType"
         onChange={(e) => setSortType(e.target.value)}
       >
-        <option value="rating">Sortera på</option>
-        <option value="rating">Betyg [standrad]</option>
+        <option value="">Sortera på…</option>
+        <option value="rating">Betyg [standard]</option>
         <option value="name">Namn</option>
       </SearchDropDown>
       <SearchSubmit type="submit" value="Sök" />
