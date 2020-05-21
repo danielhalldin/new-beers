@@ -65,6 +65,7 @@ const Search: FunctionComponent = () => {
         <option value="">Sortera på…</option>
         <option value="rating">Betyg [standard]</option>
         <option value="name">Namn</option>
+        <option value="date">Datum</option>
       </SearchDropDown>
       <SearchSubmit type="submit" value="Sök" />
     </SearchForm>
