@@ -22,6 +22,12 @@ export const Navigation = styled.nav`
   background-color: ${colors.dark};
   padding: 15px 0;
   box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.5);
+  &.visible {
+    visibility: visible;
+  }
+  &.hidden {
+    visibility: hidden;
+  }
 `;
 
 export const SubNavigation = styled.div<{

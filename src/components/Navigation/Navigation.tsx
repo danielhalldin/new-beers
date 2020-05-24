@@ -13,9 +13,15 @@ import {
   IconText,
 } from "./styles";
 import useOutsideClick from "hooks/useOutsideClick";
+import useScrolling from "hooks/useScrolling";
 
 const MenuComponent = () => {
   const { pathname } = useLocation();
+  const [cssClass, setCssClass] = useState("visible");
+  useScrolling((visible: boolean) => {
+    setCssClass(visible ? "visible" : "hidden");
+  });
+
   const NavigationItem = (route: RouteType) => {
     let className = "";
     if (route.path && pathname.includes(route.path)) {
@@ -83,8 +89,7 @@ const MenuComponent = () => {
           return <PopupMenuItem key={route.id} {...route} />;
         }
       });
-
-    return <Navigation>{items}</Navigation>;
+    return <Navigation className={cssClass}>{items}</Navigation>;
   };
 
   return <NavigationComponent />;
