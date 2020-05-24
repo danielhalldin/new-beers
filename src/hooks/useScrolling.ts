@@ -5,8 +5,11 @@ const useScrolling = (callback: any) => {
   const [show, setShow] = useState(true);
   const handleScroll = (e: Event) => {
     setScrollPos(document.body.getBoundingClientRect().top);
-    setShow(document.body.getBoundingClientRect().top > scrollPos);
-
+    setShow(
+      document.body.getBoundingClientRect().top > scrollPos || scrollPos > -10
+    );
+    console.log({ setScrollPos: document.body.getBoundingClientRect().top });
+    console.log({ setShow: document.body.getBoundingClientRect().top });
     callback(show);
   };
 
