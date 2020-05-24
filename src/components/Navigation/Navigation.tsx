@@ -18,9 +18,9 @@ import useScrolling from "hooks/useScrolling";
 const MenuComponent = () => {
   const { pathname } = useLocation();
   const [cssClass, setCssClass] = useState("visible");
-  useScrolling((visible: boolean) => {
-    setCssClass(visible ? "visible" : "hidden");
-  });
+  // useScrolling((visible: boolean) => {
+  //   setCssClass(visible ? "visible" : "hidden");
+  // });
 
   const NavigationItem = (route: RouteType) => {
     let className = "";
