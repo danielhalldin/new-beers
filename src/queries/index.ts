@@ -34,6 +34,7 @@ const untappdUser = gql`
       totalBeers
       avatar
     }
+    untappdIsFriend
   }
 `;
 

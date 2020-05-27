@@ -13,11 +13,12 @@ import {
   IconText,
 } from "./styles";
 import useOutsideClick from "hooks/useOutsideClick";
-import useScrolling from "hooks/useScrolling";
+//import useScrolling from "hooks/useScrolling";
 
 const MenuComponent = () => {
   const { pathname } = useLocation();
-  const [cssClass, setCssClass] = useState("visible");
+  // const [cssClass, setCssClass] = useState("visible");
+  const cssClass = "visible";
   // useScrolling((visible: boolean) => {
   //   setCssClass(visible ? "visible" : "hidden");
   // });
