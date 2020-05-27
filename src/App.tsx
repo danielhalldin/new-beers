@@ -44,7 +44,9 @@ const App = () => {
     if (loading) {
       return null;
     }
-    if (!data.untappdIsFriend) {
+
+    console.log(data.untappdIsFriend);
+    if (data && data.untappdIsFriend !== true) {
       return <Redirect to="/notFriend" />;
     }
     return <Route key={key} path={path} render={() => component} />;
