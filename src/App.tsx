@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ApolloProvider } from "react-apollo";
 import apolloClient from "./lib/apolloClient";
 import cookies from "js-cookie";
@@ -13,9 +13,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { untappdUser } from "queries";
 
 const App = () => {
-  const [untappdAccessToken, setUntappdAccessToken] = useState(
-    cookies.get("untappd_access_token") || ""
-  );
+  const untappdAccessToken = cookies.get("untappd_access_token") || "";
 
   const PrivateRoute = ({
     key,
@@ -34,7 +32,6 @@ const App = () => {
         return <Redirect to="/notLoggedIn" />;
       } else {
         cookies.set("untappd_access_token", token, { expires: 30 });
-        setUntappdAccessToken(token);
         window.location.href = "/";
       }
     }
@@ -45,10 +42,12 @@ const App = () => {
       return null;
     }
 
-    console.log(data.untappdIsFriend);
+    console.log({ untappdIsFriend: data.untappdIsFriend });
     if (data && data.untappdIsFriend !== true) {
       return <Redirect to="/notFriend" />;
     }
+
+    console.log({ untappdAccessToken });
     return <Route key={key} path={path} render={() => component} />;
   };
 
