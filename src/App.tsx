@@ -35,7 +35,7 @@ const App = () => {
       } else {
         cookies.set("untappd_access_token", token, { expires: 30 });
         setUntappdAccessToken(token);
-        return <Redirect to="/rekommenderade" />;
+        window.location.href = "/";
       }
     }
     if (error) {
