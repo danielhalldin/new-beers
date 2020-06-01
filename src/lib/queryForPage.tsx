@@ -21,10 +21,10 @@ const getQueryForPage = (id: string) => {
         stockType: "Tillfälligt sortiment",
       };
       break;
-    case "Lokalt & småskaligt":
+    case "Lokalt & Småskaligt":
       query = decoratedLatest;
       variables = {
-        stockType: "Lokalt & småskaligt",
+        stockType: "Lokalt & Småskaligt",
       };
       break;
     case "Ordervaror":
