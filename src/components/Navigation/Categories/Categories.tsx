@@ -42,7 +42,10 @@ const CategoriesComponent = () => {
               onMouseOver={() => preloadQuery({ query, variables, client })}
               className={className}
             >
-              {stock.name} ({stock.nrOfBeers} st, {stock.nextRelease})
+              {stock.name}
+              <div className="info">
+                {stock.nrOfBeers} st, {stock.nextRelease}
+              </div>
             </Category>
           )}
         </ApolloConsumer>

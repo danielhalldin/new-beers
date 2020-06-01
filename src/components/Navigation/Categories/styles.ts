@@ -20,4 +20,8 @@ export const Category = styled(Link)`
   &:active {
     transform: scale(0.9);
   }
+  .info {
+    display: block;
+    font-size: 15px;
+  }
 `;
