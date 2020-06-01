@@ -26,8 +26,8 @@ const routes = [
   },
   {
     path: "/katagorier/lokalt-och-smaskaligt",
-    id: "Lokalt & småskaligt",
-    component: <Page name="Lokalt & småskaligt" />,
+    id: "Lokalt & Småskaligt",
+    component: <Page name="Lokalt & Småskaligt" />,
   },
   {
     path: "/katagorier/ordervaror",

@@ -79,6 +79,16 @@ const search = gql`
   }
 `;
 
+const stock = gql`
+  query Stock {
+    systembolagetStock {
+      nrOfBeers
+      name
+      nextRelease
+    }
+  }
+`;
+
 const updateUntappdId = gql`
   mutation UpdateUntappdId($systembolagetArticleId: Int!, $untappdId: Int!) {
     updateUntappdId(
@@ -98,6 +108,7 @@ export {
   decoratedLatest,
   recommemded,
   search,
+  stock,
   untappdUser,
   untappdUserBeers,
   updateUntappdId,
