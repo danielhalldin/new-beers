@@ -8,8 +8,8 @@ const commonProperties = `
   font-family: "Bowlby One SC", cursive;
   font-size: 28px;
   text-align: center;
-  border: 3px solid rgba(255, 255, 255, 0);
-  background-color: rgba(255, 255, 255, 0.3);
+  border: 3px solid rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 0, 0);
   display: block;
   outline: none;
   box-sizing: border-box;
@@ -34,7 +34,6 @@ export const SearchInputString = styled.input`
   :focus {
     outline: none;
     border-radius: 5px;
-    border: 3px solid rgba(255, 255, 255, 1);
   }
   ::placeholder {
     color: #ccc;
@@ -59,12 +58,11 @@ export const SearchDropDown = styled.select`
 export const SearchSubmit = styled.input`
   ${commonProperties}
   color: black;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 1);
   grid-row: 3 / span 1;
   grid-column: 1 / span 2;
   &:active {
     color: black;
     transform: scale(0.98);
-    background-color: rgba(255, 255, 255, 1);
   }
 `;

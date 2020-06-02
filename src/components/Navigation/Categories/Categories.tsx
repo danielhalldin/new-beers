@@ -26,7 +26,7 @@ const CategoriesComponent = () => {
   const categories = data.systembolagetStock.map((stock: stockType) => {
     const route = routes.find((route) => route.id === stock.name);
     if (!route) {
-      return;
+      return null;
     }
     let className = "";
     if (route.path && pathname.includes(route.path)) {
