@@ -42,12 +42,11 @@ const App = () => {
       return null;
     }
 
-    console.log({ untappdIsFriend: data.untappdIsFriend });
-    if (data && data.untappdIsFriend !== true) {
-      return <Redirect to="/notFriend" />;
-    }
-
-    console.log({ untappdAccessToken });
+    // console.log({ untappdIsFriend: data.untappdIsFriend });
+    // if (data && data.untappdIsFriend !== true) {
+    //   return <Redirect to="/notFriend" />;
+    // }
+    // console.log({ untappdAccessToken });
     return <Route key={key} path={path} render={() => component} />;
   };
 
