@@ -4,7 +4,6 @@ import { ApolloConsumer } from "@apollo/client";
 import { untappdUser } from "queries";
 import routes from "lib/routes";
 import { useLocation } from "react-router-dom";
-import cookies from "js-cookie";
 import queryForPage from "lib/queryForPage";
 import preloadQuery from "lib/preloadQuery";
 import { version } from "../../../package.json";
@@ -67,7 +66,7 @@ const User = () => {
           <Button
             style={{ fontSize: "30px" }}
             onClick={() => {
-              cookies.remove("untappd_access_token");
+              localStorage.removeItem("untappd_access_token");
               window.location.href = "/";
             }}
           >

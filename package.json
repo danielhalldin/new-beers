@@ -66,8 +66,8 @@
   "dependencies": {
     "@apollo/client": "^3.0.0-beta.50",
     "graphql": "15.0.0",
-    "js-cookie": "2.2.1",
     "lodash": "4.17.15",
+    "react": "16.13.1",
     "react-device-detect": "1.12.1",
     "react-dom": "16.13.1",
     "react-fastclick-alt": "2.0.1",
@@ -75,7 +75,6 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
     "react-use": "15.1.1",
-    "react": "16.13.1",
     "styled-components": "5.1.1"
   },
   "devDependencies": {
@@ -87,7 +86,6 @@
     "@graphql-codegen/typescript-resolvers": "^1.13.2",
     "@graphql-codegen/typescript": "^1.12.2",
     "@types/jest": "25.2.3",
-    "@types/js-cookie": "2.2.6",
     "@types/lodash": "4.14.154",
     "@types/node": "13.13.9",
     "@types/react-dom": "16.9.8",
