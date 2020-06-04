@@ -1,46 +1,46 @@
 import {
-  decoratedLatest,
-  untappdUserBeers,
-  recommemded,
-  search,
-} from "queries";
+  RecommemdedDocument,
+  UntappdUserBeersDocument,
+  DecoratedLatestDocument,
+  SearchDocument,
+} from "common/generated/generated";
 
 const getQueryForPage = (id: string) => {
-  let query = recommemded;
+  let query = UntappdUserBeersDocument;
   let variables = {};
   switch (id) {
     case "Checkins":
-      query = untappdUserBeers;
+      query = UntappdUserBeersDocument;
       break;
     case "Rekommenderade":
-      query = recommemded;
+      query = RecommemdedDocument;
       break;
     case "Tillfälligt sortiment":
-      query = decoratedLatest;
+      query = DecoratedLatestDocument;
       variables = {
         stockType: "Tillfälligt sortiment",
       };
       break;
     case "Lokalt & Småskaligt":
-      query = decoratedLatest;
+      query = DecoratedLatestDocument;
       variables = {
         stockType: "Lokalt & Småskaligt",
       };
       break;
     case "Ordervaror":
-      query = decoratedLatest;
+      query = DecoratedLatestDocument;
       variables = {
         stockType: "Ordervaror",
       };
       break;
     case "Fast sortiment":
-      query = decoratedLatest;
+      query = DecoratedLatestDocument;
       variables = {
         stockType: "Fast sortiment",
       };
       break;
     case "Säsong":
-      query = decoratedLatest;
+      query = DecoratedLatestDocument;
       variables = {
         stockType: "Säsong",
       };
@@ -50,7 +50,7 @@ const getQueryForPage = (id: string) => {
       const searchString = params.get("searchString");
       const searchType = params.get("searchType");
       const sortType = params.get("sortType");
-      query = search;
+      query = SearchDocument;
       variables = {
         searchString,
         searchType,

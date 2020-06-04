@@ -1,0 +1,24 @@
+schema:
+  - ${GRAPHQL_SERVER:http://core.newbeers.se/graphql}: # Use env var or default to this url
+      headers:
+        x-untappd_access_token: DUMMY_TOKEN
+  - ./src/common/apollo/schema.ts
+documents: ./src/graphql/*.graphql
+generates:
+  ./src/common/generated/generated.tsx:
+    plugins:
+      - fragment-matcher
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+      - typescript-resolvers
+    config:
+      apolloClientVersion: 3
+      apolloReactCommonImportFrom: @apollo/client
+      apolloReactHooksImportFrom: @apollo/client
+      withHooks: true
+      withHOC: false
+      withComponent: false
+      contextType: lib/apolloClient#Context
+      useIndexSignature: true
+      # https://graphql-code-generator.com/docs/getting-started/codegen-config#environment-variables

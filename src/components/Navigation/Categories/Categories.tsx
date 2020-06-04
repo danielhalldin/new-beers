@@ -5,12 +5,10 @@ import { Category } from "./styles";
 import routes from "lib/routes";
 import queryForPage from "lib/queryForPage";
 import preloadQuery from "lib/preloadQuery";
-import { useQuery } from "@apollo/client";
-import { stock } from "queries";
-import { Stock as stockType } from "types/Stock";
+import { useStockQuery } from "common/generated/generated";
 
 const CategoriesComponent = () => {
-  const { loading, error, data } = useQuery(stock);
+  const { loading, error, data } = useStockQuery();
   const { pathname } = useLocation();
 
   // CHECK WHEN RESOLVED https://github.com/apollographql/apollo-client/issues/6334 (&& !data)
@@ -21,35 +19,40 @@ const CategoriesComponent = () => {
     return <div>error</div>;
   }
 
-  const categories = data.systembolagetStock.map((stock: stockType) => {
-    const route = routes.find((route) => route.id === stock.name);
-    if (!route) {
-      return null;
-    }
-    let className = "";
-    if (route.path && pathname.includes(route.path)) {
-      className = "selected";
-    }
-    const { query, variables } = queryForPage(route.id);
-    return (
-      <div key={stock.name}>
-        <ApolloConsumer>
-          {(client) => (
-            <Category
-              to={route.path || "/"}
-              onMouseOver={() => preloadQuery({ query, variables, client })}
-              className={className}
-            >
-              {stock.name}
-              <div className="info">
-                {stock.nrOfBeers} st, {stock.nextRelease}
-              </div>
-            </Category>
-          )}
-        </ApolloConsumer>
-      </div>
-    );
-  });
+  const categories =
+    data &&
+    data.systembolagetStock.map((stock) => {
+      const stockName = stock?.name;
+      const nrOfBeers = stock?.nrOfBeers;
+      const nextRelease = stock?.nextRelease;
+      const route = routes.find((route) => route.id === stockName);
+      if (!route) {
+        return null;
+      }
+      let className = "";
+      if (route.path && pathname.includes(route.path)) {
+        className = "selected";
+      }
+      const { query, variables } = queryForPage(route.id);
+      return (
+        <div key={stockName}>
+          <ApolloConsumer>
+            {(client) => (
+              <Category
+                to={route.path || "/"}
+                onMouseOver={() => preloadQuery({ query, variables, client })}
+                className={className}
+              >
+                {stockName}
+                <div className="info">
+                  {nrOfBeers} st, {nextRelease}
+                </div>
+              </Category>
+            )}
+          </ApolloConsumer>
+        </div>
+      );
+    });
 
   return <>{categories}</>;
 };

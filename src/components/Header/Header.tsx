@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
-import { useQuery } from "@apollo/client";
 import { ApolloConsumer } from "@apollo/client";
-import { untappdUser } from "queries";
+import { useUntappdUserQuery } from "common/generated/generated";
 import routes from "lib/routes";
 import { useLocation } from "react-router-dom";
 import queryForPage from "lib/queryForPage";
@@ -35,7 +34,7 @@ const HeaderContainer = ({ login }: { login?: boolean }) => {
 };
 
 const User = () => {
-  const { loading, error, data } = useQuery(untappdUser);
+  const { loading, error, data } = useUntappdUserQuery();
   const [submenuVisible, setSubmenuVisible] = useState("initial");
   const ref = useRef<HTMLInputElement>(null);
 
@@ -54,7 +53,10 @@ const User = () => {
       </Left>
     );
   }
-  const { avatar, name } = data.untappdUser;
+
+  const avatar = data && data.untappdUser.avatar;
+  const name = data && data.untappdUser.name;
+
   let className = "";
   if (submenuVisible === "true") {
     className = "selected";
@@ -90,7 +92,7 @@ const User = () => {
 };
 
 const UserBeers = () => {
-  const { loading, error, data } = useQuery(untappdUser);
+  const { loading, error, data } = useUntappdUserQuery();
   const { pathname } = useLocation();
   if (error) {
     return <Right />;
@@ -103,7 +105,8 @@ const UserBeers = () => {
       </Right>
     );
   }
-  const { totalBeers } = data.untappdUser;
+
+  const totalBeers = data && data.untappdUser.totalBeers;
 
   return (
     <Right>

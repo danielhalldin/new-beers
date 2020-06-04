@@ -1,11 +1,10 @@
 import React, { FunctionComponent } from "react";
-import { useMutation } from "@apollo/client";
 import _get from "lodash/get";
 import _set from "lodash/set";
 import {
-  updateUntappdId as UPDATE_UNTAPPD_ID,
-  deleteBeer as DELETE_BEER,
-} from "queries";
+  useDeleteBeerMutation,
+  useUpdateUntappdIdMutation,
+} from "common/generated/generated";
 import {
   AdminWrapper,
   Input,
@@ -39,7 +38,7 @@ const BeerAdmin: FunctionComponent<BeerAdminProps> = ({
       loading: updateUntappdIdLoading,
       error: updateUntappdIdError,
     },
-  ] = useMutation(UPDATE_UNTAPPD_ID);
+  ] = useUpdateUntappdIdMutation();
 
   const [
     deleteBeer,
@@ -48,7 +47,7 @@ const BeerAdmin: FunctionComponent<BeerAdminProps> = ({
       loading: deleteBeerLoading,
       error: deleteBeerError,
     },
-  ] = useMutation(DELETE_BEER);
+  ] = useDeleteBeerMutation();
 
   return (
     <AdminWrapper onClick={(e) => e.stopPropagation()} showAdmin={showAdmin}>

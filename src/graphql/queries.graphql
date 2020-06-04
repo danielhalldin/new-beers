@@ -1,0 +1,90 @@
+fragment BeerFragment on beer {
+  id
+  name
+  beerLabel
+  brewery
+  userRating
+  rating
+  price
+  abv
+  salesStartDate
+  checkinDate
+  systembolagetId
+  systembolagetArticleId
+  untappdId
+  untappdUrl
+  untappdDeepLink
+  type
+  style
+  country
+  stockType
+  systembolagetUrl
+  ibu
+  description
+}
+
+query UntappdUser {
+  untappdUser {
+    id
+    name
+    totalBeers
+    avatar
+  }
+  untappdIsFriend
+}
+
+query UntappdUserBeers {
+  untappdUserBeers {
+    ...BeerFragment
+  }
+}
+
+query Stock {
+  systembolagetStock {
+    nrOfBeers
+    name
+    nextRelease
+  }
+}
+
+query Recommemded {
+  recommended(size: 40) {
+    name
+    beers {
+      ...BeerFragment
+    }
+  }
+  untappdUser {
+    id
+    admin
+  }
+}
+
+query DecoratedLatest($stockType: String!) {
+  decoratedLatest(size: 120, stockType: $stockType) {
+    name
+    beers {
+      ...BeerFragment
+    }
+  }
+  untappdUser {
+    id
+    admin
+  }
+}
+
+query Search($searchString: String!, $searchType: String, $sortType: String) {
+  systembolagetSearch(
+    searchString: $searchString
+    sortType: $sortType
+    searchType: $searchType
+    size: 100
+  ) {
+    ...BeerFragment
+  }
+
+  untappdUser {
+    id
+    admin
+  }
+}

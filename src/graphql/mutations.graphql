@@ -1,0 +1,10 @@
+mutation UpdateUntappdId($systembolagetArticleId: Int!, $untappdId: Int!) {
+  updateUntappdId(
+    systembolagetArticleId: $systembolagetArticleId
+    untappdId: $untappdId
+  )
+}
+
+mutation DeleteBeer($systembolagetArticleId: Int!) {
+  deleteBeer(systembolagetArticleId: $systembolagetArticleId)
+}
