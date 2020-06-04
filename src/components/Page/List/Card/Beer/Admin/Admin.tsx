@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 import _get from "lodash/get";
 import _set from "lodash/set";
 import {

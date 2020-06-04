@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import { useQuery } from "@apollo/react-hooks";
-import { ApolloConsumer } from "react-apollo";
+import { useQuery } from "@apollo/client";
+import { ApolloConsumer } from "@apollo/client";
 import { untappdUser } from "queries";
 import routes from "lib/routes";
 import { useLocation } from "react-router-dom";
@@ -47,7 +47,8 @@ const User = () => {
   if (error) {
     return <Left />;
   }
-  if (loading) {
+  // CHECK WHEN RESOLVED https://github.com/apollographql/apollo-client/issues/6334 (&& !data)
+  if (loading && !data) {
     return (
       <Left>
         <img alt="loader" src={spinner} />
@@ -95,7 +96,8 @@ const UserBeers = () => {
   if (error) {
     return <Right />;
   }
-  if (loading) {
+  // CHECK WHEN RESOLVED https://github.com/apollographql/apollo-client/issues/6334 (&& !data)
+  if (loading && !data) {
     return (
       <Right>
         <img alt="loader" src={spinner} />

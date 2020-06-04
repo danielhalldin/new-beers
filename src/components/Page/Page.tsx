@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect } from "react";
 import { useTitle } from "react-use";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 import _get from "lodash/get";
 import { useLocation } from "react-router-dom";
 import queryForPage from "lib/queryForPage";
@@ -22,7 +22,8 @@ const Page: FunctionComponent<{ name: string }> = ({ name }) => {
     });
   }, [location]);
 
-  if (loading) {
+  // CHECK WHEN RESOLVED https://github.com/apollographql/apollo-client/issues/6334 (&& !data)
+  if (loading && !data) {
     return (
       <Message>
         <span role="img" aria-label="Beer">

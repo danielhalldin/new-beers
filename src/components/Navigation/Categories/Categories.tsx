@@ -1,11 +1,11 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { ApolloConsumer } from "react-apollo";
+import { ApolloConsumer } from "@apollo/client";
 import { Category } from "./styles";
 import routes from "lib/routes";
 import queryForPage from "lib/queryForPage";
 import preloadQuery from "lib/preloadQuery";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 import { stock } from "queries";
 import { Stock as stockType } from "types/Stock";
 
@@ -13,14 +13,12 @@ const CategoriesComponent = () => {
   const { loading, error, data } = useQuery(stock);
   const { pathname } = useLocation();
 
-  if (loading) {
+  // CHECK WHEN RESOLVED https://github.com/apollographql/apollo-client/issues/6334 (&& !data)
+  if (loading && !data) {
     return <div>loading</div>;
   }
   if (error) {
     return <div>error</div>;
-  }
-  if (data) {
-    console.log({ data });
   }
 
   const categories = data.systembolagetStock.map((stock: stockType) => {

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { ApolloConsumer } from "react-apollo";
+import { ApolloConsumer } from "@apollo/client";
 import routes from "lib/routes";
 import queryForPage from "lib/queryForPage";
 import preloadQuery from "lib/preloadQuery";

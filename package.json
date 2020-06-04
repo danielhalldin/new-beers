@@ -8,7 +8,8 @@
     "build-service-worker": "node scripts/build_workbox && node scripts/inject_version_to_sw && node scripts/delete_default_sw",
     "test": "react-scripts test --env=jsdom",
     "lint": "eslint src --max-warnings 0",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "codegen": "DEBUG=1 graphql-codegen -r dotenv/config"
   },
   "husky": {
     "hooks": {
@@ -63,27 +64,10 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@apollo/react-hooks": "3.1.5",
-    "@graphql-codegen/typescript-document-nodes": "1.15.0",
-    "@types/jest": "25.2.3",
-    "@types/js-cookie": "2.2.6",
-    "@types/lodash": "4.14.154",
-    "@types/node": "13.13.9",
-    "@types/react": "16.9.35",
-    "@types/react-dom": "16.9.8",
-    "@types/react-router-dom": "5.1.5",
-    "@types/styled-components": "5.1.0",
-    "apollo-cache-inmemory": "1.6.6",
-    "apollo-client": "2.6.10",
-    "apollo-link": "1.2.14",
-    "apollo-link-http": "1.5.17",
+    "@apollo/client": "^3.0.0-beta.50",
     "graphql": "15.0.0",
-    "graphql-tag": "2.10.3",
     "js-cookie": "2.2.1",
     "lodash": "4.17.15",
-    "prettier": "2.0.5",
-    "react": "16.13.1",
-    "react-apollo": "3.1.5",
     "react-device-detect": "1.12.1",
     "react-dom": "16.13.1",
     "react-fastclick-alt": "2.0.1",
@@ -91,15 +75,32 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
     "react-use": "15.1.1",
-    "styled-components": "5.1.1",
-    "typescript": "3.9.3",
-    "workbox-build": "5.1.3"
+    "react": "16.13.1",
+    "styled-components": "5.1.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.13.2",
+    "@graphql-codegen/fragment-matcher": "^1.13.0",
+    "@graphql-codegen/typescript-document-nodes": "1.15.0",
+    "@graphql-codegen/typescript-operations": "^1.12.2",
+    "@graphql-codegen/typescript-react-apollo": "^1.13.2",
+    "@graphql-codegen/typescript-resolvers": "^1.13.2",
+    "@graphql-codegen/typescript": "^1.12.2",
+    "@types/jest": "25.2.3",
+    "@types/js-cookie": "2.2.6",
+    "@types/lodash": "4.14.154",
+    "@types/node": "13.13.9",
+    "@types/react-dom": "16.9.8",
+    "@types/react-router-dom": "5.1.5",
+    "@types/react": "16.9.35",
+    "@types/styled-components": "5.1.0",
     "babel-plugin-styled-components": "1.10.7",
-    "eslint": "6.8.0",
     "eslint-plugin-react": "7.20.0",
+    "eslint": "6.8.0",
     "husky": "4.2.5",
-    "lint-staged": "10.2.7"
+    "lint-staged": "10.2.7",
+    "prettier": "2.0.5",
+    "typescript": "3.9.3",
+    "workbox-build": "^5.1.3"
   }
 }

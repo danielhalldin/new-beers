@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import { gql } from "@apollo/client";
 
 const beerFragment = gql`
   {
@@ -30,6 +30,7 @@ const beerFragment = gql`
 const untappdUser = gql`
   {
     untappdUser {
+      id
       name
       totalBeers
       avatar
@@ -51,6 +52,7 @@ const decoratedLatest = gql`
       beers ${beerFragment}
     }
     untappdUser {
+      id
       admin
     }
   }
@@ -63,6 +65,7 @@ const recommemded = gql`
       beers ${beerFragment}
     }
     untappdUser {
+      id
       admin
     }
   }
@@ -74,6 +77,7 @@ const search = gql`
       ${beerFragment}
   
     untappdUser {
+      id
       admin
     }
   }
