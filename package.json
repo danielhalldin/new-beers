@@ -23,6 +23,11 @@
     ]
   },
   "eslintConfig": {
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
     "extends": [
       "eslint:recommended",
       "plugin:react/recommended"
@@ -94,7 +99,7 @@
     "@types/styled-components": "5.1.0",
     "babel-plugin-styled-components": "1.10.7",
     "eslint-plugin-react": "7.20.0",
-    "eslint": "6.8.0",
+    "eslint": "7.1.0",
     "husky": "4.2.5",
     "lint-staged": "10.2.9",
     "prettier": "2.0.5",
