@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { ApolloConsumer } from "@apollo/client";
+import { useApolloClient } from "@apollo/client";
 import { Category } from "./styles";
 import routes from "lib/routes";
 import queryForPage from "lib/queryForPage";
@@ -8,6 +8,7 @@ import preloadQuery from "lib/preloadQuery";
 import { useStockQuery } from "common/generated/generated";
 
 const CategoriesComponent = () => {
+  const client = useApolloClient();
   const { loading, error, data } = useStockQuery();
   const { pathname } = useLocation();
 
@@ -36,20 +37,16 @@ const CategoriesComponent = () => {
       const { query, variables } = queryForPage(route.id);
       return (
         <div key={stockName}>
-          <ApolloConsumer>
-            {(client) => (
-              <Category
-                to={route.path || "/"}
-                onMouseOver={() => preloadQuery({ query, variables, client })}
-                className={className}
-              >
-                {stockName}
-                <div className="info">
-                  {nrOfBeers} st, {nextRelease}
-                </div>
-              </Category>
-            )}
-          </ApolloConsumer>
+          <Category
+            to={route.path || "/"}
+            onMouseOver={() => preloadQuery({ query, variables, client })}
+            className={className}
+          >
+            {stockName}
+            <div className="info">
+              {nrOfBeers} st, {nextRelease}
+            </div>
+          </Category>
         </div>
       );
     });

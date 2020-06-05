@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { ApolloConsumer } from "@apollo/client";
+import { useApolloClient } from "@apollo/client";
 import routes from "lib/routes";
 import queryForPage from "lib/queryForPage";
 import preloadQuery from "lib/preloadQuery";
@@ -24,24 +24,21 @@ const MenuComponent = () => {
   // });
 
   const NavigationItem = (route: RouteType) => {
+    const client = useApolloClient();
     let className = "";
     if (route.path && pathname.includes(route.path)) {
       className = "selected";
     }
     const { query, variables } = queryForPage(route.id);
     return (
-      <ApolloConsumer key={route.id}>
-        {(client) => (
-          <LinkButton
-            onMouseOver={() => preloadQuery({ query, variables, client })}
-            to={route.path || "/"}
-            className={className}
-          >
-            {route.icon}
-            <IconText>{route.id}</IconText>
-          </LinkButton>
-        )}
-      </ApolloConsumer>
+      <LinkButton
+        onMouseOver={() => preloadQuery({ query, variables, client })}
+        to={route.path || "/"}
+        className={className}
+      >
+        {route.icon}
+        <IconText>{route.id}</IconText>
+      </LinkButton>
     );
   };
 

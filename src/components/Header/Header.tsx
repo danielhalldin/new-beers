@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { ApolloConsumer } from "@apollo/client";
+import { useApolloClient } from "@apollo/client";
 import { useUntappdUserQuery } from "common/generated/generated";
 import routes from "lib/routes";
 import { useLocation } from "react-router-dom";
@@ -92,6 +92,7 @@ const User = () => {
 };
 
 const UserBeers = () => {
+  const client = useApolloClient();
   const { loading, error, data } = useUntappdUserQuery();
   const { pathname } = useLocation();
   if (error) {
@@ -105,36 +106,28 @@ const UserBeers = () => {
       </Right>
     );
   }
-
   const totalBeers = data && data.untappdUser.totalBeers;
-
+  const id = "Checkins";
+  const route = routes.find((route) => route.id === id);
+  const { query, variables } = queryForPage(id);
+  let className = "";
+  if (route?.path && pathname.includes(route.path)) {
+    className = "selected";
+  }
   return (
     <Right>
-      <ApolloConsumer>
-        {(client) => {
-          const id = "Checkins";
-          const route = routes.find((route) => route.id === id);
-          const { query, variables } = queryForPage(id);
-          let className = "";
-          if (route?.path && pathname.includes(route.path)) {
-            className = "selected";
-          }
-          return (
-            <LinkButton
-              to="/checkins"
-              onMouseOver={() => preloadQuery({ query, variables, client })}
-              className={className}
-            >
-              <TotalBeers>
-                {totalBeers}{" "}
-                <span role="img" aria-label="Beer">
-                  🍺
-                </span>
-              </TotalBeers>
-            </LinkButton>
-          );
-        }}
-      </ApolloConsumer>
+      <LinkButton
+        to="/checkins"
+        onMouseOver={() => preloadQuery({ query, variables, client })}
+        className={className}
+      >
+        <TotalBeers>
+          {totalBeers}{" "}
+          <span role="img" aria-label="Beer">
+            🍺
+          </span>
+        </TotalBeers>
+      </LinkButton>
     </Right>
   );
 };
