@@ -70,7 +70,7 @@
   ],
   "dependencies": {
     "@apollo/client": "3.0.0-rc.2",
-    "graphql": "15.0.0",
+    "graphql": "15.1.0",
     "lodash": "4.17.15",
     "react": "16.13.1",
     "react-device-detect": "1.12.1",
