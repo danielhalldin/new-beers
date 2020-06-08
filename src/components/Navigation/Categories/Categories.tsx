@@ -9,7 +9,7 @@ import { useStockQuery } from "common/generated/generated";
 
 const CategoriesComponent = () => {
   const client = useApolloClient();
-  const { loading, error, data } = useStockQuery();
+  const { loading, error, data } = useStockQuery({ errorPolicy: "all" });
   const { pathname } = useLocation();
 
   // CHECK WHEN RESOLVED https://github.com/apollographql/apollo-client/issues/6334 (&& !data)

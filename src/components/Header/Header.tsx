@@ -34,7 +34,7 @@ const HeaderContainer = ({ login }: { login?: boolean }) => {
 };
 
 const User = () => {
-  const { loading, error, data } = useUntappdUserQuery();
+  const { loading, error, data } = useUntappdUserQuery({ errorPolicy: "all" });
   const [submenuVisible, setSubmenuVisible] = useState("initial");
   const ref = useRef<HTMLInputElement>(null);
 

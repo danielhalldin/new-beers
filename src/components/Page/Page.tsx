@@ -12,6 +12,7 @@ const Page: FunctionComponent<{ name: string }> = ({ name }) => {
   const { query, variables } = queryForPage(name);
   const { loading, error, data } = useQuery(query, {
     variables,
+    errorPolicy: "all",
   });
   const location = useLocation();
   useTitle(`New beers 🍺${name ? ` - ${name}` : ""}`);
