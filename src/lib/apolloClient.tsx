@@ -18,7 +18,7 @@ const client = new ApolloClient({
         "x-untappd-access-token":
           localStorage.getItem("untappd_access_token") || "",
       },
-      useGETForQueries: true,
+      // useGETForQueries: true,
     }),
   ]),
   cache: new InMemoryCache(),
