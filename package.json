@@ -69,7 +69,7 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@apollo/client": "3.0.0-rc.8",
+    "@apollo/client": "3.0.0-rc.9",
     "graphql": "15.1.0",
     "lodash": "4.17.15",
     "react": "16.13.1",
