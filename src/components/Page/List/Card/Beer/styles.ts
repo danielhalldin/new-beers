@@ -30,17 +30,14 @@ const _face = `
   border-radius: 7px;
   box-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
   border: 5px solid ${colors.dark};
-  transform-style: preserve-3d;
   display: grid;
 `;
 const Front = styled.div`
   ${_face}
-  /* z-index: 2; */
   grid-template-rows: 22px 65px auto 40px 40px 26px;
 `;
 const Back = styled.div`
   ${_face}
-  /* z-index: 1; */
   transform: rotateY(180deg);
   grid-template-rows: 22px 70px auto 36px;
 `;
