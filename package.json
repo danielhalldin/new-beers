@@ -104,6 +104,6 @@
     "lint-staged": "10.3.0",
     "prettier": "2.1.1",
     "typescript": "3.9.7",
-    "workbox-build": "5.1.3"
+    "workbox-build": "5.1.4"
   }
 }
