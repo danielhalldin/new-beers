@@ -83,7 +83,7 @@
     "styled-components": "5.2.0"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "1.17.9",
+    "@graphql-codegen/cli": "1.17.10",
     "@graphql-codegen/fragment-matcher": "1.17.8",
     "@graphql-codegen/typescript-document-nodes": "1.17.8",
     "@graphql-codegen/typescript-operations": "1.17.8",
