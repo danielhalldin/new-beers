@@ -80,7 +80,7 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.4",
     "react-use": "15.3.4",
-    "styled-components": "5.2.0"
+    "styled-components": "5.2.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.19.0",
