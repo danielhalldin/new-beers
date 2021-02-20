@@ -71,7 +71,7 @@
   "dependencies": {
     "@apollo/client": "3.3.11",
     "graphql": "15.5.0",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "react": "16.14.0",
     "react-device-detect": "1.15.0",
     "react-dom": "16.14.0",
